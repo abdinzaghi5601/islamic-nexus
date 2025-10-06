@@ -71,11 +71,16 @@ export default function SearchPage() {
       const data = await res.json();
 
       if (data.success) {
-        setResults(data.data.results);
-        setTotalResults(data.data.total);
+        setResults(data.data || []);
+        setTotalResults(data.pagination?.total || data.data?.length || 0);
+      } else {
+        setResults([]);
+        setTotalResults(0);
       }
     } catch (error) {
       console.error('Search failed:', error);
+      setResults([]);
+      setTotalResults(0);
     } finally {
       setLoading(false);
     }
@@ -168,7 +173,7 @@ export default function SearchPage() {
         </div>
       )}
 
-      {!loading && searched && results.length === 0 && (
+      {!loading && searched && results?.length === 0 && (
         <div className="text-center py-12">
           <SearchIcon className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
           <p className="text-lg text-muted-foreground">
@@ -180,7 +185,7 @@ export default function SearchPage() {
         </div>
       )}
 
-      {!loading && results.length > 0 && (
+      {!loading && results && results.length > 0 && (
         <>
           <div className="mb-4 text-sm text-muted-foreground">
             Found {totalResults.toLocaleString()} result{totalResults !== 1 ? 's' : ''}
