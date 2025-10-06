@@ -3,8 +3,9 @@ import { HadithBook } from '@/types/api';
 import { Library } from 'lucide-react';
 
 async function getHadithBooks(): Promise<HadithBook[]> {
-  const res = await fetch(`http://localhost:3000/api/hadith/books`, {
-    cache: 'no-store',
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const res = await fetch(`${baseUrl}/api/hadith/books`, {
+    next: { revalidate: 3600 }, // Cache for 1 hour
   });
 
   if (!res.ok) {
@@ -25,43 +26,43 @@ export default async function HadithPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-2">Hadith Collections</h1>
-        <p className="text-muted-foreground">
+      <div className="mb-10">
+        <h1 className="text-4xl font-bold mb-3 gradient-text">Hadith Collections</h1>
+        <p className="text-muted-foreground text-lg">
           Browse the six major hadith books with authentic narrations
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-8">
         {uniqueBooks.map((book) => (
           <Link
             key={book.id}
             href={`/hadith/${book.id}`}
-            className="group p-6 border rounded-lg hover:shadow-lg hover:border-primary transition-all"
+            className="group glass-card hover-lift p-8 rounded-xl"
           >
-            <div className="flex items-start space-x-4">
-              <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                <Library className="h-6 w-6 text-primary" />
+            <div className="flex items-start space-x-5">
+              <div className="p-3 bg-gradient-to-br from-primary to-accent rounded-xl group-hover:shadow-lg transition-all duration-300">
+                <Library className="h-7 w-7 text-primary-foreground" />
               </div>
 
               <div className="flex-1">
-                <h3 className="text-xl font-semibold mb-1 group-hover:text-primary transition-colors">
+                <h3 className="text-2xl font-semibold mb-2 group-hover:text-primary transition-colors">
                   {book.name}
                 </h3>
                 {book.nameArabic && (
-                  <p className="text-lg font-arabic mb-2" dir="rtl">
+                  <p className="text-xl font-arabic mb-3" dir="rtl">
                     {book.nameArabic}
                   </p>
                 )}
-                <p className="text-sm text-muted-foreground mb-3">
+                <p className="text-sm text-muted-foreground mb-3 font-medium">
                   By {book.author}
                 </p>
-                <p className="text-sm mb-3">{book.description}</p>
+                <p className="text-sm mb-4 leading-relaxed text-muted-foreground">{book.description}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-primary">
+                  <span className="text-sm font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
                     {book.totalHadiths.toLocaleString()} Hadiths
                   </span>
-                  <span className="text-sm text-muted-foreground group-hover:text-primary transition-colors">
+                  <span className="text-sm text-muted-foreground group-hover:text-primary transition-colors font-medium">
                     View Collection →
                   </span>
                 </div>

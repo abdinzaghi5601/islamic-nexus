@@ -95,31 +95,31 @@ export default function SearchPage() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-5xl">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-2">Search</h1>
-        <p className="text-muted-foreground">
+      <div className="mb-10">
+        <h1 className="text-4xl font-bold mb-3 gradient-text">Search</h1>
+        <p className="text-muted-foreground text-lg">
           Search across the Quran and Hadith collections
         </p>
       </div>
 
       {/* Search Input */}
-      <div className="mb-6">
-        <div className="flex gap-2 mb-4">
+      <div className="mb-8">
+        <div className="flex gap-3 mb-5">
           <div className="relative flex-1">
-            <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Search for verses, hadiths, or keywords..."
-              className="w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full pl-12 pr-4 py-3.5 glass-card rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
             />
           </div>
           <button
             onClick={() => handleSearch(1)}
             disabled={loading || !query.trim()}
-            className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="px-8 py-3.5 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-xl hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 font-medium"
           >
             {loading ? (
               <Loader2 className="h-5 w-5 animate-spin" />
@@ -130,37 +130,37 @@ export default function SearchPage() {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <button
             onClick={() => setType('all')}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+            className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
               type === 'all'
-                ? 'bg-primary text-primary-foreground'
-                : 'bg-muted hover:bg-muted/80'
+                ? 'bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-md'
+                : 'glass-card hover:bg-muted/80'
             }`}
           >
             All
           </button>
           <button
             onClick={() => setType('quran')}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+            className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
               type === 'quran'
-                ? 'bg-primary text-primary-foreground'
-                : 'bg-muted hover:bg-muted/80'
+                ? 'bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-md'
+                : 'glass-card hover:bg-muted/80'
             }`}
           >
-            <BookOpen className="inline h-4 w-4 mr-1" />
+            <BookOpen className="inline h-4 w-4 mr-2" />
             Quran
           </button>
           <button
             onClick={() => setType('hadith')}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+            className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
               type === 'hadith'
-                ? 'bg-primary text-primary-foreground'
-                : 'bg-muted hover:bg-muted/80'
+                ? 'bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-md'
+                : 'glass-card hover:bg-muted/80'
             }`}
           >
-            <Library className="inline h-4 w-4 mr-1" />
+            <Library className="inline h-4 w-4 mr-2" />
             Hadith
           </button>
         </div>
@@ -174,12 +174,12 @@ export default function SearchPage() {
       )}
 
       {!loading && searched && results?.length === 0 && (
-        <div className="text-center py-12">
-          <SearchIcon className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-          <p className="text-lg text-muted-foreground">
+        <div className="glass-card text-center py-16 rounded-2xl">
+          <SearchIcon className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
+          <p className="text-xl font-semibold text-muted-foreground mb-2">
             No results found for "{query}"
           </p>
-          <p className="text-sm text-muted-foreground mt-2">
+          <p className="text-sm text-muted-foreground">
             Try different keywords or search terms
           </p>
         </div>
@@ -187,16 +187,18 @@ export default function SearchPage() {
 
       {!loading && results && results.length > 0 && (
         <>
-          <div className="mb-4 text-sm text-muted-foreground">
-            Found {totalResults.toLocaleString()} result{totalResults !== 1 ? 's' : ''}
+          <div className="mb-6">
+            <p className="text-sm text-muted-foreground font-medium bg-muted/50 inline-block px-4 py-2 rounded-full">
+              Found {totalResults.toLocaleString()} result{totalResults !== 1 ? 's' : ''}
+            </p>
           </div>
 
           <div className="space-y-6">
             {results.map((result) => (
-              <div key={`${result.type}-${result.id}`} className="border rounded-lg p-6">
+              <div key={`${result.type}-${result.id}`} className="glass-card p-6 rounded-xl">
                 {/* Result Type & Reference */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex items-center justify-between mb-5">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground font-medium">
                     {result.type === 'ayah' ? (
                       <BookOpen className="h-4 w-4" />
                     ) : (
@@ -206,13 +208,13 @@ export default function SearchPage() {
                     <span>•</span>
                     <Link
                       href={result.type === 'ayah' ? `/quran/${result.surah?.number}` : `/hadith/${result.book?.id}`}
-                      className="text-primary hover:underline"
+                      className="text-primary hover:underline font-semibold"
                     >
                       {result.reference}
                     </Link>
                   </div>
                   {result.type === 'hadith' && result.grade && (
-                    <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">
+                    <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-semibold">
                       {result.grade}
                     </span>
                   )}
@@ -220,16 +222,16 @@ export default function SearchPage() {
 
                 {/* Arabic Text */}
                 {result.textArabic && (
-                  <div className="text-2xl font-arabic leading-loose mb-4 text-right" dir="rtl">
+                  <div className="text-2xl font-arabic leading-loose mb-6 text-right p-4 bg-muted/30 rounded-lg" dir="rtl">
                     {result.textArabic}
                   </div>
                 )}
 
                 {/* English Translation */}
-                <div className="pl-4 border-l-2 border-muted mb-4">
-                  <p className="leading-relaxed">{result.text}</p>
+                <div className="pl-5 border-l-4 border-primary/30 mb-6">
+                  <p className="leading-relaxed text-muted-foreground">{result.text}</p>
                   {result.translator && (
-                    <p className="text-sm text-muted-foreground mt-2">
+                    <p className="text-sm text-primary mt-3 font-semibold">
                       Translation by {result.translator}
                     </p>
                   )}
@@ -237,18 +239,18 @@ export default function SearchPage() {
 
                 {/* Tafsir (for Quran results) */}
                 {result.type === 'ayah' && result.tafsirs && result.tafsirs.length > 0 && (
-                  <div className="mt-6 space-y-4">
-                    <h4 className="font-semibold text-lg flex items-center gap-2">
+                  <div className="space-y-4">
+                    <h4 className="font-semibold text-lg flex items-center gap-2 text-primary">
                       <BookOpen className="h-5 w-5" />
                       Tafsir (Commentary)
                     </h4>
                     {result.tafsirs.map((tafsir) => (
-                      <div key={tafsir.id} className="bg-muted/50 rounded-lg p-4">
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className="font-medium text-sm">{tafsir.tafsirBook}</span>
+                      <div key={tafsir.id} className="bg-muted/50 rounded-xl p-5">
+                        <div className="flex items-center gap-2 mb-3">
+                          <span className="font-semibold text-sm text-primary">{tafsir.tafsirBook}</span>
                           <span className="text-xs text-muted-foreground">by {tafsir.author}</span>
                         </div>
-                        <p className="text-sm leading-relaxed">{tafsir.text}</p>
+                        <p className="text-sm leading-relaxed text-muted-foreground">{tafsir.text}</p>
                       </div>
                     ))}
                   </div>
@@ -257,37 +259,35 @@ export default function SearchPage() {
                 {/* Related Hadiths (for Quran results) */}
                 {result.type === 'ayah' && result.relatedHadiths && result.relatedHadiths.length > 0 && (
                   <div className="mt-6 space-y-4">
-                    <h4 className="font-semibold text-lg flex items-center gap-2">
+                    <h4 className="font-semibold text-lg flex items-center gap-2 text-primary">
                       <Library className="h-5 w-5" />
                       Related Hadiths
                     </h4>
                     {result.relatedHadiths.map((hadith) => (
-                      <div key={hadith.id} className="bg-primary/5 rounded-lg p-4 border border-primary/20">
-                        <div className="flex items-center justify-between mb-2">
+                      <div key={hadith.id} className="bg-primary/5 rounded-xl p-5 border border-primary/20">
+                        <div className="flex items-center justify-between mb-3">
                           <Link
                             href={`/hadith/${hadith.book.id}`}
-                            className="text-sm font-medium text-primary hover:underline"
+                            className="text-sm font-semibold text-primary hover:underline"
                           >
                             {hadith.reference}
                           </Link>
                           {hadith.grade && (
-                            <span className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded">
+                            <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-semibold">
                               {hadith.grade}
                             </span>
                           )}
                         </div>
                         {hadith.textArabic && (
-                          <p className="text-lg font-arabic leading-loose mb-2 text-right" dir="rtl">
-                            {hadith.textArabic.substring(0, 200)}
-                            {hadith.textArabic.length > 200 ? '...' : ''}
-                          </p>
+                          <div className="text-lg font-arabic leading-loose mb-4 text-right p-4 bg-muted/30 rounded-lg" dir="rtl">
+                            {hadith.textArabic}
+                          </div>
                         )}
-                        <p className="text-sm leading-relaxed">
-                          {hadith.textEnglish.substring(0, 250)}
-                          {hadith.textEnglish.length > 250 ? '...' : ''}
+                        <p className="leading-relaxed text-muted-foreground">
+                          {hadith.textEnglish}
                         </p>
                         {hadith.chapter && (
-                          <p className="text-xs text-muted-foreground mt-2">
+                          <p className="text-xs text-muted-foreground mt-3 font-medium">
                             Chapter: {hadith.chapter.nameEnglish}
                           </p>
                         )}
@@ -298,7 +298,7 @@ export default function SearchPage() {
 
                 {/* Chapter info (for Hadith results) */}
                 {result.type === 'hadith' && result.chapter && (
-                  <div className="mt-3 text-sm text-muted-foreground">
+                  <div className="text-sm text-muted-foreground font-medium">
                     Chapter: {result.chapter.nameEnglish}
                   </div>
                 )}
@@ -308,21 +308,21 @@ export default function SearchPage() {
 
           {/* Pagination */}
           {totalResults > 20 && (
-            <div className="flex justify-center gap-2 mt-8">
+            <div className="flex justify-center gap-3 mt-10">
               <button
                 onClick={() => handleSearch(page - 1)}
                 disabled={page === 1}
-                className="px-4 py-2 border rounded-lg hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="px-6 py-2.5 glass-card rounded-xl hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed transition-all font-medium"
               >
                 Previous
               </button>
-              <div className="px-4 py-2 border rounded-lg bg-muted">
+              <div className="px-6 py-2.5 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-xl font-semibold">
                 Page {page} of {Math.ceil(totalResults / 20)}
               </div>
               <button
                 onClick={() => handleSearch(page + 1)}
                 disabled={page >= Math.ceil(totalResults / 20)}
-                className="px-4 py-2 border rounded-lg hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="px-6 py-2.5 glass-card rounded-xl hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed transition-all font-medium"
               >
                 Next
               </button>
