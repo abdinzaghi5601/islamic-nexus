@@ -4,14 +4,43 @@ import { useState } from 'react';
 import { Search as SearchIcon, BookOpen, Library, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 
-interface SearchResult {
+interface Tafsir {
   id: number;
-  type: 'quran' | 'hadith';
+  text: string;
+  tafsirBook: string;
+  author: string;
+}
+
+interface RelatedHadith {
+  id: number;
   textArabic: string;
   textEnglish: string;
   reference: string;
-  link: string;
-  metadata?: any;
+  book: {
+    id: number;
+    name: string;
+  };
+  chapter: {
+    nameEnglish: string;
+  } | null;
+  grade: string | null;
+}
+
+interface SearchResult {
+  id: number;
+  type: 'ayah' | 'hadith';
+  textArabic: string;
+  text: string;
+  reference: string;
+  surah?: any;
+  ayahNumber?: number;
+  translator?: string;
+  tafsirs?: Tafsir[];
+  relatedHadiths?: RelatedHadith[];
+  book?: any;
+  chapter?: any;
+  hadithNumber?: string;
+  grade?: string;
 }
 
 export default function SearchPage() {
@@ -163,20 +192,25 @@ export default function SearchPage() {
                 {/* Result Type & Reference */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    {result.type === 'quran' ? (
+                    {result.type === 'ayah' ? (
                       <BookOpen className="h-4 w-4" />
                     ) : (
                       <Library className="h-4 w-4" />
                     )}
-                    <span className="capitalize">{result.type}</span>
+                    <span className="capitalize">{result.type === 'ayah' ? 'Quran' : 'Hadith'}</span>
                     <span>•</span>
                     <Link
-                      href={result.link}
+                      href={result.type === 'ayah' ? `/quran/${result.surah?.number}` : `/hadith/${result.book?.id}`}
                       className="text-primary hover:underline"
                     >
                       {result.reference}
                     </Link>
                   </div>
+                  {result.type === 'hadith' && result.grade && (
+                    <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded">
+                      {result.grade}
+                    </span>
+                  )}
                 </div>
 
                 {/* Arabic Text */}
@@ -187,19 +221,80 @@ export default function SearchPage() {
                 )}
 
                 {/* English Translation */}
-                <div className="pl-4 border-l-2 border-muted">
-                  <p className="leading-relaxed">{result.textEnglish}</p>
+                <div className="pl-4 border-l-2 border-muted mb-4">
+                  <p className="leading-relaxed">{result.text}</p>
+                  {result.translator && (
+                    <p className="text-sm text-muted-foreground mt-2">
+                      Translation by {result.translator}
+                    </p>
+                  )}
                 </div>
 
-                {/* Metadata */}
-                {result.metadata && (
+                {/* Tafsir (for Quran results) */}
+                {result.type === 'ayah' && result.tafsirs && result.tafsirs.length > 0 && (
+                  <div className="mt-6 space-y-4">
+                    <h4 className="font-semibold text-lg flex items-center gap-2">
+                      <BookOpen className="h-5 w-5" />
+                      Tafsir (Commentary)
+                    </h4>
+                    {result.tafsirs.map((tafsir) => (
+                      <div key={tafsir.id} className="bg-muted/50 rounded-lg p-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="font-medium text-sm">{tafsir.tafsirBook}</span>
+                          <span className="text-xs text-muted-foreground">by {tafsir.author}</span>
+                        </div>
+                        <p className="text-sm leading-relaxed">{tafsir.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Related Hadiths (for Quran results) */}
+                {result.type === 'ayah' && result.relatedHadiths && result.relatedHadiths.length > 0 && (
+                  <div className="mt-6 space-y-4">
+                    <h4 className="font-semibold text-lg flex items-center gap-2">
+                      <Library className="h-5 w-5" />
+                      Related Hadiths
+                    </h4>
+                    {result.relatedHadiths.map((hadith) => (
+                      <div key={hadith.id} className="bg-primary/5 rounded-lg p-4 border border-primary/20">
+                        <div className="flex items-center justify-between mb-2">
+                          <Link
+                            href={`/hadith/${hadith.book.id}`}
+                            className="text-sm font-medium text-primary hover:underline"
+                          >
+                            {hadith.reference}
+                          </Link>
+                          {hadith.grade && (
+                            <span className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded">
+                              {hadith.grade}
+                            </span>
+                          )}
+                        </div>
+                        {hadith.textArabic && (
+                          <p className="text-lg font-arabic leading-loose mb-2 text-right" dir="rtl">
+                            {hadith.textArabic.substring(0, 200)}
+                            {hadith.textArabic.length > 200 ? '...' : ''}
+                          </p>
+                        )}
+                        <p className="text-sm leading-relaxed">
+                          {hadith.textEnglish.substring(0, 250)}
+                          {hadith.textEnglish.length > 250 ? '...' : ''}
+                        </p>
+                        {hadith.chapter && (
+                          <p className="text-xs text-muted-foreground mt-2">
+                            Chapter: {hadith.chapter.nameEnglish}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Chapter info (for Hadith results) */}
+                {result.type === 'hadith' && result.chapter && (
                   <div className="mt-3 text-sm text-muted-foreground">
-                    {result.type === 'quran' && result.metadata.translator && (
-                      <span>Translation by {result.metadata.translator}</span>
-                    )}
-                    {result.type === 'hadith' && result.metadata.chapter && (
-                      <span>{result.metadata.chapter}</span>
-                    )}
+                    Chapter: {result.chapter.nameEnglish}
                   </div>
                 )}
               </div>

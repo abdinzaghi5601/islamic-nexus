@@ -31,7 +31,6 @@ export async function GET(request: NextRequest) {
         where: {
           text: {
             contains: query.trim(),
-            mode: 'insensitive',
           },
         },
         take: limit,
@@ -40,6 +39,11 @@ export async function GET(request: NextRequest) {
           ayah: {
             include: {
               surah: true,
+              tafsirs: {
+                include: {
+                  tafsirBook: true,
+                },
+              },
             },
           },
           translator: true,
@@ -49,23 +53,62 @@ export async function GET(request: NextRequest) {
         },
       });
 
-      results.push(
-        ...quranResults.map(result => ({
-          type: 'ayah',
-          id: result.ayah.id,
-          text: result.text,
-          textArabic: result.ayah.textArabic,
-          reference: `${result.ayah.surah.nameEnglish} ${result.ayah.ayahNumber}:${result.ayah.surah.number}`,
-          surah: {
-            id: result.ayah.surah.id,
-            number: result.ayah.surah.number,
-            nameEnglish: result.ayah.surah.nameEnglish,
-            nameArabic: result.ayah.surah.nameArabic,
-          },
-          ayahNumber: result.ayah.ayahNumber,
-          translator: result.translator.name,
-        }))
+      // For each ayah result, fetch related hadiths
+      const quranResultsWithHadiths = await Promise.all(
+        quranResults.map(async (result) => {
+          // Search for hadiths that mention the same keywords
+          const relatedHadiths = await prisma.hadith.findMany({
+            where: {
+              textEnglish: {
+                contains: query.trim(),
+              },
+            },
+            take: 3, // Limit to 3 related hadiths per ayah
+            include: {
+              book: true,
+              chapter: true,
+            },
+          });
+
+          return {
+            type: 'ayah',
+            id: result.ayah.id,
+            text: result.text,
+            textArabic: result.ayah.textArabic,
+            reference: `${result.ayah.surah.nameEnglish} ${result.ayah.ayahNumber}:${result.ayah.surah.number}`,
+            surah: {
+              id: result.ayah.surah.id,
+              number: result.ayah.surah.number,
+              nameEnglish: result.ayah.surah.nameEnglish,
+              nameArabic: result.ayah.surah.nameArabic,
+            },
+            ayahNumber: result.ayah.ayahNumber,
+            translator: result.translator.name,
+            tafsirs: result.ayah.tafsirs.map(tafsir => ({
+              id: tafsir.id,
+              text: tafsir.text,
+              tafsirBook: tafsir.tafsirBook.name,
+              author: tafsir.tafsirBook.authorName,
+            })),
+            relatedHadiths: relatedHadiths.map(hadith => ({
+              id: hadith.id,
+              textArabic: hadith.textArabic,
+              textEnglish: hadith.textEnglish,
+              reference: `${hadith.book.name} ${hadith.hadithNumber}`,
+              book: {
+                id: hadith.book.id,
+                name: hadith.book.name,
+              },
+              chapter: hadith.chapter ? {
+                nameEnglish: hadith.chapter.nameEnglish,
+              } : null,
+              grade: hadith.grade,
+            })),
+          };
+        })
       );
+
+      results.push(...quranResultsWithHadiths);
     }
 
     // Search Hadith
@@ -76,13 +119,11 @@ export async function GET(request: NextRequest) {
             {
               textEnglish: {
                 contains: query.trim(),
-                mode: 'insensitive',
               },
             },
             {
               textArabic: {
                 contains: query.trim(),
-                mode: 'insensitive',
               },
             },
           ],
