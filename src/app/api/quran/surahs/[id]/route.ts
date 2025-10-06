@@ -4,9 +4,10 @@ import { successResponse, errorResponse } from '@/lib/api/helpers';
 
 /**
  * GET /api/quran/surahs/[id]
- * Get a specific surah with its ayahs and translations
+ * Get a specific surah with its ayahs, translations, and tafsir
  * Query params:
  *   - translations: comma-separated translator IDs (e.g., ?translations=1,2)
+ *   - tafsir: comma-separated tafsir book IDs (e.g., ?tafsir=1,2)
  */
 export async function GET(
   request: NextRequest,
@@ -20,11 +21,16 @@ export async function GET(
       return errorResponse('Invalid surah number. Must be between 1 and 114');
     }
 
-    // Get translation IDs from query params
+    // Get translation and tafsir IDs from query params
     const searchParams = request.nextUrl.searchParams;
     const translationsParam = searchParams.get('translations');
     const translatorIds = translationsParam
       ? translationsParam.split(',').map(id => parseInt(id)).filter(id => !isNaN(id))
+      : undefined;
+
+    const tafsirParam = searchParams.get('tafsir');
+    const tafsirIds = tafsirParam
+      ? tafsirParam.split(',').map(id => parseInt(id)).filter(id => !isNaN(id))
       : undefined;
 
     const surah = await prisma.surah.findUnique({
@@ -37,6 +43,12 @@ export async function GET(
               where: translatorIds ? { translatorId: { in: translatorIds } } : undefined,
               include: {
                 translator: true,
+              },
+            },
+            tafsirs: {
+              where: tafsirIds ? { tafsirBookId: { in: tafsirIds } } : undefined,
+              include: {
+                tafsirBook: true,
               },
             },
           },
