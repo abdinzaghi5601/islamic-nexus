@@ -1,0 +1,359 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================================
+// QURAN MODELS
+// ============================================================================
+
+model Surah {
+  id               Int      @id @default(autoincrement())
+  number           Int      @unique // Surah number (1-114)
+  nameArabic       String   @db.VarChar(100)
+  nameEnglish      String   @db.VarChar(100)
+  nameTranslation  String   @db.VarChar(200)
+  revelationType   String   @db.VarChar(20) // "Meccan" or "Medinan"
+  numberOfAyahs    Int
+  bismillahPre     Boolean  @default(true) // Has Bismillah at start
+  order            Int      // Revelation order
+
+  ayahs            Ayah[]
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([number])
+  @@map("surahs")
+}
+
+model Ayah {
+  id               Int      @id @default(autoincrement())
+  surahId          Int
+  ayahNumber       Int      // Ayah number within surah
+  numberInQuran    Int      @unique // Sequential number in entire Quran
+  textArabic       String   @db.Text
+  textUthmani      String   @db.Text // Uthmani script
+  textSimple       String   @db.Text // Simplified Arabic
+  juz              Int      // Juz (1-30)
+  manzil           Int      // Manzil (1-7)
+  ruku             Int      // Ruku number
+  hizbQuarter      Int      // Hizb quarter
+  sajdah           Boolean  @default(false) // Contains sajdah
+
+  surah            Surah    @relation(fields: [surahId], references: [id], onDelete: Cascade)
+  translations     Translation[]
+  tafsirs          TafsirVerse[]
+  bookmarks        Bookmark[]
+  hadithReferences HadithAyahReference[]
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([surahId, ayahNumber])
+  @@index([surahId])
+  @@index([juz])
+  @@index([numberInQuran])
+  @@map("ayahs")
+}
+
+model Translation {
+  id               Int      @id @default(autoincrement())
+  ayahId           Int
+  translatorId     Int
+  text             String   @db.Text
+
+  ayah             Ayah     @relation(fields: [ayahId], references: [id], onDelete: Cascade)
+  translator       Translator @relation(fields: [translatorId], references: [id])
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([ayahId, translatorId])
+  @@index([ayahId])
+  @@index([translatorId])
+  @@map("translations")
+}
+
+model Translator {
+  id               Int      @id @default(autoincrement())
+  name             String   @db.VarChar(200)
+  language         String   @db.VarChar(50)
+  description      String?  @db.Text
+
+  translations     Translation[]
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("translators")
+}
+
+// ============================================================================
+// TAFSIR MODELS
+// ============================================================================
+
+model TafsirBook {
+  id               Int      @id @default(autoincrement())
+  name             String   @db.VarChar(200)
+  authorName       String   @db.VarChar(200)
+  language         String   @db.VarChar(50)
+  description      String?  @db.Text
+
+  verses           TafsirVerse[]
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("tafsir_books")
+}
+
+model TafsirVerse {
+  id               Int      @id @default(autoincrement())
+  ayahId           Int
+  tafsirBookId     Int
+  text             String   @db.LongText
+
+  ayah             Ayah     @relation(fields: [ayahId], references: [id], onDelete: Cascade)
+  tafsirBook       TafsirBook @relation(fields: [tafsirBookId], references: [id])
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([ayahId, tafsirBookId])
+  @@index([ayahId])
+  @@index([tafsirBookId])
+  @@map("tafsir_verses")
+}
+
+// ============================================================================
+// HADITH MODELS
+// ============================================================================
+
+model HadithBook {
+  id               Int      @id @default(autoincrement())
+  name             String   @db.VarChar(200)
+  nameArabic       String?  @db.VarChar(200)
+  author           String   @db.VarChar(200)
+  description      String?  @db.Text
+  totalHadiths     Int      @default(0)
+
+  chapters         HadithChapter[]
+  hadiths          Hadith[]
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("hadith_books")
+}
+
+model HadithChapter {
+  id               Int      @id @default(autoincrement())
+  bookId           Int
+  chapterNumber    Int
+  nameArabic       String?  @db.VarChar(500)
+  nameEnglish      String   @db.VarChar(500)
+  intro            String?  @db.Text
+
+  book             HadithBook @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  hadiths          Hadith[]
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([bookId, chapterNumber])
+  @@index([bookId])
+  @@map("hadith_chapters")
+}
+
+model Hadith {
+  id               Int      @id @default(autoincrement())
+  bookId           Int
+  chapterId        Int?
+  hadithNumber     String   @db.VarChar(50) // Book-specific number
+  hadithInChapter  Int?     // Number within chapter
+  textArabic       String   @db.LongText
+  textEnglish      String   @db.LongText
+  narratorChain    String?  @db.LongText // Isnad
+  grade            String?  @db.VarChar(100) // Sahih, Hasan, Daif, etc.
+
+  book             HadithBook @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  chapter          HadithChapter? @relation(fields: [chapterId], references: [id])
+  ayahReferences   HadithAyahReference[]
+  bookmarks        HadithBookmark[]
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([bookId, hadithNumber])
+  @@index([bookId])
+  @@index([chapterId])
+  @@index([grade])
+  @@map("hadiths")
+}
+
+// ============================================================================
+// CROSS-REFERENCE MODELS
+// ============================================================================
+
+model HadithAyahReference {
+  id               Int      @id @default(autoincrement())
+  hadithId         Int
+  ayahId           Int
+
+  hadith           Hadith   @relation(fields: [hadithId], references: [id], onDelete: Cascade)
+  ayah             Ayah     @relation(fields: [ayahId], references: [id], onDelete: Cascade)
+
+  createdAt        DateTime @default(now())
+
+  @@unique([hadithId, ayahId])
+  @@index([hadithId])
+  @@index([ayahId])
+  @@map("hadith_ayah_references")
+}
+
+// ============================================================================
+// USER MODELS
+// ============================================================================
+
+model User {
+  id               String   @id @default(cuid())
+  email            String   @unique
+  name             String?
+  password         String   // Hashed
+  emailVerified    DateTime?
+  image            String?
+
+  accounts         Account[]
+  sessions         Session[]
+  bookmarks        Bookmark[]
+  hadithBookmarks  HadithBookmark[]
+  readingHistory   ReadingHistory[]
+  notes            Note[]
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+  @@map("accounts")
+}
+
+model Session {
+  id                String   @id @default(cuid())
+  sessionToken      String   @unique
+  userId            String
+  expires           DateTime
+
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier        String
+  token             String   @unique
+  expires           DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ============================================================================
+// USER INTERACTION MODELS
+// ============================================================================
+
+model Bookmark {
+  id               String   @id @default(cuid())
+  userId           String
+  ayahId           Int
+  note             String?  @db.Text
+
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ayah             Ayah     @relation(fields: [ayahId], references: [id], onDelete: Cascade)
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([userId, ayahId])
+  @@index([userId])
+  @@index([ayahId])
+  @@map("bookmarks")
+}
+
+model HadithBookmark {
+  id               String   @id @default(cuid())
+  userId           String
+  hadithId         Int
+  note             String?  @db.Text
+
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  hadith           Hadith   @relation(fields: [hadithId], references: [id], onDelete: Cascade)
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([userId, hadithId])
+  @@index([userId])
+  @@index([hadithId])
+  @@map("hadith_bookmarks")
+}
+
+model ReadingHistory {
+  id               String   @id @default(cuid())
+  userId           String
+  surahId          Int?
+  ayahId           Int?
+  hadithId         Int?
+  readAt           DateTime @default(now())
+
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([readAt])
+  @@map("reading_history")
+}
+
+model Note {
+  id               String   @id @default(cuid())
+  userId           String
+  ayahId           Int?
+  hadithId         Int?
+  title            String?  @db.VarChar(200)
+  content          String   @db.LongText
+
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([userId])
+  @@map("notes")
+}
