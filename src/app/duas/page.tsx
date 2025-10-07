@@ -2,6 +2,9 @@ import Link from 'next/link';
 import { Heart, Moon, Sun, Plane, Home, Users, Activity } from 'lucide-react';
 import prisma from '@/lib/db/prisma';
 
+// Force dynamic rendering to avoid build-time database access
+export const dynamic = 'force-dynamic';
+
 // Icon mapping for categories
 const ICON_MAP: { [key: string]: any } = {
   heart: Heart,

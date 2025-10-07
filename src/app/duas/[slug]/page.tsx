@@ -2,6 +2,9 @@ import Link from 'next/link';
 import { ChevronLeft, Heart, BookOpen } from 'lucide-react';
 import prisma from '@/lib/db/prisma';
 
+// Force dynamic rendering to avoid build-time database access
+export const dynamic = 'force-dynamic';
+
 async function getCategoryDuas(slug: string) {
   const category = await prisma.duaCategory.findUnique({
     where: { slug },
