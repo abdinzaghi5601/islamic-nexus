@@ -4,8 +4,6 @@ import { existsSync } from 'fs';
 import path from 'path';
 import prisma from '@/lib/db/prisma';
 import { successResponse, errorResponse } from '@/lib/api/helpers';
-// @ts-ignore
-import pdf from 'pdf-parse';
 
 /**
  * POST /api/admin/books/upload
@@ -73,7 +71,9 @@ export async function POST(request: NextRequest) {
     let extractedText = '';
 
     try {
-      const data = await pdf(buffer);
+      // Dynamic import for pdf-parse (CommonJS module)
+      const pdfParse = (await import('pdf-parse')).default;
+      const data = await pdfParse(buffer);
       totalPages = data.numpages || 0;
       extractedText = data.text || '';
     } catch (pdfError) {
