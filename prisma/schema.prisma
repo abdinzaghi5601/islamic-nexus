@@ -235,6 +235,7 @@ model User {
   sessions         Session[]
   bookmarks        Bookmark[]
   hadithBookmarks  HadithBookmark[]
+  duaBookmarks     DuaBookmark[]
   readingHistory   ReadingHistory[]
   notes            Note[]
 
@@ -284,6 +285,67 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map("verification_tokens")
+}
+
+// ============================================================================
+// DUA MODELS
+// ============================================================================
+
+model DuaCategory {
+  id               Int      @id @default(autoincrement())
+  name             String   @db.VarChar(100)
+  nameArabic       String?  @db.VarChar(100)
+  description      String?  @db.Text
+  icon             String?  @db.VarChar(50) // Icon name from lucide-react
+  slug             String   @unique @db.VarChar(100)
+
+  duas             Dua[]
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("dua_categories")
+}
+
+model Dua {
+  id               Int      @id @default(autoincrement())
+  categoryId       Int
+  title            String   @db.VarChar(300)
+  titleArabic      String?  @db.VarChar(300)
+  textArabic       String   @db.Text
+  textEnglish      String   @db.Text
+  transliteration  String?  @db.Text
+  reference        String?  @db.VarChar(500) // Source (Quran, Hadith, etc.)
+  tags             String?  @db.Text // Comma-separated tags
+  benefits         String?  @db.Text
+  occasion         String?  @db.VarChar(200) // When to recite
+
+  category         DuaCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  bookmarks        DuaBookmark[]
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([categoryId])
+  @@map("duas")
+}
+
+model DuaBookmark {
+  id               String   @id @default(cuid())
+  userId           String
+  duaId            Int
+  note             String?  @db.Text
+
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  dua              Dua      @relation(fields: [duaId], references: [id], onDelete: Cascade)
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([userId, duaId])
+  @@index([userId])
+  @@index([duaId])
+  @@map("dua_bookmarks")
 }
 
 // ============================================================================

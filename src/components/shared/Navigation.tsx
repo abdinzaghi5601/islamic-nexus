@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BookOpen, Library, Search } from 'lucide-react';
+import { BookOpen, Library, Search, Heart } from 'lucide-react';
 
 export function Navigation() {
   const pathname = usePathname();
@@ -11,6 +11,7 @@ export function Navigation() {
     { href: '/', label: 'Home', icon: BookOpen },
     { href: '/quran', label: 'Quran', icon: BookOpen },
     { href: '/hadith', label: 'Hadith', icon: Library },
+    { href: '/duas', label: 'Duas', icon: Heart },
     { href: '/search', label: 'Search', icon: Search },
   ];
 

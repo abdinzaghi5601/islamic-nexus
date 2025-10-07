@@ -14,7 +14,8 @@
     "db:studio": "prisma studio",
     "import:quran": "tsx scripts/import-quran.ts",
     "import:hadith": "tsx scripts/import-hadith.ts",
-    "import:tafsir": "tsx scripts/import-tafsir.ts"
+    "import:tafsir": "tsx scripts/import-tafsir.ts",
+    "import:duas": "tsx scripts/import-duas-sample.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.16.3",

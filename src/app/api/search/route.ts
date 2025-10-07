@@ -45,10 +45,10 @@ function expandSearchTerms(query: string): string[] {
 
 /**
  * GET /api/search
- * Search across Quran and Hadith with semantic understanding
+ * Search across Quran, Hadith, and Duas with semantic understanding
  * Query params:
  *   - q: search query (required)
- *   - type: 'quran' | 'hadith' | 'all' (default: 'all')
+ *   - type: 'quran' | 'hadith' | 'dua' | 'all' (default: 'all')
  *   - page: page number
  *   - limit: items per page
  */
@@ -205,6 +205,60 @@ export async function GET(request: NextRequest) {
           } : null,
           hadithNumber: result.hadithNumber,
           grade: result.grade,
+        }))
+      );
+    }
+
+    // Search Duas with expanded terms
+    if (type === 'all' || type === 'dua') {
+      const duaResults = await prisma.dua.findMany({
+        where: {
+          OR: [
+            ...searchTerms.map(term => ({
+              title: {
+                contains: term,
+              },
+            })),
+            ...searchTerms.map(term => ({
+              textEnglish: {
+                contains: term,
+              },
+            })),
+            ...searchTerms.map(term => ({
+              tags: {
+                contains: term,
+              },
+            })),
+          ],
+        },
+        take: limit,
+        skip: type === 'dua' ? skip : 0,
+        include: {
+          category: true,
+        },
+        orderBy: {
+          id: 'asc',
+        },
+      });
+
+      results.push(
+        ...duaResults.map(result => ({
+          type: 'dua',
+          id: result.id,
+          text: result.textEnglish,
+          textArabic: result.textArabic,
+          title: result.title,
+          titleArabic: result.titleArabic,
+          transliteration: result.transliteration,
+          reference: result.reference || result.category.name,
+          category: {
+            id: result.category.id,
+            name: result.category.name,
+            slug: result.category.slug,
+          },
+          tags: result.tags,
+          occasion: result.occasion,
+          benefits: result.benefits,
         }))
       );
     }

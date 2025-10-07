@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Search as SearchIcon, BookOpen, Library, Loader2 } from 'lucide-react';
+import { Search as SearchIcon, BookOpen, Library, Loader2, Heart } from 'lucide-react';
 import Link from 'next/link';
 
 interface Tafsir {
@@ -45,7 +45,7 @@ interface SearchResult {
 
 export default function SearchPage() {
   const [query, setQuery] = useState('');
-  const [type, setType] = useState<'all' | 'quran' | 'hadith'>('all');
+  const [type, setType] = useState<'all' | 'quran' | 'hadith' | 'dua'>('all');
   const [results, setResults] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [searched, setSearched] = useState(false);
@@ -232,6 +232,17 @@ export default function SearchPage() {
           >
             <Library className="inline h-4 w-4 mr-2" />
             Hadith
+          </button>
+          <button
+            onClick={() => setType('dua')}
+            className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
+              type === 'dua'
+                ? 'bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-md'
+                : 'glass-card hover:bg-muted/80'
+            }`}
+          >
+            <Heart className="inline h-4 w-4 mr-2" />
+            Duas
           </button>
         </div>
       </div>
