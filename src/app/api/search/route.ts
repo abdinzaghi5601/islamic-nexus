@@ -70,6 +70,7 @@ export async function GET(request: NextRequest) {
     // Search Quran translations with expanded terms
     // Note: MySQL is case-insensitive by default with utf8mb4_general_ci collation
     if (type === 'all' || type === 'quran') {
+      // Search in translations
       const quranResults = await prisma.translation.findMany({
         where: {
           OR: searchTerms.map(term => ({
@@ -98,9 +99,63 @@ export async function GET(request: NextRequest) {
         },
       });
 
+      // Also search in tafsir text directly
+      const tafsirResults = await prisma.tafsirVerse.findMany({
+        where: {
+          OR: searchTerms.map(term => ({
+            text: {
+              contains: term,
+            },
+          })),
+        },
+        take: Math.floor(limit / 2), // Take half the limit for tafsir results
+        include: {
+          ayah: {
+            include: {
+              surah: true,
+              translations: {
+                where: { translatorId: { in: [1, 2, 3, 4] } },
+                include: {
+                  translator: true,
+                },
+              },
+              tafsirs: {
+                include: {
+                  tafsirBook: true,
+                },
+              },
+            },
+          },
+          tafsirBook: true,
+        },
+        orderBy: {
+          ayahId: 'asc',
+        },
+      });
+
+      // Combine results, prioritizing translation matches
+      const combinedQuranResults = [...quranResults];
+
+      // Add tafsir-only results (ayahs not already in translation results)
+      const existingAyahIds = new Set(quranResults.map(r => r.ayah.id));
+      tafsirResults.forEach(tafsir => {
+        if (!existingAyahIds.has(tafsir.ayah.id)) {
+          // Create a pseudo-translation result for UI compatibility
+          const primaryTranslation = tafsir.ayah.translations[0];
+          if (primaryTranslation) {
+            combinedQuranResults.push({
+              ...primaryTranslation,
+              ayah: tafsir.ayah,
+              matchedInTafsir: true, // Flag to highlight tafsir match
+            } as any);
+            existingAyahIds.add(tafsir.ayah.id);
+          }
+        }
+      });
+
       // For each ayah result, fetch related hadiths
       const quranResultsWithHadiths = await Promise.all(
-        quranResults.map(async (result) => {
+        combinedQuranResults.map(async (result) => {
           // Search for hadiths that mention the same keywords (with expanded terms)
           const relatedHadiths = await prisma.hadith.findMany({
             where: {
@@ -110,7 +165,7 @@ export async function GET(request: NextRequest) {
                 },
               })),
             },
-            take: 3, // Limit to 3 related hadiths per ayah
+            take: 5, // Increased to 5 related hadiths per ayah
             include: {
               book: true,
               chapter: true,
@@ -131,6 +186,7 @@ export async function GET(request: NextRequest) {
             },
             ayahNumber: result.ayah.ayahNumber,
             translator: result.translator.name,
+            matchedInTafsir: (result as any).matchedInTafsir || false,
             tafsirs: result.ayah.tafsirs.map(tafsir => ({
               id: tafsir.id,
               text: tafsir.text,

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Search as SearchIcon, BookOpen, Library, Loader2, Heart, Book } from 'lucide-react';
+import { Search as SearchIcon, BookOpen, Library, Loader2, Heart, Book, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 interface Tafsir {
@@ -35,6 +35,7 @@ interface SearchResult {
   surah?: any;
   ayahNumber?: number;
   translator?: string;
+  matchedInTafsir?: boolean;
   tafsirs?: Tafsir[];
   relatedHadiths?: RelatedHadith[];
   book?: any;
@@ -54,6 +55,34 @@ export default function SearchPage() {
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [suggestedSearches, setSuggestedSearches] = useState<string[]>([]);
+  const [expandedTafsirs, setExpandedTafsirs] = useState<Set<string>>(new Set());
+  const [expandedHadiths, setExpandedHadiths] = useState<Set<string>>(new Set());
+
+  const toggleTafsir = (resultId: number) => {
+    const key = `tafsir-${resultId}`;
+    setExpandedTafsirs(prev => {
+      const next = new Set(prev);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
+      }
+      return next;
+    });
+  };
+
+  const toggleHadith = (resultId: number) => {
+    const key = `hadith-${resultId}`;
+    setExpandedHadiths(prev => {
+      const next = new Set(prev);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
+      }
+      return next;
+    });
+  };
 
   // Fetch suggestions as user types
   const fetchSuggestions = async (q: string) => {
@@ -360,62 +389,124 @@ export default function SearchPage() {
                   )}
                 </div>
 
-                {/* Tafsir (for Quran results) */}
+                {/* Tafsir (for Quran results) - PROMINENT DESIGN */}
                 {result.type === 'ayah' && result.tafsirs && result.tafsirs.length > 0 && (
-                  <div className="space-y-4">
-                    <h4 className="font-semibold text-lg flex items-center gap-2 text-primary">
-                      <BookOpen className="h-5 w-5" />
-                      Tafsir (Commentary)
-                    </h4>
-                    {result.tafsirs.map((tafsir) => (
-                      <div key={tafsir.id} className="bg-muted/50 rounded-xl p-5">
-                        <div className="flex items-center gap-2 mb-3">
-                          <span className="font-semibold text-sm text-primary">{tafsir.tafsirBook}</span>
-                          <span className="text-xs text-muted-foreground">by {tafsir.author}</span>
+                  <div className="mt-6">
+                    <button
+                      onClick={() => toggleTafsir(result.id)}
+                      className="w-full flex items-center justify-between p-4 bg-gradient-to-r from-emerald-500/10 to-green-500/10 hover:from-emerald-500/20 hover:to-green-500/20 border-2 border-emerald-500/30 rounded-xl transition-all duration-300 group"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 bg-gradient-to-br from-emerald-500 to-green-600 rounded-lg shadow-md">
+                          <BookOpen className="h-5 w-5 text-white" />
                         </div>
-                        <p className="text-sm leading-relaxed text-muted-foreground">{tafsir.text}</p>
+                        <div className="text-left">
+                          <h4 className="font-bold text-lg text-emerald-700 dark:text-emerald-300 flex items-center gap-2">
+                            Tafsir (Commentary)
+                            {result.matchedInTafsir && (
+                              <span className="px-2 py-0.5 bg-emerald-500 text-white text-xs rounded-full font-semibold flex items-center gap-1">
+                                <Sparkles className="h-3 w-3" />
+                                Match Found
+                              </span>
+                            )}
+                          </h4>
+                          <p className="text-xs text-muted-foreground mt-0.5">
+                            {result.tafsirs.length} commentary {result.tafsirs.length > 1 ? 'sources' : 'source'} available
+                          </p>
+                        </div>
                       </div>
-                    ))}
+                      {expandedTafsirs.has(`tafsir-${result.id}`) ? (
+                        <ChevronUp className="h-6 w-6 text-emerald-600 group-hover:scale-110 transition-transform" />
+                      ) : (
+                        <ChevronDown className="h-6 w-6 text-emerald-600 group-hover:scale-110 transition-transform" />
+                      )}
+                    </button>
+
+                    {expandedTafsirs.has(`tafsir-${result.id}`) && (
+                      <div className="mt-3 space-y-4 animate-in slide-in-from-top-2 duration-300">
+                        {result.tafsirs.map((tafsir) => (
+                          <div key={tafsir.id} className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/30 dark:to-green-950/30 border border-emerald-200 dark:border-emerald-800 rounded-xl p-6 shadow-sm">
+                            <div className="flex items-center gap-2 mb-4 pb-3 border-b border-emerald-200 dark:border-emerald-800">
+                              <BookOpen className="h-4 w-4 text-emerald-600" />
+                              <span className="font-bold text-base text-emerald-700 dark:text-emerald-300">{tafsir.tafsirBook}</span>
+                              <span className="text-xs text-muted-foreground">• by {tafsir.author}</span>
+                            </div>
+                            <p className="text-sm leading-relaxed text-foreground/90">{tafsir.text}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
 
-                {/* Related Hadiths (for Quran results) */}
+                {/* Related Hadiths (for Quran results) - PROMINENT DESIGN */}
                 {result.type === 'ayah' && result.relatedHadiths && result.relatedHadiths.length > 0 && (
-                  <div className="mt-6 space-y-4">
-                    <h4 className="font-semibold text-lg flex items-center gap-2 text-primary">
-                      <Library className="h-5 w-5" />
-                      Related Hadiths
-                    </h4>
-                    {result.relatedHadiths.map((hadith) => (
-                      <div key={hadith.id} className="bg-primary/5 rounded-xl p-5 border border-primary/20">
-                        <div className="flex items-center justify-between mb-3">
-                          <Link
-                            href={`/hadith/${hadith.book.id}`}
-                            className="text-sm font-semibold text-primary hover:underline"
-                          >
-                            {hadith.reference}
-                          </Link>
-                          {hadith.grade && (
-                            <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-semibold">
-                              {hadith.grade}
-                            </span>
-                          )}
+                  <div className="mt-6">
+                    <button
+                      onClick={() => toggleHadith(result.id)}
+                      className="w-full flex items-center justify-between p-4 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 hover:from-blue-500/20 hover:to-indigo-500/20 border-2 border-blue-500/30 rounded-xl transition-all duration-300 group"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg shadow-md">
+                          <Library className="h-5 w-5 text-white" />
                         </div>
-                        {hadith.textArabic && (
-                          <div className="text-lg font-arabic leading-loose mb-4 text-right p-4 bg-muted/30 rounded-lg" dir="rtl">
-                            {hadith.textArabic}
-                          </div>
-                        )}
-                        <p className="leading-relaxed text-muted-foreground">
-                          {hadith.textEnglish}
-                        </p>
-                        {hadith.chapter && (
-                          <p className="text-xs text-muted-foreground mt-3 font-medium">
-                            Chapter: {hadith.chapter.nameEnglish}
+                        <div className="text-left">
+                          <h4 className="font-bold text-lg text-blue-700 dark:text-blue-300 flex items-center gap-2">
+                            Related Hadiths
+                            <span className="px-2 py-0.5 bg-blue-500 text-white text-xs rounded-full font-semibold">
+                              {result.relatedHadiths.length}
+                            </span>
+                          </h4>
+                          <p className="text-xs text-muted-foreground mt-0.5">
+                            Authentic narrations on the same topic
                           </p>
-                        )}
+                        </div>
                       </div>
-                    ))}
+                      {expandedHadiths.has(`hadith-${result.id}`) ? (
+                        <ChevronUp className="h-6 w-6 text-blue-600 group-hover:scale-110 transition-transform" />
+                      ) : (
+                        <ChevronDown className="h-6 w-6 text-blue-600 group-hover:scale-110 transition-transform" />
+                      )}
+                    </button>
+
+                    {expandedHadiths.has(`hadith-${result.id}`) && (
+                      <div className="mt-3 space-y-4 animate-in slide-in-from-top-2 duration-300">
+                        {result.relatedHadiths.map((hadith) => (
+                          <div key={hadith.id} className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 border border-blue-200 dark:border-blue-800 rounded-xl p-6 shadow-sm">
+                            <div className="flex items-center justify-between mb-4 pb-3 border-b border-blue-200 dark:border-blue-800">
+                              <Link
+                                href={`/hadith/${hadith.book.id}`}
+                                className="text-sm font-bold text-blue-700 dark:text-blue-300 hover:underline flex items-center gap-2"
+                              >
+                                <Library className="h-4 w-4" />
+                                {hadith.reference}
+                              </Link>
+                              {hadith.grade && (
+                                <span className="px-3 py-1 bg-blue-500 text-white text-xs rounded-full font-semibold shadow-sm">
+                                  {hadith.grade}
+                                </span>
+                              )}
+                            </div>
+                            {hadith.textArabic && (
+                              <div className="text-xl font-arabic leading-loose mb-5 text-right p-4 bg-white/50 dark:bg-black/20 rounded-lg border border-blue-100 dark:border-blue-900" dir="rtl">
+                                {hadith.textArabic}
+                              </div>
+                            )}
+                            <p className="leading-relaxed text-foreground/90 text-sm">
+                              {hadith.textEnglish}
+                            </p>
+                            {hadith.chapter && (
+                              <div className="mt-3 pt-3 border-t border-blue-200 dark:border-blue-800">
+                                <p className="text-xs text-muted-foreground font-medium flex items-center gap-1">
+                                  <BookOpen className="h-3 w-3" />
+                                  Chapter: {hadith.chapter.nameEnglish}
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
 
