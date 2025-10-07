@@ -1,21 +1,37 @@
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
+import prisma from '@/lib/db/prisma';
 
 async function getChapterHadiths(bookId: string, chapterId: string) {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-  const res = await fetch(
-    `${baseUrl}/api/hadith/books/${bookId}/chapters/${chapterId}`,
-    {
-      next: { revalidate: 3600 }, // Cache for 1 hour
-    }
-  );
+  const bookIdInt = parseInt(bookId);
+  const chapterIdInt = parseInt(chapterId);
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch chapter hadiths');
+  if (isNaN(bookIdInt) || isNaN(chapterIdInt)) {
+    throw new Error('Invalid book or chapter ID');
   }
 
-  const data = await res.json();
-  return data.data;
+  // Fetch chapter with its book and hadiths
+  const chapter = await prisma.hadithChapter.findUnique({
+    where: { id: chapterIdInt },
+    include: {
+      book: true,
+      hadiths: {
+        orderBy: {
+          hadithInChapter: 'asc',
+        },
+      },
+    },
+  });
+
+  if (!chapter) {
+    throw new Error('Chapter not found');
+  }
+
+  if (chapter.bookId !== bookIdInt) {
+    throw new Error('Chapter does not belong to this book');
+  }
+
+  return chapter;
 }
 
 export default async function ChapterPage({

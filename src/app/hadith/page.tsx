@@ -1,19 +1,21 @@
 import Link from 'next/link';
-import { HadithBook } from '@/types/api';
 import { Library } from 'lucide-react';
+import prisma from '@/lib/db/prisma';
 
-async function getHadithBooks(): Promise<HadithBook[]> {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-  const res = await fetch(`${baseUrl}/api/hadith/books`, {
-    next: { revalidate: 3600 }, // Cache for 1 hour
+async function getHadithBooks() {
+  const books = await prisma.hadithBook.findMany({
+    select: {
+      id: true,
+      name: true,
+      nameArabic: true,
+      author: true,
+      description: true,
+      totalHadiths: true,
+    },
+    orderBy: { id: 'asc' },
   });
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch hadith books');
-  }
-
-  const data = await res.json();
-  return data.data;
+  return books;
 }
 
 export default async function HadithPage() {

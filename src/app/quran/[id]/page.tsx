@@ -1,18 +1,43 @@
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
+import prisma from '@/lib/db/prisma';
 
 async function getSurah(id: string) {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-  const res = await fetch(`${baseUrl}/api/quran/surahs/${id}?translations=1,2,3,4`, {
-    next: { revalidate: 3600 }, // Cache for 1 hour
-  });
+  const surahNumber = parseInt(id);
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch surah');
+  if (isNaN(surahNumber) || surahNumber < 1 || surahNumber > 114) {
+    throw new Error('Invalid surah number. Must be between 1 and 114');
   }
 
-  const data = await res.json();
-  return data.data;
+  const translatorIds = [1, 2, 3, 4];
+
+  const surah = await prisma.surah.findUnique({
+    where: { number: surahNumber },
+    include: {
+      ayahs: {
+        orderBy: { ayahNumber: 'asc' },
+        include: {
+          translations: {
+            where: { translatorId: { in: translatorIds } },
+            include: {
+              translator: true,
+            },
+          },
+          tafsirs: {
+            include: {
+              tafsirBook: true,
+            },
+          },
+        },
+      },
+    },
+  });
+
+  if (!surah) {
+    throw new Error('Surah not found');
+  }
+
+  return surah;
 }
 
 export default async function SurahPage({ params }: { params: Promise<{ id: string }> }) {

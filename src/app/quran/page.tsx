@@ -1,18 +1,22 @@
 import Link from 'next/link';
-import { Surah } from '@/types/api';
+import prisma from '@/lib/db/prisma';
 
-async function getSurahs(): Promise<Surah[]> {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-  const res = await fetch(`${baseUrl}/api/quran/surahs`, {
-    next: { revalidate: 3600 }, // Cache for 1 hour
+async function getSurahs() {
+  const surahs = await prisma.surah.findMany({
+    orderBy: { number: 'asc' },
+    select: {
+      id: true,
+      number: true,
+      nameArabic: true,
+      nameEnglish: true,
+      nameTranslation: true,
+      revelationType: true,
+      numberOfAyahs: true,
+      order: true,
+    },
   });
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch surahs');
-  }
-
-  const data = await res.json();
-  return data.data;
+  return surahs;
 }
 
 export default async function QuranPage() {

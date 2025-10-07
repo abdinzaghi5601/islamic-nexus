@@ -1,21 +1,41 @@
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
+import prisma from '@/lib/db/prisma';
 
 async function getHadithBook(id: string) {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-  const res = await fetch(
-    `${baseUrl}/api/hadith/books/${id}?includeHadiths=true&limit=20`,
-    {
-      next: { revalidate: 3600 }, // Cache for 1 hour
-    }
-  );
+  const bookId = parseInt(id);
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch hadith book');
+  if (isNaN(bookId)) {
+    throw new Error('Invalid book ID');
   }
 
-  const data = await res.json();
-  return data.data;
+  const book = await prisma.hadithBook.findUnique({
+    where: { id: bookId },
+    include: {
+      chapters: {
+        orderBy: { chapterNumber: 'asc' },
+      },
+    },
+  });
+
+  if (!book) {
+    throw new Error('Hadith book not found');
+  }
+
+  // Fetch sample hadiths (first 20)
+  const hadiths = await prisma.hadith.findMany({
+    where: { bookId },
+    take: 20,
+    orderBy: { hadithNumber: 'asc' },
+    include: {
+      chapter: true,
+    },
+  });
+
+  return {
+    ...book,
+    hadiths,
+  };
 }
 
 export default async function HadithBookPage({ params }: { params: Promise<{ id: string }> }) {
