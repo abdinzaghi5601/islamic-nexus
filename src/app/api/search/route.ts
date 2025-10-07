@@ -68,13 +68,13 @@ export async function GET(request: NextRequest) {
     const results: any[] = [];
 
     // Search Quran translations with expanded terms
+    // Note: MySQL is case-insensitive by default with utf8mb4_general_ci collation
     if (type === 'all' || type === 'quran') {
       const quranResults = await prisma.translation.findMany({
         where: {
           OR: searchTerms.map(term => ({
             text: {
               contains: term,
-              mode: 'insensitive',
             },
           })),
         },
@@ -107,7 +107,6 @@ export async function GET(request: NextRequest) {
               OR: searchTerms.map(term => ({
                 textEnglish: {
                   contains: term,
-                  mode: 'insensitive',
                 },
               })),
             },
@@ -160,6 +159,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Search Hadith with expanded terms
+    // Note: MySQL is case-insensitive by default
     if (type === 'all' || type === 'hadith') {
       const hadithResults = await prisma.hadith.findMany({
         where: {
@@ -167,13 +167,11 @@ export async function GET(request: NextRequest) {
             ...searchTerms.map(term => ({
               textEnglish: {
                 contains: term,
-                mode: 'insensitive',
               },
             })),
             ...searchTerms.map(term => ({
               textArabic: {
                 contains: term,
-                mode: 'insensitive',
               },
             })),
           ],
