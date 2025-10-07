@@ -30,9 +30,25 @@ interface Ayah {
 
 interface SurahDisplayProps {
   ayahs: Ayah[];
+  surahNumber: number;
 }
 
-export default function SurahDisplay({ ayahs }: SurahDisplayProps) {
+// Remove Bismillah from text if present
+function removeBismillah(text: string): string {
+  const bismillah = 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ';
+  return text.replace(bismillah, '').trim();
+}
+
+export default function SurahDisplay({ ayahs, surahNumber }: SurahDisplayProps) {
+  // Helper function to get the display text for an ayah
+  const getArabicText = (ayah: Ayah) => {
+    // Remove Bismillah from first ayah if it's not Surah 1 or 9
+    if (ayah.ayahNumber === 1 && surahNumber !== 1 && surahNumber !== 9) {
+      return removeBismillah(ayah.textArabic);
+    }
+    return ayah.textArabic;
+  };
+
   return (
     <Tabs defaultValue="quran" className="w-full">
       <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
@@ -59,7 +75,7 @@ export default function SurahDisplay({ ayahs }: SurahDisplayProps) {
               className="text-3xl font-arabic leading-loose mb-8 text-right p-4 bg-muted/30 rounded-lg"
               dir="rtl"
             >
-              {ayah.textArabic}
+              {getArabicText(ayah)}
             </div>
 
             {/* Translations */}
@@ -96,7 +112,7 @@ export default function SurahDisplay({ ayahs }: SurahDisplayProps) {
               className="text-3xl font-arabic leading-loose mb-8 text-right p-4 bg-muted/30 rounded-lg"
               dir="rtl"
             >
-              {ayah.textArabic}
+              {getArabicText(ayah)}
             </div>
 
             {/* Tafsir */}

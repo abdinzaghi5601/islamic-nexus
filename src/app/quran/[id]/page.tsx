@@ -80,7 +80,7 @@ export default async function SurahPage({ params }: { params: Promise<{ id: stri
       </div>
 
       {/* Ayahs with Tabs */}
-      <SurahDisplay ayahs={surah.ayahs} />
+      <SurahDisplay ayahs={surah.ayahs} surahNumber={surah.number} />
     </div>
   );
 }
