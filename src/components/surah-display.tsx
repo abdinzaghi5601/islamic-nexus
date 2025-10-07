@@ -36,10 +36,26 @@ interface SurahDisplayProps {
 // Remove Bismillah from text if present
 // Handles multiple Unicode variations of Bismillah
 function removeBismillah(text: string): string {
-  // Pattern matches various Unicode forms of Bismillah
-  // Matches: بِسْمِ + variations of اللَّهِ/ٱللَّهِ + الرَّحْمَٰنِ + الرَّحِيمِ
-  const bismillahPattern = /^[\s]*بِسْمِ\s*[اٱ]للَّهِ\s*[اٱ]لرَّحْمَ[ٰا]نِ\s*[اٱ]لرَّحِيمِ[\s]*/;
-  return text.replace(bismillahPattern, '').trim();
+  // The Bismillah always ends with some form of "الرحيم" (Ar-Raheem)
+  // Find this word and remove everything before it (inclusive)
+  // Then look for common variations of Raheem and take everything after
+
+  // Look for patterns that indicate the end of Bismillah
+  const endPatterns = [
+    /[اٱ]لرَّحِيمِ\s*/,  // With full diacritics
+    /[اٱ]لرحيم\s*/,      // Without diacritics
+  ];
+
+  for (const pattern of endPatterns) {
+    const match = text.match(pattern);
+    if (match && match.index !== undefined && match.index < 50) {
+      // Found Bismillah ending in first 50 chars - remove it
+      return text.substring(match.index + match[0].length).trim();
+    }
+  }
+
+  // If no match, return original text
+  return text;
 }
 
 export default function SurahDisplay({ ayahs, surahNumber }: SurahDisplayProps) {
