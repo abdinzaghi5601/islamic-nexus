@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
 import prisma from '@/lib/db/prisma';
+import SurahDisplay from '@/components/surah-display';
 
 async function getSurah(id: string) {
   const surahNumber = parseInt(id);
@@ -78,42 +79,8 @@ export default async function SurahPage({ params }: { params: Promise<{ id: stri
         )}
       </div>
 
-      {/* Ayahs */}
-      <div className="space-y-6">
-        {surah.ayahs.map((ayah: any) => (
-          <div key={ayah.id} className="glass-card p-6 rounded-xl">
-            {/* Ayah Number */}
-            <div className="flex items-center space-x-3 mb-5">
-              <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-sm font-bold text-primary-foreground">
-                {ayah.ayahNumber}
-              </div>
-              <div className="text-sm text-muted-foreground font-medium">
-                Ayah {ayah.ayahNumber} • Juz {ayah.juz}
-              </div>
-            </div>
-
-            {/* Arabic Text */}
-            <div
-              className="text-3xl font-arabic leading-loose mb-8 text-right p-4 bg-muted/30 rounded-lg"
-              dir="rtl"
-            >
-              {ayah.textArabic}
-            </div>
-
-            {/* Translations */}
-            <div className="space-y-5">
-              {ayah.translations.map((translation: any) => (
-                <div key={translation.id} className="pl-5 border-l-4 border-primary/30">
-                  <p className="text-sm text-primary font-semibold mb-2">
-                    {translation.translator.name}
-                  </p>
-                  <p className="leading-relaxed text-muted-foreground">{translation.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+      {/* Ayahs with Tabs */}
+      <SurahDisplay ayahs={surah.ayahs} />
     </div>
   );
 }
