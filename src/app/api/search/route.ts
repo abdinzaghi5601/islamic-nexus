@@ -45,10 +45,10 @@ function expandSearchTerms(query: string): string[] {
 
 /**
  * GET /api/search
- * Search across Quran, Hadith, and Duas with semantic understanding
+ * Search across Quran, Hadith, Duas, and Books with semantic understanding
  * Query params:
  *   - q: search query (required)
- *   - type: 'quran' | 'hadith' | 'dua' | 'all' (default: 'all')
+ *   - type: 'quran' | 'hadith' | 'dua' | 'book' | 'all' (default: 'all')
  *   - page: page number
  *   - limit: items per page
  */
@@ -261,6 +261,53 @@ export async function GET(request: NextRequest) {
           benefits: result.benefits,
         }))
       );
+    }
+
+    // Search Books with expanded terms
+    if (type === 'all' || type === 'book') {
+      const bookChunkResults = await prisma.bookChunk.findMany({
+        where: {
+          OR: searchTerms.map(term => ({
+            content: {
+              contains: term,
+            },
+          })),
+        },
+        take: limit,
+        skip: type === 'book' ? skip : 0,
+        include: {
+          book: true,
+        },
+        orderBy: {
+          pageNumber: 'asc',
+        },
+      });
+
+      // Group chunks by book and get first matching chunk from each
+      const bookMap = new Map();
+      bookChunkResults.forEach(chunk => {
+        if (!bookMap.has(chunk.bookId)) {
+          bookMap.set(chunk.bookId, {
+            type: 'book',
+            id: chunk.book.id,
+            title: chunk.book.title,
+            titleArabic: chunk.book.titleArabic,
+            author: chunk.book.author,
+            authorArabic: chunk.book.authorArabic,
+            category: chunk.book.category,
+            language: chunk.book.language,
+            description: chunk.book.description,
+            pageNumber: chunk.pageNumber,
+            excerpt: chunk.content.substring(0, 300) + '...',
+            reference: `${chunk.book.title} - Page ${chunk.pageNumber}`,
+            totalPages: chunk.book.totalPages,
+            pdfUrl: chunk.book.pdfUrl,
+            pdfPath: chunk.book.pdfPath,
+          });
+        }
+      });
+
+      results.push(...Array.from(bookMap.values()));
     }
 
     // Calculate total (this is approximate for 'all' type)

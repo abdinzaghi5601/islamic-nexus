@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { BookOpen, Library, Search, Heart } from 'lucide-react';
+import { BookOpen, Library, Search, Heart, Book } from 'lucide-react';
 
 export default function Home() {
   const features = [
@@ -28,8 +28,16 @@ export default function Home() {
       color: 'from-rose-500 to-pink-600',
     },
     {
+      title: 'Islamic Books',
+      description: 'Comprehensive library of Islamic literature with full-text search capability',
+      icon: Book,
+      href: '/books',
+      stats: 'PDF Library',
+      color: 'from-purple-500 to-violet-600',
+    },
+    {
       title: 'Smart Search',
-      description: 'Semantic search across Quran, Hadith, and Duas in Arabic and English',
+      description: 'Semantic search across all content in Arabic and English',
       icon: Search,
       href: '/search',
       stats: 'AI-Powered',
@@ -53,7 +61,7 @@ export default function Home() {
           Discover Islamic Knowledge
         </h2>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
-          Access the complete Quran with translations and tafsir, authentic Hadith collections, and curated Islamic supplications - all in one beautiful platform
+          Access the complete Quran with translations and tafsir, authentic Hadith collections, curated Islamic supplications, and a comprehensive library of Islamic books - all in one beautiful platform
         </p>
         <div className="flex items-center justify-center gap-4 flex-wrap">
           <Link
@@ -106,7 +114,7 @@ export default function Home() {
       {/* Quick Stats */}
       <div className="glass-card p-10 rounded-2xl">
         <h2 className="text-3xl font-bold text-center mb-10 gradient-text">Platform Statistics</h2>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
           <div className="text-center">
             <div className="text-5xl font-bold gradient-text mb-3">114</div>
             <div className="text-sm text-muted-foreground font-semibold">Surahs</div>
@@ -122,6 +130,10 @@ export default function Home() {
           <div className="text-center">
             <div className="text-5xl font-bold gradient-text mb-3">50+</div>
             <div className="text-sm text-muted-foreground font-semibold">Duas</div>
+          </div>
+          <div className="text-center">
+            <div className="text-5xl font-bold gradient-text mb-3">Islamic</div>
+            <div className="text-sm text-muted-foreground font-semibold">Books Library</div>
           </div>
           <div className="text-center">
             <div className="text-5xl font-bold gradient-text mb-3">4</div>

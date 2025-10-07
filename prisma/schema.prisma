@@ -236,6 +236,7 @@ model User {
   bookmarks        Bookmark[]
   hadithBookmarks  HadithBookmark[]
   duaBookmarks     DuaBookmark[]
+  bookBookmarks    BookBookmark[]
   readingHistory   ReadingHistory[]
   notes            Note[]
 
@@ -346,6 +347,77 @@ model DuaBookmark {
   @@index([userId])
   @@index([duaId])
   @@map("dua_bookmarks")
+}
+
+// ============================================================================
+// ISLAMIC BOOKS (PDF) MODELS
+// ============================================================================
+
+model Book {
+  id               Int      @id @default(autoincrement())
+  title            String   @db.VarChar(300)
+  titleArabic      String?  @db.VarChar(300)
+  author           String   @db.VarChar(200)
+  authorArabic     String?  @db.VarChar(200)
+  category         String   @db.VarChar(100) // Tafsir, Fiqh, Seerah, Hadith Commentary, etc.
+  language         String   @db.VarChar(50)
+  description      String?  @db.Text
+  pdfUrl           String?  @db.VarChar(500) // External URL if hosted elsewhere
+  pdfPath          String?  @db.VarChar(500) // Local path in /public/books/
+  totalPages       Int?
+  fileSize         BigInt?  // In bytes
+  coverImageUrl    String?  @db.VarChar(500)
+  publisher        String?  @db.VarChar(200)
+  publishYear      Int?
+  isbn             String?  @db.VarChar(50)
+  tags             String?  @db.Text // Comma-separated tags
+
+  chunks           BookChunk[]
+  bookmarks        BookBookmark[]
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([category])
+  @@index([language])
+  @@map("books")
+}
+
+model BookChunk {
+  id               Int      @id @default(autoincrement())
+  bookId           Int
+  pageNumber       Int
+  chunkNumber      Int      // Multiple chunks per page if needed
+  content          String   @db.LongText // Extracted text from PDF
+  startPosition    Int?     // Character position start (optional)
+  endPosition      Int?     // Character position end (optional)
+
+  book             Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  createdAt        DateTime @default(now())
+
+  @@unique([bookId, pageNumber, chunkNumber])
+  @@index([bookId])
+  @@index([pageNumber])
+  @@map("book_chunks")
+}
+
+model BookBookmark {
+  id               String   @id @default(cuid())
+  userId           String
+  bookId           Int
+  pageNumber       Int?
+  note             String?  @db.Text
+
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  book             Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([userId])
+  @@index([bookId])
+  @@map("book_bookmarks")
 }
 
 // ============================================================================

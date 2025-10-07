@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Search as SearchIcon, BookOpen, Library, Loader2, Heart } from 'lucide-react';
+import { Search as SearchIcon, BookOpen, Library, Loader2, Heart, Book } from 'lucide-react';
 import Link from 'next/link';
 
 interface Tafsir {
@@ -45,7 +45,7 @@ interface SearchResult {
 
 export default function SearchPage() {
   const [query, setQuery] = useState('');
-  const [type, setType] = useState<'all' | 'quran' | 'hadith' | 'dua'>('all');
+  const [type, setType] = useState<'all' | 'quran' | 'hadith' | 'dua' | 'book'>('all');
   const [results, setResults] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [searched, setSearched] = useState(false);
@@ -140,7 +140,7 @@ export default function SearchPage() {
       <div className="mb-10">
         <h1 className="text-4xl font-bold mb-3 gradient-text">Search</h1>
         <p className="text-muted-foreground text-lg">
-          Search across the Quran and Hadith collections
+          Search across the Quran, Hadith, Duas, and Islamic Books collections
         </p>
       </div>
 
@@ -243,6 +243,17 @@ export default function SearchPage() {
           >
             <Heart className="inline h-4 w-4 mr-2" />
             Duas
+          </button>
+          <button
+            onClick={() => setType('book')}
+            className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
+              type === 'book'
+                ? 'bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-md'
+                : 'glass-card hover:bg-muted/80'
+            }`}
+          >
+            <Book className="inline h-4 w-4 mr-2" />
+            Books
           </button>
         </div>
       </div>
