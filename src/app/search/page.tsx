@@ -51,6 +51,40 @@ export default function SearchPage() {
   const [searched, setSearched] = useState(false);
   const [totalResults, setTotalResults] = useState(0);
   const [page, setPage] = useState(1);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [suggestedSearches, setSuggestedSearches] = useState<string[]>([]);
+
+  // Fetch suggestions as user types
+  const fetchSuggestions = async (q: string) => {
+    if (q.trim().length < 2) {
+      setSuggestions([]);
+      return;
+    }
+
+    try {
+      const res = await fetch(`/api/search/suggestions?q=${encodeURIComponent(q)}`);
+      const data = await res.json();
+      if (data.success) {
+        setSuggestions(data.data.suggestions || []);
+      }
+    } catch (error) {
+      console.error('Failed to fetch suggestions:', error);
+    }
+  };
+
+  // Fetch suggested searches when no results
+  const fetchSuggestedSearches = async () => {
+    try {
+      const res = await fetch(`/api/search/suggestions?q=${encodeURIComponent(query)}`);
+      const data = await res.json();
+      if (data.success) {
+        setSuggestedSearches(data.data.suggestions || []);
+      }
+    } catch (error) {
+      console.error('Failed to fetch suggested searches:', error);
+    }
+  };
 
   const handleSearch = async (pageNum = 1) => {
     if (!query.trim()) return;
@@ -58,6 +92,7 @@ export default function SearchPage() {
     setLoading(true);
     setSearched(true);
     setPage(pageNum);
+    setShowSuggestions(false);
 
     try {
       const params = new URLSearchParams({
@@ -73,14 +108,21 @@ export default function SearchPage() {
       if (data.success) {
         setResults(data.data || []);
         setTotalResults(data.pagination?.total || data.data?.length || 0);
+
+        // If no results, fetch suggested searches
+        if (!data.data || data.data.length === 0) {
+          await fetchSuggestedSearches();
+        }
       } else {
         setResults([]);
         setTotalResults(0);
+        await fetchSuggestedSearches();
       }
     } catch (error) {
       console.error('Search failed:', error);
       setResults([]);
       setTotalResults(0);
+      await fetchSuggestedSearches();
     } finally {
       setLoading(false);
     }
@@ -110,11 +152,39 @@ export default function SearchPage() {
             <input
               type="text"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                fetchSuggestions(e.target.value);
+                setShowSuggestions(true);
+              }}
               onKeyPress={handleKeyPress}
+              onFocus={() => setShowSuggestions(true)}
+              onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
               placeholder="Search for verses, hadiths, or keywords..."
               className="w-full pl-12 pr-4 py-3.5 glass-card rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all"
             />
+
+            {/* Autocomplete Suggestions Dropdown */}
+            {showSuggestions && suggestions.length > 0 && (
+              <div className="absolute top-full left-0 right-0 mt-2 glass-card rounded-xl shadow-lg z-10 max-h-80 overflow-y-auto">
+                {suggestions.map((suggestion, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setQuery(suggestion);
+                      setShowSuggestions(false);
+                      setTimeout(() => handleSearch(1), 100);
+                    }}
+                    className="w-full text-left px-4 py-3 hover:bg-muted/80 transition-colors border-b border-border last:border-b-0 first:rounded-t-xl last:rounded-b-xl"
+                  >
+                    <div className="flex items-center gap-2">
+                      <SearchIcon className="h-4 w-4 text-muted-foreground" />
+                      <span className="text-sm">{suggestion}</span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
           <button
             onClick={() => handleSearch(1)}
@@ -174,14 +244,45 @@ export default function SearchPage() {
       )}
 
       {!loading && searched && results?.length === 0 && (
-        <div className="glass-card text-center py-16 rounded-2xl">
-          <SearchIcon className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
-          <p className="text-xl font-semibold text-muted-foreground mb-2">
-            No results found for "{query}"
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Try different keywords or search terms
-          </p>
+        <div className="space-y-6">
+          <div className="glass-card text-center py-16 rounded-2xl">
+            <SearchIcon className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
+            <p className="text-xl font-semibold text-muted-foreground mb-2">
+              No results found for "{query}"
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Try these related searches instead
+            </p>
+          </div>
+
+          {/* Suggested Searches */}
+          {suggestedSearches.length > 0 && (
+            <div className="glass-card p-6 rounded-2xl">
+              <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                <SearchIcon className="h-5 w-5 text-primary" />
+                Try these searches:
+              </h3>
+              <div className="grid md:grid-cols-2 gap-3">
+                {suggestedSearches.map((suggestion, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setQuery(suggestion);
+                      setTimeout(() => handleSearch(1), 100);
+                    }}
+                    className="text-left px-4 py-3 glass-card hover:bg-primary/10 hover:border-primary/30 border border-transparent rounded-xl transition-all duration-200 group"
+                  >
+                    <div className="flex items-center gap-2">
+                      <SearchIcon className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                      <span className="text-sm group-hover:text-primary transition-colors font-medium">
+                        {suggestion}
+                      </span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
 

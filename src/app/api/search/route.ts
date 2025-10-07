@@ -2,9 +2,50 @@ import { NextRequest } from 'next/server';
 import prisma from '@/lib/db/prisma';
 import { successResponse, errorResponse, getPaginationParams, paginatedResponse } from '@/lib/api/helpers';
 
+// Keyword expansion map for semantic search
+const KEYWORD_MAP: { [key: string]: string[] } = {
+  'health': ['health', 'healing', 'cure', 'medicine', 'illness', 'disease', 'sick', 'recover', 'remedy'],
+  'prayer': ['prayer', 'pray', 'salah', 'salat', 'worship', 'prostration', 'ruku'],
+  'dua': ['dua', 'supplication', 'invocation', 'prayer', 'ask', 'calling'],
+  'forgiveness': ['forgiveness', 'forgive', 'pardon', 'mercy', 'repentance', 'repent', 'sin'],
+  'patience': ['patience', 'patient', 'perseverance', 'endurance', 'steadfast', 'sabr'],
+  'charity': ['charity', 'sadaqah', 'zakat', 'give', 'giving', 'alms', 'donate'],
+  'fasting': ['fasting', 'fast', 'sawm', 'ramadan', 'abstain'],
+  'marriage': ['marriage', 'marry', 'wife', 'husband', 'spouse', 'nikah', 'wedding'],
+  'death': ['death', 'die', 'dying', 'grave', 'burial', 'funeral', 'deceased'],
+  'heaven': ['heaven', 'paradise', 'jannah', 'garden', 'eternal'],
+  'hell': ['hell', 'hellfire', 'jahannam', 'punishment', 'fire'],
+  'angel': ['angel', 'angels', 'malak', 'jibril', 'gabriel', 'michael'],
+  'prophet': ['prophet', 'messenger', 'rasul', 'nabi', 'muhammad', 'moses', 'jesus', 'abraham'],
+  'faith': ['faith', 'believe', 'belief', 'iman', 'trust', 'conviction'],
+  'knowledge': ['knowledge', 'know', 'wisdom', 'learn', 'understanding', 'ilm', 'scholar'],
+  'fear': ['fear', 'afraid', 'terror', 'frighten', 'dread', 'awe'],
+  'love': ['love', 'beloved', 'loving', 'affection', 'devotion'],
+  'guidance': ['guidance', 'guide', 'straight path', 'direction', 'hidayah'],
+  'righteousness': ['righteousness', 'righteous', 'pious', 'good deed', 'virtue', 'taqwa'],
+  'blessing': ['blessing', 'blessed', 'grace', 'favor', 'barakah'],
+};
+
+// Expand search query with related keywords
+function expandSearchTerms(query: string): string[] {
+  const terms = query.toLowerCase().split(/\s+/);
+  const expandedTerms = new Set<string>(terms);
+
+  terms.forEach(term => {
+    // Check if this term matches any key in our keyword map
+    Object.entries(KEYWORD_MAP).forEach(([key, synonyms]) => {
+      if (key.includes(term) || synonyms.some(syn => syn.includes(term))) {
+        synonyms.forEach(syn => expandedTerms.add(syn));
+      }
+    });
+  });
+
+  return Array.from(expandedTerms);
+}
+
 /**
  * GET /api/search
- * Search across Quran and Hadith
+ * Search across Quran and Hadith with semantic understanding
  * Query params:
  *   - q: search query (required)
  *   - type: 'quran' | 'hadith' | 'all' (default: 'all')
@@ -22,16 +63,20 @@ export async function GET(request: NextRequest) {
       return errorResponse('Search query must be at least 2 characters');
     }
 
-    const searchTerm = `%${query.trim()}%`;
+    // Expand search terms with related keywords
+    const searchTerms = expandSearchTerms(query.trim());
     const results: any[] = [];
 
-    // Search Quran translations
+    // Search Quran translations with expanded terms
     if (type === 'all' || type === 'quran') {
       const quranResults = await prisma.translation.findMany({
         where: {
-          text: {
-            contains: query.trim(),
-          },
+          OR: searchTerms.map(term => ({
+            text: {
+              contains: term,
+              mode: 'insensitive',
+            },
+          })),
         },
         take: limit,
         skip: type === 'quran' ? skip : 0,
@@ -56,12 +101,15 @@ export async function GET(request: NextRequest) {
       // For each ayah result, fetch related hadiths
       const quranResultsWithHadiths = await Promise.all(
         quranResults.map(async (result) => {
-          // Search for hadiths that mention the same keywords
+          // Search for hadiths that mention the same keywords (with expanded terms)
           const relatedHadiths = await prisma.hadith.findMany({
             where: {
-              textEnglish: {
-                contains: query.trim(),
-              },
+              OR: searchTerms.map(term => ({
+                textEnglish: {
+                  contains: term,
+                  mode: 'insensitive',
+                },
+              })),
             },
             take: 3, // Limit to 3 related hadiths per ayah
             include: {
@@ -111,21 +159,23 @@ export async function GET(request: NextRequest) {
       results.push(...quranResultsWithHadiths);
     }
 
-    // Search Hadith
+    // Search Hadith with expanded terms
     if (type === 'all' || type === 'hadith') {
       const hadithResults = await prisma.hadith.findMany({
         where: {
           OR: [
-            {
+            ...searchTerms.map(term => ({
               textEnglish: {
-                contains: query.trim(),
+                contains: term,
+                mode: 'insensitive',
               },
-            },
-            {
+            })),
+            ...searchTerms.map(term => ({
               textArabic: {
-                contains: query.trim(),
+                contains: term,
+                mode: 'insensitive',
               },
-            },
+            })),
           ],
         },
         take: limit,
