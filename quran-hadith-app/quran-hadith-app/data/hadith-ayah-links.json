@@ -1,0 +1,342 @@
+[
+  {
+    "ayah": "1:1-7",
+    "surah": 1,
+    "ayahStart": 1,
+    "ayahEnd": 7,
+    "name": "Al-Fatiha (The Opening)",
+    "themes": ["worship-rituals", "salah", "dua"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih al-Bukhari",
+        "hadithNumber": "756",
+        "relevance": "Recitation in prayer"
+      },
+      {
+        "bookName": "Sahih Muslim",
+        "hadithNumber": "395",
+        "relevance": "Best surah in Quran"
+      }
+    ]
+  },
+  {
+    "ayah": "2:255",
+    "surah": 2,
+    "ayahStart": 255,
+    "ayahEnd": 255,
+    "name": "Ayat al-Kursi (The Throne Verse)",
+    "themes": ["faith-belief", "tawhid", "dhikr"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih al-Bukhari",
+        "hadithNumber": "2311",
+        "relevance": "Greatest verse in Quran"
+      },
+      {
+        "bookName": "Sahih Muslim",
+        "hadithNumber": "810",
+        "relevance": "Protection before sleep"
+      }
+    ]
+  },
+  {
+    "ayah": "2:185",
+    "surah": 2,
+    "ayahStart": 185,
+    "ayahEnd": 185,
+    "name": "Ramadan was revealed",
+    "themes": ["worship-rituals", "fasting"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih al-Bukhari",
+        "hadithNumber": "1898",
+        "relevance": "Fasting in Ramadan"
+      },
+      {
+        "bookName": "Sahih Muslim",
+        "hadithNumber": "1079",
+        "relevance": "Virtue of fasting"
+      }
+    ]
+  },
+  {
+    "ayah": "2:183",
+    "surah": 2,
+    "ayahStart": 183,
+    "ayahEnd": 183,
+    "name": "Fasting prescribed",
+    "themes": ["worship-rituals", "fasting", "taqwa"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih al-Bukhari",
+        "hadithNumber": "1891",
+        "relevance": "Fasting ordained"
+      }
+    ]
+  },
+  {
+    "ayah": "17:32",
+    "surah": 17,
+    "ayahStart": 32,
+    "ayahEnd": 32,
+    "name": "Do not approach zinā",
+    "themes": ["morals-character", "chastity"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih al-Bukhari",
+        "hadithNumber": "6809",
+        "relevance": "Avoiding major sins"
+      }
+    ]
+  },
+  {
+    "ayah": "4:29",
+    "surah": 4,
+    "ayahStart": 29,
+    "ayahEnd": 29,
+    "name": "Do not kill yourselves",
+    "themes": ["life-guidance", "preservation-of-life"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih al-Bukhari",
+        "hadithNumber": "1365",
+        "relevance": "Sanctity of life"
+      }
+    ]
+  },
+  {
+    "ayah": "17:23-24",
+    "surah": 17,
+    "ayahStart": 23,
+    "ayahEnd": 24,
+    "name": "Be kind to parents",
+    "themes": ["life-guidance", "parents-children"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih al-Bukhari",
+        "hadithNumber": "5971",
+        "relevance": "Rights of parents"
+      },
+      {
+        "bookName": "Sahih Muslim",
+        "hadithNumber": "2548",
+        "relevance": "Best deeds: prayer and kindness to parents"
+      }
+    ]
+  },
+  {
+    "ayah": "49:11",
+    "surah": 49,
+    "ayahStart": 11,
+    "ayahEnd": 11,
+    "name": "Do not mock others",
+    "themes": ["morals-character", "kindness"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih Muslim",
+        "hadithNumber": "2564",
+        "relevance": "Enough evil to look down on brother"
+      }
+    ]
+  },
+  {
+    "ayah": "49:12",
+    "surah": 49,
+    "ayahStart": 12,
+    "ayahEnd": 12,
+    "name": "Avoid suspicion and backbiting",
+    "themes": ["morals-character", "honesty"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih al-Bukhari",
+        "hadithNumber": "6064",
+        "relevance": "Backbiting explained"
+      },
+      {
+        "bookName": "Sahih Muslim",
+        "hadithNumber": "2589",
+        "relevance": "Backbiting is speaking of brother in way he dislikes"
+      }
+    ]
+  },
+  {
+    "ayah": "94:5-6",
+    "surah": 94,
+    "ayahStart": 5,
+    "ayahEnd": 6,
+    "name": "With hardship comes ease",
+    "themes": ["trials-challenges", "patience"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih al-Bukhari",
+        "hadithNumber": "7405",
+        "relevance": "Help comes with patience"
+      }
+    ]
+  },
+  {
+    "ayah": "2:186",
+    "surah": 2,
+    "ayahStart": 186,
+    "ayahEnd": 186,
+    "name": "I am near, I respond to dua",
+    "themes": ["worship-rituals", "dua"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih al-Bukhari",
+        "hadithNumber": "5974",
+        "relevance": "Dua is worship"
+      },
+      {
+        "bookName": "Jami at-Tirmidhi",
+        "hadithNumber": "3556",
+        "relevance": "Dua is essence of worship"
+      }
+    ]
+  },
+  {
+    "ayah": "3:159",
+    "surah": 3,
+    "ayahStart": 159,
+    "ayahEnd": 159,
+    "name": "Consult them in affairs",
+    "themes": ["life-guidance", "shura-consultation"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih al-Bukhari",
+        "hadithNumber": "3340",
+        "relevance": "Prophet consulted companions"
+      }
+    ]
+  },
+  {
+    "ayah": "16:90",
+    "surah": 16,
+    "ayahStart": 90,
+    "ayahEnd": 90,
+    "name": "Justice, ihsan, and giving to relatives",
+    "themes": ["morals-character", "justice", "kindness"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih Muslim",
+        "hadithNumber": "523",
+        "relevance": "Excellence in worship and character"
+      }
+    ]
+  },
+  {
+    "ayah": "103:1-3",
+    "surah": 103,
+    "ayahStart": 1,
+    "ayahEnd": 3,
+    "name": "Surah Al-Asr - Time & Loss",
+    "themes": ["faith-belief", "patience", "truth"],
+    "hadithReferences": [
+      {
+        "bookName": "Sunan Abu Dawud",
+        "hadithNumber": "4859",
+        "relevance": "Companions recited this before parting"
+      }
+    ]
+  },
+  {
+    "ayah": "112:1-4",
+    "surah": 112,
+    "ayahStart": 1,
+    "ayahEnd": 4,
+    "name": "Surah Al-Ikhlas - Sincerity",
+    "themes": ["faith-belief", "tawhid"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih al-Bukhari",
+        "hadithNumber": "7374",
+        "relevance": "Equivalent to one-third of Quran"
+      },
+      {
+        "bookName": "Sahih Muslim",
+        "hadithNumber": "811",
+        "relevance": "Describes Allah's essence"
+      }
+    ]
+  },
+  {
+    "ayah": "24:30-31",
+    "surah": 24,
+    "ayahStart": 30,
+    "ayahEnd": 31,
+    "name": "Lower gaze and guard modesty",
+    "themes": ["morals-character", "modesty", "chastity"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih Muslim",
+        "hadithNumber": "2159",
+        "relevance": "First glance excused, second is haram"
+      }
+    ]
+  },
+  {
+    "ayah": "4:1",
+    "surah": 4,
+    "ayahStart": 1,
+    "ayahEnd": 1,
+    "name": "Created from single soul",
+    "themes": ["creation-nature", "human-creation", "family-marriage"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih Muslim",
+        "hadithNumber": "1829",
+        "relevance": "Take care of women"
+      }
+    ]
+  },
+  {
+    "ayah": "31:18-19",
+    "surah": 31,
+    "ayahStart": 18,
+    "ayahEnd": 19,
+    "name": "Luqman's advice on manners",
+    "themes": ["morals-character", "humility", "moderation"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih al-Bukhari",
+        "hadithNumber": "6024",
+        "relevance": "Moderation in walking"
+      }
+    ]
+  },
+  {
+    "ayah": "55:13",
+    "surah": 55,
+    "ayahStart": 13,
+    "ayahEnd": 13,
+    "name": "Which favors will you deny",
+    "themes": ["faith-belief", "gratitude"],
+    "hadithReferences": [
+      {
+        "bookName": "Jami at-Tirmidhi",
+        "hadithNumber": "3291",
+        "relevance": "Gratitude for blessings"
+      }
+    ]
+  },
+  {
+    "ayah": "33:56",
+    "surah": 33,
+    "ayahStart": 56,
+    "ayahEnd": 56,
+    "name": "Send blessings upon Prophet",
+    "themes": ["worship-rituals", "prophet-muhammad", "salawat"],
+    "hadithReferences": [
+      {
+        "bookName": "Sahih al-Bukhari",
+        "hadithNumber": "3370",
+        "relevance": "Reward for sending salawat"
+      },
+      {
+        "bookName": "Sahih Muslim",
+        "hadithNumber": "384",
+        "relevance": "Allah sends blessings 10 times for 1 salawat"
+      }
+    ]
+  }
+]
