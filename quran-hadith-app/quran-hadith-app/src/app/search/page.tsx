@@ -124,33 +124,51 @@ export default function SearchPage() {
     setShowSuggestions(false);
 
     try {
-      // Use semantic search API for AI-powered results
-      const res = await fetch('/api/search/semantic', {
+      // Try semantic search first with lower threshold
+      let res = await fetch('/api/search/semantic', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           query: query.trim(),
           language: 'english',
-          similarityThreshold: 0.7,
+          similarityThreshold: 0.5, // Lower threshold for better results
           maxResults: 20,
           types: type === 'all' ? ['ayah', 'hadith'] : [type]
         })
       });
 
-      const data = await res.json();
+      let data = await res.json();
 
-      if (data.success && data.results) {
-        setResults(data.results || []);
-        setTotalResults(data.metadata?.count || data.results?.length || 0);
+      // If semantic search returns no results, fallback to keyword search
+      if (!data.success || !data.results || data.results.length === 0) {
+        console.log('Semantic search returned no results, falling back to keyword search');
 
-        // If no results, fetch suggested searches
-        if (!data.results || data.results.length === 0) {
+        const params = new URLSearchParams({
+          q: query.trim(),
+          type: type === 'all' ? 'all' : type,
+          page: pageNum.toString(),
+          limit: '20',
+        });
+
+        res = await fetch(`/api/search?${params}`);
+        data = await res.json();
+
+        if (data.success && data.data) {
+          setResults(data.data.results || []);
+          setTotalResults(data.data.totalCount || data.data.results?.length || 0);
+
+          if (!data.data.results || data.data.results.length === 0) {
+            await fetchSuggestedSearches();
+          }
+        } else {
+          setResults([]);
+          setTotalResults(0);
           await fetchSuggestedSearches();
         }
       } else {
-        setResults([]);
-        setTotalResults(0);
-        await fetchSuggestedSearches();
+        // Semantic search succeeded
+        setResults(data.results || []);
+        setTotalResults(data.metadata?.count || data.results?.length || 0);
       }
     } catch (error) {
       console.error('Search failed:', error);
