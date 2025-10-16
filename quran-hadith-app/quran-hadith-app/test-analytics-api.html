@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Analytics API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            background: #0070f3;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #0051cc;
+        }
+        pre {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .error {
+            color: red;
+            background: #ffe6e6;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        .success {
+            color: green;
+            background: #e6ffe6;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        .loading {
+            color: #0070f3;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Analytics API Test</h1>
+        <p>Click the buttons below to test each analytics endpoint:</p>
+
+        <div>
+            <button onclick="testEndpoint('overview')">Test Overview</button>
+            <button onclick="testEndpoint('prophets')">Test Prophets</button>
+            <button onclick="testEndpoint('themes')">Test Themes</button>
+            <button onclick="testEndpoint('words')">Test Words</button>
+            <button onclick="testEndpoint('statistics')">Test Statistics</button>
+        </div>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function testEndpoint(endpoint) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<div class="loading">⏳ Testing /api/analytics/' + endpoint + '...</div>';
+
+            try {
+                const response = await fetch('/api/analytics/' + endpoint);
+                const data = await response.json();
+
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            ✅ Success! Endpoint: /api/analytics/${endpoint}
+                        </div>
+                        <h3>Response Data:</h3>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            ❌ Error: ${data.error || 'Unknown error'}
+                        </div>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        ❌ Failed to fetch /api/analytics/${endpoint}
+                        <br><br>
+                        Error: ${error.message}
+                        <br><br>
+                        <strong>Possible causes:</strong>
+                        <ul>
+                            <li>Dev server is not running (run: npm run dev)</li>
+                            <li>Database connection error</li>
+                            <li>Network issue</li>
+                        </ul>
+                    </div>
+                `;
+            }
+        }
+
+        // Auto-test prophets endpoint on load
+        window.onload = () => {
+            console.log('🚀 Analytics API Tester Loaded');
+            testEndpoint('prophets');
+        };
+    </script>
+</body>
+</html>

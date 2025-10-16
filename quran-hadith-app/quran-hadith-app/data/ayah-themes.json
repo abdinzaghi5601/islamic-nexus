@@ -1,0 +1,308 @@
+[
+  {
+    "name": "Faith & Belief",
+    "nameArabic": "الإيمان والعقيدة",
+    "slug": "faith-belief",
+    "description": "Verses about faith, belief in Allah, and core Islamic creed",
+    "parentSlug": null,
+    "children": [
+      {
+        "name": "Tawhid (Oneness of Allah)",
+        "nameArabic": "التوحيد",
+        "slug": "tawhid",
+        "description": "Oneness and uniqueness of Allah"
+      },
+      {
+        "name": "Angels",
+        "nameArabic": "الملائكة",
+        "slug": "angels",
+        "description": "Belief in angels"
+      },
+      {
+        "name": "Prophets",
+        "nameArabic": "الأنبياء",
+        "slug": "prophets",
+        "description": "Stories and teachings of prophets"
+      },
+      {
+        "name": "Day of Judgment",
+        "nameArabic": "يوم القيامة",
+        "slug": "day-of-judgment",
+        "description": "The Last Day, resurrection, and accountability"
+      },
+      {
+        "name": "Paradise",
+        "nameArabic": "الجنة",
+        "slug": "paradise",
+        "description": "Description of Paradise and its rewards"
+      },
+      {
+        "name": "Hell",
+        "nameArabic": "النار",
+        "slug": "hell",
+        "description": "Description of Hell and punishment"
+      }
+    ]
+  },
+  {
+    "name": "Worship & Rituals",
+    "nameArabic": "العبادة والشعائر",
+    "slug": "worship-rituals",
+    "description": "Acts of worship and religious obligations",
+    "parentSlug": null,
+    "children": [
+      {
+        "name": "Salah (Prayer)",
+        "nameArabic": "الصلاة",
+        "slug": "salah",
+        "description": "Obligatory prayers and their importance"
+      },
+      {
+        "name": "Zakat (Charity)",
+        "nameArabic": "الزكاة",
+        "slug": "zakat",
+        "description": "Obligatory charity and wealth purification"
+      },
+      {
+        "name": "Fasting",
+        "nameArabic": "الصيام",
+        "slug": "fasting",
+        "description": "Fasting in Ramadan and voluntary fasts"
+      },
+      {
+        "name": "Hajj (Pilgrimage)",
+        "nameArabic": "الحج",
+        "slug": "hajj",
+        "description": "Pilgrimage to Mecca"
+      },
+      {
+        "name": "Dhikr (Remembrance)",
+        "nameArabic": "الذكر",
+        "slug": "dhikr",
+        "description": "Remembrance of Allah"
+      },
+      {
+        "name": "Dua (Supplication)",
+        "nameArabic": "الدعاء",
+        "slug": "dua",
+        "description": "Calling upon Allah"
+      }
+    ]
+  },
+  {
+    "name": "Morals & Character",
+    "nameArabic": "الأخلاق والآداب",
+    "slug": "morals-character",
+    "description": "Ethical conduct and good character traits",
+    "parentSlug": null,
+    "children": [
+      {
+        "name": "Patience",
+        "nameArabic": "الصبر",
+        "slug": "patience",
+        "description": "Patience and perseverance"
+      },
+      {
+        "name": "Gratitude",
+        "nameArabic": "الشكر",
+        "slug": "gratitude",
+        "description": "Being thankful to Allah"
+      },
+      {
+        "name": "Honesty & Truthfulness",
+        "nameArabic": "الصدق والأمانة",
+        "slug": "honesty",
+        "description": "Speaking truth and trustworthiness"
+      },
+      {
+        "name": "Kindness & Compassion",
+        "nameArabic": "الرحمة واللطف",
+        "slug": "kindness",
+        "description": "Mercy and compassion towards others"
+      },
+      {
+        "name": "Humility",
+        "nameArabic": "التواضع",
+        "slug": "humility",
+        "description": "Modesty and humbleness"
+      },
+      {
+        "name": "Forgiveness",
+        "nameArabic": "الغفران",
+        "slug": "forgiveness",
+        "description": "Pardoning others"
+      },
+      {
+        "name": "Justice",
+        "nameArabic": "العدل",
+        "slug": "justice",
+        "description": "Fairness and equity"
+      }
+    ]
+  },
+  {
+    "name": "Life Guidance",
+    "nameArabic": "إرشادات الحياة",
+    "slug": "life-guidance",
+    "description": "Guidance for daily life and relationships",
+    "parentSlug": null,
+    "children": [
+      {
+        "name": "Family & Marriage",
+        "nameArabic": "الأسرة والزواج",
+        "slug": "family-marriage",
+        "description": "Family relations and marital guidance"
+      },
+      {
+        "name": "Parents & Children",
+        "nameArabic": "الوالدين والأبناء",
+        "slug": "parents-children",
+        "description": "Rights of parents and raising children"
+      },
+      {
+        "name": "Knowledge & Education",
+        "nameArabic": "العلم والتعليم",
+        "slug": "knowledge",
+        "description": "Seeking and sharing knowledge"
+      },
+      {
+        "name": "Work & Business",
+        "nameArabic": "العمل والتجارة",
+        "slug": "work-business",
+        "description": "Honest work and lawful business"
+      },
+      {
+        "name": "Wealth & Poverty",
+        "nameArabic": "الغنى والفقر",
+        "slug": "wealth-poverty",
+        "description": "Dealing with wealth and hardship"
+      }
+    ]
+  },
+  {
+    "name": "Stories & History",
+    "nameArabic": "القصص والتاريخ",
+    "slug": "stories-history",
+    "description": "Historical narratives and lessons",
+    "parentSlug": null,
+    "children": [
+      {
+        "name": "Prophet Muhammad ﷺ",
+        "nameArabic": "النبي محمد ﷺ",
+        "slug": "prophet-muhammad",
+        "description": "Life and teachings of Prophet Muhammad"
+      },
+      {
+        "name": "Prophet Ibrahim",
+        "nameArabic": "النبي إبراهيم",
+        "slug": "prophet-ibrahim",
+        "description": "Story of Prophet Ibrahim"
+      },
+      {
+        "name": "Prophet Musa",
+        "nameArabic": "النبي موسى",
+        "slug": "prophet-musa",
+        "description": "Story of Prophet Musa"
+      },
+      {
+        "name": "Prophet Isa",
+        "nameArabic": "النبي عيسى",
+        "slug": "prophet-isa",
+        "description": "Story of Prophet Isa"
+      },
+      {
+        "name": "Previous Nations",
+        "nameArabic": "الأمم السابقة",
+        "slug": "previous-nations",
+        "description": "Lessons from past civilizations"
+      }
+    ]
+  },
+  {
+    "name": "Creation & Nature",
+    "nameArabic": "الخلق والطبيعة",
+    "slug": "creation-nature",
+    "description": "Signs of Allah in creation",
+    "parentSlug": null,
+    "children": [
+      {
+        "name": "Creation of Humans",
+        "nameArabic": "خلق الإنسان",
+        "slug": "human-creation",
+        "description": "How Allah created humankind"
+      },
+      {
+        "name": "Heavens & Earth",
+        "nameArabic": "السماوات والأرض",
+        "slug": "heavens-earth",
+        "description": "Signs in the cosmos"
+      },
+      {
+        "name": "Natural Phenomena",
+        "nameArabic": "الظواهر الطبيعية",
+        "slug": "natural-phenomena",
+        "description": "Rain, thunder, mountains, seas"
+      }
+    ]
+  },
+  {
+    "name": "Trials & Challenges",
+    "nameArabic": "الابتلاءات والتحديات",
+    "slug": "trials-challenges",
+    "description": "Dealing with hardships and tests",
+    "parentSlug": null,
+    "children": [
+      {
+        "name": "Illness & Health",
+        "nameArabic": "المرض والصحة",
+        "slug": "illness-health",
+        "description": "Dealing with sickness"
+      },
+      {
+        "name": "Death & Afterlife",
+        "nameArabic": "الموت والآخرة",
+        "slug": "death-afterlife",
+        "description": "Preparation for death"
+      },
+      {
+        "name": "Loss & Grief",
+        "nameArabic": "الفقدان والحزن",
+        "slug": "loss-grief",
+        "description": "Coping with loss"
+      },
+      {
+        "name": "Persecution",
+        "nameArabic": "الاضطهاد",
+        "slug": "persecution",
+        "description": "Standing firm in faith"
+      }
+    ]
+  },
+  {
+    "name": "Quran & Revelation",
+    "nameArabic": "القرآن والوحي",
+    "slug": "quran-revelation",
+    "description": "The Quran itself and divine revelation",
+    "parentSlug": null,
+    "children": [
+      {
+        "name": "Quran's Guidance",
+        "nameArabic": "هدى القرآن",
+        "slug": "quran-guidance",
+        "description": "The Quran as guidance"
+      },
+      {
+        "name": "Quran's Miracles",
+        "nameArabic": "معجزات القرآن",
+        "slug": "quran-miracles",
+        "description": "Miraculous nature of Quran"
+      },
+      {
+        "name": "Previous Scriptures",
+        "nameArabic": "الكتب السابقة",
+        "slug": "previous-scriptures",
+        "description": "Torah, Gospel, and other books"
+      }
+    ]
+  }
+]

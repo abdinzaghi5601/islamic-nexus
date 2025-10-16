@@ -1,0 +1,391 @@
+================================================================================
+QURAN & HADITH DATABASE PROJECT - MASTER PLAN
+================================================================================
+Project Location: C:\Users\abdul\Desktop\MY Quran and Hadith Project
+Started: 2025-10-06
+Status: Phase 1 - Initial Setup
+================================================================================
+
+PROJECT OVERVIEW:
+-----------------
+A comprehensive Islamic database application with:
+- Complete Quran with multiple translations
+- Hadith collections (Bukhari, Muslim, etc.)
+- Tafsir (commentary) from multiple scholars
+- Advanced search functionality
+- Cross-references between Ayahs and Hadiths
+- Available on Web (PWA), Mobile (iOS/Android), and Desktop
+
+TECHNOLOGY STACK:
+-----------------
+Backend:
+  - Database: MySQL (PlanetScale or Railway)
+  - API: Next.js 14 API Routes
+  - Search Engine: Meilisearch
+  - Authentication: NextAuth.js
+  - ORM: Prisma (for type-safe database queries)
+
+Frontend:
+  - Web/PWA: Next.js 14 + React + TypeScript
+  - Mobile: React Native (Expo)
+  - Desktop: Electron + React
+  - Styling: Tailwind CSS
+  - State Management: Zustand
+  - UI Components: shadcn/ui
+
+Hosting:
+  - Frontend: Vercel Pro ($20/month)
+  - Database: Railway ($5/month) or PlanetScale ($29/month)
+  - Search: Meilisearch Cloud ($15/month)
+  - Total Cost: $40-64/month
+
+Features:
+  - Offline-first architecture
+  - Real-time sync across devices
+  - Advanced search with filters
+  - Bookmarks and reading history
+  - Audio recitation
+  - Multiple translations and tafsirs
+
+================================================================================
+PHASES & MILESTONES
+================================================================================
+
+PHASE 1: PROJECT SETUP & FOUNDATION (Week 1-2)
+------------------------------------------------
+□ 1.1 Initialize Next.js project
+□ 1.2 Setup TypeScript configuration
+□ 1.3 Install and configure dependencies
+□ 1.4 Setup Tailwind CSS and shadcn/ui
+□ 1.5 Configure Git repository
+□ 1.6 Setup folder structure
+□ 1.7 Create development environment variables
+
+PHASE 2: DATABASE SETUP (Week 2-3)
+-----------------------------------
+□ 2.1 Choose and setup MySQL hosting (Railway/PlanetScale)
+□ 2.2 Design complete database schema
+□ 2.3 Setup Prisma ORM
+□ 2.4 Create database migration files
+□ 2.5 Run initial migrations
+□ 2.6 Create seed data scripts
+□ 2.7 Test database connections
+
+PHASE 3: DATA IMPORT (Week 3-4)
+--------------------------------
+□ 3.1 Find and download Quran data sources
+□ 3.2 Find and download Hadith data sources
+□ 3.3 Find and download Tafsir data sources
+□ 3.4 Create import scripts for Quran
+□ 3.5 Create import scripts for Hadith
+□ 3.6 Create import scripts for Tafsir
+□ 3.7 Verify data integrity
+□ 3.8 Create cross-reference links
+
+PHASE 4: BACKEND API (Week 4-5)
+--------------------------------
+□ 4.1 Setup API route structure
+□ 4.2 Create Quran API endpoints
+□ 4.3 Create Hadith API endpoints
+□ 4.4 Create Tafsir API endpoints
+□ 4.5 Create Search API endpoints
+□ 4.6 Create User API endpoints (bookmarks, history)
+□ 4.7 Implement authentication
+□ 4.8 Add API validation and error handling
+□ 4.9 Write API documentation
+
+PHASE 5: SEARCH ENGINE (Week 5-6)
+----------------------------------
+□ 5.1 Setup Meilisearch instance
+□ 5.2 Configure Meilisearch indexes
+□ 5.3 Sync data from MySQL to Meilisearch
+□ 5.4 Implement search API
+□ 5.5 Add advanced filters
+□ 5.6 Test search performance
+□ 5.7 Implement search suggestions
+
+PHASE 6: FRONTEND - QURAN READER (Week 6-7)
+--------------------------------------------
+□ 6.1 Create Surah list page
+□ 6.2 Create Ayah reader component
+□ 6.3 Implement Ayah-by-Ayah navigation
+□ 6.4 Add translation display
+□ 6.5 Add Tafsir panel
+□ 6.6 Implement Arabic text rendering
+□ 6.7 Add Juz/Page navigation
+□ 6.8 Create bookmarking functionality
+
+PHASE 7: FRONTEND - HADITH VIEWER (Week 7-8)
+---------------------------------------------
+□ 7.1 Create Hadith books list
+□ 7.2 Create Hadith chapter browser
+□ 7.3 Create Hadith card component
+□ 7.4 Implement Hadith search
+□ 7.5 Add Hadith bookmarking
+□ 7.6 Display narrator chain
+□ 7.7 Add Hadith grading indicators
+
+PHASE 8: FRONTEND - SEARCH & DISCOVERY (Week 8-9)
+--------------------------------------------------
+□ 8.1 Create global search interface
+□ 8.2 Implement search results page
+□ 8.3 Add advanced filter UI
+□ 8.4 Create topics/themes browser
+□ 8.5 Implement search history
+□ 8.6 Add search suggestions
+□ 8.7 Create "Related Ayahs/Hadiths" feature
+
+PHASE 9: USER FEATURES (Week 9-10)
+-----------------------------------
+□ 9.1 Implement user authentication
+□ 9.2 Create user profile page
+□ 9.3 Implement bookmarks management
+□ 9.4 Create reading history tracker
+□ 9.5 Add user settings/preferences
+□ 9.6 Implement notes functionality
+□ 9.7 Add sharing features
+
+PHASE 10: OFFLINE SUPPORT (Week 10-11)
+---------------------------------------
+□ 10.1 Setup Service Worker
+□ 10.2 Configure PWA manifest
+□ 10.3 Implement IndexedDB storage
+□ 10.4 Create offline sync logic
+□ 10.5 Add offline indicator UI
+□ 10.6 Test offline functionality
+□ 10.7 Implement background sync
+
+PHASE 11: MOBILE APP (Week 11-12)
+----------------------------------
+□ 11.1 Setup Expo/React Native project
+□ 11.2 Share components from web app
+□ 11.3 Implement mobile navigation
+□ 11.4 Adapt UI for mobile screens
+□ 11.5 Test on iOS simulator
+□ 11.6 Test on Android emulator
+□ 11.7 Prepare for app store submission
+
+PHASE 12: DESKTOP APP (Week 12-13)
+-----------------------------------
+□ 12.1 Setup Electron project
+□ 12.2 Integrate web app
+□ 12.3 Add desktop-specific features
+□ 12.4 Create app icons
+□ 12.5 Test on Windows
+□ 12.6 Test on macOS
+□ 12.7 Create installers
+
+PHASE 13: TESTING & OPTIMIZATION (Week 13-14)
+----------------------------------------------
+□ 13.1 Write unit tests
+□ 13.2 Write integration tests
+□ 13.3 Perform load testing
+□ 13.4 Optimize database queries
+□ 13.5 Optimize frontend performance
+□ 13.6 Test cross-browser compatibility
+□ 13.7 Fix bugs and issues
+
+PHASE 14: DEPLOYMENT & LAUNCH (Week 14-15)
+-------------------------------------------
+□ 14.1 Setup production environment
+□ 14.2 Configure domain and SSL
+□ 14.3 Deploy database
+□ 14.4 Deploy backend API
+□ 14.5 Deploy frontend (Vercel)
+□ 14.6 Deploy Meilisearch
+□ 14.7 Test production deployment
+□ 14.8 Setup monitoring and analytics
+□ 14.9 Prepare documentation
+□ 14.10 Launch beta version
+
+PHASE 15: POST-LAUNCH (Ongoing)
+--------------------------------
+□ 15.1 Gather user feedback
+□ 15.2 Fix reported bugs
+□ 15.3 Add requested features
+□ 15.4 Regular database updates
+□ 15.5 Performance monitoring
+□ 15.6 Security updates
+
+================================================================================
+CURRENT SESSION PROGRESS
+================================================================================
+
+SESSION 1 (2025-10-06):
+-----------------------
+COMPLETED:
+✓ Created project folder structure
+✓ Created master plan document
+✓ Defined technology stack
+✓ Planned all project phases
+
+NEXT SESSION TODO:
+☐ Initialize Next.js project
+☐ Setup Git repository
+☐ Install dependencies
+☐ Configure TypeScript
+☐ Setup Tailwind CSS
+
+NOTES:
+- Using MySQL instead of PostgreSQL
+- Budget option: Railway ($5/month) for database
+- Premium option: PlanetScale ($29/month) for database
+- Total estimated timeline: 15 weeks (3-4 months)
+- Can work part-time alongside current job
+
+================================================================================
+QUICK REFERENCE COMMANDS
+================================================================================
+
+Start development server:
+  npm run dev
+
+Build for production:
+  npm run build
+
+Run database migrations:
+  npx prisma migrate dev
+
+Seed database:
+  npm run seed
+
+Run tests:
+  npm test
+
+Deploy to Vercel:
+  vercel --prod
+
+================================================================================
+IMPORTANT LINKS & RESOURCES
+================================================================================
+
+Data Sources:
+- Quran API: https://api.quran.com/api/v4/
+- Quran JSON: https://github.com/semarketir/quranjson
+- Hadith Database: https://sunnah.com/
+- Hadith JSON: https://github.com/A-Hussien96/hadith-json
+- Tafsir API: http://api.quran-tafseer.com/
+
+Documentation:
+- Next.js: https://nextjs.org/docs
+- Prisma: https://www.prisma.io/docs
+- Meilisearch: https://docs.meilisearch.com/
+- Tailwind CSS: https://tailwindcss.com/docs
+- shadcn/ui: https://ui.shadcn.com/
+
+Hosting:
+- Vercel: https://vercel.com
+- Railway: https://railway.app
+- PlanetScale: https://planetscale.com
+- Meilisearch Cloud: https://www.meilisearch.com/cloud
+
+================================================================================
+FOLDER STRUCTURE (To Be Created)
+================================================================================
+
+MY Quran and Hadith Project/
+├── docs/                          # Documentation
+│   ├── api.md                     # API documentation
+│   ├── database-schema.md         # Database design
+│   └── setup-guide.md             # Setup instructions
+├── scripts/                       # Utility scripts
+│   ├── import-quran.ts           # Import Quran data
+│   ├── import-hadith.ts          # Import Hadith data
+│   └── seed.ts                   # Seed database
+├── src/                          # Source code
+│   ├── app/                      # Next.js app directory
+│   │   ├── api/                  # API routes
+│   │   ├── quran/               # Quran pages
+│   │   ├── hadith/              # Hadith pages
+│   │   └── search/              # Search pages
+│   ├── components/              # React components
+│   │   ├── quran/              # Quran components
+│   │   ├── hadith/             # Hadith components
+│   │   └── shared/             # Shared components
+│   ├── lib/                     # Utility libraries
+│   │   ├── db/                 # Database utilities
+│   │   ├── search/             # Search utilities
+│   │   └── utils/              # Helper functions
+│   ├── hooks/                   # React hooks
+│   ├── stores/                  # State management
+│   └── types/                   # TypeScript types
+├── prisma/                       # Prisma ORM
+│   ├── schema.prisma            # Database schema
+│   └── migrations/              # Database migrations
+├── public/                       # Static files
+├── .env.local                   # Environment variables
+├── package.json                 # Dependencies
+├── tsconfig.json               # TypeScript config
+├── tailwind.config.js          # Tailwind config
+└── next.config.js              # Next.js config
+
+================================================================================
+ENVIRONMENT VARIABLES NEEDED
+================================================================================
+
+# Database
+DATABASE_URL="mysql://user:password@host:port/database"
+
+# Meilisearch
+MEILISEARCH_HOST="https://your-instance.meilisearch.io"
+MEILISEARCH_API_KEY="your-api-key"
+
+# NextAuth
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-secret-key"
+
+# Optional: AI Features
+OPENAI_API_KEY="your-openai-key"
+
+================================================================================
+DEVELOPMENT WORKFLOW
+================================================================================
+
+Daily Workflow:
+1. Read PROJECT_MASTER_PLAN.txt
+2. Check current session progress
+3. Work on next TODO item
+4. Update progress in this file
+5. Commit changes to Git
+6. Update "CURRENT SESSION PROGRESS" section
+
+Weekly Workflow:
+1. Review completed tasks
+2. Plan next week's tasks
+3. Update milestones
+4. Backup database
+5. Update documentation
+
+================================================================================
+CONTACT & SUPPORT
+================================================================================
+
+If you get stuck:
+1. Check this master plan file
+2. Review Next.js documentation
+3. Check Prisma documentation
+4. Review previous session notes
+5. Ask specific questions about current task
+
+Remember:
+- Work in small, manageable chunks
+- Test frequently
+- Commit often
+- Document as you go
+- Don't skip testing
+
+================================================================================
+VERSION HISTORY
+================================================================================
+
+v0.1 (2025-10-06):
+- Initial project setup
+- Created master plan
+- Defined technology stack
+- Planned all phases
+
+================================================================================
+END OF MASTER PLAN
+================================================================================
+
+REMINDER: Update this file at the end of each session with progress made!

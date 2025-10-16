@@ -1,0 +1,998 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+
+  // For production with connection pooling (e.g., PgBouncer, Railway proxy):
+  // directUrl = env("DATABASE_URL_UNPOOLED") // Direct connection for migrations
+  // url       = env("DATABASE_URL")          // Pooled connection for queries
+
+  // Note: Railway already provides connection pooling via proxy
+  // If using PgBouncer, add ?pgbouncer=true to DATABASE_URL
+}
+
+// ============================================================================
+// QURAN MODELS
+// ============================================================================
+
+model Surah {
+  id              Int     @id @default(autoincrement())
+  number          Int     @unique // Surah number (1-114)
+  nameArabic      String  @db.VarChar(100)
+  nameEnglish     String  @db.VarChar(100)
+  nameTranslation String  @db.VarChar(200)
+  revelationType  String  @db.VarChar(20) // "Meccan" or "Medinan"
+  numberOfAyahs   Int
+  bismillahPre    Boolean @default(true) // Has Bismillah at start
+  order           Int // Revelation order
+
+  ayahs Ayah[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([number])
+  @@map("surahs")
+}
+
+model Ayah {
+  id                   Int                      @id @default(autoincrement())
+  surahId              Int
+  ayahNumber           Int // Ayah number within surah
+  numberInQuran        Int                      @unique // Sequential number in entire Quran
+  textArabic           String                   @db.Text
+  textUthmani          String                   @db.Text // Uthmani script
+  textSimple           String                   @db.Text // Simplified Arabic
+  juz                  Int // Juz (1-30)
+  manzil               Int // Manzil (1-7)
+  ruku                 Int // Ruku number
+  hizbQuarter          Int // Hizb quarter
+  sajdah               Boolean                  @default(false) // Contains sajdah
+  searchVectorArabic   Unsupported("tsvector")? @map("search_vector_arabic") // Arabic full-text search
+  searchVectorEnglish  Unsupported("tsvector")? @map("search_vector_english") // English full-text search (from translations)
+  embeddingArabicJsonb Json?                    @map("embedding_arabic_jsonb") // Semantic search embeddings for Arabic text
+  embeddingEnglishJsonb Json?                   @map("embedding_english_jsonb") // Semantic search embeddings for English translations
+
+  surah            Surah                 @relation(fields: [surahId], references: [id], onDelete: Cascade)
+  translations     Translation[]
+  tafsirs          TafsirVerse[]
+  bookmarks        Bookmark[]
+  hadithReferences HadithAyahReference[]
+  lessons          AyahLesson[]
+  duas             AyahDua[]
+  themes           AyahThemeMapping[]
+  words            AyahWord[]
+  tajweedApps      TajweedApplication[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([surahId, ayahNumber])
+  @@index([surahId])
+  @@index([juz])
+  @@index([numberInQuran])
+  @@index([searchVectorArabic], type: Gin)
+  @@index([searchVectorEnglish], type: Gin)
+  @@index([surahId, juz]) // Composite: Get all ayahs in Surah X, Juz Y
+  @@index([juz, ayahNumber]) // Composite: Navigate by Juz
+  @@map("ayahs")
+}
+
+model Translation {
+  id             Int                      @id @default(autoincrement())
+  ayahId         Int
+  translatorId   Int
+  text           String                   @db.Text
+  searchVector   Unsupported("tsvector")? @map("search_vector") // Full-text search
+  embeddingJsonb Json?                    @map("embedding_jsonb") // Semantic search embeddings
+
+  ayah       Ayah       @relation(fields: [ayahId], references: [id], onDelete: Cascade)
+  translator Translator @relation(fields: [translatorId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([ayahId, translatorId])
+  @@index([ayahId])
+  @@index([translatorId])
+  @@index([translatorId, ayahId]) // Composite: Reverse lookups by translator
+  @@index([searchVector], type: Gin)
+  @@map("translations")
+}
+
+model Translator {
+  id          Int     @id @default(autoincrement())
+  name        String  @db.VarChar(200)
+  language    String  @db.VarChar(50)
+  description String? @db.Text
+
+  translations Translation[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("translators")
+}
+
+// ============================================================================
+// TAFSIR MODELS
+// ============================================================================
+
+model TafsirBook {
+  id          Int     @id @default(autoincrement())
+  name        String  @db.VarChar(200)
+  authorName  String  @db.VarChar(200)
+  language    String  @db.VarChar(50)
+  description String? @db.Text
+
+  verses TafsirVerse[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("tafsir_books")
+}
+
+model TafsirVerse {
+  id           Int                      @id @default(autoincrement())
+  ayahId       Int
+  tafsirBookId Int
+  text          String                   @db.Text
+  searchVector  Unsupported("tsvector")? @map("search_vector") // Full-text search
+  embeddingJsonb Json?                   @map("embedding_jsonb") // Semantic search embeddings
+
+  ayah       Ayah       @relation(fields: [ayahId], references: [id], onDelete: Cascade)
+  tafsirBook TafsirBook @relation(fields: [tafsirBookId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([ayahId, tafsirBookId])
+  @@index([ayahId])
+  @@index([tafsirBookId])
+  @@index([searchVector], type: Gin)
+  @@map("tafsir_verses")
+}
+
+// ============================================================================
+// HADITH MODELS
+// ============================================================================
+
+model HadithBook {
+  id           Int     @id @default(autoincrement())
+  name         String  @db.VarChar(200)
+  nameArabic   String? @db.VarChar(200)
+  author       String  @db.VarChar(200)
+  description  String? @db.Text
+  totalHadiths Int     @default(0)
+
+  chapters HadithChapter[]
+  hadiths  Hadith[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("hadith_books")
+}
+
+model HadithChapter {
+  id            Int     @id @default(autoincrement())
+  bookId        Int
+  chapterNumber Int
+  nameArabic    String? @db.VarChar(500)
+  nameEnglish   String  @db.VarChar(500)
+  intro         String? @db.Text
+
+  book    HadithBook @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  hadiths Hadith[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([bookId, chapterNumber])
+  @@index([bookId])
+  @@map("hadith_chapters")
+}
+
+model Hadith {
+  id                  Int                      @id @default(autoincrement())
+  bookId              Int
+  chapterId           Int?
+  hadithNumber        String                   @db.VarChar(50) // Book-specific number
+  hadithInChapter     Int? // Number within chapter
+  textArabic          String                   @db.Text
+  textEnglish         String                   @db.Text
+  narratorChain       String?                  @db.Text // Isnad
+  grade                 String?                  @db.VarChar(100) // Sahih, Hasan, Daif, etc.
+  searchVectorArabic    Unsupported("tsvector")? @map("search_vector_arabic") // Arabic full-text search
+  searchVectorEnglish   Unsupported("tsvector")? @map("search_vector_english") // English full-text search
+  embeddingArabicJsonb  Json?                    @map("embedding_arabic_jsonb") // Semantic search embeddings for Arabic text
+  embeddingEnglishJsonb Json?                    @map("embedding_english_jsonb") // Semantic search embeddings for English text
+
+  book           HadithBook            @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  chapter        HadithChapter?        @relation(fields: [chapterId], references: [id])
+  ayahReferences HadithAyahReference[]
+  bookmarks      HadithBookmark[]
+  chains         HadithChain[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([bookId, hadithNumber])
+  @@index([bookId])
+  @@index([chapterId])
+  @@index([grade])
+  @@index([searchVectorArabic], type: Gin)
+  @@index([searchVectorEnglish], type: Gin)
+  @@index([bookId, chapterId]) // Composite: Get hadiths by book and chapter
+  @@index([bookId, grade]) // Composite: Filter by book and authenticity grade
+  @@map("hadiths")
+}
+
+// ============================================================================
+// CROSS-REFERENCE MODELS
+// ============================================================================
+
+model HadithAyahReference {
+  id       Int @id @default(autoincrement())
+  hadithId Int
+  ayahId   Int
+
+  hadith Hadith @relation(fields: [hadithId], references: [id], onDelete: Cascade)
+  ayah   Ayah   @relation(fields: [ayahId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([hadithId, ayahId])
+  @@index([hadithId])
+  @@index([ayahId])
+  @@map("hadith_ayah_references")
+}
+
+// ============================================================================
+// USER MODELS
+// ============================================================================
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  password      String // Hashed
+  emailVerified DateTime?
+  image         String?
+
+  accounts             Account[]
+  sessions             Session[]
+  bookmarks            Bookmark[]
+  hadithBookmarks      HadithBookmark[]
+  duaBookmarks         DuaBookmark[]
+  bookBookmarks        BookBookmark[]
+  readingHistory       ReadingHistory[]
+  notes                Note[]
+  memorizationGoals    MemorizationGoal[]
+  memorizationSessions MemorizationSession[]
+  memorizationReviews  MemorizationReview[]
+  vocabularyLists      VocabularyList[]
+  learningProgress     LearningProgress[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ============================================================================
+// DUA MODELS
+// ============================================================================
+
+model DuaCategory {
+  id          Int     @id @default(autoincrement())
+  name        String  @db.VarChar(100)
+  nameArabic  String? @db.VarChar(100)
+  description String? @db.Text
+  icon        String? @db.VarChar(50) // Icon name from lucide-react
+  slug        String  @unique @db.VarChar(100)
+
+  duas Dua[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("dua_categories")
+}
+
+model Dua {
+  id              Int     @id @default(autoincrement())
+  categoryId      Int
+  title           String  @db.VarChar(300)
+  titleArabic     String? @db.VarChar(300)
+  textArabic      String  @db.Text
+  textEnglish     String  @db.Text
+  transliteration String? @db.Text
+  reference       String? @db.VarChar(500) // Source (Quran, Hadith, etc.)
+  tags            String? @db.Text // Keep as comma-separated for now (migrate data first)
+  benefits        String? @db.Text
+  occasion        String? @db.VarChar(200) // When to recite
+
+  category  DuaCategory   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  bookmarks DuaBookmark[]
+  ayahDuas  AyahDua[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([categoryId])
+  @@map("duas")
+}
+
+model DuaBookmark {
+  id     String  @id @default(cuid())
+  userId String
+  duaId  Int
+  note   String? @db.VarChar(1000) // Limit for short notes
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  dua  Dua  @relation(fields: [duaId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, duaId])
+  @@index([userId])
+  @@index([duaId])
+  @@map("dua_bookmarks")
+}
+
+// ============================================================================
+// ISLAMIC BOOKS (PDF) MODELS
+// ============================================================================
+
+model Book {
+  id            Int     @id @default(autoincrement())
+  title         String  @db.VarChar(300)
+  titleArabic   String? @db.VarChar(300)
+  author        String  @db.VarChar(200)
+  authorArabic  String? @db.VarChar(200)
+  category      String  @db.VarChar(100) // Tafsir, Fiqh, Seerah, Hadith Commentary, etc.
+  language      String  @db.VarChar(50)
+  description   String? @db.Text
+  pdfUrl        String? @db.VarChar(500) // External URL if hosted elsewhere
+  pdfPath       String? @db.VarChar(500) // Local path in /public/books/
+  totalPages    Int?
+  fileSize      BigInt? // In bytes
+  coverImageUrl String? @db.VarChar(500)
+  publisher     String? @db.VarChar(200)
+  publishYear   Int?
+  isbn          String? @db.VarChar(50)
+  tags          String? @db.Text // Keep as comma-separated for now
+
+  chunks    BookChunk[]
+  bookmarks BookBookmark[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+  @@index([language])
+  @@map("books")
+}
+
+model BookChunk {
+  id            Int    @id @default(autoincrement())
+  bookId        Int
+  pageNumber    Int
+  chunkNumber   Int // Multiple chunks per page if needed
+  content       String @db.Text // Extracted text from PDF
+  startPosition Int? // Character position start (optional)
+  endPosition   Int? // Character position end (optional)
+
+  book Book @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([bookId, pageNumber, chunkNumber])
+  @@index([bookId])
+  @@index([pageNumber])
+  @@map("book_chunks")
+}
+
+model BookBookmark {
+  id         String  @id @default(cuid())
+  userId     String
+  bookId     Int
+  pageNumber Int?
+  note       String? @db.VarChar(1000) // Limit for short notes
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  book Book @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([bookId])
+  @@map("book_bookmarks")
+}
+
+// ============================================================================
+// USER INTERACTION MODELS
+// ============================================================================
+
+model Bookmark {
+  id     String  @id @default(cuid())
+  userId String
+  ayahId Int
+  note   String? @db.VarChar(1000) // Limit for short notes
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ayah Ayah @relation(fields: [ayahId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, ayahId])
+  @@index([userId])
+  @@index([ayahId])
+  @@index([userId, createdAt(sort: Desc)]) // Composite: Recent bookmarks query
+  @@map("bookmarks")
+}
+
+model HadithBookmark {
+  id       String  @id @default(cuid())
+  userId   String
+  hadithId Int
+  note     String? @db.VarChar(1000) // Limit for short notes
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  hadith Hadith @relation(fields: [hadithId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, hadithId])
+  @@index([userId])
+  @@index([hadithId])
+  @@index([userId, createdAt(sort: Desc)]) // Composite: Recent hadith bookmarks
+  @@map("hadith_bookmarks")
+}
+
+model ReadingHistory {
+  id       String   @id @default(cuid())
+  userId   String
+  surahId  Int?
+  ayahId   Int?
+  hadithId Int?
+  readAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([readAt])
+  @@index([userId, readAt(sort: Desc)]) // Composite: Recent reading history
+  @@map("reading_history")
+}
+
+model Note {
+  id       String  @id @default(cuid())
+  userId   String
+  ayahId   Int?
+  hadithId Int?
+  title    String? @db.VarChar(200)
+  content  String  @db.Text
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@map("notes")
+}
+
+// ============================================================================
+// AYAH LESSONS & TEACHINGS
+// ============================================================================
+
+model AyahLesson {
+  id         Int     @id @default(autoincrement())
+  ayahId     Int
+  title      String  @db.VarChar(300)
+  lessonText String  @db.Text
+  category   String  @db.VarChar(100) // Faith, Morals, Worship, Life Guidance, etc.
+  tags       String? @db.Text // Keep as comma-separated for now
+  source     String? @db.VarChar(200) // Source of lesson (tafsir book, scholar)
+
+  ayah Ayah @relation(fields: [ayahId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([ayahId])
+  @@index([category])
+  @@map("ayah_lessons")
+}
+
+// ============================================================================
+// AYAH DUAS (Duas extracted from verses)
+// ============================================================================
+
+model AyahDua {
+  id              Int     @id @default(autoincrement())
+  ayahId          Int
+  duaId           Int? // Link to Dua table if exists
+  arabicText      String  @db.Text
+  transliteration String? @db.Text
+  translation     String  @db.Text
+  occasion        String? @db.VarChar(200) // When to recite
+  benefits        String? @db.Text
+
+  ayah Ayah @relation(fields: [ayahId], references: [id], onDelete: Cascade)
+  dua  Dua? @relation(fields: [duaId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([ayahId])
+  @@index([duaId])
+  @@map("ayah_duas")
+}
+
+// ============================================================================
+// AYAH THEMES & TOPICS
+// ============================================================================
+
+model AyahTheme {
+  id            Int     @id @default(autoincrement())
+  name          String  @db.VarChar(100)
+  nameArabic    String? @db.VarChar(100)
+  description   String? @db.Text
+  slug          String  @unique @db.VarChar(100)
+  parentThemeId Int? // For hierarchical themes
+
+  ayahs       AyahThemeMapping[]
+  parentTheme AyahTheme?         @relation("ThemeHierarchy", fields: [parentThemeId], references: [id], onDelete: SetNull)
+  childThemes AyahTheme[]        @relation("ThemeHierarchy")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([parentThemeId])
+  @@map("ayah_themes")
+}
+
+model AyahThemeMapping {
+  id        Int @id @default(autoincrement())
+  ayahId    Int
+  themeId   Int
+  relevance Int @default(5) // 1-10 scale
+
+  ayah  Ayah      @relation(fields: [ayahId], references: [id], onDelete: Cascade)
+  theme AyahTheme @relation(fields: [themeId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([ayahId, themeId])
+  @@index([ayahId])
+  @@index([themeId])
+  @@map("ayah_theme_mappings")
+}
+
+// ============================================================================
+// PHASE 4: ISLAMIC LEARNING TOOLS
+// ============================================================================
+
+// Word-by-Word Translation Models
+model AyahWord {
+  id              Int     @id @default(autoincrement())
+  ayahId          Int
+  position        Int // Position in ayah (1-based)
+  textArabic      String  @db.VarChar(200)
+  textSimplified  String? @db.VarChar(200) // Simplified (no diacritics)
+  transliteration String? @db.VarChar(200)
+
+  ayah         Ayah              @relation(fields: [ayahId], references: [id], onDelete: Cascade)
+  translations WordTranslation[]
+  grammar      WordGrammar?
+  morphology   WordMorphology?
+  root         WordRoot?         @relation(fields: [rootId], references: [id])
+  rootId       Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([ayahId, position])
+  @@index([ayahId])
+  @@index([rootId])
+  @@map("ayah_words")
+}
+
+model WordTranslation {
+  id          Int     @id @default(autoincrement())
+  wordId      Int
+  language    String  @db.VarChar(50) // "en", "ur", etc.
+  translation String  @db.VarChar(200)
+  context     String? @db.Text // Contextual explanation
+
+  word AyahWord @relation(fields: [wordId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([wordId, language])
+  @@index([wordId])
+  @@map("word_translations")
+}
+
+model WordGrammar {
+  id           Int     @id @default(autoincrement())
+  wordId       Int     @unique
+  partOfSpeech String  @db.VarChar(50) // Noun, Verb, Particle, etc.
+  root         String? @db.VarChar(20) // Arabic root letters
+  form         String? @db.VarChar(20) // Verb form (I-X)
+  mood         String? @db.VarChar(50) // For verbs
+  case_        String? @db.VarChar(50) // Nominative, Accusative, Genitive
+  number       String? @db.VarChar(20) // Singular, Dual, Plural
+  gender       String? @db.VarChar(20) // Masculine, Feminine
+  person       String? @db.VarChar(20) // First, Second, Third
+  tense        String? @db.VarChar(20) // Past, Present, Imperative
+
+  word AyahWord @relation(fields: [wordId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("word_grammar")
+}
+
+model WordRoot {
+  id          Int    @id @default(autoincrement())
+  root        String @unique @db.VarChar(20) // Root letters (e.g., "ك ت ب")
+  rootSimple  String @db.VarChar(20) // Without spaces ("كتب")
+  meaning     String @db.Text // Core meaning
+  occurrences Int    @default(0) // Times it appears in Quran
+
+  words        AyahWord[]
+  vocabulary   VocabularyItem[]
+  conjugations VerbConjugation[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([root])
+  @@map("word_roots")
+}
+
+// Tajweed Rules Models
+model TajweedRule {
+  id          Int     @id @default(autoincrement())
+  ruleId      String  @unique @db.VarChar(50) // Unique identifier (e.g., "ghunnah", "madd-muttasil")
+  name        String  @db.VarChar(100)
+  nameArabic  String  @db.VarChar(100)
+  category    String  @db.VarChar(50) // Makhraj, Sifaat, Ahkam, etc.
+  description String  @db.Text
+  examples    Json // JSONB: array of examples with structure
+  color       String? @db.VarChar(20) // Color code for highlighting
+  textColor   String? @db.VarChar(20) // Text color for readability
+
+  ayahApplications TajweedApplication[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+  @@map("tajweed_rules")
+}
+
+model TajweedApplication {
+  id            Int     @id @default(autoincrement())
+  ayahId        Int
+  ruleId        Int
+  startPosition Int // Character position in ayah
+  endPosition   Int // Character position in ayah
+  affectedText  String  @db.VarChar(200) // The text this rule applies to
+  notes         String? @db.Text // Additional notes
+
+  ayah Ayah        @relation(fields: [ayahId], references: [id], onDelete: Cascade)
+  rule TajweedRule @relation(fields: [ruleId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([ayahId])
+  @@index([ruleId])
+  @@map("tajweed_applications")
+}
+
+// Memorization (Hifdh) Tracker Models
+model MemorizationGoal {
+  id           String    @id @default(cuid())
+  userId       String
+  title        String    @db.VarChar(200)
+  targetType   String    @db.VarChar(50) // "surah", "juz", "custom"
+  startSurahId Int?
+  endSurahId   Int?
+  startAyahId  Int?
+  endAyahId    Int?
+  targetDate   DateTime?
+  status       String    @db.VarChar(20) // "active", "completed", "paused"
+
+  user     User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sessions MemorizationSession[]
+  reviews  MemorizationReview[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([status])
+  @@map("memorization_goals")
+}
+
+model MemorizationSession {
+  id          String   @id @default(cuid())
+  userId      String
+  goalId      String?
+  ayahId      Int
+  sessionDate DateTime @default(now())
+  duration    Int? // Duration in minutes
+  repetitions Int      @default(1)
+  confidence  Int      @default(3) // 1-5 scale
+  notes       String?  @db.VarChar(500) // Short session notes
+
+  user User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  goal MemorizationGoal? @relation(fields: [goalId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([goalId])
+  @@index([ayahId])
+  @@index([sessionDate])
+  @@map("memorization_sessions")
+}
+
+model MemorizationReview {
+  id             String   @id @default(cuid())
+  userId         String
+  goalId         String?
+  ayahId         Int
+  reviewDate     DateTime @default(now())
+  nextReviewDate DateTime // Spaced repetition
+  easeFactor     Float    @default(2.5) // Spaced repetition algorithm
+  interval       Int      @default(1) // Days until next review
+  repetitions    Int      @default(0)
+  recalled       Boolean // Did user recall correctly?
+
+  user User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  goal MemorizationGoal? @relation(fields: [goalId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([goalId])
+  @@index([ayahId])
+  @@index([nextReviewDate])
+  @@map("memorization_reviews")
+}
+
+// Vocabulary Builder Models
+model VocabularyList {
+  id          String  @id @default(cuid())
+  userId      String
+  name        String  @db.VarChar(200)
+  description String? @db.Text
+  isPublic    Boolean @default(false)
+
+  user  User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items VocabularyItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@map("vocabulary_lists")
+}
+
+model VocabularyItem {
+  id              String    @id @default(cuid())
+  listId          String
+  wordId          Int? // Link to AyahWord if applicable
+  rootId          Int? // Link to WordRoot
+  arabicText      String    @db.VarChar(200)
+  transliteration String?   @db.VarChar(200)
+  meaning         String    @db.Text
+  example         String?   @db.Text // Example usage
+  mastery         Int       @default(0) // 0-100 scale
+  lastReviewed    DateTime?
+  reviewCount     Int       @default(0)
+
+  list VocabularyList @relation(fields: [listId], references: [id], onDelete: Cascade)
+  root WordRoot?      @relation(fields: [rootId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([listId])
+  @@index([wordId])
+  @@index([rootId])
+  @@map("vocabulary_items")
+}
+
+// Learning Analytics Models
+model LearningProgress {
+  id               String   @id @default(cuid())
+  userId           String
+  date             DateTime @default(now())
+  wordsLearned     Int      @default(0)
+  ayahsMemorized   Int      @default(0)
+  reviewsCompleted Int      @default(0)
+  studyMinutes     Int      @default(0)
+  tajweedPractice  Int      @default(0) // Minutes
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, date])
+  @@index([userId])
+  @@index([date])
+  @@map("learning_progress")
+}
+
+// ============================================================================
+// QURAN-NLP INTEGRATION MODELS
+// ============================================================================
+
+// Enhanced Word Morphology from QURAN-NLP Corpus
+model WordMorphology {
+  id             Int     @id @default(autoincrement())
+  wordId         Int     @unique
+  stem           String  @db.VarChar(100)
+  lemma          String  @db.VarChar(100)
+  prefix         String? @db.VarChar(50)
+  suffix         String? @db.VarChar(50)
+  pattern        String? @db.VarChar(50)
+  arabicPattern  String? @db.VarChar(50)
+  englishPattern String? @db.VarChar(200)
+  aspects        Json? // JSONB: grammatical aspects with structure
+
+  word AyahWord @relation(fields: [wordId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([wordId])
+  @@index([stem])
+  @@index([lemma])
+  @@map("word_morphology")
+}
+
+// Comprehensive Arabic Dictionary
+model ArabicDictionary {
+  id           Int     @id @default(autoincrement())
+  arabic       String  @db.VarChar(200)
+  root         String  @db.VarChar(20)
+  definition   String  @db.Text
+  examples     Json? // JSONB: array of usage examples with structure
+  partOfSpeech String  @db.VarChar(50)
+  usageNotes   String? @db.Text
+  frequency    Int? // How often word appears in Quran
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([arabic])
+  @@index([root])
+  @@index([partOfSpeech])
+  @@map("arabic_dictionary")
+}
+
+// Verb Conjugation Database
+model VerbConjugation {
+  id              Int     @id @default(autoincrement())
+  rootId          Int
+  verbForm        String  @db.VarChar(20) // I-X (Form I, Form II, etc.)
+  tense           String  @db.VarChar(50) // past, present, imperative
+  person          String  @db.VarChar(20) // first, second, third
+  number          String  @db.VarChar(20) // singular, dual, plural
+  gender          String  @db.VarChar(20) // masculine, feminine
+  arabicText      String  @db.VarChar(100)
+  transliteration String? @db.VarChar(100)
+
+  root WordRoot @relation(fields: [rootId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([rootId])
+  @@index([verbForm])
+  @@index([tense])
+  @@map("verb_conjugations")
+}
+
+// Hadith Narrator Database (for Sanad/Chain analysis)
+model HadithNarrator {
+  id          Int     @id @default(autoincrement())
+  name        String  @db.VarChar(200)
+  nameArabic  String  @db.VarChar(200)
+  birthYear   Int?
+  deathYear   Int?
+  reliability String? @db.VarChar(50) // Trustworthy, Weak, Disputed, etc.
+  biography   String? @db.Text
+
+  chains HadithChain[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([name])
+  @@index([reliability])
+  @@map("hadith_narrators")
+}
+
+// Hadith Chain of Narration (Sanad/Isnad)
+model HadithChain {
+  id         Int @id @default(autoincrement())
+  hadithId   Int
+  narratorId Int
+  position   Int // Order in chain (1 = first narrator, 2 = second, etc.)
+
+  hadith   Hadith         @relation(fields: [hadithId], references: [id], onDelete: Cascade)
+  narrator HadithNarrator @relation(fields: [narratorId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([hadithId, position])
+  @@index([hadithId])
+  @@index([narratorId])
+  @@map("hadith_chains")
+}
