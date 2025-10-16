@@ -124,22 +124,27 @@ export default function SearchPage() {
     setShowSuggestions(false);
 
     try {
-      const params = new URLSearchParams({
-        q: query.trim(),
-        type,
-        page: pageNum.toString(),
-        limit: '20',
+      // Use semantic search API for AI-powered results
+      const res = await fetch('/api/search/semantic', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          query: query.trim(),
+          language: 'english',
+          similarityThreshold: 0.7,
+          maxResults: 20,
+          types: type === 'all' ? ['ayah', 'hadith'] : [type]
+        })
       });
 
-      const res = await fetch(`/api/search?${params}`);
       const data = await res.json();
 
-      if (data.success) {
-        setResults(data.data || []);
-        setTotalResults(data.pagination?.total || data.data?.length || 0);
+      if (data.success && data.results) {
+        setResults(data.results || []);
+        setTotalResults(data.metadata?.count || data.results?.length || 0);
 
         // If no results, fetch suggested searches
-        if (!data.data || data.data.length === 0) {
+        if (!data.results || data.results.length === 0) {
           await fetchSuggestedSearches();
         }
       } else {
@@ -167,9 +172,15 @@ export default function SearchPage() {
     <div className="container mx-auto px-4 py-8 max-w-5xl">
       {/* Header */}
       <div className="mb-10">
-        <h1 className="text-4xl font-bold mb-3 gradient-text">Search</h1>
+        <div className="flex items-center gap-3 mb-3">
+          <h1 className="text-4xl font-bold gradient-text">Search</h1>
+          <span className="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full text-xs font-semibold text-purple-700 dark:text-purple-300 flex items-center gap-1.5">
+            <Sparkles className="h-3.5 w-3.5" />
+            AI-Powered
+          </span>
+        </div>
         <p className="text-muted-foreground text-lg">
-          Search across the Quran, Hadith, Duas, and Islamic Books collections
+          Semantic search powered by OpenAI - understands meaning, not just keywords
         </p>
       </div>
 
