@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd quran-hadith-app/quran-hadith-app && npm run build",
+  "outputDirectory": "quran-hadith-app/quran-hadith-app/.next",
+  "installCommand": "cd quran-hadith-app/quran-hadith-app && npm install"
+}
