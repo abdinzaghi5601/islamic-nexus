@@ -53,25 +53,35 @@ export async function searchAyahsSemantic(
     maxResults
   );
 
-  // Enrich results with translations
-  const enriched: SemanticSearchResult[] = [];
+  // Optimize: Bulk fetch all ayahs with related data in one query
+  if (results.length === 0) {
+    return [];
+  }
 
-  for (const result of results) {
-    const ayah = await prisma.ayah.findUnique({
-      where: { id: result.id },
-      include: {
-        surah: true,
-        translations: {
-          where: { translatorId },
-          take: 1,
-        },
+  const ayahIds = results.map(r => r.id);
+  const ayahs = await prisma.ayah.findMany({
+    where: { id: { in: ayahIds } },
+    include: {
+      surah: true,
+      translations: {
+        where: { translatorId },
+        take: 1,
       },
-    });
+    },
+  });
 
-    if (ayah) {
-      enriched.push({
+  // Create a map for quick lookup
+  const ayahMap = new Map(ayahs.map(a => [a.id, a]));
+
+  // Build enriched results maintaining similarity order
+  const enriched: SemanticSearchResult[] = results
+    .map(result => {
+      const ayah = ayahMap.get(result.id);
+      if (!ayah) return null;
+
+      return {
         id: ayah.id,
-        type: 'ayah',
+        type: 'ayah' as const,
         similarity: result.similarity,
         content: {
           textArabic: ayah.textArabic,
@@ -82,9 +92,9 @@ export async function searchAyahsSemantic(
           surahName: ayah.surah.nameEnglish,
           surahNameArabic: ayah.surah.nameArabic,
         },
-      });
-    }
-  }
+      };
+    })
+    .filter((r): r is SemanticSearchResult => r !== null);
 
   return enriched;
 }
@@ -123,21 +133,32 @@ export async function searchHadithsSemantic(
     maxResults
   );
 
-  const enriched: SemanticSearchResult[] = [];
+  // Optimize: Bulk fetch all hadiths with related data in one query
+  if (results.length === 0) {
+    return [];
+  }
 
-  for (const result of results) {
-    const hadith = await prisma.hadith.findUnique({
-      where: { id: result.id },
-      include: {
-        book: true,
-        chapter: true,
-      },
-    });
+  const hadithIds = results.map(r => r.id);
+  const hadiths = await prisma.hadith.findMany({
+    where: { id: { in: hadithIds } },
+    include: {
+      book: true,
+      chapter: true,
+    },
+  });
 
-    if (hadith) {
-      enriched.push({
+  // Create a map for quick lookup
+  const hadithMap = new Map(hadiths.map(h => [h.id, h]));
+
+  // Build enriched results maintaining similarity order
+  const enriched: SemanticSearchResult[] = results
+    .map(result => {
+      const hadith = hadithMap.get(result.id);
+      if (!hadith) return null;
+
+      return {
         id: hadith.id,
-        type: 'hadith',
+        type: 'hadith' as const,
         similarity: result.similarity,
         content: {
           textArabic: hadith.textArabic,
@@ -148,9 +169,9 @@ export async function searchHadithsSemantic(
           grade: hadith.grade,
           chapterName: hadith.chapter?.nameEnglish,
         },
-      });
-    }
-  }
+      };
+    })
+    .filter((r): r is SemanticSearchResult => r !== null);
 
   return enriched;
 }
