@@ -35,9 +35,12 @@ export async function searchAyahsSemantic(
   } = options;
 
   // Generate query embedding
+  const embeddingStart = Date.now();
   const queryEmbedding = await generateEmbedding(query);
+  console.log(`[Ayah Search] Embedding generated in ${Date.now() - embeddingStart}ms`);
 
   // Call PostgreSQL function
+  const dbStart = Date.now();
   const results: any[] = await prisma.$queryRawUnsafe(
     `
     SELECT * FROM search_ayahs_semantic_jsonb(
@@ -52,12 +55,14 @@ export async function searchAyahsSemantic(
     similarityThreshold,
     maxResults
   );
+  console.log(`[Ayah Search] DB query completed in ${Date.now() - dbStart}ms, found ${results.length} results`);
 
   // Optimize: Bulk fetch all ayahs with related data in one query
   if (results.length === 0) {
     return [];
   }
 
+  const enrichStart = Date.now();
   const ayahIds = results.map(r => r.id);
   const ayahs = await prisma.ayah.findMany({
     where: { id: { in: ayahIds } },
@@ -96,6 +101,8 @@ export async function searchAyahsSemantic(
     })
     .filter((r): r is SemanticSearchResult => r !== null);
 
+  console.log(`[Ayah Search] Data enrichment completed in ${Date.now() - enrichStart}ms`);
+
   return enriched;
 }
 
@@ -116,8 +123,11 @@ export async function searchHadithsSemantic(
     maxResults = 20,
   } = options;
 
+  const embeddingStart = Date.now();
   const queryEmbedding = await generateEmbedding(query);
+  console.log(`[Hadith Search] Embedding generated in ${Date.now() - embeddingStart}ms`);
 
+  const dbStart = Date.now();
   const results: any[] = await prisma.$queryRawUnsafe(
     `
     SELECT * FROM search_hadiths_semantic_jsonb(
@@ -132,12 +142,14 @@ export async function searchHadithsSemantic(
     similarityThreshold,
     maxResults
   );
+  console.log(`[Hadith Search] DB query completed in ${Date.now() - dbStart}ms, found ${results.length} results`);
 
   // Optimize: Bulk fetch all hadiths with related data in one query
   if (results.length === 0) {
     return [];
   }
 
+  const enrichStart = Date.now();
   const hadithIds = results.map(r => r.id);
   const hadiths = await prisma.hadith.findMany({
     where: { id: { in: hadithIds } },
@@ -172,6 +184,8 @@ export async function searchHadithsSemantic(
       };
     })
     .filter((r): r is SemanticSearchResult => r !== null);
+
+  console.log(`[Hadith Search] Data enrichment completed in ${Date.now() - enrichStart}ms`);
 
   return enriched;
 }

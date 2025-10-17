@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { semanticSearchAll, searchAyahsSemantic, searchHadithsSemantic } from '@/lib/utils/semantic-search';
 
+// Increase serverless function timeout to 30 seconds (requires Vercel Pro plan)
+// Default is 10 seconds on Hobby plan, up to 60 seconds on Pro
+export const maxDuration = 30;
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -41,15 +45,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Perform semantic search
+    // Perform semantic search with detailed timing
     const startTime = Date.now();
+    console.log(`[Semantic Search] Starting search for: "${query}"`);
+
     const results = await semanticSearchAll(query, {
       language,
       similarityThreshold,
       maxResults,
       types: Array.isArray(types) ? types : [types],
     });
+
     const searchTime = Date.now() - startTime;
+    console.log(`[Semantic Search] Completed in ${searchTime}ms, found ${results.length} results`);
 
     return NextResponse.json({
       success: true,
