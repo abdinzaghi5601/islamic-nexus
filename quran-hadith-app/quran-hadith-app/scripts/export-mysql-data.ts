@@ -2,7 +2,7 @@
  * Step 1: Export data from MySQL to JSON files with batching for large tables
  */
 
-import mysql from 'mysql2/promise';
+import * as mysql from 'mysql2/promise';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -28,7 +28,7 @@ const mysqlConfig = {
 };
 
 // Small tables - export all at once
-async function exportTable(connection: mysql.Connection, tableName: string, fileName: string) {
+async function exportTable(connection: mysql.Connection | mysql.Pool, tableName: string, fileName: string) {
   console.log(`📦 Exporting ${tableName}...`);
   const [rows] = await connection.query(`SELECT * FROM ${tableName}`);
   const data = rows as any[];
@@ -44,7 +44,7 @@ async function exportTable(connection: mysql.Connection, tableName: string, file
 
 // Large tables - export with batching
 async function exportTableBatched(
-  connection: mysql.Connection,
+  connection: mysql.Connection | mysql.Pool,
   tableName: string,
   fileName: string,
   batchSize: number = 5000
@@ -89,7 +89,7 @@ async function exportTableBatched(
 
 // Stream large tables directly to file (most memory efficient)
 async function exportTableStreamed(
-  connection: mysql.Connection,
+  connection: mysql.Connection | mysql.Pool,
   tableName: string,
   fileName: string,
   batchSize: number = 5000
@@ -136,8 +136,8 @@ async function exportTableStreamed(
   writeStream.write('\n]');
   writeStream.end();
 
-  await new Promise((resolve, reject) => {
-    writeStream.on('finish', resolve);
+  await new Promise<void>((resolve, reject) => {
+    writeStream.on('finish', () => resolve());
     writeStream.on('error', reject);
   });
 
@@ -152,7 +152,7 @@ async function exportData() {
     fs.mkdirSync(exportDir, { recursive: true });
   }
 
-  let connection: mysql.Connection | null = null;
+  let connection: mysql.Connection | mysql.Pool | null = null;
 
   try {
     // Connect to MySQL

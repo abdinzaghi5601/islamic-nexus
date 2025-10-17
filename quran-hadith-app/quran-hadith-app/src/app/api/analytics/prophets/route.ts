@@ -1,6 +1,5 @@
 // app/api/analytics/prophets/route.ts
 import { NextResponse } from 'next/server';
-import prisma from '@/lib/db/prisma';
 import { PROPHETS } from '@/lib/utils/search-utils';
 
 export const dynamic = 'force-dynamic';
@@ -31,29 +30,9 @@ const PROPHET_MENTIONS = {
 
 export async function GET() {
   try {
-    // Get prophet themes from database
-    const prophetThemes = await prisma.theme.findMany({
-      where: {
-        slug: {
-          startsWith: 'prophet-',
-        },
-      },
-      include: {
-        _count: {
-          select: {
-            ayahs: true,
-          },
-        },
-      },
-      orderBy: {
-        name: 'asc',
-      },
-    });
-
-    // Combine database data with mention counts
+    // Build prophet analytics from static data
     const prophetAnalytics = Object.entries(PROPHETS).map(([key, info]) => {
       const mentions = PROPHET_MENTIONS[key as keyof typeof PROPHET_MENTIONS] || { count: 0, surahs: 0 };
-      const theme = prophetThemes.find(t => t.slug === `prophet-${key}`);
 
       return {
         key,
@@ -61,7 +40,7 @@ export async function GET() {
         nameArabic: info.arabic[0],
         mentions: mentions.count,
         surahsAppearing: mentions.surahs,
-        taggedAyahs: theme?._count.ayahs || 0,
+        taggedAyahs: 0, // Theme model doesn't exist yet
         relatedTopics: info.relatedTopics,
       };
     });

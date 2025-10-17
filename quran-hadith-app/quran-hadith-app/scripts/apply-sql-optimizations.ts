@@ -5,7 +5,11 @@
 
 import { PrismaClient } from '@prisma/client';
 import { readFileSync } from 'fs';
-import { join } from 'path';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const prisma = new PrismaClient();
 
@@ -28,18 +32,20 @@ async function applySqlFile(filename: string, description: string) {
 
       try {
         await prisma.$executeRawUnsafe(statement + ';');
-      } catch (error) {
+      } catch (error: any) {
         // Some statements might fail if already exist (e.g., CREATE IF NOT EXISTS)
         // Log but continue
-        if (!error.message.includes('already exists')) {
-          console.warn(`  ⚠️  Warning: ${error.message.split('\n')[0]}`);
+        const errorMessage = error?.message || String(error);
+        if (!errorMessage.includes('already exists')) {
+          console.warn(`  ⚠️  Warning: ${errorMessage.split('\n')[0]}`);
         }
       }
     }
 
     console.log(`  ✅ ${description} applied successfully`);
-  } catch (error) {
-    console.error(`  ❌ Error applying ${description}:`, error.message);
+  } catch (error: any) {
+    const errorMessage = error?.message || String(error);
+    console.error(`  ❌ Error applying ${description}:`, errorMessage);
     throw error;
   }
 }

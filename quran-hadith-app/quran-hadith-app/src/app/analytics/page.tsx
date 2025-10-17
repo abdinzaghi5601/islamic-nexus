@@ -105,11 +105,15 @@ export default function AnalyticsPage() {
   const [themes, setThemes] = useState<ThemeData | null>(null);
   const [words, setWords] = useState<WordData | null>(null);
   const [statistics, setStatistics] = useState<StatisticsData | null>(null);
+  const [errors, setErrors] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
+      const errorList: string[] = [];
+
       try {
+        console.log('Fetching analytics data...');
         const [overviewRes, prophetsRes, themesRes, wordsRes, statsRes] = await Promise.all([
           fetch('/api/analytics/overview'),
           fetch('/api/analytics/prophets'),
@@ -117,6 +121,14 @@ export default function AnalyticsPage() {
           fetch('/api/analytics/words'),
           fetch('/api/analytics/statistics'),
         ]);
+
+        console.log('Response statuses:', {
+          overview: overviewRes.status,
+          prophets: prophetsRes.status,
+          themes: themesRes.status,
+          words: wordsRes.status,
+          stats: statsRes.status,
+        });
 
         const [overviewData, prophetsData, themesData, wordsData, statsData] = await Promise.all([
           overviewRes.json(),
@@ -126,14 +138,58 @@ export default function AnalyticsPage() {
           statsRes.json(),
         ]);
 
-        if (overviewData.success) setOverview(overviewData.data);
-        if (prophetsData.success) setProphets(prophetsData.data);
-        if (themesData.success) setThemes(themesData.data);
-        if (wordsData.success) setWords(wordsData.data);
-        if (statsData.success) setStatistics(statsData.data);
+        console.log('Fetched data:', {
+          overview: overviewData.success ? 'success' : overviewData.error,
+          prophets: prophetsData.success ? 'success' : prophetsData.error,
+          themes: themesData.success ? 'success' : themesData.error,
+          words: wordsData.success ? 'success' : wordsData.error,
+          stats: statsData.success ? 'success' : statsData.error,
+        });
+
+        if (overviewData.success) {
+          setOverview(overviewData.data);
+          console.log('Overview data set:', overviewData.data);
+        } else {
+          console.error('Overview failed:', overviewData.error);
+          errorList.push(`Overview: ${overviewData.error || 'Unknown error'}`);
+        }
+
+        if (prophetsData.success) {
+          setProphets(prophetsData.data);
+          console.log('Prophets data set:', prophetsData.data.prophets?.length, 'prophets');
+        } else {
+          console.error('Prophets failed:', prophetsData.error);
+          errorList.push(`Prophets: ${prophetsData.error || 'Unknown error'}`);
+        }
+
+        if (themesData.success) {
+          setThemes(themesData.data);
+          console.log('Themes data set:', themesData.data);
+        } else {
+          console.error('Themes failed:', themesData.error);
+          errorList.push(`Themes: ${themesData.error || 'Unknown error'}`);
+        }
+
+        if (wordsData.success) {
+          setWords(wordsData.data);
+          console.log('Words data set:', wordsData.data);
+        } else {
+          console.error('Words failed:', wordsData.error);
+          errorList.push(`Words: ${wordsData.error || 'Unknown error'}`);
+        }
+
+        if (statsData.success) {
+          setStatistics(statsData.data);
+          console.log('Statistics data set:', statsData.data);
+        } else {
+          console.error('Statistics failed:', statsData.error);
+          errorList.push(`Statistics: ${statsData.error || 'Unknown error'}`);
+        }
       } catch (error) {
         console.error('Error fetching analytics:', error);
+        errorList.push(`Network error: ${error instanceof Error ? error.message : 'Unknown error'}`);
       } finally {
+        setErrors(errorList);
         setLoading(false);
       }
     };
@@ -165,6 +221,21 @@ export default function AnalyticsPage() {
           Explore comprehensive insights and statistics from the Holy Quran
         </p>
       </div>
+
+      {/* Error Display */}
+      {errors.length > 0 && (
+        <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
+          <h3 className="font-semibold text-red-600 dark:text-red-400 mb-2">⚠️ Some data failed to load:</h3>
+          <ul className="list-disc list-inside text-sm text-red-600 dark:text-red-400 space-y-1">
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+          <p className="text-xs text-muted-foreground mt-2">
+            Check the browser console (F12) for more details. Make sure your database is accessible.
+          </p>
+        </div>
+      )}
 
       {/* Tab Navigation */}
       <div className="mb-8 flex flex-wrap gap-2 border-b pb-4">
