@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Search as SearchIcon, BookOpen, Library, Loader2, Heart, Book, ChevronDown, ChevronUp, Sparkles, AlertTriangle } from 'lucide-react';
+import { Search as SearchIcon, BookOpen, Library, Loader2, Heart, Book, ChevronDown, ChevronUp } from 'lucide-react';
 import Link from 'next/link';
 
 interface Tafsir {
@@ -58,9 +58,6 @@ export default function SearchPage() {
   const [expandedTafsirs, setExpandedTafsirs] = useState<Set<string>>(new Set());
   const [expandedHadiths, setExpandedHadiths] = useState<Set<string>>(new Set());
 
-  // Add debugging state
-  const [searchMethod, setSearchMethod] = useState<'semantic' | 'keyword' | 'none'>('none');
-  const [debugInfo, setDebugInfo] = useState<string>('');
 
   const toggleTafsir = (resultId: number) => {
     const key = `tafsir-${resultId}`;
@@ -126,110 +123,39 @@ export default function SearchPage() {
     setSearched(true);
     setPage(pageNum);
     setShowSuggestions(false);
-    setDebugInfo('');
-
-    console.log('Starting search for:', query.trim());
 
     try {
-      let semanticResults = null;
-      let semanticError = null;
+      const params = new URLSearchParams({
+        q: query.trim(),
+        type: type === 'all' ? 'all' : type,
+        page: pageNum.toString(),
+        limit: '20',
+      });
 
-      // Try semantic search first with better error handling
-      try {
-        console.log('Attempting semantic search...');
+      const response = await fetch(`/api/search?${params}`);
 
-        const semanticSearchPromise = fetch('/api/search/semantic', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            query: query.trim(),
-            language: 'english',
-            similarityThreshold: 0.3, // Lowered threshold for more results
-            maxResults: 20,
-            types: type === 'all' ? ['ayah', 'hadith'] : [type]
-          })
-        });
-
-        // Increased timeout to 20 seconds (OpenAI API + DB query + Vercel cold start)
-        const timeoutPromise = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Semantic search timeout after 20 seconds')), 20000)
-        );
-
-        const response = await Promise.race([semanticSearchPromise, timeoutPromise]) as Response;
-
-        console.log('Semantic search response status:', response.status);
-
-        if (!response.ok) {
-          throw new Error(`Semantic search failed with status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log('Semantic search response:', data);
-
-        if (data.success && data.results && Array.isArray(data.results) && data.results.length > 0) {
-          semanticResults = data;
-          setSearchMethod('semantic');
-          setDebugInfo(`Semantic search successful: ${data.results.length} results found`);
-          console.log('Semantic search successful:', data.results.length, 'results');
-        } else {
-          setDebugInfo('Semantic search returned no results');
-          console.log('Semantic search returned no results:', data);
-        }
-      } catch (error: any) {
-        semanticError = error;
-        console.log('Semantic search failed:', error.message);
-        setDebugInfo(`Semantic search failed: ${error.message}`);
+      if (!response.ok) {
+        throw new Error(`Search failed with status: ${response.status}`);
       }
 
-      // Use semantic results if available, otherwise fallback to keyword search
-      if (semanticResults) {
-        setResults(semanticResults.results);
-        setTotalResults(semanticResults.metadata?.count || semanticResults.results.length);
-      } else {
-        console.log('Falling back to keyword search...');
-        setSearchMethod('keyword');
+      const data = await response.json();
 
-        const params = new URLSearchParams({
-          q: query.trim(),
-          type: type === 'all' ? 'all' : type,
-          page: pageNum.toString(),
-          limit: '20',
-        });
+      if (data.success && data.data) {
+        setResults(data.data.results || []);
+        setTotalResults(data.data.totalCount || data.data.results?.length || 0);
 
-        const response = await fetch(`/api/search?${params}`);
-        console.log('Keyword search response status:', response.status);
-
-        if (!response.ok) {
-          throw new Error(`Keyword search failed with status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log('Keyword search response:', data);
-
-        if (data.success && data.data) {
-          setResults(data.data.results || []);
-          setTotalResults(data.data.totalCount || data.data.results?.length || 0);
-          setDebugInfo(`Keyword search: ${data.data.results?.length || 0} results found`);
-
-          if (!data.data.results || data.data.results.length === 0) {
-            await fetchSuggestedSearches();
-          }
-        } else {
-          setResults([]);
-          setTotalResults(0);
-          setDebugInfo('Both searches failed to return results');
+        if (!data.data.results || data.data.results.length === 0) {
           await fetchSuggestedSearches();
         }
+      } else {
+        setResults([]);
+        setTotalResults(0);
+        await fetchSuggestedSearches();
       }
     } catch (error: any) {
-      console.error('Search completely failed:', error);
+      console.error('Search failed:', error);
       setResults([]);
       setTotalResults(0);
-      setSearchMethod('none');
-      setDebugInfo(`Search error: ${error.message}`);
       await fetchSuggestedSearches();
     } finally {
       setLoading(false);
@@ -246,31 +172,10 @@ export default function SearchPage() {
     <div className="container mx-auto px-4 py-8 max-w-5xl">
       {/* Header */}
       <div className="mb-10">
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-4xl font-bold gradient-text">Search</h1>
-          <span className="px-3 py-1 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full text-xs font-semibold text-purple-700 dark:text-purple-300 flex items-center gap-1.5">
-            <Sparkles className="h-3.5 w-3.5" />
-            AI-Powered
-          </span>
-          {searchMethod !== 'none' && (
-            <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-              searchMethod === 'semantic'
-                ? 'bg-green-500/20 text-green-700 dark:text-green-300 border border-green-500/30'
-                : 'bg-blue-500/20 text-blue-700 dark:text-blue-300 border border-blue-500/30'
-            }`}>
-              {searchMethod === 'semantic' ? 'Semantic' : 'Keyword'} Search
-            </span>
-          )}
-        </div>
+        <h1 className="text-4xl font-bold gradient-text mb-3">Search</h1>
         <p className="text-muted-foreground text-lg">
-          Semantic search powered by OpenAI - understands meaning, not just keywords
+          Search for verses, hadiths, and Islamic content
         </p>
-        {debugInfo && (
-          <div className="mt-2 p-2 bg-muted/50 rounded text-xs text-muted-foreground flex items-center gap-2">
-            <AlertTriangle className="h-3 w-3" />
-            Debug: {debugInfo}
-          </div>
-        )}
       </div>
 
       {/* Search Input */}
