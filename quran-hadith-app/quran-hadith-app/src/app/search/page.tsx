@@ -124,25 +124,41 @@ export default function SearchPage() {
     setShowSuggestions(false);
 
     try {
-      // Try semantic search first with lower threshold
-      let res = await fetch('/api/search/semantic', {
+      // Create timeout for semantic search (5 seconds max)
+      const semanticSearchPromise = fetch('/api/search/semantic', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           query: query.trim(),
           language: 'english',
-          similarityThreshold: 0.5, // Lower threshold for better results
+          similarityThreshold: 0.5,
           maxResults: 20,
           types: type === 'all' ? ['ayah', 'hadith'] : [type]
         })
-      });
+      }).then(res => res.json());
 
-      let data = await res.json();
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('Semantic search timeout')), 5000)
+      );
 
-      // If semantic search returns no results, fallback to keyword search
-      if (!data.success || !data.results || data.results.length === 0) {
-        console.log('Semantic search returned no results, falling back to keyword search');
+      let data;
+      let useSemanticSearch = false;
 
+      try {
+        // Try semantic search with 5 second timeout
+        data = await Promise.race([semanticSearchPromise, timeoutPromise]);
+
+        if (data.success && data.results && data.results.length > 0) {
+          useSemanticSearch = true;
+          setResults(data.results);
+          setTotalResults(data.metadata?.count || data.results.length);
+        }
+      } catch (semanticError) {
+        console.log('Semantic search timeout or error, using keyword search');
+      }
+
+      // Fallback to keyword search if semantic failed or returned no results
+      if (!useSemanticSearch) {
         const params = new URLSearchParams({
           q: query.trim(),
           type: type === 'all' ? 'all' : type,
@@ -150,7 +166,7 @@ export default function SearchPage() {
           limit: '20',
         });
 
-        res = await fetch(`/api/search?${params}`);
+        const res = await fetch(`/api/search?${params}`);
         data = await res.json();
 
         if (data.success && data.data) {
@@ -165,10 +181,6 @@ export default function SearchPage() {
           setTotalResults(0);
           await fetchSuggestedSearches();
         }
-      } else {
-        // Semantic search succeeded
-        setResults(data.results || []);
-        setTotalResults(data.metadata?.count || data.results?.length || 0);
       }
     } catch (error) {
       console.error('Search failed:', error);
