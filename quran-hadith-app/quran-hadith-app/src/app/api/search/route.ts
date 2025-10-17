@@ -76,6 +76,7 @@ export async function GET(request: NextRequest) {
           OR: searchTerms.map(term => ({
             text: {
               contains: term,
+              mode: 'insensitive',
             },
           })),
         },
@@ -105,6 +106,7 @@ export async function GET(request: NextRequest) {
           OR: searchTerms.map(term => ({
             text: {
               contains: term,
+              mode: 'insensitive',
             },
           })),
         },
@@ -162,6 +164,7 @@ export async function GET(request: NextRequest) {
               OR: searchTerms.map(term => ({
                 textEnglish: {
                   contains: term,
+                  mode: 'insensitive',
                 },
               })),
             },
@@ -215,7 +218,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Search Hadith with expanded terms
-    // Note: MySQL is case-insensitive by default
+    // PostgreSQL requires explicit case-insensitive mode
     if (type === 'all' || type === 'hadith') {
       const hadithResults = await prisma.hadith.findMany({
         where: {
@@ -223,11 +226,13 @@ export async function GET(request: NextRequest) {
             ...searchTerms.map(term => ({
               textEnglish: {
                 contains: term,
+                mode: 'insensitive',
               },
             })),
             ...searchTerms.map(term => ({
               textArabic: {
                 contains: term,
+                mode: 'insensitive',
               },
             })),
           ],
@@ -273,16 +278,19 @@ export async function GET(request: NextRequest) {
             ...searchTerms.map(term => ({
               title: {
                 contains: term,
+                mode: 'insensitive',
               },
             })),
             ...searchTerms.map(term => ({
               textEnglish: {
                 contains: term,
+                mode: 'insensitive',
               },
             })),
             ...searchTerms.map(term => ({
               tags: {
                 contains: term,
+                mode: 'insensitive',
               },
             })),
           ],
@@ -326,6 +334,7 @@ export async function GET(request: NextRequest) {
           OR: searchTerms.map(term => ({
             content: {
               contains: term,
+              mode: 'insensitive',
             },
           })),
         },
