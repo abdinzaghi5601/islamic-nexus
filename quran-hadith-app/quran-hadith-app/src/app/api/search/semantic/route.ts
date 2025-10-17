@@ -3,6 +3,7 @@ import { semanticSearchAll, searchAyahsSemantic, searchHadithsSemantic } from '@
 
 // Increase serverless function timeout to 30 seconds (requires Vercel Pro plan)
 // Default is 10 seconds on Hobby plan, up to 60 seconds on Pro
+// Note: Edge Runtime won't work due to Prisma's Node.js dependencies
 export const maxDuration = 30;
 
 export async function POST(request: NextRequest) {
