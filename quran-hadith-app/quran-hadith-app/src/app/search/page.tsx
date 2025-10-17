@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Search as SearchIcon, BookOpen, Library, Loader2, Heart, Book, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
+import { Search as SearchIcon, BookOpen, Library, Loader2, Heart, Book, ChevronDown, ChevronUp, Sparkles, AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
 
 interface Tafsir {
@@ -57,6 +57,10 @@ export default function SearchPage() {
   const [suggestedSearches, setSuggestedSearches] = useState<string[]>([]);
   const [expandedTafsirs, setExpandedTafsirs] = useState<Set<string>>(new Set());
   const [expandedHadiths, setExpandedHadiths] = useState<Set<string>>(new Set());
+
+  // Add debugging state
+  const [searchMethod, setSearchMethod] = useState<'semantic' | 'keyword' | 'none'>('none');
+  const [debugInfo, setDebugInfo] = useState<string>('');
 
   const toggleTafsir = (resultId: number) => {
     const key = `tafsir-${resultId}`;
@@ -122,43 +126,72 @@ export default function SearchPage() {
     setSearched(true);
     setPage(pageNum);
     setShowSuggestions(false);
+    setDebugInfo('');
+
+    console.log('Starting search for:', query.trim());
 
     try {
-      // Create timeout for semantic search (5 seconds max)
-      const semanticSearchPromise = fetch('/api/search/semantic', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          query: query.trim(),
-          language: 'english',
-          similarityThreshold: 0.5,
-          maxResults: 20,
-          types: type === 'all' ? ['ayah', 'hadith'] : [type]
-        })
-      }).then(res => res.json());
+      let semanticResults = null;
+      let semanticError = null;
 
-      const timeoutPromise = new Promise((_, reject) =>
-        setTimeout(() => reject(new Error('Semantic search timeout')), 5000)
-      );
-
-      let data;
-      let useSemanticSearch = false;
-
+      // Try semantic search first with better error handling
       try {
-        // Try semantic search with 5 second timeout
-        data = await Promise.race([semanticSearchPromise, timeoutPromise]);
+        console.log('Attempting semantic search...');
 
-        if (data.success && data.results && data.results.length > 0) {
-          useSemanticSearch = true;
-          setResults(data.results);
-          setTotalResults(data.metadata?.count || data.results.length);
+        const semanticSearchPromise = fetch('/api/search/semantic', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            query: query.trim(),
+            language: 'english',
+            similarityThreshold: 0.3, // Lowered threshold for more results
+            maxResults: 20,
+            types: type === 'all' ? ['ayah', 'hadith'] : [type]
+          })
+        });
+
+        // Increased timeout to 8 seconds
+        const timeoutPromise = new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('Semantic search timeout after 8 seconds')), 8000)
+        );
+
+        const response = await Promise.race([semanticSearchPromise, timeoutPromise]) as Response;
+
+        console.log('Semantic search response status:', response.status);
+
+        if (!response.ok) {
+          throw new Error(`Semantic search failed with status: ${response.status}`);
         }
-      } catch (semanticError) {
-        console.log('Semantic search timeout or error, using keyword search');
+
+        const data = await response.json();
+        console.log('Semantic search response:', data);
+
+        if (data.success && data.results && Array.isArray(data.results) && data.results.length > 0) {
+          semanticResults = data;
+          setSearchMethod('semantic');
+          setDebugInfo(`Semantic search successful: ${data.results.length} results found`);
+          console.log('Semantic search successful:', data.results.length, 'results');
+        } else {
+          setDebugInfo('Semantic search returned no results');
+          console.log('Semantic search returned no results:', data);
+        }
+      } catch (error: any) {
+        semanticError = error;
+        console.log('Semantic search failed:', error.message);
+        setDebugInfo(`Semantic search failed: ${error.message}`);
       }
 
-      // Fallback to keyword search if semantic failed or returned no results
-      if (!useSemanticSearch) {
+      // Use semantic results if available, otherwise fallback to keyword search
+      if (semanticResults) {
+        setResults(semanticResults.results);
+        setTotalResults(semanticResults.metadata?.count || semanticResults.results.length);
+      } else {
+        console.log('Falling back to keyword search...');
+        setSearchMethod('keyword');
+
         const params = new URLSearchParams({
           q: query.trim(),
           type: type === 'all' ? 'all' : type,
@@ -166,12 +199,20 @@ export default function SearchPage() {
           limit: '20',
         });
 
-        const res = await fetch(`/api/search?${params}`);
-        data = await res.json();
+        const response = await fetch(`/api/search?${params}`);
+        console.log('Keyword search response status:', response.status);
+
+        if (!response.ok) {
+          throw new Error(`Keyword search failed with status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('Keyword search response:', data);
 
         if (data.success && data.data) {
           setResults(data.data.results || []);
           setTotalResults(data.data.totalCount || data.data.results?.length || 0);
+          setDebugInfo(`Keyword search: ${data.data.results?.length || 0} results found`);
 
           if (!data.data.results || data.data.results.length === 0) {
             await fetchSuggestedSearches();
@@ -179,13 +220,16 @@ export default function SearchPage() {
         } else {
           setResults([]);
           setTotalResults(0);
+          setDebugInfo('Both searches failed to return results');
           await fetchSuggestedSearches();
         }
       }
-    } catch (error) {
-      console.error('Search failed:', error);
+    } catch (error: any) {
+      console.error('Search completely failed:', error);
       setResults([]);
       setTotalResults(0);
+      setSearchMethod('none');
+      setDebugInfo(`Search error: ${error.message}`);
       await fetchSuggestedSearches();
     } finally {
       setLoading(false);
@@ -208,10 +252,25 @@ export default function SearchPage() {
             <Sparkles className="h-3.5 w-3.5" />
             AI-Powered
           </span>
+          {searchMethod !== 'none' && (
+            <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+              searchMethod === 'semantic'
+                ? 'bg-green-500/20 text-green-700 dark:text-green-300 border border-green-500/30'
+                : 'bg-blue-500/20 text-blue-700 dark:text-blue-300 border border-blue-500/30'
+            }`}>
+              {searchMethod === 'semantic' ? 'Semantic' : 'Keyword'} Search
+            </span>
+          )}
         </div>
         <p className="text-muted-foreground text-lg">
           Semantic search powered by OpenAI - understands meaning, not just keywords
         </p>
+        {debugInfo && (
+          <div className="mt-2 p-2 bg-muted/50 rounded text-xs text-muted-foreground flex items-center gap-2">
+            <AlertTriangle className="h-3 w-3" />
+            Debug: {debugInfo}
+          </div>
+        )}
       </div>
 
       {/* Search Input */}
