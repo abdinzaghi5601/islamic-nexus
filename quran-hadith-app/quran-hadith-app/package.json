@@ -37,7 +37,8 @@
     "generate:embeddings:ayahs": "tsx scripts/generate-embeddings.ts ayahs",
     "generate:embeddings:hadiths": "tsx scripts/generate-embeddings.ts hadiths",
     "generate:embeddings:hadiths:batched": "tsx scripts/generate-hadiths-batched.ts",
-    "generate:embeddings:test": "tsx scripts/generate-embeddings.ts ayahs 10"
+    "generate:embeddings:test": "tsx scripts/generate-embeddings.ts ayahs 10",
+    "warmup:cache": "tsx scripts/warmup-cache.ts"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

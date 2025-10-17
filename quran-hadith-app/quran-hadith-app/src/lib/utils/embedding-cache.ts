@@ -87,6 +87,24 @@ class EmbeddingCache {
       ttlMinutes: this.ttl / (60 * 1000),
     };
   }
+
+  /**
+   * Load cached embeddings from file (for pre-warming)
+   */
+  loadFromFile(embeddings: Array<{ normalizedQuery: string; embedding: number[] }>): number {
+    let loaded = 0;
+    const now = Date.now();
+
+    for (const item of embeddings) {
+      this.cache.set(item.normalizedQuery, {
+        embedding: item.embedding,
+        timestamp: now,
+      });
+      loaded++;
+    }
+
+    return loaded;
+  }
 }
 
 // Export singleton instance

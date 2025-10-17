@@ -1,10 +1,17 @@
 import OpenAI from 'openai';
 import { embeddingCache } from './embedding-cache';
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Lazy-initialize OpenAI client (allows env vars to load first)
+let openai: OpenAI | null = null;
+
+function getOpenAIClient(): OpenAI {
+  if (!openai) {
+    openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+  }
+  return openai;
+}
 
 // Constants
 const EMBEDDING_MODEL = 'text-embedding-3-small'; // 1536 dimensions, $0.02/1M tokens
@@ -31,7 +38,8 @@ export async function generateEmbedding(text: string): Promise<number[]> {
   console.log('[Embedding Cache] Miss - generating new embedding');
 
   try {
-    const response = await openai.embeddings.create({
+    const client = getOpenAIClient();
+    const response = await client.embeddings.create({
       model: EMBEDDING_MODEL,
       input: text,
       encoding_format: 'float',
@@ -77,7 +85,8 @@ export async function generateEmbeddingsBatch(
   }
 
   try {
-    const response = await openai.embeddings.create({
+    const client = getOpenAIClient();
+    const response = await client.embeddings.create({
       model: EMBEDDING_MODEL,
       input: validTexts,
       encoding_format: 'float',
