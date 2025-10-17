@@ -27,7 +27,7 @@ export async function GET() {
           nameArabic: true,
           numberOfAyahs: true,
           revelationType: true,
-          revelationOrder: true,
+          order: true,
           _count: {
             select: {
               ayahs: true,
