@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { semanticSearchAll, searchAyahsSemantic, searchHadithsSemantic } from '@/lib/utils/semantic-search';
+// Load pre-warmed cache on startup
+import '@/lib/utils/cache-loader';
 
 // Increase serverless function timeout to 30 seconds (requires Vercel Pro plan)
 // Default is 10 seconds on Hobby plan, up to 60 seconds on Pro
