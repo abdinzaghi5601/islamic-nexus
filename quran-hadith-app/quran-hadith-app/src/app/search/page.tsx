@@ -153,9 +153,9 @@ export default function SearchPage() {
           })
         });
 
-        // Increased timeout to 15 seconds (OpenAI embedding generation + DB query)
+        // Increased timeout to 20 seconds (OpenAI API + DB query + Vercel cold start)
         const timeoutPromise = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Semantic search timeout after 15 seconds')), 15000)
+          setTimeout(() => reject(new Error('Semantic search timeout after 20 seconds')), 20000)
         );
 
         const response = await Promise.race([semanticSearchPromise, timeoutPromise]) as Response;
