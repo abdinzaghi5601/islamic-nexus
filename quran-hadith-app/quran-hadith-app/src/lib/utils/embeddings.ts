@@ -1,4 +1,5 @@
 import OpenAI from 'openai';
+import { embeddingCache } from './embedding-cache';
 
 // Initialize OpenAI client
 const openai = new OpenAI({
@@ -13,12 +14,21 @@ const MAX_RETRIES = 3;
 const RETRY_DELAY = 1000; // 1 second
 
 /**
- * Generate embedding for a single text
+ * Generate embedding for a single text (with caching)
  */
 export async function generateEmbedding(text: string): Promise<number[]> {
   if (!text || text.trim().length === 0) {
     throw new Error('Text cannot be empty');
   }
+
+  // Check cache first
+  const cached = embeddingCache.get(text);
+  if (cached) {
+    console.log('[Embedding Cache] Hit - using cached embedding');
+    return cached;
+  }
+
+  console.log('[Embedding Cache] Miss - generating new embedding');
 
   try {
     const response = await openai.embeddings.create({
@@ -27,7 +37,12 @@ export async function generateEmbedding(text: string): Promise<number[]> {
       encoding_format: 'float',
     });
 
-    return response.data[0].embedding;
+    const embedding = response.data[0].embedding;
+
+    // Store in cache
+    embeddingCache.set(text, embedding);
+
+    return embedding;
   } catch (error: any) {
     console.error('Error generating embedding:', error);
     throw new Error(`Failed to generate embedding: ${error.message}`);
