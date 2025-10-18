@@ -137,7 +137,7 @@ export default function MegaMenu({ className = '' }: MegaMenuProps) {
 
             {/* Dropdown Panel */}
             {isActive && (
-              <div className="absolute top-full left-0 mt-2 w-[600px] glass-card rounded-xl shadow-2xl p-6 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="absolute top-full left-0 mt-2 w-[600px] bg-card border border-border rounded-xl shadow-2xl p-6 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                 <div className="grid grid-cols-2 gap-6">
                   {/* Left Column - Main Links */}
                   <div>
