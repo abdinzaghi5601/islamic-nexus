@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Search as SearchIcon, BookOpen, Library, Loader2, Heart, Book, ChevronDown, ChevronUp } from 'lucide-react';
+import { Search as SearchIcon, BookOpen, Library, Loader2, Heart, Book, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 interface Tafsir {
@@ -141,10 +141,12 @@ export default function SearchPage() {
       const data = await response.json();
 
       if (data.success && data.data) {
-        setResults(data.data.results || []);
-        setTotalResults(data.data.totalCount || data.data.results?.length || 0);
+        // API returns data directly as array, not nested in results
+        const resultsArray = Array.isArray(data.data) ? data.data : [];
+        setResults(resultsArray);
+        setTotalResults(data.pagination?.total || resultsArray.length);
 
-        if (!data.data.results || data.data.results.length === 0) {
+        if (resultsArray.length === 0) {
           await fetchSuggestedSearches();
         }
       } else {
