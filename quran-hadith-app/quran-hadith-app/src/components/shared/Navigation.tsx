@@ -140,7 +140,7 @@ export function Navigation() {
                 </button>
 
                 {userMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-56 rounded-lg border border-border bg-background/95 backdrop-blur-xl shadow-lg">
+                  <div className="absolute right-0 mt-2 w-56 rounded-lg border border-border bg-background shadow-lg">
                     <div className="px-4 py-3 border-b border-border">
                       <p className="text-sm font-medium">{session.user.name}</p>
                       <p className="text-xs text-muted-foreground truncate">{session.user.email}</p>
@@ -206,7 +206,7 @@ export function Navigation() {
               </button>
 
               {adminOpen && (
-                <div className="absolute right-0 mt-2 w-48 rounded-lg border border-border bg-background/95 backdrop-blur-xl shadow-lg">
+                <div className="absolute right-0 mt-2 w-48 rounded-lg border border-border bg-background shadow-lg">
                   {adminLinks.map((link) => (
                     <Link
                       key={link.href}
