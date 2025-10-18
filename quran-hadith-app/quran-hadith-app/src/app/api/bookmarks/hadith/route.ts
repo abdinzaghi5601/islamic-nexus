@@ -1,17 +1,14 @@
 import { NextResponse } from 'next/server';
+import { requireAuth } from '@/lib/auth';
 import prisma from '@/lib/db/prisma';
 
-export async function GET(request: Request) {
+// GET /api/bookmarks/hadith - Get all hadith bookmarks for current user
+export async function GET() {
   try {
-    const { searchParams } = new URL(request.url);
-    const userId = searchParams.get('userId');
-
-    if (!userId) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
+    const user = await requireAuth();
 
     const bookmarks = await prisma.hadithBookmark.findMany({
-      where: { userId },
+      where: { userId: user.id },
       orderBy: { createdAt: 'desc' },
       include: {
         hadith: {
@@ -20,14 +17,13 @@ export async function GET(request: Request) {
               select: {
                 nameEnglish: true,
                 nameArabic: true,
-                number: true,
+                chapterNumber: true,
               },
             },
             book: {
               select: {
                 name: true,
                 nameArabic: true,
-                slug: true,
               },
             },
           },
@@ -37,135 +33,119 @@ export async function GET(request: Request) {
 
     return NextResponse.json({ bookmarks });
   } catch (error) {
-    console.error('Hadith bookmarks GET error:', error);
+    console.error('Error fetching hadith bookmarks:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
+      { error: error instanceof Error ? error.message : 'Internal server error' },
+      { status: error instanceof Error && error.message === 'Unauthorized' ? 401 : 500 }
     );
   }
 }
 
+// POST /api/bookmarks/hadith - Create a new hadith bookmark
 export async function POST(request: Request) {
   try {
+    const user = await requireAuth();
     const body = await request.json();
-    const { userId, hadithId, note } = body;
+    const { hadithId, note } = body;
 
-    if (!userId || !hadithId) {
+    if (!hadithId) {
       return NextResponse.json(
-        { error: 'userId and hadithId are required' },
+        { error: 'Hadith ID is required' },
         { status: 400 }
       );
     }
 
-    // Check if bookmark already exists
+    // Check if hadith exists
+    const hadith = await prisma.hadith.findUnique({
+      where: { id: hadithId },
+    });
+
+    if (!hadith) {
+      return NextResponse.json(
+        { error: 'Hadith not found' },
+        { status: 404 }
+      );
+    }
+
+    // Check if already bookmarked
     const existing = await prisma.hadithBookmark.findUnique({
       where: {
         userId_hadithId: {
-          userId,
+          userId: user.id,
           hadithId,
         },
       },
     });
 
-    let bookmark;
-
     if (existing) {
-      // Update note if bookmark exists
-      bookmark = await prisma.hadithBookmark.update({
-        where: {
-          userId_hadithId: {
-            userId,
-            hadithId,
-          },
-        },
-        data: {
-          note: note || null,
-        },
-        include: {
-          hadith: {
-            include: {
-              chapter: {
-                select: {
-                  nameEnglish: true,
-                  number: true,
-                },
-              },
-              book: {
-                select: {
-                  name: true,
-                  slug: true,
-                },
-              },
-            },
-          },
-        },
+      // Update existing bookmark
+      const updated = await prisma.hadithBookmark.update({
+        where: { id: existing.id },
+        data: { note },
       });
-    } else {
-      // Create new bookmark
-      bookmark = await prisma.hadithBookmark.create({
-        data: {
-          userId,
-          hadithId,
-          note: note || null,
-        },
-        include: {
-          hadith: {
-            include: {
-              chapter: {
-                select: {
-                  nameEnglish: true,
-                  number: true,
-                },
-              },
-              book: {
-                select: {
-                  name: true,
-                  slug: true,
-                },
-              },
-            },
-          },
-        },
-      });
+
+      return NextResponse.json({ bookmark: updated, updated: true });
     }
 
-    return NextResponse.json({ success: true, bookmark });
+    // Create new bookmark
+    const bookmark = await prisma.hadithBookmark.create({
+      data: {
+        userId: user.id,
+        hadithId,
+        note,
+      },
+    });
+
+    return NextResponse.json({ bookmark, updated: false }, { status: 201 });
   } catch (error) {
-    console.error('Hadith bookmark POST error:', error);
+    console.error('Error creating hadith bookmark:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
+      { error: error instanceof Error ? error.message : 'Internal server error' },
+      { status: error instanceof Error && error.message === 'Unauthorized' ? 401 : 500 }
     );
   }
 }
 
+// DELETE /api/bookmarks/hadith - Delete a hadith bookmark
 export async function DELETE(request: Request) {
   try {
-    const body = await request.json();
-    const { userId, hadithId } = body;
+    const user = await requireAuth();
+    const { searchParams } = new URL(request.url);
+    const hadithId = searchParams.get('hadithId');
 
-    if (!userId || !hadithId) {
+    if (!hadithId) {
       return NextResponse.json(
-        { error: 'userId and hadithId are required' },
+        { error: 'Hadith ID is required' },
         { status: 400 }
+      );
+    }
+
+    const bookmark = await prisma.hadithBookmark.findUnique({
+      where: {
+        userId_hadithId: {
+          userId: user.id,
+          hadithId: parseInt(hadithId),
+        },
+      },
+    });
+
+    if (!bookmark) {
+      return NextResponse.json(
+        { error: 'Bookmark not found' },
+        { status: 404 }
       );
     }
 
     await prisma.hadithBookmark.delete({
-      where: {
-        userId_hadithId: {
-          userId,
-          hadithId,
-        },
-      },
+      where: { id: bookmark.id },
     });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ message: 'Bookmark deleted successfully' });
   } catch (error) {
-    console.error('Hadith bookmark DELETE error:', error);
+    console.error('Error deleting hadith bookmark:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
+      { error: error instanceof Error ? error.message : 'Internal server error' },
+      { status: error instanceof Error && error.message === 'Unauthorized' ? 401 : 500 }
     );
   }
 }

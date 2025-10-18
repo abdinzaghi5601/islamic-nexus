@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import TajweedText from '@/components/TajweedText';
 import AyahDisplay from '@/components/AyahDisplay';
 import ReadingSettings, { ReadingSettingsConfig } from '@/components/ReadingSettings';
+import BookmarkButton from '@/components/BookmarkButton';
 import { getCleanedAyahText } from '@/lib/utils/bismillah';
 
 interface Translation {
@@ -155,16 +156,24 @@ export default function SurahDisplay({ ayahs, surahNumber, surahName = 'Surah' }
                   </span>
                 </div>
 
-                <Link href={`/quran/study/${surahNumber}/${ayah.ayahNumber}`}>
-                  <Button
+                <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <BookmarkButton
+                    ayahId={ayah.id}
                     variant="ghost"
                     size="sm"
-                    className="gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                  >
-                    <ExternalLink className="h-3.5 w-3.5" />
-                    Study
-                  </Button>
-                </Link>
+                  />
+
+                  <Link href={`/quran/study/${surahNumber}/${ayah.ayahNumber}`}>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="gap-2"
+                    >
+                      <ExternalLink className="h-3.5 w-3.5" />
+                      Study
+                    </Button>
+                  </Link>
+                </div>
               </div>
 
               {/* Arabic Text with Enhanced Styling */}
