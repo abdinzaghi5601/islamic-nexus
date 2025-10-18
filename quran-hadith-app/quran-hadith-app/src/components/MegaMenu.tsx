@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import {
   BookOpen,
@@ -121,6 +121,25 @@ const menuSections = [
 
 export default function MegaMenu({ className = '' }: MegaMenuProps) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  const handleMouseEnter = (title: string) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setActiveMenu(title);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setActiveMenu(null);
+    }, 300); // 300ms delay before closing
+  };
 
   return (
     <div className={`hidden md:flex items-center gap-2 ${className}`}>
@@ -132,8 +151,8 @@ export default function MegaMenu({ className = '' }: MegaMenuProps) {
           <div
             key={section.title}
             className="relative"
-            onMouseEnter={() => setActiveMenu(section.title)}
-            onMouseLeave={() => setActiveMenu(null)}
+            onMouseEnter={() => handleMouseEnter(section.title)}
+            onMouseLeave={handleMouseLeave}
           >
             {/* Menu Button */}
             <Link href={section.href}>
@@ -157,8 +176,8 @@ export default function MegaMenu({ className = '' }: MegaMenuProps) {
             {isActive && (
               <div
                 className="absolute top-full left-0 mt-2 w-[600px] bg-[#34495e] dark:bg-[#2c3e50] border-2 border-[#d4af37]/20 rounded-xl shadow-[0_8px_16px_rgba(0,0,0,0.3)] p-6 z-50 animate-in fade-in slide-in-from-top-2 duration-200"
-                onMouseEnter={() => setActiveMenu(section.title)}
-                onMouseLeave={() => setActiveMenu(null)}
+                onMouseEnter={() => handleMouseEnter(section.title)}
+                onMouseLeave={handleMouseLeave}
               >
                 <div className="grid grid-cols-2 gap-6">
                   {/* Left Column - Main Links */}
