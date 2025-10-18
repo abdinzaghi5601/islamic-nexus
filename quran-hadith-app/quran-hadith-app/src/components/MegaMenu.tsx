@@ -15,6 +15,7 @@ import {
   Star,
   Clock,
   BarChart3,
+  Handshake,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -59,6 +60,23 @@ const menuSections = [
       { id: 2, name: 'Sahih Muslim', count: '7,190' },
       { id: 3, name: 'Sunan Abu Dawud', count: '5,274' },
       { id: 4, name: 'Jami at-Tirmidhi', count: '3,956' },
+    ],
+  },
+  {
+    title: 'Salah',
+    icon: Handshake,
+    href: '/salah',
+    color: 'from-amber-500 to-orange-600',
+    description: 'Learn the complete method of Islamic prayer',
+    items: [
+      { label: 'Complete Guide', href: '/salah/guide', badge: 'Step-by-Step' },
+      { label: 'Wisdom & Meaning', href: '/salah/wisdom', icon: Heart },
+      { label: 'Prayer Times', href: '/salah#times', icon: Clock },
+    ],
+    guides: [
+      { name: 'Step-by-Step Guide', description: 'Learn the correct method', href: '/salah/guide' },
+      { name: 'Wisdom Behind Movements', description: 'Understand the spiritual meaning', href: '/salah/wisdom' },
+      { name: 'Prayer Times & Rak\'ahs', description: 'Daily prayer schedule', href: '/salah#times' },
     ],
   },
   {
@@ -260,6 +278,32 @@ export default function MegaMenu({ className = '' }: MegaMenuProps) {
                             >
                               <p className="text-sm font-medium text-white group-hover:text-[#d4af37] transition-colors">
                                 {category.name}
+                              </p>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Salah Section - Prayer Guides */}
+                    {section.title === 'Salah' && section.guides && (
+                      <div>
+                        <div className="flex items-center gap-2 mb-3">
+                          <Handshake className="h-4 w-4 text-[#d4af37]" />
+                          <h4 className="font-semibold text-sm text-white">Prayer Guides</h4>
+                        </div>
+                        <div className="space-y-2">
+                          {section.guides.map((guide) => (
+                            <Link
+                              key={guide.href}
+                              href={guide.href}
+                              className="block p-2 rounded hover:bg-[#1a5f3f] transition-all duration-300 group"
+                            >
+                              <p className="text-sm font-medium text-white group-hover:text-[#d4af37] transition-colors">
+                                {guide.name}
+                              </p>
+                              <p className="text-xs text-gray-300">
+                                {guide.description}
                               </p>
                             </Link>
                           ))}
