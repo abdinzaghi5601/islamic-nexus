@@ -155,7 +155,11 @@ export default function MegaMenu({ className = '' }: MegaMenuProps) {
 
             {/* Dropdown Panel */}
             {isActive && (
-              <div className="absolute top-full left-0 mt-2 w-[600px] bg-[#34495e] dark:bg-[#2c3e50] border-2 border-[#d4af37]/20 rounded-xl shadow-[0_8px_16px_rgba(0,0,0,0.3)] p-6 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+              <div
+                className="absolute top-full left-0 mt-2 w-[600px] bg-[#34495e] dark:bg-[#2c3e50] border-2 border-[#d4af37]/20 rounded-xl shadow-[0_8px_16px_rgba(0,0,0,0.3)] p-6 z-50 animate-in fade-in slide-in-from-top-2 duration-200"
+                onMouseEnter={() => setActiveMenu(section.title)}
+                onMouseLeave={() => setActiveMenu(null)}
+              >
                 <div className="grid grid-cols-2 gap-6">
                   {/* Left Column - Main Links */}
                   <div>
