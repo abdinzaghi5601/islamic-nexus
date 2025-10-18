@@ -140,15 +140,15 @@ export function Navigation() {
                 </button>
 
                 {userMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-56 rounded-lg border border-border bg-background shadow-lg">
-                    <div className="px-4 py-3 border-b border-border">
-                      <p className="text-sm font-medium">{session.user.name}</p>
-                      <p className="text-xs text-muted-foreground truncate">{session.user.email}</p>
+                  <div className="absolute right-0 mt-2 w-56 rounded-lg border-2 border-[#d4af37]/20 bg-[#34495e] dark:bg-[#2c3e50] shadow-[0_8px_16px_rgba(0,0,0,0.3)]">
+                    <div className="px-4 py-3 border-b border-[#d4af37]/20">
+                      <p className="text-sm font-medium text-white">{session.user.name}</p>
+                      <p className="text-xs text-gray-300 truncate">{session.user.email}</p>
                     </div>
                     <Link
                       href="/dashboard"
                       onClick={() => setUserMenuOpen(false)}
-                      className="flex items-center gap-2 px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                      className="flex items-center gap-2 px-4 py-3 text-sm text-white hover:text-[#d4af37] hover:bg-[#2c3e50] dark:hover:bg-[#1a5f3f] transition-all duration-300 hover:pl-5"
                     >
                       <LayoutDashboard className="h-4 w-4" />
                       Dashboard
@@ -158,7 +158,7 @@ export function Navigation() {
                         setUserMenuOpen(false);
                         signOut({ callbackUrl: '/' });
                       }}
-                      className="flex items-center gap-2 w-full px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-b-lg transition-colors"
+                      className="flex items-center gap-2 w-full px-4 py-3 text-sm text-white hover:text-[#d4af37] hover:bg-[#2c3e50] dark:hover:bg-[#1a5f3f] rounded-b-lg transition-all duration-300 hover:pl-5"
                     >
                       <LogOut className="h-4 w-4" />
                       Sign Out
@@ -206,13 +206,15 @@ export function Navigation() {
               </button>
 
               {adminOpen && (
-                <div className="absolute right-0 mt-2 w-48 rounded-lg border border-border bg-background shadow-lg">
-                  {adminLinks.map((link) => (
+                <div className="absolute right-0 mt-2 w-48 rounded-lg border-2 border-[#d4af37]/20 bg-[#34495e] dark:bg-[#2c3e50] shadow-[0_8px_16px_rgba(0,0,0,0.3)]">
+                  {adminLinks.map((link, index) => (
                     <Link
                       key={link.href}
                       href={link.href}
                       onClick={() => setAdminOpen(false)}
-                      className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted first:rounded-t-lg last:rounded-b-lg transition-colors"
+                      className={`block px-4 py-3 text-sm text-white hover:text-[#d4af37] hover:bg-[#2c3e50] dark:hover:bg-[#1a5f3f] transition-all duration-300 hover:pl-5 ${
+                        index === 0 ? 'rounded-t-lg' : ''
+                      } ${index === adminLinks.length - 1 ? 'rounded-b-lg' : ''}`}
                     >
                       {link.label}
                     </Link>
