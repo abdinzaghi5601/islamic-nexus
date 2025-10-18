@@ -271,7 +271,7 @@ export default function CorpusAnalytics() {
               return (
                 <div
                   key={idx}
-                  className="cursor-pointer hover:bg-muted/50 p-2 rounded-lg transition-colors"
+                  className="cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/30 p-2 rounded-lg transition-colors border border-transparent hover:border-blue-200 dark:hover:border-blue-800"
                   onClick={() =>
                     fetchWords('pos', pos.partOfSpeech, `Part of Speech: ${pos.partOfSpeech}`, `${pos.count.toLocaleString()} words`)
                   }
@@ -305,7 +305,7 @@ export default function CorpusAnalytics() {
               {data.verbForms.map((form, idx) => (
                 <div
                   key={idx}
-                  className="flex justify-between items-center p-3 bg-secondary rounded-lg cursor-pointer hover:bg-secondary/80 transition-colors"
+                  className="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg cursor-pointer hover:bg-green-100 dark:hover:bg-green-900/40 transition-colors border border-green-200 dark:border-green-800"
                   onClick={() =>
                     fetchWords('form', form.form, `Verb Form ${form.form}`, `${form.count.toLocaleString()} words`)
                   }
@@ -334,7 +334,7 @@ export default function CorpusAnalytics() {
               {data.genderDistribution.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex justify-between items-center cursor-pointer hover:bg-muted/50 p-2 rounded-lg transition-colors"
+                  className="flex justify-between items-center cursor-pointer hover:bg-purple-50 dark:hover:bg-purple-900/30 p-2 rounded-lg transition-colors border border-transparent hover:border-purple-200 dark:hover:border-purple-800"
                   onClick={() =>
                     fetchWords('gender', item.gender, `Gender: ${item.gender}`, `${item.count.toLocaleString()} words`)
                   }
@@ -358,7 +358,7 @@ export default function CorpusAnalytics() {
               {data.numberDistribution.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex justify-between items-center cursor-pointer hover:bg-muted/50 p-2 rounded-lg transition-colors"
+                  className="flex justify-between items-center cursor-pointer hover:bg-orange-50 dark:hover:bg-orange-900/30 p-2 rounded-lg transition-colors border border-transparent hover:border-orange-200 dark:hover:border-orange-800"
                   onClick={() =>
                     fetchWords('number', item.number, `Number: ${item.number}`, `${item.count.toLocaleString()} words`)
                   }
@@ -434,21 +434,21 @@ export default function CorpusAnalytics() {
 
       {/* Words Modal */}
       {modalOpen && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setModalOpen(false)}>
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={() => setModalOpen(false)}>
           <div
-            className="bg-background rounded-2xl shadow-2xl max-w-4xl w-full max-h-[80vh] overflow-hidden flex flex-col"
+            className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[80vh] overflow-hidden flex flex-col border-2 border-gray-200 dark:border-gray-700"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="p-6 border-b border-border">
+            <div className="p-6 border-b-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
               <div className="flex items-start justify-between">
                 <div>
-                  <h2 className="text-2xl font-bold mb-1">{modalTitle}</h2>
-                  <p className="text-sm text-muted-foreground">{modalSubtitle}</p>
+                  <h2 className="text-2xl font-bold mb-1 text-gray-900 dark:text-white">{modalTitle}</h2>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">{modalSubtitle}</p>
                 </div>
                 <button
                   onClick={() => setModalOpen(false)}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -458,50 +458,50 @@ export default function CorpusAnalytics() {
             </div>
 
             {/* Modal Content */}
-            <div className="flex-1 overflow-y-auto p-6">
+            <div className="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-gray-950">
               {modalLoading ? (
                 <div className="flex items-center justify-center py-12">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
                 </div>
               ) : modalWords.length === 0 ? (
-                <div className="text-center py-12 text-muted-foreground">
+                <div className="text-center py-12 text-gray-600 dark:text-gray-400">
                   No words found
                 </div>
               ) : (
                 <div className="space-y-4">
                   {modalWords.map((word) => (
-                    <div key={word.id} className="p-4 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors">
+                    <div key={word.id} className="p-4 bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
                       <div className="flex items-start gap-4">
                         {/* Arabic Word */}
                         <div className="flex-shrink-0">
-                          <p className="text-3xl font-arabic mb-1" dir="rtl">
+                          <p className="text-3xl font-arabic mb-1 text-gray-900 dark:text-white" dir="rtl">
                             {word.arabic}
                           </p>
                           {word.transliteration && (
-                            <p className="text-sm text-muted-foreground">{word.transliteration}</p>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">{word.transliteration}</p>
                           )}
                         </div>
 
                         {/* Word Details */}
                         <div className="flex-1 min-w-0">
                           {/* Location */}
-                          <p className="text-sm font-medium mb-2">
+                          <p className="text-sm font-medium mb-2 text-gray-900 dark:text-white">
                             {word.location.surahName} {word.location.surah}:{word.location.ayah} (Word {word.location.position})
                           </p>
 
                           {/* Translation */}
                           {word.translation && (
-                            <p className="text-sm text-muted-foreground mb-2">{word.translation}</p>
+                            <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">{word.translation}</p>
                           )}
 
                           {/* Root */}
                           {word.root && (
                             <div className="flex items-center gap-2 mb-2">
-                              <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
+                              <span className="text-xs bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-2 py-1 rounded font-medium">
                                 Root: <span className="font-arabic">{word.root.root}</span>
                               </span>
                               {word.root.meaning && (
-                                <span className="text-xs text-muted-foreground">({word.root.meaning})</span>
+                                <span className="text-xs text-gray-600 dark:text-gray-400">({word.root.meaning})</span>
                               )}
                             </div>
                           )}
@@ -509,21 +509,21 @@ export default function CorpusAnalytics() {
                           {/* Grammar */}
                           {word.grammar && (
                             <div className="flex flex-wrap gap-1 mb-2">
-                              <span className="text-xs bg-blue-500/10 text-blue-600 dark:text-blue-400 px-2 py-1 rounded">
+                              <span className="text-xs bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-2 py-1 rounded font-medium">
                                 {word.grammar.pos}
                               </span>
                               {word.grammar.form && (
-                                <span className="text-xs bg-green-500/10 text-green-600 dark:text-green-400 px-2 py-1 rounded">
+                                <span className="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-2 py-1 rounded font-medium">
                                   Form {word.grammar.form}
                                 </span>
                               )}
                               {word.grammar.gender && (
-                                <span className="text-xs bg-purple-500/10 text-purple-600 dark:text-purple-400 px-2 py-1 rounded">
+                                <span className="text-xs bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 px-2 py-1 rounded font-medium">
                                   {word.grammar.gender}
                                 </span>
                               )}
                               {word.grammar.number && (
-                                <span className="text-xs bg-orange-500/10 text-orange-600 dark:text-orange-400 px-2 py-1 rounded">
+                                <span className="text-xs bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300 px-2 py-1 rounded font-medium">
                                   {word.grammar.number}
                                 </span>
                               )}
@@ -532,7 +532,7 @@ export default function CorpusAnalytics() {
 
                           {/* Morphology */}
                           {word.morphology && (word.morphology.prefix || word.morphology.suffix) && (
-                            <div className="text-xs text-muted-foreground">
+                            <div className="text-xs text-gray-600 dark:text-gray-400">
                               {word.morphology.prefix && <span>Prefix: {word.morphology.prefix} • </span>}
                               {word.morphology.stem && <span>Stem: {word.morphology.stem}</span>}
                               {word.morphology.suffix && <span> • Suffix: {word.morphology.suffix}</span>}
@@ -547,7 +547,7 @@ export default function CorpusAnalytics() {
             </div>
 
             {/* Modal Footer */}
-            <div className="p-4 border-t border-border text-center text-sm text-muted-foreground">
+            <div className="p-4 border-t-2 border-gray-200 dark:border-gray-700 text-center text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-900">
               Showing {modalWords.length} word{modalWords.length !== 1 ? 's' : ''}
             </div>
           </div>
