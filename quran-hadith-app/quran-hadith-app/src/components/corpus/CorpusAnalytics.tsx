@@ -271,13 +271,12 @@ export default function CorpusAnalytics() {
               return (
                 <div
                   key={idx}
-                  className="cursor-pointer bg-white/80 dark:bg-gray-800/80 hover:bg-blue-50 dark:hover:bg-blue-900/50 p-2 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 z-[1000] relative transition-all duration-300 ease-in-out hover:scale-[1.02]"
+                  className="cursor-pointer bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-900 p-2 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-700 z-[1000] relative transition-all duration-300 ease-in-out hover:scale-[1.02]"
                   onClick={() =>
                     fetchWords('pos', pos.partOfSpeech, `Part of Speech: ${pos.partOfSpeech}`, `${pos.count.toLocaleString()} words`)
                   }
                   style={{
                     borderRadius: '12px',
-                    backdropFilter: 'blur(8px)',
                     boxShadow: '0 10px 30px rgba(0,0,0,0.15)'
                   }}
                 >
@@ -310,13 +309,12 @@ export default function CorpusAnalytics() {
               {data.verbForms.map((form, idx) => (
                 <div
                   key={idx}
-                  className="flex justify-between items-center p-3 bg-green-50/80 dark:bg-green-900/30 cursor-pointer hover:bg-green-100 dark:hover:bg-green-900/50 border border-green-200 dark:border-green-800 hover:border-green-300 dark:hover:border-green-700 z-[1000] relative transition-all duration-300 ease-in-out hover:scale-[1.02]"
+                  className="flex justify-between items-center p-3 bg-green-50 dark:bg-green-900 cursor-pointer hover:bg-green-100 dark:hover:bg-green-800 border border-green-200 dark:border-green-800 hover:border-green-300 dark:hover:border-green-700 z-[1000] relative transition-all duration-300 ease-in-out hover:scale-[1.02]"
                   onClick={() =>
                     fetchWords('form', form.form, `Verb Form ${form.form}`, `${form.count.toLocaleString()} words`)
                   }
                   style={{
                     borderRadius: '12px',
-                    backdropFilter: 'blur(8px)',
                     boxShadow: '0 10px 30px rgba(0,0,0,0.15)'
                   }}
                 >
@@ -344,13 +342,12 @@ export default function CorpusAnalytics() {
               {data.genderDistribution.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex justify-between items-center cursor-pointer bg-purple-50/80 dark:bg-purple-900/30 hover:bg-purple-100 dark:hover:bg-purple-900/50 p-2 border border-purple-200 dark:border-purple-800 hover:border-purple-300 dark:hover:border-purple-700 z-[1000] relative transition-all duration-300 ease-in-out hover:scale-[1.02]"
+                  className="flex justify-between items-center cursor-pointer bg-purple-50 dark:bg-purple-900 hover:bg-purple-100 dark:hover:bg-purple-800 p-2 border border-purple-200 dark:border-purple-800 hover:border-purple-300 dark:hover:border-purple-700 z-[1000] relative transition-all duration-300 ease-in-out hover:scale-[1.02]"
                   onClick={() =>
                     fetchWords('gender', item.gender, `Gender: ${item.gender}`, `${item.count.toLocaleString()} words`)
                   }
                   style={{
                     borderRadius: '12px',
-                    backdropFilter: 'blur(8px)',
                     boxShadow: '0 10px 30px rgba(0,0,0,0.15)'
                   }}
                 >
@@ -373,13 +370,12 @@ export default function CorpusAnalytics() {
               {data.numberDistribution.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex justify-between items-center cursor-pointer bg-orange-50/80 dark:bg-orange-900/30 hover:bg-orange-100 dark:hover:bg-orange-900/50 p-2 border border-orange-200 dark:border-orange-800 hover:border-orange-300 dark:hover:border-orange-700 z-[1000] relative transition-all duration-300 ease-in-out hover:scale-[1.02]"
+                  className="flex justify-between items-center cursor-pointer bg-orange-50 dark:bg-orange-900 hover:bg-orange-100 dark:hover:bg-orange-800 p-2 border border-orange-200 dark:border-orange-800 hover:border-orange-300 dark:hover:border-orange-700 z-[1000] relative transition-all duration-300 ease-in-out hover:scale-[1.02]"
                   onClick={() =>
                     fetchWords('number', item.number, `Number: ${item.number}`, `${item.count.toLocaleString()} words`)
                   }
                   style={{
                     borderRadius: '12px',
-                    backdropFilter: 'blur(8px)',
                     boxShadow: '0 10px 30px rgba(0,0,0,0.15)'
                   }}
                 >
@@ -455,9 +451,8 @@ export default function CorpusAnalytics() {
       {/* Words Modal */}
       {modalOpen && (
         <div
-          className="fixed inset-0 bg-black/80 z-[2000] flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300 ease-in-out"
+          className="fixed inset-0 bg-black/80 z-[2000] flex items-center justify-center p-4 transition-all duration-300 ease-in-out"
           onClick={() => setModalOpen(false)}
-          style={{ backdropFilter: 'blur(8px)' }}
         >
           <div
             className="bg-white dark:bg-gray-900 w-full max-w-4xl max-h-[80vh] overflow-hidden flex flex-col border-2 border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out"
