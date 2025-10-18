@@ -28,6 +28,8 @@
     "corpus:import": "tsx scripts/corpus/index.ts",
     "corpus:import:sample": "tsx scripts/corpus/index.ts -- --start 1 --end 10",
     "corpus:sample": "tsx scripts/corpus/generate-sample-data.ts",
+    "corpus:import:csv": "tsx scripts/corpus/import-from-csv.ts",
+    "corpus:import:fast": "tsx scripts/corpus/import-from-csv-fast.ts",
     "import:corpus": "tsx scripts/import-corpus.ts",
     "import:dictionary": "tsx scripts/import-dictionary.ts",
     "import:verbs": "tsx scripts/import-verbs.ts",
