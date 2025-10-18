@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
 import prisma from '@/lib/db/prisma';
+import HadithBookmarkButton from '@/components/HadithBookmarkButton';
 
 async function getChapterHadiths(bookId: string, chapterId: string) {
   const bookIdInt = parseInt(bookId);
@@ -86,18 +87,27 @@ export default async function ChapterPage({
           <div className="space-y-8">
             {chapter.hadiths.map((hadith: any, index: number) => (
               <div key={hadith.id}>
-                <div id={`hadith-${hadith.id}`} className="content-card p-6 rounded-xl scroll-mt-24">
+                <div id={`hadith-${hadith.id}`} className="content-card p-6 rounded-xl scroll-mt-24 group">
                   {/* Hadith Number & Grade */}
                   <div className="flex items-center justify-between mb-5">
                     <div className="text-sm text-muted-foreground font-medium">
                       Hadith #{hadith.hadithNumber}
                       {hadith.hadithInChapter && ` • #${hadith.hadithInChapter} in chapter`}
                     </div>
-                    {hadith.grade && (
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-semibold">
-                        {hadith.grade}
-                      </span>
-                    )}
+                    <div className="flex items-center gap-2">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                        <HadithBookmarkButton
+                          hadithId={hadith.id}
+                          variant="ghost"
+                          size="sm"
+                        />
+                      </div>
+                      {hadith.grade && (
+                        <span className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-semibold">
+                          {hadith.grade}
+                        </span>
+                      )}
+                    </div>
                   </div>
 
                   {/* Arabic Text */}
