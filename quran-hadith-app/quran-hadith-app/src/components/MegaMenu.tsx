@@ -137,7 +137,7 @@ export default function MegaMenu({ className = '' }: MegaMenuProps) {
 
             {/* Dropdown Panel */}
             {isActive && (
-              <div className="absolute top-full left-0 mt-2 w-[600px] bg-card border border-border rounded-xl shadow-2xl p-6 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="absolute top-full left-0 mt-2 w-[600px] bg-[#34495e] dark:bg-[#2c3e50] border-2 border-[#d4af37]/20 rounded-xl shadow-[0_8px_16px_rgba(0,0,0,0.3)] p-6 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                 <div className="grid grid-cols-2 gap-6">
                   {/* Left Column - Main Links */}
                   <div>
@@ -148,8 +148,8 @@ export default function MegaMenu({ className = '' }: MegaMenuProps) {
                         <Icon className="h-5 w-5 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-lg">{section.title}</h3>
-                        <p className="text-xs text-muted-foreground">
+                        <h3 className="font-bold text-lg text-white">{section.title}</h3>
+                        <p className="text-xs text-gray-300">
                           {section.description}
                         </p>
                       </div>
@@ -162,11 +162,11 @@ export default function MegaMenu({ className = '' }: MegaMenuProps) {
                           <Link
                             key={item.href}
                             href={item.href}
-                            className="flex items-center justify-between p-2 rounded-lg hover:bg-muted/50 transition-colors group"
+                            className="flex items-center justify-between p-3 rounded-lg hover:bg-[#2c3e50] dark:hover:bg-[#1a5f3f] transition-all duration-300 group hover:pl-4"
                           >
                             <div className="flex items-center gap-2">
-                              {ItemIcon && <ItemIcon className="h-4 w-4 text-muted-foreground" />}
-                              <span className="text-sm font-medium group-hover:text-primary transition-colors">
+                              {ItemIcon && <ItemIcon className="h-4 w-4 text-gray-300 group-hover:text-[#d4af37]" />}
+                              <span className="text-sm font-medium text-white group-hover:text-[#d4af37] transition-colors">
                                 {item.label}
                               </span>
                             </div>
@@ -182,30 +182,30 @@ export default function MegaMenu({ className = '' }: MegaMenuProps) {
                   </div>
 
                   {/* Right Column - Dynamic Content */}
-                  <div className="bg-muted/30 rounded-lg p-4">
+                  <div className="bg-[#2c3e50]/50 dark:bg-[#1a5f3f]/30 rounded-lg p-4 border border-[#d4af37]/10">
                     {/* Quran Section - Popular Surahs */}
                     {section.title === 'Quran' && section.popularSurahs && (
                       <div>
                         <div className="flex items-center gap-2 mb-3">
-                          <Star className="h-4 w-4 text-amber-500" />
-                          <h4 className="font-semibold text-sm">Popular Surahs</h4>
+                          <Star className="h-4 w-4 text-[#d4af37]" />
+                          <h4 className="font-semibold text-sm text-white">Popular Surahs</h4>
                         </div>
                         <div className="space-y-2">
                           {section.popularSurahs.map((surah) => (
                             <Link
                               key={surah.number}
                               href={`/quran/${surah.number}`}
-                              className="block p-2 rounded hover:bg-background/80 transition-colors group"
+                              className="block p-2 rounded hover:bg-[#1a5f3f] transition-all duration-300 group"
                             >
                               <div className="flex items-center gap-2">
                                 <div className="w-8 h-8 rounded bg-gradient-to-br from-primary to-accent flex items-center justify-center text-xs font-bold text-primary-foreground">
                                   {surah.number}
                                 </div>
                                 <div className="flex-1">
-                                  <p className="text-sm font-medium group-hover:text-primary transition-colors">
+                                  <p className="text-sm font-medium text-white group-hover:text-[#d4af37] transition-colors">
                                     {surah.name}
                                   </p>
-                                  <p className="text-xs text-muted-foreground">
+                                  <p className="text-xs text-gray-300">
                                     {surah.translation}
                                   </p>
                                 </div>
@@ -220,21 +220,21 @@ export default function MegaMenu({ className = '' }: MegaMenuProps) {
                     {section.title === 'Hadith' && section.books && (
                       <div>
                         <div className="flex items-center gap-2 mb-3">
-                          <TrendingUp className="h-4 w-4 text-blue-500" />
-                          <h4 className="font-semibold text-sm">Major Collections</h4>
+                          <TrendingUp className="h-4 w-4 text-[#d4af37]" />
+                          <h4 className="font-semibold text-sm text-white">Major Collections</h4>
                         </div>
                         <div className="space-y-2">
                           {section.books.map((book) => (
                             <Link
                               key={book.id}
                               href={`/hadith/${book.id}`}
-                              className="block p-2 rounded hover:bg-background/80 transition-colors group"
+                              className="block p-2 rounded hover:bg-[#1a5f3f] transition-all duration-300 group"
                             >
                               <div className="flex items-center justify-between">
-                                <p className="text-sm font-medium group-hover:text-primary transition-colors">
+                                <p className="text-sm font-medium text-white group-hover:text-[#d4af37] transition-colors">
                                   {book.name}
                                 </p>
-                                <Badge variant="outline" className="text-xs">
+                                <Badge variant="outline" className="text-xs border-gray-400 text-gray-300">
                                   {book.count}
                                 </Badge>
                               </div>
@@ -248,17 +248,17 @@ export default function MegaMenu({ className = '' }: MegaMenuProps) {
                     {section.title === 'Duas & More' && section.categories && (
                       <div>
                         <div className="flex items-center gap-2 mb-3">
-                          <Heart className="h-4 w-4 text-rose-500" />
-                          <h4 className="font-semibold text-sm">Dua Categories</h4>
+                          <Heart className="h-4 w-4 text-[#d4af37]" />
+                          <h4 className="font-semibold text-sm text-white">Dua Categories</h4>
                         </div>
                         <div className="space-y-2">
                           {section.categories.map((category) => (
                             <Link
                               key={category.href}
                               href={category.href}
-                              className="block p-2 rounded hover:bg-background/80 transition-colors group"
+                              className="block p-2 rounded hover:bg-[#1a5f3f] transition-all duration-300 group"
                             >
-                              <p className="text-sm font-medium group-hover:text-primary transition-colors">
+                              <p className="text-sm font-medium text-white group-hover:text-[#d4af37] transition-colors">
                                 {category.name}
                               </p>
                             </Link>
@@ -271,19 +271,19 @@ export default function MegaMenu({ className = '' }: MegaMenuProps) {
                     {section.title === 'Analytics' && section.stats && (
                       <div>
                         <div className="flex items-center gap-2 mb-3">
-                          <BarChart3 className="h-4 w-4 text-purple-500" />
-                          <h4 className="font-semibold text-sm">Quick Stats</h4>
+                          <BarChart3 className="h-4 w-4 text-[#d4af37]" />
+                          <h4 className="font-semibold text-sm text-white">Quick Stats</h4>
                         </div>
                         <div className="grid grid-cols-2 gap-2">
                           {section.stats.map((stat) => (
                             <div
                               key={stat.label}
-                              className="p-2 rounded bg-background/80 text-center"
+                              className="p-2 rounded bg-[#1a5f3f]/50 hover:bg-[#1a5f3f] transition-colors text-center"
                             >
-                              <p className="text-lg font-bold text-primary">
+                              <p className="text-lg font-bold text-[#d4af37]">
                                 {stat.value}
                               </p>
-                              <p className="text-xs text-muted-foreground">
+                              <p className="text-xs text-gray-300">
                                 {stat.label}
                               </p>
                             </div>
@@ -295,12 +295,12 @@ export default function MegaMenu({ className = '' }: MegaMenuProps) {
                 </div>
 
                 {/* Quick Action Footer */}
-                <div className="mt-4 pt-4 border-t border-border">
+                <div className="mt-4 pt-4 border-t border-[#d4af37]/20">
                   <Link href="/search">
                     <Button
                       variant="outline"
                       size="sm"
-                      className="w-full gap-2"
+                      className="w-full gap-2 border-[#d4af37]/50 text-white hover:bg-[#1a5f3f] hover:text-[#d4af37] hover:border-[#d4af37]"
                     >
                       <Search className="h-4 w-4" />
                       Search All Content
