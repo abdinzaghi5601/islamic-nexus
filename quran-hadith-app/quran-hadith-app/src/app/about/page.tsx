@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Heart, Home } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About Islamic Nexus - A Dedication to Our Beloved Grandparents',
-  description: 'Islamic Nexus is built in loving memory of our grandparents who guided us on the path of Islam.',
+  title: 'In Loving Memory - Syed Abdul Hakeem & Jameel Unissa Begum',
+  description: 'Islamic Nexus is dedicated to the memory of Syed Abdul Hakeem and Jameel Unissa Begum, beloved grandparents who guided us on the path of Islam.',
 };
 
 export default function AboutPage() {
@@ -20,8 +20,18 @@ export default function AboutPage() {
               <span className="text-sm font-semibold text-primary">In Loving Memory</span>
             </div>
             <h1 className="heading-primary mb-6">
-              A Dedication to Our Beloved Nanu and Nanabba
+              A Dedication to Our Beloved Grandparents
             </h1>
+            <div className="mb-6 space-y-3">
+              <p className="text-3xl font-bold text-primary">
+                Syed Abdul Hakeem
+              </p>
+              <p className="text-xl text-muted-foreground">(Grandfather)</p>
+              <p className="text-3xl font-bold text-accent">
+                Jameel Unissa Begum
+              </p>
+              <p className="text-xl text-muted-foreground">(Grandmother)</p>
+            </div>
             <p className="bismillah-text text-3xl mb-6">
               بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
             </p>
@@ -39,7 +49,8 @@ export default function AboutPage() {
           <div className="content-card p-8 md:p-12 rounded-2xl mb-8 page-turn-enter">
             <div className="prose prose-lg max-w-none dark:prose-invert">
               <p className="text-xl font-serif text-foreground/90 leading-relaxed mb-6">
-                To our dearest Nanu and Nanabba,<br />
+                To our dearest grandfather, <span className="font-bold text-primary">Syed Abdul Hakeem</span>,<br />
+                and our beloved grandmother, <span className="font-bold text-accent">Jameel Unissa Begum</span>,<br />
                 <span className="font-arabic text-2xl text-primary">رَحِمَهُمَا ٱللَّٰهُ</span>{' '}
                 <span className="italic">(Rahimahuma Allah)</span> - May Allah have mercy upon them both
               </p>

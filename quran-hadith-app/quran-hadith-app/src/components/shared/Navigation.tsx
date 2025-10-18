@@ -111,7 +111,11 @@ export function Navigation() {
                 </button>
 
                 {userMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-56 rounded-lg border-2 border-[#d4af37]/20 bg-[#34495e] dark:bg-[#2c3e50] shadow-[0_8px_16px_rgba(0,0,0,0.3)]">
+                  <div
+                    className="absolute right-0 mt-2 w-56 rounded-lg border-2 border-[#d4af37]/20 bg-[#34495e] dark:bg-[#2c3e50] shadow-[0_8px_16px_rgba(0,0,0,0.3)]"
+                    onMouseEnter={handleUserMenuMouseEnter}
+                    onMouseLeave={handleUserMenuMouseLeave}
+                  >
                     <div className="px-4 py-3 border-b border-[#d4af37]/20">
                       <p className="text-sm font-medium text-white">{session.user.name}</p>
                       <p className="text-xs text-gray-300 truncate">{session.user.email}</p>
@@ -177,7 +181,11 @@ export function Navigation() {
               </button>
 
               {adminOpen && (
-                <div className="absolute right-0 mt-2 w-48 rounded-lg border-2 border-[#d4af37]/20 bg-[#34495e] dark:bg-[#2c3e50] shadow-[0_8px_16px_rgba(0,0,0,0.3)]">
+                <div
+                  className="absolute right-0 mt-2 w-48 rounded-lg border-2 border-[#d4af37]/20 bg-[#34495e] dark:bg-[#2c3e50] shadow-[0_8px_16px_rgba(0,0,0,0.3)]"
+                  onMouseEnter={handleAdminMouseEnter}
+                  onMouseLeave={handleAdminMouseLeave}
+                >
                   {adminLinks.map((link, index) => (
                     <Link
                       key={link.href}
