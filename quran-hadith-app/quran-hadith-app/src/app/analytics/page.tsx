@@ -3,7 +3,6 @@
 
 import { useEffect, useState } from 'react';
 import { Tabs } from '@/components/ui/tabs';
-import CorpusAnalytics from '@/components/corpus/CorpusAnalytics';
 
 interface OverviewData {
   totals: {
@@ -246,7 +245,6 @@ export default function AnalyticsPage() {
           { id: 'prophets', label: 'Prophets', icon: '👥' },
           { id: 'themes', label: 'Themes', icon: '📚' },
           { id: 'words', label: 'Word Analysis', icon: '🔤' },
-          { id: 'corpus', label: 'Corpus Analysis', icon: '🌱' },
         ].map(tab => (
           <button
             key={tab.id}
@@ -570,9 +568,6 @@ export default function AnalyticsPage() {
           </div>
         </div>
       )}
-
-      {/* Corpus Analysis Tab */}
-      {activeTab === 'corpus' && <CorpusAnalytics />}
     </div>
   );
 }

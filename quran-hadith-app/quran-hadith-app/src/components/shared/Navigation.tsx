@@ -8,7 +8,6 @@ import { useSession, signOut } from 'next-auth/react';
 import MegaMenu from '@/components/MegaMenu';
 import { Button } from '@/components/ui/button';
 import { ThemeSwitcher } from '@/components/ThemeSwitcher';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
 export function Navigation() {
   const pathname = usePathname();
@@ -157,11 +156,6 @@ export function Navigation() {
               </div>
             ) : null}
 
-            {/* Language Switcher */}
-            <div className="hidden lg:block">
-              <LanguageSwitcher />
-            </div>
-
             {/* Theme Switcher */}
             <div className="hidden lg:block">
               <ThemeSwitcher />
@@ -247,14 +241,6 @@ export function Navigation() {
                 </Link>
               );
             })}
-
-            {/* Language Switcher in Mobile */}
-            <div className="px-4 py-2">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-muted-foreground">Language</span>
-                <LanguageSwitcher />
-              </div>
-            </div>
 
             {/* Theme Switcher in Mobile */}
             <div className="px-4 py-2">
