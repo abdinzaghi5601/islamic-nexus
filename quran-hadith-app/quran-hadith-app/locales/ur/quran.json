@@ -1,0 +1,174 @@
+{
+  "title": "قرآن مجید",
+  "subtitle": "پڑھیں، سنیں اور سمجھیں",
+  "description": "مکمل قرآن ترجمہ، تفسیر اور لفظ بہ لفظ تجزیہ کے ساتھ",
+  "surahs": "سورتیں",
+  "ayahs": "آیات",
+  "ayah": "آیت",
+  "surah": "سورت",
+  "juz": "پارہ",
+  "page": "صفحہ",
+  "verse": "آیت",
+  "chapter": "سورت",
+  "revelation": "نزول",
+  "meccan": "مکی",
+  "medinan": "مدنی",
+  "totalAyahs": "کل آیات",
+  "revealedIn": "نازل شدہ",
+  "revelationOrder": "نزول کی ترتیب",
+
+  "navigation": {
+    "previousAyah": "پچھلی آیت",
+    "nextAyah": "اگلی آیت",
+    "previousSurah": "پچھلی سورت",
+    "nextSurah": "اگلی سورت",
+    "goToAyah": "آیت پر جائیں",
+    "jumpTo": "جائیں"
+  },
+
+  "reading": {
+    "continueReading": "پڑھنا جاری رکھیں",
+    "lastRead": "آخری بار پڑھا",
+    "startReading": "پڑھنا شروع کریں",
+    "readingProgress": "پڑھنے کی پیشرفت",
+    "completed": "مکمل",
+    "inProgress": "جاری"
+  },
+
+  "translation": {
+    "translation": "ترجمہ",
+    "translations": "تراجم",
+    "selectTranslation": "ترجمہ منتخب کریں",
+    "translator": "مترجم",
+    "showTranslation": "ترجمہ دکھائیں",
+    "hideTranslation": "ترجمہ چھپائیں",
+    "arabicText": "عربی متن",
+    "englishTranslation": "انگریزی ترجمہ",
+    "urduTranslation": "اردو ترجمہ"
+  },
+
+  "tafsir": {
+    "tafsir": "تفسیر",
+    "commentary": "تشریح",
+    "explanation": "وضاحت",
+    "showTafsir": "تفسیر دکھائیں",
+    "hideTafsir": "تفسیر چھپائیں",
+    "selectTafsir": "تفسیر منتخب کریں",
+    "viewFullTafsir": "مکمل تفسیر دیکھیں",
+    "shortTafsir": "مختصر تشریح",
+    "detailedTafsir": "تفصیلی تفسیر"
+  },
+
+  "study": {
+    "wordByWord": "لفظ بہ لفظ",
+    "analysis": "تجزیہ",
+    "grammar": "گرائمر",
+    "morphology": "صرف و نحو",
+    "root": "جڑ",
+    "meaning": "معنی",
+    "studyMode": "مطالعہ موڈ",
+    "vocabulary": "الفاظ",
+    "breakdown": "تفصیل"
+  },
+
+  "audio": {
+    "playAudio": "آڈیو چلائیں",
+    "pauseAudio": "آڈیو روکیں",
+    "selectReciter": "قاری منتخب کریں",
+    "reciter": "قاری",
+    "autoPlay": "خودکار چلائیں",
+    "repeatAyah": "آیت دہرائیں",
+    "playbackSpeed": "رفتار",
+    "download": "ڈاؤن لوڈ کریں"
+  },
+
+  "display": {
+    "arabicOnly": "صرف عربی",
+    "translationOnly": "صرف ترجمہ",
+    "both": "دونوں",
+    "fontSize": "فونٹ سائز",
+    "fontStyle": "فونٹ سٹائل",
+    "textSize": "متن کا سائز",
+    "small": "چھوٹا",
+    "medium": "درمیانہ",
+    "large": "بڑا",
+    "extraLarge": "بہت بڑا"
+  },
+
+  "filters": {
+    "filterBySurah": "سورت کے لحاظ سے",
+    "filterByJuz": "پارے کے لحاظ سے",
+    "filterByPage": "صفحے کے لحاظ سے",
+    "allSurahs": "تمام سورتیں",
+    "meccanSurahs": "مکی سورتیں",
+    "medinanSurahs": "مدنی سورتیں",
+    "searchInQuran": "قرآن میں تلاش کریں",
+    "searchPlaceholder": "آیات، الفاظ یا موضوعات تلاش کریں..."
+  },
+
+  "popular": {
+    "popularSurahs": "مقبول سورتیں",
+    "mostRead": "سب سے زیادہ پڑھی گئیں",
+    "recommended": "تجویز کردہ",
+    "favorites": "پسندیدہ"
+  },
+
+  "categories": {
+    "short": "مختصر سورتیں",
+    "long": "طویل سورتیں",
+    "dailyReading": "روزانہ کی تلاوت",
+    "protection": "حفاظت",
+    "guidance": "ہدایت",
+    "blessings": "برکات"
+  },
+
+  "features": {
+    "tajweed": "تجوید",
+    "tajweedRules": "تجوید کے قوانین",
+    "showTajweed": "تجوید دکھائیں",
+    "colorCodedTajweed": "رنگین تجوید",
+    "bookmarks": "نشانیاں",
+    "notes": "نوٹس",
+    "highlights": "نمایاں",
+    "share": "آیت شیئر کریں",
+    "copy": "عربی متن کاپی کریں",
+    "copyTranslation": "ترجمہ کاپی کریں",
+    "addBookmark": "نشان لگائیں",
+    "removeBookmark": "نشان ہٹائیں"
+  },
+
+  "metadata": {
+    "bismillah": "بسم اللہ",
+    "sajdah": "سجدہ",
+    "rukuMarker": "رکوع",
+    "hizbQuarter": "حزب کا ربع",
+    "manzil": "منزل"
+  },
+
+  "stats": {
+    "totalWords": "کل الفاظ",
+    "totalLetters": "کل حروف",
+    "uniqueWords": "منفرد الفاظ",
+    "readingTime": "پڑھنے کا وقت",
+    "estimatedTime": "تخمینہ شدہ وقت"
+  },
+
+  "messages": {
+    "bookmarkAdded": "نشان کامیابی سے لگا دیا گیا",
+    "bookmarkRemoved": "نشان ہٹا دیا گیا",
+    "copiedToClipboard": "کلپ بورڈ میں کاپی ہو گیا",
+    "loadingQuran": "قرآن لوڈ ہو رہا ہے...",
+    "errorLoading": "قرآن لوڈ کرنے میں خرابی",
+    "noResults": "کوئی آیت نہیں ملی",
+    "translationUnavailable": "ترجمہ دستیاب نہیں"
+  },
+
+  "actions": {
+    "viewSurah": "سورت دیکھیں",
+    "readNow": "ابھی پڑھیں",
+    "listen": "سنیں",
+    "study": "مطالعہ کریں",
+    "memorize": "حفظ کریں",
+    "explore": "دریافت کریں"
+  }
+}

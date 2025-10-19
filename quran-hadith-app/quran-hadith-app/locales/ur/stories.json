@@ -1,0 +1,218 @@
+{
+  "title": "اسلامی کہانیاں",
+  "subtitle": "قرآن اور سنت سے کہانیاں",
+  "description": "انبیاء اور نیک لوگوں کی زندگیوں سے قیمتی سبق سیکھیں",
+  "story": "کہانی",
+  "stories": "کہانیاں",
+  "prophetsStories": "انبیاء کی کہانیاں",
+  "companionsStories": "صحابہ کرام کی کہانیاں",
+
+  "categories": {
+    "all": "تمام کہانیاں",
+    "prophets": "انبیاء",
+    "companions": "صحابہ کرام",
+    "righteous": "نیک لوگ",
+    "quranStories": "قرآن سے",
+    "hadithStories": "حدیث سے",
+    "moral": "اخلاقی سبق",
+    "miracles": "معجزات",
+    "patience": "صبر و استقامت",
+    "faith": "ایمان و یقین",
+    "sacrifice": "قربانی",
+    "wisdom": "حکمت",
+    "courage": "ہمت",
+    "mercy": "رحم و شفقت"
+  },
+
+  "prophets": {
+    "prophetAdam": "حضرت آدم علیہ السلام",
+    "prophetNuh": "حضرت نوح علیہ السلام",
+    "prophetIbrahim": "حضرت ابراہیم علیہ السلام",
+    "prophetIsmail": "حضرت اسماعیل علیہ السلام",
+    "prophetYusuf": "حضرت یوسف علیہ السلام",
+    "prophetMusa": "حضرت موسیٰ علیہ السلام",
+    "prophetDawud": "حضرت داؤد علیہ السلام",
+    "prophetSulaiman": "حضرت سلیمان علیہ السلام",
+    "prophetAyyub": "حضرت ایوب علیہ السلام",
+    "prophetYunus": "حضرت یونس علیہ السلام",
+    "prophetIsa": "حضرت عیسیٰ علیہ السلام",
+    "prophetMuhammad": "حضرت محمد ﷺ"
+  },
+
+  "companions": {
+    "abuBakr": "حضرت ابو بکر صدیق رضی اللہ عنہ",
+    "umar": "حضرت عمر فاروق رضی اللہ عنہ",
+    "uthman": "حضرت عثمان غنی رضی اللہ عنہ",
+    "ali": "حضرت علی رضی اللہ عنہ",
+    "bilal": "حضرت بلال رضی اللہ عنہ",
+    "khadijah": "حضرت خدیجہ رضی اللہ عنہا",
+    "aisha": "حضرت عائشہ رضی اللہ عنہا",
+    "fatimah": "حضرت فاطمہ رضی اللہ عنہا"
+  },
+
+  "content": {
+    "summary": "خلاصہ",
+    "fullStory": "مکمل کہانی",
+    "keyLessons": "اہم اسباق",
+    "moralOfStory": "کہانی کا سبق",
+    "reflections": "غور و فکر",
+    "relatedVerses": "متعلقہ قرآنی آیات",
+    "relatedHadith": "متعلقہ احادیث",
+    "historicalContext": "تاریخی پس منظر",
+    "timelinePeriod": "ٹائم لائن اور دور"
+  },
+
+  "lessons": {
+    "lessonsLearned": "سیکھے گئے اسباق",
+    "faithInAllah": "اللہ پر ایمان",
+    "patience": "آزمائشوں میں صبر",
+    "gratitude": "شکر گزاری",
+    "obedience": "اللہ کی اطاعت",
+    "trustInAllah": "اللہ کے منصوبے پر بھروسہ",
+    "kindness": "دوسروں کے ساتھ نرمی",
+    "honesty": "ایمانداری اور دیانتداری",
+    "perseverance": "استقامت",
+    "humility": "عاجزی",
+    "forgiveness": "معافی",
+    "justice": "عدل و انصاف",
+    "wisdom": "حکمت و دانائی"
+  },
+
+  "features": {
+    "readStory": "کہانی پڑھیں",
+    "listenStory": "کہانی سنیں",
+    "watchVideo": "ویڈیو دیکھیں",
+    "viewImages": "تصاویر دیکھیں",
+    "shareStory": "کہانی شیئر کریں",
+    "bookmarkStory": "کہانی محفوظ کریں",
+    "printStory": "کہانی پرنٹ کریں",
+    "downloadPDF": "پی ڈی ایف ڈاؤن لوڈ کریں",
+    "relatedStories": "متعلقہ کہانیاں",
+    "moreFromCategory": "اس زمرے سے مزید"
+  },
+
+  "reading": {
+    "readingTime": "پڑھنے کا وقت",
+    "minutes": "منٹ",
+    "difficulty": "دشواری",
+    "easy": "آسان",
+    "medium": "درمیانہ",
+    "advanced": "اعلیٰ",
+    "ageGroup": "عمر کا گروپ",
+    "children": "بچے",
+    "youth": "نوجوان",
+    "adults": "بالغ",
+    "allAges": "تمام عمریں"
+  },
+
+  "search": {
+    "searchStories": "کہانیاں تلاش کریں",
+    "searchPlaceholder": "عنوان، نبی، یا سبق سے تلاش کریں...",
+    "filterByCategory": "زمرے کے لحاظ سے",
+    "filterByProphet": "نبی کے لحاظ سے",
+    "filterByLesson": "سبق کے لحاظ سے",
+    "sortBy": "ترتیب دیں",
+    "newest": "نئی پہلے",
+    "oldest": "پرانی پہلے",
+    "popular": "مقبول ترین",
+    "alphabetical": "حروف تہجی"
+  },
+
+  "display": {
+    "fontSize": "فونٹ سائز",
+    "textSize": "متن کا سائز",
+    "small": "چھوٹا",
+    "medium": "درمیانہ",
+    "large": "بڑا",
+    "extraLarge": "بہت بڑا",
+    "nightMode": "رات کا موڈ",
+    "showImages": "تصاویر دکھائیں",
+    "hideImages": "تصاویر چھپائیں",
+    "showArabic": "عربی آیات دکھائیں",
+    "hideArabic": "عربی آیات چھپائیں"
+  },
+
+  "navigation": {
+    "previousStory": "پچھلی کہانی",
+    "nextStory": "اگلی کہانی",
+    "backToList": "کہانیوں پر واپس",
+    "relatedStories": "متعلقہ کہانیاں",
+    "continueReading": "پڑھنا جاری رکھیں",
+    "startFromBeginning": "شروع سے پڑھیں"
+  },
+
+  "collections": {
+    "storyCollections": "کہانیوں کے مجموعے",
+    "storiesOfProphets": "انبیاء کی کہانیاں",
+    "storiesOfCompanions": "صحابہ کرام کی کہانیاں",
+    "miraclesInQuran": "قرآن میں معجزات",
+    "lessonsFromHistory": "اسلامی تاریخ سے سبق",
+    "bedtimeStories": "سونے سے پہلے کی کہانیاں",
+    "inspirationalStories": "حوصلہ افزا کہانیاں"
+  },
+
+  "popular": {
+    "popularStories": "مقبول کہانیاں",
+    "caverCompanions": "اصحاب کہف",
+    "yusufInEgypt": "مصر میں حضرت یوسف",
+    "jonasAndWhale": "حضرت یونس اور مچھلی",
+    "abrahamSacrifice": "حضرت ابراہیم کی قربانی",
+    "mosesAndPharaoh": "حضرت موسیٰ اور فرعون",
+    "solomonWisdom": "حضرت سلیمان کی حکمت",
+    "jobPatience": "حضرت ایوب کا صبر",
+    "noahsArk": "حضرت نوح کی کشتی"
+  },
+
+  "actions": {
+    "viewStory": "کہانی دیکھیں",
+    "readNow": "ابھی پڑھیں",
+    "listen": "سنیں",
+    "watch": "دیکھیں",
+    "share": "شیئر کریں",
+    "bookmark": "محفوظ کریں",
+    "print": "پرنٹ کریں",
+    "download": "ڈاؤن لوڈ کریں",
+    "explore": "مزید دریافت کریں",
+    "learnMore": "مزید سیکھیں"
+  },
+
+  "messages": {
+    "storyBookmarked": "کہانی کامیابی سے محفوظ ہو گئی",
+    "bookmarkRemoved": "نشان ہٹا دیا گیا",
+    "copiedToClipboard": "کلپ بورڈ میں کاپی ہو گیا",
+    "storyShared": "کہانی کامیابی سے شیئر ہو گئی",
+    "loadingStory": "کہانی لوڈ ہو رہی ہے...",
+    "errorLoading": "کہانی لوڈ کرنے میں خرابی",
+    "noResults": "کوئی کہانی نہیں ملی",
+    "audioPlaying": "آڈیو چل رہا ہے",
+    "videoPaused": "ویڈیو رک گیا"
+  },
+
+  "stats": {
+    "totalStories": "کل کہانیاں",
+    "storiesRead": "کہانیاں پڑھی گئیں",
+    "readingProgress": "پڑھنے کی پیشرفت",
+    "storiesBookmarked": "محفوظ کہانیاں",
+    "favoriteCategory": "پسندیدہ زمرہ",
+    "timeSpentReading": "پڑھنے میں گزارا وقت"
+  },
+
+  "about": {
+    "aboutStories": "اسلامی کہانیوں کے بارے میں",
+    "importance": "اسلام میں کہانیوں کی اہمیت",
+    "methodology": "ہمارا طریقہ کار",
+    "authenticSources": "مستند ذرائع",
+    "quranReference": "قرآن سے حوالہ جات",
+    "hadithReference": "حدیث سے حوالہ جات",
+    "historicalAccuracy": "تاریخی درستگی"
+  },
+
+  "recommendations": {
+    "recommended": "آپ کے لیے تجویز کردہ",
+    "basedOnReading": "آپ کی پڑھائی کی بنیاد پر",
+    "trending": "مقبول کہانیاں",
+    "mustRead": "ضرور پڑھیں",
+    "newlyAdded": "نئی شامل کی گئیں",
+    "editorsChoice": "ایڈیٹر کی پسند"
+  }
+}

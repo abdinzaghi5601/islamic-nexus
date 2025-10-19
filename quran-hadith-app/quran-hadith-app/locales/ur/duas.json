@@ -1,0 +1,167 @@
+{
+  "title": "اسلامی دعائیں",
+  "subtitle": "قرآن اور سنت سے دعائیں",
+  "description": "ہر موقع کے لیے خوبصورت دعائیں",
+  "dua": "دعا",
+  "duas": "دعائیں",
+  "supplication": "التجا",
+  "supplications": "التجائیں",
+
+  "categories": {
+    "all": "تمام دعائیں",
+    "daily": "روزانہ کی دعائیں",
+    "morning": "صبح کی دعائیں",
+    "evening": "شام کی دعائیں",
+    "sleep": "سونے سے پہلے",
+    "waking": "بیدار ہونے پر",
+    "eating": "کھانے سے پہلے/بعد",
+    "travel": "سفر کی دعائیں",
+    "protection": "حفاظت",
+    "forgiveness": "مغفرت",
+    "guidance": "ہدایت",
+    "health": "صحت اور شفا",
+    "wealth": "رزق اور دولت",
+    "family": "خاندان",
+    "success": "کامیابی",
+    "gratitude": "شکر گزاری",
+    "difficulty": "مشکل وقت",
+    "rain": "بارش",
+    "entering": "داخل ہونا/نکلنا",
+    "mosque": "مسجد کی دعائیں",
+    "quran": "قرآن پڑھتے وقت",
+    "special": "خاص مواقع"
+  },
+
+  "times": {
+    "morningEvening": "صبح و شام",
+    "beforeSleep": "سونے سے پہلے",
+    "afterWaking": "بیدار ہونے کے بعد",
+    "beforeEating": "کھانے سے پہلے",
+    "afterEating": "کھانے کے بعد",
+    "enteringHome": "گھر میں داخل ہوتے وقت",
+    "leavingHome": "گھر سے نکلتے وقت",
+    "enteringMosque": "مسجد میں داخل ہوتے وقت",
+    "leavingMosque": "مسجد سے نکلتے وقت",
+    "beforeWudu": "وضو سے پہلے",
+    "afterWudu": "وضو کے بعد",
+    "afterAdhan": "اذان کے بعد",
+    "beforePrayer": "نماز سے پہلے",
+    "afterPrayer": "نماز کے بعد"
+  },
+
+  "features": {
+    "arabicText": "عربی متن",
+    "transliteration": "اردو تلفظ",
+    "translation": "ترجمہ",
+    "meaning": "معنی",
+    "benefits": "فوائد",
+    "reference": "حوالہ",
+    "source": "ماخذ",
+    "showArabic": "عربی دکھائیں",
+    "hideArabic": "عربی چھپائیں",
+    "showTransliteration": "تلفظ دکھائیں",
+    "hideTransliteration": "تلفظ چھپائیں",
+    "playAudio": "آڈیو چلائیں",
+    "pauseAudio": "آڈیو روکیں",
+    "repeatDua": "دعا دہرائیں"
+  },
+
+  "sources": {
+    "quran": "قرآن سے",
+    "hadith": "حدیث سے",
+    "sunnah": "سنت سے",
+    "sahihBukhari": "صحیح بخاری",
+    "sahihMuslim": "صحیح مسلم",
+    "abuDawud": "ابو داؤد",
+    "tirmidhi": "ترمذی",
+    "hisnulMuslim": "حصن المسلم",
+    "authenticSource": "مستند ماخذ"
+  },
+
+  "actions": {
+    "readDua": "دعا پڑھیں",
+    "listenDua": "دعا سنیں",
+    "memorizeDua": "دعا یاد کریں",
+    "shareDua": "دعا شیئر کریں",
+    "bookmarkDua": "دعا محفوظ کریں",
+    "copyArabic": "عربی کاپی کریں",
+    "copyTransliteration": "تلفظ کاپی کریں",
+    "copyTranslation": "ترجمہ کاپی کریں",
+    "printDua": "دعا پرنٹ کریں",
+    "downloadDua": "دعا ڈاؤن لوڈ کریں"
+  },
+
+  "search": {
+    "searchDuas": "دعائیں تلاش کریں",
+    "searchPlaceholder": "لفظ، موقع، یا زمرہ سے تلاش کریں...",
+    "filterByCategory": "زمرے کے لحاظ سے",
+    "filterBySource": "ماخذ کے لحاظ سے",
+    "popularDuas": "مقبول دعائیں",
+    "recentlyViewed": "حال ہی میں دیکھی گئیں",
+    "favorites": "پسندیدہ دعائیں"
+  },
+
+  "display": {
+    "arabicOnly": "صرف عربی",
+    "translationOnly": "صرف ترجمہ",
+    "all": "سب (عربی + ترجمہ)",
+    "fontSize": "فونٹ سائز",
+    "textSize": "متن کا سائز",
+    "small": "چھوٹا",
+    "medium": "درمیانہ",
+    "large": "بڑا",
+    "extraLarge": "بہت بڑا"
+  },
+
+  "messages": {
+    "duaBookmarked": "دعا کامیابی سے محفوظ ہو گئی",
+    "bookmarkRemoved": "نشان ہٹا دیا گیا",
+    "copiedToClipboard": "کلپ بورڈ میں کاپی ہو گیا",
+    "duaShared": "دعا کامیابی سے شیئر ہو گئی",
+    "loadingDua": "دعا لوڈ ہو رہی ہے...",
+    "errorLoading": "دعا لوڈ کرنے میں خرابی",
+    "noResults": "کوئی دعا نہیں ملی"
+  },
+
+  "benefits": {
+    "benefitsTitle": "اس دعا کے فوائد",
+    "virtue": "فضیلت",
+    "reward": "ثواب",
+    "occasion": "کب پڑھیں",
+    "frequency": "کتنی بار",
+    "method": "پڑھنے کا طریقہ"
+  },
+
+  "collections": {
+    "duaCollections": "دعاؤں کے مجموعے",
+    "hisnulMuslim": "حصن المسلم",
+    "prophetDuas": "نبی کریم ﷺ کی دعائیں",
+    "quranDuas": "قرآن کی دعائیں",
+    "comprehensiveDuas": "جامع دعائیں",
+    "shortDuas": "مختصر اور آسان دعائیں",
+    "powerfulDuas": "انتہائی مؤثر دعائیں"
+  },
+
+  "popular": {
+    "ayatulKursi": "آیت الکرسی",
+    "duaQunoot": "دعائے قنوت",
+    "istikhara": "استخارہ",
+    "duaYunus": "دعائے یونس",
+    "rabbanaAtina": "ربنا آتنا",
+    "lastTwoAyahs": "سورہ بقرہ کی آخری دو آیات",
+    "threeQuls": "تین قل",
+    "asmaUlHusna": "اسماء الحسنیٰ"
+  },
+
+  "tips": {
+    "duaTips": "دعا کے آداب",
+    "facingQiblah": "قبلہ رخ ہوں",
+    "raiseHands": "ہاتھ اٹھائیں",
+    "praiseAllah": "اللہ کی حمد سے شروع کریں",
+    "sendSalawat": "نبی پر درود بھیجیں",
+    "beHumble": "عاجزی اختیار کریں",
+    "beConfident": "اللہ پر یقین رکھیں",
+    "repeatThreeTimes": "تین بار دہرائیں",
+    "sayAmeen": "آمین کہیں"
+  }
+}

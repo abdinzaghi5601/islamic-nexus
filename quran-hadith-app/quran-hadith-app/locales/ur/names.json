@@ -1,0 +1,204 @@
+{
+  "title": "اللہ کے ۹۹ نام",
+  "subtitle": "اسماء الحسنیٰ - خوبصورت نام",
+  "description": "اللہ کے ۹۹ خوبصورت ناموں کو سیکھیں اور سمجھیں",
+  "name": "نام",
+  "names": "نام",
+  "beautifulNames": "خوبصورت نام",
+  "asmaUlHusna": "اسماء الحسنیٰ",
+
+  "categories": {
+    "all": "تمام نام",
+    "mercy": "رحمت و شفقت",
+    "power": "قوت و جلال",
+    "knowledge": "علم و حکمت",
+    "creation": "تخلیق و رزق",
+    "justice": "عدل و انصاف",
+    "guidance": "ہدایت و نور",
+    "forgiveness": "مغفرت و صبر",
+    "sovereignty": "بادشاہی و حکمرانی",
+    "protection": "حفاظت و نگہبانی",
+    "attributes": "الہی صفات"
+  },
+
+  "display": {
+    "arabicName": "عربی نام",
+    "transliteration": "اردو تلفظ",
+    "meaning": "معنی",
+    "explanation": "تشریح",
+    "benefits": "فوائد",
+    "showArabic": "عربی دکھائیں",
+    "hideArabic": "عربی چھپائیں",
+    "gridView": "گرڈ منظر",
+    "listView": "فہرست منظر",
+    "cardView": "کارڈ منظر"
+  },
+
+  "features": {
+    "listenPronunciation": "تلفظ سنیں",
+    "playAudio": "آڈیو چلائیں",
+    "pauseAudio": "آڈیو روکیں",
+    "repeat": "دہرائیں",
+    "memorize": "یہ نام یاد کریں",
+    "recite": "پڑھیں",
+    "learn": "مزید سیکھیں",
+    "share": "یہ نام شیئر کریں",
+    "bookmark": "نشان لگائیں"
+  },
+
+  "learning": {
+    "howToRecite": "کیسے پڑھیں",
+    "whenToRecite": "کب پڑھیں",
+    "timesToRecite": "کتنی بار",
+    "methodology": "پڑھنے کا طریقہ",
+    "spiritualBenefits": "روحانی فوائد",
+    "practicalBenefits": "عملی فوائد",
+    "relatedVerses": "متعلقہ قرآنی آیات",
+    "relatedHadith": "متعلقہ احادیث",
+    "scholarsInsight": "علماء کی بصیرت"
+  },
+
+  "virtues": {
+    "virtuesTitle": "ناموں کو جاننے کی فضیلت",
+    "hadithReference": "حدیث کا حوالہ",
+    "enterParadise": "جنت میں داخلے کا ذریعہ",
+    "closenessToAllah": "اللہ سے قربت",
+    "answeredDuas": "دعاؤں کی قبولیت",
+    "spiritualGrowth": "روحانی ترقی",
+    "protection": "الہی حفاظت",
+    "innerPeace": "اندرونی سکون"
+  },
+
+  "practice": {
+    "practiceTitle": "مشق اور حفظ",
+    "dailyPractice": "روزانہ کی مشق",
+    "weeklyGoal": "ہفتہ وار ہدف",
+    "memorized": "یاد کیا",
+    "learning": "سیکھ رہے ہیں",
+    "notStarted": "شروع نہیں کیا",
+    "testYourself": "اپنا امتحان لیں",
+    "quiz": "کوئز دیں",
+    "flashcards": "فلیش کارڈز",
+    "progress": "آپ کی پیشرفت",
+    "namesLearned": "نام سیکھے",
+    "totalNames": "کل نام"
+  },
+
+  "sources": {
+    "quranReference": "قرآن میں ذکر",
+    "hadithReference": "صحیح حدیث سے",
+    "scholarlyOpinion": "علمائے کرام کی رائے",
+    "evidenceFromQuran": "قرآن سے ثبوت",
+    "evidenceFromSunnah": "سنت سے ثبوت",
+    "unanimouslyAccepted": "متفقہ طور پر قبول شدہ",
+    "authenticSource": "مستند ماخذ"
+  },
+
+  "search": {
+    "searchNames": "نام تلاش کریں",
+    "searchPlaceholder": "نام، معنی یا فائدے سے تلاش کریں...",
+    "filterByCategory": "زمرے کے لحاظ سے",
+    "sortBy": "ترتیب دیں",
+    "alphabetical": "حروف تہجی",
+    "byNumber": "نمبر کے لحاظ سے",
+    "byCategory": "زمرے کے لحاظ سے",
+    "mostRecited": "سب سے زیادہ پڑھے گئے",
+    "recentlyViewed": "حال ہی میں دیکھے گئے"
+  },
+
+  "recitation": {
+    "recitationGuide": "تلاوت کی رہنمائی",
+    "afterFajr": "فجر کے بعد",
+    "afterMaghrib": "مغرب کے بعد",
+    "beforeSleep": "سونے سے پہلے",
+    "inDifficulty": "مشکل وقت میں",
+    "forSpecificNeeds": "خاص ضروریات کے لیے",
+    "daily": "روزانہ کی تلاوت",
+    "recommended": "تجویز کردہ اوقات"
+  },
+
+  "benefits": {
+    "benefitsOfReciting": "پڑھنے کے فوائد",
+    "increaseFaith": "ایمان میں اضافہ",
+    "drawsBarakah": "برکت کا ذریعہ",
+    "answersSupplications": "دعاؤں کی قبولیت",
+    "removesAnxiety": "پریشانی دور کرے",
+    "bringsPeace": "سکون لائے",
+    "strengthensConnection": "اللہ سے تعلق مضبوط کرے",
+    "guidanceInLife": "زندگی میں رہنمائی"
+  },
+
+  "actions": {
+    "viewName": "نام دیکھیں",
+    "learnName": "یہ نام سیکھیں",
+    "practiceName": "تلاوت کی مشق کریں",
+    "memorizeNow": "ابھی یاد کریں",
+    "hearPronunciation": "تلفظ سنیں",
+    "readExplanation": "تشریح پڑھیں",
+    "viewAllNames": "تمام نام دیکھیں",
+    "startLearning": "سیکھنا شروع کریں"
+  },
+
+  "messages": {
+    "nameBookmarked": "نام کامیابی سے محفوظ ہو گیا",
+    "bookmarkRemoved": "نشان ہٹا دیا گیا",
+    "copiedToClipboard": "کلپ بورڈ میں کاپی ہو گیا",
+    "audioPlaying": "آڈیو چل رہا ہے",
+    "nameMemorized": "یاد شدہ کے طور پر نشان زد",
+    "progressSaved": "پیشرفت محفوظ ہو گئی",
+    "loadingNames": "نام لوڈ ہو رہے ہیں...",
+    "errorLoading": "نام لوڈ کرنے میں خرابی",
+    "noResults": "کوئی نام نہیں ملا"
+  },
+
+  "stats": {
+    "totalNames": "۹۹ نام",
+    "namesMemorized": "نام یاد کیے",
+    "dailyProgress": "روزانہ کی پیشرفت",
+    "weeklyGoal": "ہفتہ وار ہدف",
+    "completionRate": "تکمیل کی شرح",
+    "currentStreak": "موجودہ سلسلہ",
+    "longestStreak": "طویل ترین سلسلہ"
+  },
+
+  "navigation": {
+    "previousName": "پچھلا نام",
+    "nextName": "اگلا نام",
+    "backToList": "فہرست پر واپس",
+    "goToName": "نام پر جائیں"
+  },
+
+  "about": {
+    "aboutNames": "۹۹ ناموں کے بارے میں",
+    "importance": "اسلام میں اہمیت",
+    "historicalContext": "تاریخی پس منظر",
+    "howToLearn": "کیسے سیکھیں",
+    "bestPractices": "بہترین طریقے",
+    "commonMistakes": "عام غلطیوں سے بچیں",
+    "scholarlyGuidance": "علمائے کرام کی رہنمائی"
+  },
+
+  "settings": {
+    "displaySettings": "ڈسپلے کی ترتیبات",
+    "fontSize": "فونٹ سائز",
+    "audioSpeed": "آڈیو کی رفتار",
+    "autoPlay": "خودکار اگلا چلائیں",
+    "showTransliteration": "تلفظ دکھائیں",
+    "showMeaning": "معنی دکھائیں",
+    "showExplanation": "تفصیلی تشریح دکھائیں",
+    "dailyReminder": "روزانہ کی یاد دہانی",
+    "reminderTime": "یاد دہانی کا وقت"
+  },
+
+  "popular": {
+    "mostRecited": "سب سے زیادہ پڑھے جانے والے نام",
+    "arRahman": "الرحمن (نہایت مہربان)",
+    "arRaheem": "الرحیم (بے حد رحم کرنے والا)",
+    "alMalik": "الملک (بادشاہ)",
+    "alQuddus": "القدوس (پاک)",
+    "asSalam": "السلام (سلامتی دینے والا)",
+    "alMumin": "المؤمن (امن دینے والا)",
+    "alAziz": "العزیز (زبردست)",
+    "alKhaliq": "الخالق (پیدا کرنے والا)"
+  }
+}

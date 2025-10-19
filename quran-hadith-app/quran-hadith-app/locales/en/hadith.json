@@ -1,0 +1,167 @@
+{
+  "title": "Hadith Collection",
+  "subtitle": "Authentic Narrations from the Prophet Muhammad (ﷺ)",
+  "description": "Explore authentic hadith from the six major collections",
+  "hadith": "Hadith",
+  "hadiths": "Hadiths",
+  "narrator": "Narrator",
+  "narrators": "Narrators",
+  "chain": "Chain of Narration",
+  "isnad": "Isnad",
+
+  "collections": {
+    "title": "Hadith Collections",
+    "sixBooks": "The Six Books",
+    "kutubSittah": "Kutub al-Sittah",
+    "sahihBukhari": "Sahih al-Bukhari",
+    "sahihMuslim": "Sahih Muslim",
+    "sunanAbuDawud": "Sunan Abu Dawud",
+    "jamiTirmidhi": "Jami' at-Tirmidhi",
+    "sunanNasai": "Sunan an-Nasa'i",
+    "sunanIbnMajah": "Sunan Ibn Majah",
+    "selectCollection": "Select Collection",
+    "browseCollections": "Browse Collections",
+    "allCollections": "All Collections"
+  },
+
+  "chapters": {
+    "chapter": "Chapter",
+    "chapters": "Chapters",
+    "book": "Book",
+    "books": "Books",
+    "browseChapters": "Browse Chapters",
+    "chapterNumber": "Chapter Number",
+    "totalChapters": "Total Chapters",
+    "viewChapter": "View Chapter"
+  },
+
+  "grades": {
+    "grade": "Grade",
+    "authenticity": "Authenticity",
+    "sahih": "Sahih (Authentic)",
+    "hasan": "Hasan (Good)",
+    "daif": "Da'if (Weak)",
+    "mawdu": "Mawdu' (Fabricated)",
+    "filterByGrade": "Filter by Grade",
+    "authenticOnly": "Authentic Only",
+    "grading": "Grading"
+  },
+
+  "text": {
+    "arabicText": "Arabic Text",
+    "englishTranslation": "English Translation",
+    "urduTranslation": "Urdu Translation",
+    "showArabic": "Show Arabic",
+    "hideArabic": "Hide Arabic",
+    "showTranslation": "Show Translation",
+    "hideTranslation": "Hide Translation",
+    "reference": "Reference",
+    "hadithNumber": "Hadith Number"
+  },
+
+  "narrator": {
+    "narratorChain": "Narrator Chain",
+    "firstNarrator": "First Narrator",
+    "chainOfNarration": "Chain of Narration",
+    "viewNarrators": "View Narrators",
+    "narratorBio": "Narrator Biography",
+    "reliability": "Reliability",
+    "trustworthy": "Trustworthy",
+    "weak": "Weak",
+    "disputed": "Disputed"
+  },
+
+  "features": {
+    "bookmark": "Bookmark Hadith",
+    "share": "Share Hadith",
+    "copy": "Copy Arabic Text",
+    "copyReference": "Copy Reference",
+    "addNote": "Add Note",
+    "viewRelated": "View Related",
+    "relatedHadiths": "Related Hadiths",
+    "relatedVerses": "Related Quranic Verses",
+    "crossReference": "Cross Reference"
+  },
+
+  "search": {
+    "searchHadith": "Search Hadith",
+    "searchPlaceholder": "Search by text, narrator, or topic...",
+    "searchByTopic": "Search by Topic",
+    "searchByNarrator": "Search by Narrator",
+    "advancedSearch": "Advanced Search",
+    "filterResults": "Filter Results"
+  },
+
+  "topics": {
+    "topics": "Topics",
+    "relatedTopics": "Related Topics",
+    "faith": "Faith (Iman)",
+    "prayer": "Prayer (Salah)",
+    "charity": "Charity (Zakat)",
+    "fasting": "Fasting (Sawm)",
+    "pilgrimage": "Pilgrimage (Hajj)",
+    "manners": "Manners (Adab)",
+    "purification": "Purification (Taharah)",
+    "marriage": "Marriage (Nikah)",
+    "business": "Business Transactions",
+    "jihad": "Jihad",
+    "knowledge": "Knowledge",
+    "paradise": "Paradise (Jannah)",
+    "hellfire": "Hellfire (Jahannam)"
+  },
+
+  "display": {
+    "fontSize": "Font Size",
+    "displayMode": "Display Mode",
+    "compactView": "Compact View",
+    "detailedView": "Detailed View",
+    "showGrade": "Show Grade",
+    "showNarrators": "Show Narrators",
+    "showReference": "Show Reference"
+  },
+
+  "stats": {
+    "totalHadiths": "Total Hadiths",
+    "sahihCount": "Sahih Hadiths",
+    "hasanCount": "Hasan Hadiths",
+    "daifCount": "Da'if Hadiths",
+    "inThisBook": "In This Book",
+    "inThisChapter": "In This Chapter"
+  },
+
+  "actions": {
+    "viewHadith": "View Hadith",
+    "readNow": "Read Now",
+    "study": "Study",
+    "compare": "Compare",
+    "viewCollection": "View Collection",
+    "browseChapters": "Browse Chapters",
+    "exploreTopics": "Explore Topics"
+  },
+
+  "messages": {
+    "bookmarkAdded": "Hadith bookmarked successfully",
+    "bookmarkRemoved": "Bookmark removed",
+    "copiedToClipboard": "Copied to clipboard",
+    "loadingHadith": "Loading hadith...",
+    "errorLoading": "Error loading hadith",
+    "noResults": "No hadith found",
+    "translationUnavailable": "Translation not available"
+  },
+
+  "navigation": {
+    "previousHadith": "Previous Hadith",
+    "nextHadith": "Next Hadith",
+    "backToChapter": "Back to Chapter",
+    "backToCollection": "Back to Collection",
+    "goToHadith": "Go to Hadith"
+  },
+
+  "about": {
+    "aboutCollection": "About This Collection",
+    "compiler": "Compiler",
+    "methodology": "Methodology",
+    "authenticity": "Authenticity Criteria",
+    "totalNarrations": "Total Narrations"
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "title": "احادیث کا مجموعہ",
+  "subtitle": "نبی کریم ﷺ کی صحیح احادیث",
+  "description": "چھ بڑی کتب سے مستند احادیث کا مطالعہ کریں",
+  "hadith": "حدیث",
+  "hadiths": "احادیث",
+  "narrator": "راوی",
+  "narrators": "راوی",
+  "chain": "سلسلہ روایت",
+  "isnad": "اسناد",
+
+  "collections": {
+    "title": "احادیث کے مجموعے",
+    "sixBooks": "کتب ستہ",
+    "kutubSittah": "کتب ستہ",
+    "sahihBukhari": "صحیح بخاری",
+    "sahihMuslim": "صحیح مسلم",
+    "sunanAbuDawud": "سنن ابو داؤد",
+    "jamiTirmidhi": "جامع ترمذی",
+    "sunanNasai": "سنن نسائی",
+    "sunanIbnMajah": "سنن ابن ماجہ",
+    "selectCollection": "مجموعہ منتخب کریں",
+    "browseCollections": "مجموعے دیکھیں",
+    "allCollections": "تمام مجموعے"
+  },
+
+  "chapters": {
+    "chapter": "باب",
+    "chapters": "ابواب",
+    "book": "کتاب",
+    "books": "کتب",
+    "browseChapters": "ابواب دیکھیں",
+    "chapterNumber": "باب نمبر",
+    "totalChapters": "کل ابواب",
+    "viewChapter": "باب دیکھیں"
+  },
+
+  "grades": {
+    "grade": "درجہ",
+    "authenticity": "صحت",
+    "sahih": "صحیح",
+    "hasan": "حسن",
+    "daif": "ضعیف",
+    "mawdu": "موضوع (من گھڑت)",
+    "filterByGrade": "درجے کے لحاظ سے",
+    "authenticOnly": "صرف صحیح",
+    "grading": "درجہ بندی"
+  },
+
+  "text": {
+    "arabicText": "عربی متن",
+    "englishTranslation": "انگریزی ترجمہ",
+    "urduTranslation": "اردو ترجمہ",
+    "showArabic": "عربی دکھائیں",
+    "hideArabic": "عربی چھپائیں",
+    "showTranslation": "ترجمہ دکھائیں",
+    "hideTranslation": "ترجمہ چھپائیں",
+    "reference": "حوالہ",
+    "hadithNumber": "حدیث نمبر"
+  },
+
+  "narrator": {
+    "narratorChain": "سلسلہ راویان",
+    "firstNarrator": "پہلے راوی",
+    "chainOfNarration": "سلسلہ سند",
+    "viewNarrators": "راوی دیکھیں",
+    "narratorBio": "راوی کا تعارف",
+    "reliability": "اعتبار",
+    "trustworthy": "قابل اعتماد",
+    "weak": "کمزور",
+    "disputed": "متنازعہ"
+  },
+
+  "features": {
+    "bookmark": "حدیث محفوظ کریں",
+    "share": "حدیث شیئر کریں",
+    "copy": "عربی متن کاپی کریں",
+    "copyReference": "حوالہ کاپی کریں",
+    "addNote": "نوٹ شامل کریں",
+    "viewRelated": "متعلقہ دیکھیں",
+    "relatedHadiths": "متعلقہ احادیث",
+    "relatedVerses": "متعلقہ قرآنی آیات",
+    "crossReference": "حوالہ جات"
+  },
+
+  "search": {
+    "searchHadith": "حدیث تلاش کریں",
+    "searchPlaceholder": "متن، راوی یا موضوع سے تلاش کریں...",
+    "searchByTopic": "موضوع سے تلاش کریں",
+    "searchByNarrator": "راوی سے تلاش کریں",
+    "advancedSearch": "تفصیلی تلاش",
+    "filterResults": "نتائج فلٹر کریں"
+  },
+
+  "topics": {
+    "topics": "موضوعات",
+    "relatedTopics": "متعلقہ موضوعات",
+    "faith": "ایمان",
+    "prayer": "نماز",
+    "charity": "زکوۃ",
+    "fasting": "روزہ",
+    "pilgrimage": "حج",
+    "manners": "آداب",
+    "purification": "طہارت",
+    "marriage": "نکاح",
+    "business": "تجارت",
+    "jihad": "جہاد",
+    "knowledge": "علم",
+    "paradise": "جنت",
+    "hellfire": "جہنم"
+  },
+
+  "display": {
+    "fontSize": "فونٹ سائز",
+    "displayMode": "ڈسپلے موڈ",
+    "compactView": "مختصر منظر",
+    "detailedView": "تفصیلی منظر",
+    "showGrade": "درجہ دکھائیں",
+    "showNarrators": "راوی دکھائیں",
+    "showReference": "حوالہ دکھائیں"
+  },
+
+  "stats": {
+    "totalHadiths": "کل احادیث",
+    "sahihCount": "صحیح احادیث",
+    "hasanCount": "حسن احادیث",
+    "daifCount": "ضعیف احادیث",
+    "inThisBook": "اس کتاب میں",
+    "inThisChapter": "اس باب میں"
+  },
+
+  "actions": {
+    "viewHadith": "حدیث دیکھیں",
+    "readNow": "ابھی پڑھیں",
+    "study": "مطالعہ کریں",
+    "compare": "موازنہ کریں",
+    "viewCollection": "مجموعہ دیکھیں",
+    "browseChapters": "ابواب دیکھیں",
+    "exploreTopics": "موضوعات دریافت کریں"
+  },
+
+  "messages": {
+    "bookmarkAdded": "حدیث کامیابی سے محفوظ ہو گئی",
+    "bookmarkRemoved": "نشان ہٹا دیا گیا",
+    "copiedToClipboard": "کلپ بورڈ میں کاپی ہو گیا",
+    "loadingHadith": "حدیث لوڈ ہو رہی ہے...",
+    "errorLoading": "حدیث لوڈ کرنے میں خرابی",
+    "noResults": "کوئی حدیث نہیں ملی",
+    "translationUnavailable": "ترجمہ دستیاب نہیں"
+  },
+
+  "navigation": {
+    "previousHadith": "پچھلی حدیث",
+    "nextHadith": "اگلی حدیث",
+    "backToChapter": "باب پر واپس",
+    "backToCollection": "مجموعے پر واپس",
+    "goToHadith": "حدیث پر جائیں"
+  },
+
+  "about": {
+    "aboutCollection": "اس مجموعے کے بارے میں",
+    "compiler": "مرتب کنندہ",
+    "methodology": "طریقہ کار",
+    "authenticity": "صحت کا معیار",
+    "totalNarrations": "کل روایات"
+  }
+}

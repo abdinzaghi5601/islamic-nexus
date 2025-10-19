@@ -1,0 +1,222 @@
+{
+  "title": "اسلامی کتب",
+  "subtitle": "مستند اسلامی ادب",
+  "description": "اسلامی کتب اور علمی کاموں کا وسیع ذخیرہ دریافت کریں",
+  "book": "کتاب",
+  "books": "کتب",
+  "library": "لائبریری",
+  "collection": "مجموعہ",
+
+  "categories": {
+    "all": "تمام کتب",
+    "quranSciences": "علوم القرآن",
+    "hadithSciences": "علوم الحدیث",
+    "fiqh": "فقہ (اسلامی قانون)",
+    "aqeedah": "عقیدہ (اسلامی ایمانیات)",
+    "seerah": "سیرت (نبی کریم ﷺ کی سوانح)",
+    "history": "اسلامی تاریخ",
+    "spirituality": "روحانیت اور تصوف",
+    "arabic": "عربی زبان",
+    "comparative": "تقابلی مذاہب",
+    "contemporary": "معاصر مسائل",
+    "children": "بچوں کی کتب",
+    "women": "خواتین کے لیے کتب",
+    "converts": "نئے مسلمانوں کے لیے"
+  },
+
+  "scholars": {
+    "title": "علماء کی کتب",
+    "ibnTaymiyyah": "ابن تیمیہ",
+    "ibnKathir": "ابن کثیر",
+    "ibnQayyim": "ابن القیم",
+    "imamNawawi": "امام نووی",
+    "imamGhazali": "امام غزالی",
+    "ibnHajar": "ابن حجر عسقلانی",
+    "asShatibi": "امام شاطبی",
+    "contemporary": "معاصر علماء"
+  },
+
+  "details": {
+    "author": "مصنف",
+    "publisher": "ناشر",
+    "publishDate": "اشاعت کی تاریخ",
+    "pages": "صفحات",
+    "language": "زبان",
+    "translated": "ترجمہ شدہ",
+    "originalLanguage": "اصل زبان",
+    "edition": "ایڈیشن",
+    "isbn": "آئی ایس بی این",
+    "format": "فارمیٹ"
+  },
+
+  "formats": {
+    "pdf": "پی ڈی ایف",
+    "epub": "ای پب",
+    "audiobook": "آڈیو بک",
+    "hardcover": "ہارڈ کور",
+    "paperback": "پیپر بیک",
+    "digital": "ڈیجیٹل",
+    "print": "پرنٹ"
+  },
+
+  "features": {
+    "readOnline": "آن لائن پڑھیں",
+    "downloadPDF": "پی ڈی ایف ڈاؤن لوڈ کریں",
+    "listenAudiobook": "آڈیو بک سنیں",
+    "bookmark": "بک مارک کریں",
+    "highlight": "نشان زد کریں",
+    "takeNotes": "نوٹس لیں",
+    "share": "کتاب شیئر کریں",
+    "buyPhysical": "جسمانی نسخہ خریدیں",
+    "addToLibrary": "میری لائبریری میں شامل کریں",
+    "removeFromLibrary": "لائبریری سے ہٹائیں"
+  },
+
+  "reading": {
+    "readNow": "ابھی پڑھیں",
+    "continueReading": "پڑھنا جاری رکھیں",
+    "startReading": "پڑھنا شروع کریں",
+    "readingProgress": "پڑھنے کی پیشرفت",
+    "currentPage": "موجودہ صفحہ",
+    "lastRead": "آخری بار پڑھا",
+    "readingTime": "پڑھنے کا وقت",
+    "estimatedTime": "ختم کرنے کا تخمینی وقت",
+    "chaptersCompleted": "ابواب مکمل کیے",
+    "totalChapters": "کل ابواب"
+  },
+
+  "library": {
+    "myLibrary": "میری لائبریری",
+    "currentlyReading": "فی الوقت پڑھ رہے ہیں",
+    "wantToRead": "پڑھنا چاہتے ہیں",
+    "completed": "مکمل ہو گئیں",
+    "favorites": "پسندیدہ",
+    "recentlyAdded": "حال ہی میں شامل کی گئیں",
+    "recommended": "آپ کے لیے تجویز کردہ"
+  },
+
+  "search": {
+    "searchBooks": "کتب تلاش کریں",
+    "searchPlaceholder": "عنوان، مصنف یا موضوع سے تلاش کریں...",
+    "filterByCategory": "زمرے کے لحاظ سے",
+    "filterByAuthor": "مصنف کے لحاظ سے",
+    "filterByLanguage": "زبان کے لحاظ سے",
+    "sortBy": "ترتیب دیں",
+    "newest": "نئی پہلے",
+    "oldest": "پرانی پہلے",
+    "popular": "مقبول ترین",
+    "alphabetical": "حروف تہجی",
+    "rating": "اعلیٰ درجہ بندی"
+  },
+
+  "popular": {
+    "popularBooks": "مقبول کتب",
+    "riyad": "ریاض الصالحین",
+    "hisnul": "حصن المسلم",
+    "sealed": "الرحیق المختوم",
+    "fortress": "حصن المسلم",
+    "purification": "تزکیہ نفس",
+    "diseases": "دل کی بیماریاں",
+    "patience": "صبر اور شکر",
+    "divine": "قضا و قدر"
+  },
+
+  "reviews": {
+    "reviews": "جائزے",
+    "rating": "درجہ بندی",
+    "addReview": "جائزہ شامل کریں",
+    "readReviews": "جائزے پڑھیں",
+    "helpful": "مفید",
+    "notHelpful": "مفید نہیں",
+    "verified": "تصدیق شدہ خریداری",
+    "topReviews": "اہم جائزے"
+  },
+
+  "recommendations": {
+    "recommended": "تجویز کردہ",
+    "basedOnReading": "آپ کی پڑھائی کی بنیاد پر",
+    "similar": "ملتی جلتی کتب",
+    "alsoRead": "قارئین نے یہ بھی پڑھا",
+    "trending": "مقبول",
+    "mustRead": "ضرور پڑھیں",
+    "newReleases": "نئی اشاعتیں"
+  },
+
+  "actions": {
+    "viewBook": "کتاب دیکھیں",
+    "readSample": "نمونہ پڑھیں",
+    "download": "ڈاؤن لوڈ کریں",
+    "listen": "سنیں",
+    "purchase": "خریدیں",
+    "addToCart": "ٹوکری میں شامل کریں",
+    "viewDetails": "تفصیلات دیکھیں",
+    "previewBook": "کتاب کا جائزہ لیں"
+  },
+
+  "chapters": {
+    "chapters": "ابواب",
+    "tableOfContents": "فہرست",
+    "chapter": "باب",
+    "introduction": "تعارف",
+    "conclusion": "اختتام",
+    "appendix": "ضمیمہ",
+    "glossary": "لغت",
+    "references": "حوالہ جات",
+    "index": "اشاریہ"
+  },
+
+  "notes": {
+    "notes": "نوٹس",
+    "myNotes": "میرے نوٹس",
+    "addNote": "نوٹ شامل کریں",
+    "editNote": "نوٹ میں ترمیم کریں",
+    "deleteNote": "نوٹ حذف کریں",
+    "highlights": "نشان زدہ",
+    "bookmarks": "بک مارکس",
+    "annotations": "تشریحات"
+  },
+
+  "collections": {
+    "collections": "مجموعے",
+    "createCollection": "مجموعہ بنائیں",
+    "addToCollection": "مجموعے میں شامل کریں",
+    "myCollections": "میرے مجموعے",
+    "publicCollections": "عوامی مجموعے",
+    "sharedWithMe": "میرے ساتھ شیئر کیے گئے"
+  },
+
+  "messages": {
+    "bookAdded": "کتاب لائبریری میں شامل ہو گئی",
+    "bookRemoved": "کتاب لائبریری سے ہٹا دی گئی",
+    "bookmarked": "کامیابی سے بک مارک ہو گیا",
+    "noteAdded": "نوٹ شامل ہو گیا",
+    "reviewSubmitted": "جائزہ کامیابی سے جمع ہو گیا",
+    "downloadStarted": "ڈاؤن لوڈ شروع ہو گیا",
+    "downloadCompleted": "ڈاؤن لوڈ مکمل ہو گیا",
+    "loadingBook": "کتاب لوڈ ہو رہی ہے...",
+    "errorLoading": "کتاب لوڈ کرنے میں خرابی",
+    "noResults": "کوئی کتاب نہیں ملی"
+  },
+
+  "settings": {
+    "readingSettings": "پڑھنے کی ترتیبات",
+    "fontSize": "فونٹ سائز",
+    "fontFamily": "فونٹ فیملی",
+    "lineSpacing": "لائن کا فاصلہ",
+    "brightness": "چمک",
+    "theme": "تھیم",
+    "nightMode": "رات کا موڈ",
+    "autoScroll": "خودکار اسکرول",
+    "pageTransition": "صفحہ کی تبدیلی"
+  },
+
+  "stats": {
+    "totalBooks": "کل کتب",
+    "booksRead": "کتب پڑھی گئیں",
+    "currentlyReading": "فی الوقت پڑھ رہے ہیں",
+    "pagesRead": "صفحات پڑھے گئے",
+    "readingTime": "کل پڑھنے کا وقت",
+    "favoriteGenre": "پسندیدہ صنف",
+    "readingStreak": "پڑھنے کا سلسلہ"
+  }
+}

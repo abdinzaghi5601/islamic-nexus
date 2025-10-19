@@ -1,0 +1,174 @@
+{
+  "title": "Holy Quran",
+  "subtitle": "Read, Listen, and Understand",
+  "description": "Complete Quran with translations, tafsir, and word-by-word analysis",
+  "surahs": "Surahs",
+  "ayahs": "Ayahs",
+  "ayah": "Ayah",
+  "surah": "Surah",
+  "juz": "Juz",
+  "page": "Page",
+  "verse": "Verse",
+  "chapter": "Chapter",
+  "revelation": "Revelation",
+  "meccan": "Meccan",
+  "medinan": "Medinan",
+  "totalAyahs": "Total Ayahs",
+  "revealedIn": "Revealed in",
+  "revelationOrder": "Revelation Order",
+
+  "navigation": {
+    "previousAyah": "Previous Ayah",
+    "nextAyah": "Next Ayah",
+    "previousSurah": "Previous Surah",
+    "nextSurah": "Next Surah",
+    "goToAyah": "Go to Ayah",
+    "jumpTo": "Jump to"
+  },
+
+  "reading": {
+    "continueReading": "Continue Reading",
+    "lastRead": "Last Read",
+    "startReading": "Start Reading",
+    "readingProgress": "Reading Progress",
+    "completed": "Completed",
+    "inProgress": "In Progress"
+  },
+
+  "translation": {
+    "translation": "Translation",
+    "translations": "Translations",
+    "selectTranslation": "Select Translation",
+    "translator": "Translator",
+    "showTranslation": "Show Translation",
+    "hideTranslation": "Hide Translation",
+    "arabicText": "Arabic Text",
+    "englishTranslation": "English Translation",
+    "urduTranslation": "Urdu Translation"
+  },
+
+  "tafsir": {
+    "tafsir": "Tafsir",
+    "commentary": "Commentary",
+    "explanation": "Explanation",
+    "showTafsir": "Show Tafsir",
+    "hideTafsir": "Hide Tafsir",
+    "selectTafsir": "Select Tafsir",
+    "viewFullTafsir": "View Full Tafsir",
+    "shortTafsir": "Short Explanation",
+    "detailedTafsir": "Detailed Commentary"
+  },
+
+  "study": {
+    "wordByWord": "Word by Word",
+    "analysis": "Analysis",
+    "grammar": "Grammar",
+    "morphology": "Morphology",
+    "root": "Root",
+    "meaning": "Meaning",
+    "studyMode": "Study Mode",
+    "vocabulary": "Vocabulary",
+    "breakdown": "Breakdown"
+  },
+
+  "audio": {
+    "playAudio": "Play Audio",
+    "pauseAudio": "Pause Audio",
+    "selectReciter": "Select Reciter",
+    "reciter": "Reciter",
+    "autoPlay": "Auto Play",
+    "repeatAyah": "Repeat Ayah",
+    "playbackSpeed": "Playback Speed",
+    "download": "Download Audio"
+  },
+
+  "display": {
+    "arabicOnly": "Arabic Only",
+    "translationOnly": "Translation Only",
+    "both": "Both",
+    "fontSize": "Font Size",
+    "fontStyle": "Font Style",
+    "textSize": "Text Size",
+    "small": "Small",
+    "medium": "Medium",
+    "large": "Large",
+    "extraLarge": "Extra Large"
+  },
+
+  "filters": {
+    "filterBySurah": "Filter by Surah",
+    "filterByJuz": "Filter by Juz",
+    "filterByPage": "Filter by Page",
+    "allSurahs": "All Surahs",
+    "meccanSurahs": "Meccan Surahs",
+    "medinanSurahs": "Medinan Surahs",
+    "searchInQuran": "Search in Quran",
+    "searchPlaceholder": "Search verses, words, or topics..."
+  },
+
+  "popular": {
+    "popularSurahs": "Popular Surahs",
+    "mostRead": "Most Read",
+    "recommended": "Recommended",
+    "favorites": "Favorites"
+  },
+
+  "categories": {
+    "short": "Short Surahs",
+    "long": "Long Surahs",
+    "dailyReading": "Daily Reading",
+    "protection": "Protection",
+    "guidance": "Guidance",
+    "blessings": "Blessings"
+  },
+
+  "features": {
+    "tajweed": "Tajweed",
+    "tajweedRules": "Tajweed Rules",
+    "showTajweed": "Show Tajweed",
+    "colorCodedTajweed": "Color-Coded Tajweed",
+    "bookmarks": "Bookmarks",
+    "notes": "Notes",
+    "highlights": "Highlights",
+    "share": "Share Ayah",
+    "copy": "Copy Arabic Text",
+    "copyTranslation": "Copy Translation",
+    "addBookmark": "Add Bookmark",
+    "removeBookmark": "Remove Bookmark"
+  },
+
+  "metadata": {
+    "bismillah": "Bismillah",
+    "sajdah": "Sajdah",
+    "rukuMarker": "Ruku Marker",
+    "hizbQuarter": "Hizb Quarter",
+    "manzil": "Manzil"
+  },
+
+  "stats": {
+    "totalWords": "Total Words",
+    "totalLetters": "Total Letters",
+    "uniqueWords": "Unique Words",
+    "readingTime": "Reading Time",
+    "estimatedTime": "Estimated Reading Time"
+  },
+
+  "messages": {
+    "bookmarkAdded": "Bookmark added successfully",
+    "bookmarkRemoved": "Bookmark removed",
+    "copiedToClipboard": "Copied to clipboard",
+    "loadingQuran": "Loading Quran...",
+    "errorLoading": "Error loading Quran",
+    "noResults": "No verses found",
+    "translationUnavailable": "Translation not available"
+  },
+
+  "actions": {
+    "viewSurah": "View Surah",
+    "readNow": "Read Now",
+    "listen": "Listen",
+    "study": "Study",
+    "memorize": "Memorize",
+    "explore": "Explore"
+  }
+}

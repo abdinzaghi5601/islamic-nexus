@@ -1,0 +1,205 @@
+{
+  "title": "Your Progress",
+  "subtitle": "Track your Islamic learning journey",
+  "dashboard": "Dashboard",
+  "analytics": "Analytics",
+  "insights": "Insights",
+
+  "overview": {
+    "title": "Overview",
+    "weeklyActivity": "Weekly Activity",
+    "monthlyActivity": "Monthly Activity",
+    "allTime": "All Time",
+    "today": "Today",
+    "thisWeek": "This Week",
+    "thisMonth": "This Month",
+    "thisYear": "This Year"
+  },
+
+  "quranProgress": {
+    "title": "Quran Progress",
+    "surahsRead": "Surahs Read",
+    "ayahsRead": "Ayahs Read",
+    "completionRate": "Completion Rate",
+    "currentSurah": "Current Surah",
+    "pagesRead": "Pages Read",
+    "juzCompleted": "Juz Completed",
+    "totalReadingTime": "Total Reading Time",
+    "averageDaily": "Average Daily Reading",
+    "streak": "Reading Streak",
+    "longestStreak": "Longest Streak",
+    "favoriteTranslation": "Favorite Translation",
+    "lastRead": "Last Read"
+  },
+
+  "hadithProgress": {
+    "title": "Hadith Study",
+    "hadithsRead": "Hadiths Read",
+    "collectionsStudied": "Collections Studied",
+    "chaptersCompleted": "Chapters Completed",
+    "favoriteCollection": "Favorite Collection",
+    "mostStudiedTopic": "Most Studied Topic",
+    "bookmarkedHadiths": "Bookmarked Hadiths",
+    "studyTime": "Study Time"
+  },
+
+  "salahTracking": {
+    "title": "Prayer Tracking",
+    "prayersCompleted": "Prayers Completed",
+    "onTimePercentage": "On-Time Percentage",
+    "missedPrayers": "Missed Prayers",
+    "currentStreak": "Current Streak",
+    "bestStreak": "Best Streak",
+    "fajrRate": "Fajr Success Rate",
+    "congregationPrayers": "Congregation Prayers",
+    "sunnahPrayers": "Sunnah Prayers"
+  },
+
+  "duaProgress": {
+    "title": "Dua Practice",
+    "duasMemorized": "Duas Memorized",
+    "duasRecited": "Duas Recited",
+    "categoriesExplored": "Categories Explored",
+    "favoriteDua": "Favorite Dua",
+    "dailyPractice": "Daily Practice",
+    "consistencyRate": "Consistency Rate"
+  },
+
+  "namesProgress": {
+    "title": "99 Names of Allah",
+    "namesMemorized": "Names Memorized",
+    "namesLearned": "Names Learned",
+    "completionPercentage": "Completion Percentage",
+    "quizScore": "Quiz Score",
+    "practiceTime": "Practice Time",
+    "masteryLevel": "Mastery Level"
+  },
+
+  "storiesProgress": {
+    "title": "Stories Read",
+    "storiesCompleted": "Stories Completed",
+    "favoriteCategory": "Favorite Category",
+    "timeSpentReading": "Time Spent Reading",
+    "lessonsLearned": "Lessons Learned",
+    "sharedStories": "Stories Shared"
+  },
+
+  "streaks": {
+    "title": "Your Streaks",
+    "currentStreak": "Current Streak",
+    "longestStreak": "Longest Streak",
+    "days": "days",
+    "maintain": "Keep it up!",
+    "almostThere": "Almost there!",
+    "streakBroken": "Streak broken",
+    "startNew": "Start a new streak today"
+  },
+
+  "goals": {
+    "title": "Goals",
+    "setGoal": "Set Goal",
+    "editGoal": "Edit Goal",
+    "deleteGoal": "Delete Goal",
+    "completeGoal": "Complete Goal",
+    "dailyGoals": "Daily Goals",
+    "weeklyGoals": "Weekly Goals",
+    "monthlyGoals": "Monthly Goals",
+    "customGoals": "Custom Goals",
+    "goalProgress": "Goal Progress",
+    "achieved": "Achieved",
+    "inProgress": "In Progress",
+    "notStarted": "Not Started"
+  },
+
+  "achievements": {
+    "title": "Achievements",
+    "badges": "Badges",
+    "milestones": "Milestones",
+    "unlocked": "Unlocked",
+    "locked": "Locked",
+    "recentAchievements": "Recent Achievements",
+    "viewAll": "View All Achievements",
+    "shareAchievement": "Share Achievement"
+  },
+
+  "timeTracking": {
+    "title": "Time Tracking",
+    "totalTime": "Total Time Spent",
+    "readingTime": "Reading Time",
+    "studyTime": "Study Time",
+    "prayerTime": "Prayer Time",
+    "averageSession": "Average Session",
+    "mostActiveDay": "Most Active Day",
+    "mostActiveTime": "Most Active Time"
+  },
+
+  "insights": {
+    "title": "Insights & Recommendations",
+    "personalizedTips": "Personalized Tips",
+    "improveConsistency": "Improve Consistency",
+    "suggestedContent": "Suggested Content",
+    "areasToFocus": "Areas to Focus On",
+    "strengths": "Your Strengths",
+    "improvements": "Areas for Improvement"
+  },
+
+  "comparison": {
+    "title": "Progress Comparison",
+    "vsLastWeek": "vs Last Week",
+    "vsLastMonth": "vs Last Month",
+    "vsLastYear": "vs Last Year",
+    "improvement": "Improvement",
+    "decline": "Decline",
+    "noChange": "No Change"
+  },
+
+  "export": {
+    "title": "Export Data",
+    "exportPDF": "Export as PDF",
+    "exportCSV": "Export as CSV",
+    "shareProgress": "Share Progress",
+    "printReport": "Print Report",
+    "downloadReport": "Download Report"
+  },
+
+  "settings": {
+    "title": "Analytics Settings",
+    "trackingPreferences": "Tracking Preferences",
+    "privacySettings": "Privacy Settings",
+    "enableTracking": "Enable Tracking",
+    "dataRetention": "Data Retention",
+    "resetData": "Reset All Data",
+    "confirmReset": "Are you sure you want to reset all data?"
+  },
+
+  "messages": {
+    "goalSet": "Goal set successfully",
+    "goalCompleted": "Congratulations! Goal completed",
+    "achievementUnlocked": "New achievement unlocked!",
+    "streakMaintained": "Streak maintained!",
+    "dataExported": "Data exported successfully",
+    "dataReset": "Data reset successfully",
+    "loadingAnalytics": "Loading analytics...",
+    "errorLoading": "Error loading analytics"
+  },
+
+  "charts": {
+    "barChart": "Bar Chart",
+    "lineChart": "Line Chart",
+    "pieChart": "Pie Chart",
+    "progressChart": "Progress Chart",
+    "activityHeatmap": "Activity Heatmap",
+    "weeklyDistribution": "Weekly Distribution",
+    "monthlyTrends": "Monthly Trends"
+  },
+
+  "stats": {
+    "total": "Total",
+    "average": "Average",
+    "maximum": "Maximum",
+    "minimum": "Minimum",
+    "percentage": "Percentage",
+    "count": "Count",
+    "duration": "Duration"
+  }
+}

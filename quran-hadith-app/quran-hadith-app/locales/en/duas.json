@@ -1,0 +1,167 @@
+{
+  "title": "Islamic Duas",
+  "subtitle": "Supplications from Quran and Sunnah",
+  "description": "Beautiful duas for every occasion",
+  "dua": "Dua",
+  "duas": "Duas",
+  "supplication": "Supplication",
+  "supplications": "Supplications",
+
+  "categories": {
+    "all": "All Duas",
+    "daily": "Daily Duas",
+    "morning": "Morning Duas",
+    "evening": "Evening Duas",
+    "sleep": "Before Sleep",
+    "waking": "Upon Waking",
+    "eating": "Before/After Eating",
+    "travel": "Travel Duas",
+    "protection": "Protection",
+    "forgiveness": "Seeking Forgiveness",
+    "guidance": "Guidance",
+    "health": "Health & Healing",
+    "wealth": "Rizq & Wealth",
+    "family": "Family",
+    "success": "Success",
+    "gratitude": "Gratitude",
+    "difficulty": "Times of Difficulty",
+    "rain": "Rain",
+    "entering": "Entering/Leaving",
+    "mosque": "Mosque Duas",
+    "quran": "When Reading Quran",
+    "special": "Special Occasions"
+  },
+
+  "times": {
+    "morningEvening": "Morning & Evening",
+    "beforeSleep": "Before Sleep",
+    "afterWaking": "After Waking Up",
+    "beforeEating": "Before Eating",
+    "afterEating": "After Eating",
+    "enteringHome": "Entering Home",
+    "leavingHome": "Leaving Home",
+    "enteringMosque": "Entering Mosque",
+    "leavingMosque": "Leaving Mosque",
+    "beforeWudu": "Before Wudu",
+    "afterWudu": "After Wudu",
+    "afterAdhan": "After Adhan",
+    "beforePrayer": "Before Prayer",
+    "afterPrayer": "After Prayer"
+  },
+
+  "features": {
+    "arabicText": "Arabic Text",
+    "transliteration": "Transliteration",
+    "translation": "Translation",
+    "meaning": "Meaning",
+    "benefits": "Benefits",
+    "reference": "Reference",
+    "source": "Source",
+    "showArabic": "Show Arabic",
+    "hideArabic": "Hide Arabic",
+    "showTransliteration": "Show Transliteration",
+    "hideTransliteration": "Hide Transliteration",
+    "playAudio": "Play Audio",
+    "pauseAudio": "Pause Audio",
+    "repeatDua": "Repeat Dua"
+  },
+
+  "sources": {
+    "quran": "From Quran",
+    "hadith": "From Hadith",
+    "sunnah": "From Sunnah",
+    "sahihBukhari": "Sahih al-Bukhari",
+    "sahihMuslim": "Sahih Muslim",
+    "abuDawud": "Abu Dawud",
+    "tirmidhi": "Tirmidhi",
+    "hisnulMuslim": "Hisnul Muslim",
+    "authenticSource": "Authentic Source"
+  },
+
+  "actions": {
+    "readDua": "Read Dua",
+    "listenDua": "Listen to Dua",
+    "memorizeDua": "Memorize Dua",
+    "shareDua": "Share Dua",
+    "bookmarkDua": "Bookmark Dua",
+    "copyArabic": "Copy Arabic",
+    "copyTransliteration": "Copy Transliteration",
+    "copyTranslation": "Copy Translation",
+    "printDua": "Print Dua",
+    "downloadDua": "Download Dua"
+  },
+
+  "search": {
+    "searchDuas": "Search Duas",
+    "searchPlaceholder": "Search by keyword, occasion, or category...",
+    "filterByCategory": "Filter by Category",
+    "filterBySource": "Filter by Source",
+    "popularDuas": "Popular Duas",
+    "recentlyViewed": "Recently Viewed",
+    "favorites": "Favorite Duas"
+  },
+
+  "display": {
+    "arabicOnly": "Arabic Only",
+    "translationOnly": "Translation Only",
+    "all": "All (Arabic + Translation)",
+    "fontSize": "Font Size",
+    "textSize": "Text Size",
+    "small": "Small",
+    "medium": "Medium",
+    "large": "Large",
+    "extraLarge": "Extra Large"
+  },
+
+  "messages": {
+    "duaBookmarked": "Dua bookmarked successfully",
+    "bookmarkRemoved": "Bookmark removed",
+    "copiedToClipboard": "Copied to clipboard",
+    "duaShared": "Dua shared successfully",
+    "loadingDua": "Loading dua...",
+    "errorLoading": "Error loading dua",
+    "noResults": "No duas found"
+  },
+
+  "benefits": {
+    "benefitsTitle": "Benefits of This Dua",
+    "virtue": "Virtue",
+    "reward": "Reward",
+    "occasion": "When to Recite",
+    "frequency": "How Often",
+    "method": "Method of Recitation"
+  },
+
+  "collections": {
+    "duaCollections": "Dua Collections",
+    "hisnulMuslim": "Fortress of the Muslim",
+    "prophetDuas": "Duas of the Prophet (ﷺ)",
+    "quranDuas": "Duas from Quran",
+    "comprehensiveDuas": "Comprehensive Duas",
+    "shortDuas": "Short & Easy Duas",
+    "powerfulDuas": "Most Powerful Duas"
+  },
+
+  "popular": {
+    "ayatulKursi": "Ayatul Kursi",
+    "duaQunoot": "Dua Qunoot",
+    "istikhara": "Istikhara",
+    "duaYunus": "Dua of Prophet Yunus",
+    "rabbanaAtina": "Rabbana Atina",
+    "lastTwoAyahs": "Last Two Ayahs of Surah Baqarah",
+    "threeQuls": "Three Quls",
+    "asmaUlHusna": "Asma ul Husna"
+  },
+
+  "tips": {
+    "duaTips": "Tips for Dua",
+    "facingQiblah": "Face the Qiblah",
+    "raiseHands": "Raise Your Hands",
+    "praiseAllah": "Begin with Praise of Allah",
+    "sendSalawat": "Send Blessings on the Prophet",
+    "beHumble": "Be Humble",
+    "beConfident": "Be Confident in Allah",
+    "repeatThreeTimes": "Repeat Three Times",
+    "sayAmeen": "Say Ameen"
+  }
+}

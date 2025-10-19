@@ -1,0 +1,204 @@
+{
+  "title": "99 Names of Allah",
+  "subtitle": "Asma ul Husna - The Beautiful Names",
+  "description": "Learn and understand the 99 Beautiful Names of Allah",
+  "name": "Name",
+  "names": "Names",
+  "beautifulNames": "Beautiful Names",
+  "asmaUlHusna": "Asma ul Husna",
+
+  "categories": {
+    "all": "All Names",
+    "mercy": "Mercy & Compassion",
+    "power": "Power & Majesty",
+    "knowledge": "Knowledge & Wisdom",
+    "creation": "Creation & Sustenance",
+    "justice": "Justice & Fairness",
+    "guidance": "Guidance & Light",
+    "forgiveness": "Forgiveness & Patience",
+    "sovereignty": "Sovereignty & Dominion",
+    "protection": "Protection & Guardian",
+    "attributes": "Divine Attributes"
+  },
+
+  "display": {
+    "arabicName": "Arabic Name",
+    "transliteration": "Transliteration",
+    "meaning": "Meaning",
+    "explanation": "Explanation",
+    "benefits": "Benefits",
+    "showArabic": "Show Arabic",
+    "hideArabic": "Hide Arabic",
+    "gridView": "Grid View",
+    "listView": "List View",
+    "cardView": "Card View"
+  },
+
+  "features": {
+    "listenPronunciation": "Listen to Pronunciation",
+    "playAudio": "Play Audio",
+    "pauseAudio": "Pause Audio",
+    "repeat": "Repeat",
+    "memorize": "Memorize This Name",
+    "recite": "Recite",
+    "learn": "Learn More",
+    "share": "Share This Name",
+    "bookmark": "Bookmark"
+  },
+
+  "learning": {
+    "howToRecite": "How to Recite",
+    "whenToRecite": "When to Recite",
+    "timesToRecite": "Number of Times",
+    "methodology": "Recitation Method",
+    "spiritualBenefits": "Spiritual Benefits",
+    "practicalBenefits": "Practical Benefits",
+    "relatedVerses": "Related Quran Verses",
+    "relatedHadith": "Related Hadith",
+    "scholarsInsight": "Insights from Scholars"
+  },
+
+  "virtues": {
+    "virtuesTitle": "Virtues of Knowing the Names",
+    "hadithReference": "Hadith Reference",
+    "enterParadise": "Means to Enter Paradise",
+    "closenessToAllah": "Brings Closeness to Allah",
+    "answeredDuas": "Helps in Answered Duas",
+    "spiritualGrowth": "Aids Spiritual Growth",
+    "protection": "Divine Protection",
+    "innerPeace": "Brings Inner Peace"
+  },
+
+  "practice": {
+    "practiceTitle": "Practice & Memorization",
+    "dailyPractice": "Daily Practice",
+    "weeklyGoal": "Weekly Goal",
+    "memorized": "Memorized",
+    "learning": "Learning",
+    "notStarted": "Not Started",
+    "testYourself": "Test Your Knowledge",
+    "quiz": "Take Quiz",
+    "flashcards": "Study Flashcards",
+    "progress": "Your Progress",
+    "namesLearned": "Names Learned",
+    "totalNames": "Total Names"
+  },
+
+  "sources": {
+    "quranReference": "Mentioned in Quran",
+    "hadithReference": "From Authentic Hadith",
+    "scholarlyOpinion": "Scholarly Opinion",
+    "evidenceFromQuran": "Evidence from Quran",
+    "evidenceFromSunnah": "Evidence from Sunnah",
+    "unanimouslyAccepted": "Unanimously Accepted",
+    "authenticSource": "Authentic Source"
+  },
+
+  "search": {
+    "searchNames": "Search Names",
+    "searchPlaceholder": "Search by name, meaning, or benefit...",
+    "filterByCategory": "Filter by Category",
+    "sortBy": "Sort By",
+    "alphabetical": "Alphabetical",
+    "byNumber": "By Number",
+    "byCategory": "By Category",
+    "mostRecited": "Most Recited",
+    "recentlyViewed": "Recently Viewed"
+  },
+
+  "recitation": {
+    "recitationGuide": "Recitation Guide",
+    "afterFajr": "After Fajr Prayer",
+    "afterMaghrib": "After Maghrib Prayer",
+    "beforeSleep": "Before Sleep",
+    "inDifficulty": "In Times of Difficulty",
+    "forSpecificNeeds": "For Specific Needs",
+    "daily": "Daily Recitation",
+    "recommended": "Recommended Times"
+  },
+
+  "benefits": {
+    "benefitsOfReciting": "Benefits of Reciting",
+    "increaseFaith": "Increases Faith",
+    "drawsBarakah": "Draws Blessings",
+    "answersSupplications": "Helps Answer Duas",
+    "removesAnxiety": "Removes Anxiety",
+    "bringsPeace": "Brings Peace",
+    "strengthensConnection": "Strengthens Connection with Allah",
+    "guidanceInLife": "Guidance in Life Matters"
+  },
+
+  "actions": {
+    "viewName": "View Name",
+    "learnName": "Learn This Name",
+    "practiceName": "Practice Reciting",
+    "memorizeNow": "Memorize Now",
+    "hearPronunciation": "Hear Pronunciation",
+    "readExplanation": "Read Explanation",
+    "viewAllNames": "View All Names",
+    "startLearning": "Start Learning"
+  },
+
+  "messages": {
+    "nameBookmarked": "Name bookmarked successfully",
+    "bookmarkRemoved": "Bookmark removed",
+    "copiedToClipboard": "Copied to clipboard",
+    "audioPlaying": "Audio playing",
+    "nameMemorized": "Marked as memorized",
+    "progressSaved": "Progress saved",
+    "loadingNames": "Loading names...",
+    "errorLoading": "Error loading names",
+    "noResults": "No names found"
+  },
+
+  "stats": {
+    "totalNames": "99 Names",
+    "namesMemorized": "Names Memorized",
+    "dailyProgress": "Daily Progress",
+    "weeklyGoal": "Weekly Goal",
+    "completionRate": "Completion Rate",
+    "currentStreak": "Current Streak",
+    "longestStreak": "Longest Streak"
+  },
+
+  "navigation": {
+    "previousName": "Previous Name",
+    "nextName": "Next Name",
+    "backToList": "Back to List",
+    "goToName": "Go to Name"
+  },
+
+  "about": {
+    "aboutNames": "About the 99 Names",
+    "importance": "Importance in Islam",
+    "historicalContext": "Historical Context",
+    "howToLearn": "How to Learn",
+    "bestPractices": "Best Practices",
+    "commonMistakes": "Common Mistakes to Avoid",
+    "scholarlyGuidance": "Scholarly Guidance"
+  },
+
+  "settings": {
+    "displaySettings": "Display Settings",
+    "fontSize": "Font Size",
+    "audioSpeed": "Audio Speed",
+    "autoPlay": "Auto-play Next",
+    "showTransliteration": "Show Transliteration",
+    "showMeaning": "Show Meaning",
+    "showExplanation": "Show Detailed Explanation",
+    "dailyReminder": "Daily Reminder",
+    "reminderTime": "Reminder Time"
+  },
+
+  "popular": {
+    "mostRecited": "Most Recited Names",
+    "arRahman": "Ar-Rahman (The Most Merciful)",
+    "arRaheem": "Ar-Raheem (The Most Compassionate)",
+    "alMalik": "Al-Malik (The King)",
+    "alQuddus": "Al-Quddus (The Holy)",
+    "asSalam": "As-Salam (The Source of Peace)",
+    "alMumin": "Al-Mu'min (The Giver of Security)",
+    "alAziz": "Al-Aziz (The Almighty)",
+    "alKhaliq": "Al-Khaliq (The Creator)"
+  }
+}

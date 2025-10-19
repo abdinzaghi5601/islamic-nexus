@@ -1,0 +1,206 @@
+{
+  "title": "Salah (Prayer)",
+  "subtitle": "The Pillar of Islam",
+  "description": "Learn the complete method of Islamic prayer",
+
+  "pages": {
+    "overview": "Salah Overview",
+    "guide": "Complete Guide",
+    "wisdom": "Wisdom & Meaning",
+    "times": "Prayer Times",
+    "types": "Types of Prayer"
+  },
+
+  "basics": {
+    "whatIsSalah": "What is Salah?",
+    "whySalah": "Why Pray?",
+    "importance": "Importance of Prayer",
+    "pillarOfIslam": "Second Pillar of Islam",
+    "fiveDailyPrayers": "Five Daily Prayers",
+    "obligation": "Religious Obligation"
+  },
+
+  "times": {
+    "prayerTimes": "Prayer Times",
+    "fajr": "Fajr",
+    "dhuhr": "Dhuhr",
+    "asr": "Asr",
+    "maghrib": "Maghrib",
+    "isha": "Isha",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "midnight": "Midnight",
+    "currentTime": "Current Time",
+    "nextPrayer": "Next Prayer",
+    "timeRemaining": "Time Remaining"
+  },
+
+  "rakahs": {
+    "rakah": "Rak'ah",
+    "rakahs": "Rak'ahs",
+    "sunnah": "Sunnah",
+    "fard": "Fard (Obligatory)",
+    "nafl": "Nafl (Voluntary)",
+    "witr": "Witr",
+    "fajrRakahs": "2 Sunnah + 2 Fard",
+    "dhuhrRakahs": "4 Sunnah + 4 Fard + 2 Sunnah",
+    "asrRakahs": "4 Fard",
+    "maghribRakahs": "3 Fard + 2 Sunnah",
+    "ishaRakahs": "4 Fard + 2 Sunnah + 3 Witr"
+  },
+
+  "conditions": {
+    "conditions": "Conditions of Salah",
+    "nineConditions": "9 Conditions",
+    "islam": "Islam",
+    "sanity": "Sanity",
+    "discernment": "Discernment",
+    "purification": "Purification (Wudu)",
+    "cleanliness": "Cleanliness",
+    "coverAwrah": "Covering Awrah",
+    "facingQiblah": "Facing Qiblah",
+    "timeEntered": "Prayer Time Entered",
+    "intention": "Intention (Niyyah)"
+  },
+
+  "pillars": {
+    "pillars": "Pillars of Salah",
+    "fourteenPillars": "14 Pillars",
+    "standing": "Standing (Qiyam)",
+    "takbir": "Opening Takbir",
+    "fatihah": "Reciting Al-Fatihah",
+    "ruku": "Bowing (Ruku')",
+    "risingFromRuku": "Rising from Ruku'",
+    "standingUpright": "Standing Upright",
+    "sujud": "Prostration (Sujud)",
+    "risingFromSujud": "Rising from Sujud",
+    "sittingBetween": "Sitting Between Prostrations",
+    "tranquility": "Tranquility in All Actions",
+    "finalTashahhud": "Final Tashahhud",
+    "sittingForTashahhud": "Sitting for Tashahhud",
+    "salawat": "Sending Blessings on Prophet",
+    "tasleem": "Concluding Salam (Tasleem)"
+  },
+
+  "steps": {
+    "stepByStep": "Step-by-Step Guide",
+    "step": "Step",
+    "preparation": "Preparation",
+    "wudu": "Perform Wudu (Ablution)",
+    "cleanPlace": "Find Clean Place",
+    "faceQiblah": "Face the Qiblah",
+    "makeIntention": "Make Intention",
+    "beginPrayer": "Begin Prayer"
+  },
+
+  "actions": {
+    "raisHands": "Raise Hands",
+    "placeHands": "Place Hands on Chest",
+    "recite": "Recite",
+    "bow": "Bow Down",
+    "prostrate": "Prostrate",
+    "sit": "Sit",
+    "stand": "Stand Up",
+    "turnRight": "Turn Right",
+    "turnLeft": "Turn Left"
+  },
+
+  "duas": {
+    "openingDua": "Opening Dua",
+    "taawudh": "Ta'awwudh",
+    "bismillah": "Bismillah",
+    "rukuDua": "Dua in Ruku'",
+    "sujudDua": "Dua in Sujud",
+    "sittingDua": "Dua While Sitting",
+    "tashahhud": "Tashahhud",
+    "duaBeforeTasleem": "Dua Before Tasleem",
+    "afterPrayerDhikr": "After Prayer Dhikr"
+  },
+
+  "wisdom": {
+    "wisdomTitle": "Wisdom Behind Every Movement",
+    "whyRaiseHands": "Why Raise Hands?",
+    "whyPlaceOnChest": "Why Place on Chest?",
+    "whyBow": "Why Bow?",
+    "whyProstrate": "Why Prostrate?",
+    "whyMultipleTimes": "Why Five Times Daily?",
+    "divineConversation": "Divine Conversation",
+    "spiritualBenefits": "Spiritual Benefits",
+    "physicalBenefits": "Physical Benefits",
+    "mentalBenefits": "Mental Benefits",
+    "socialBenefits": "Social Benefits"
+  },
+
+  "prophets": {
+    "prayerOfProphets": "Prayer Through the Ages",
+    "prophetAdam": "Prophet Adam (AS)",
+    "prophetIbrahim": "Prophet Ibrahim (AS)",
+    "prophetMusa": "Prophet Musa (AS)",
+    "prophetIsa": "Prophet Isa (AS)",
+    "prophetMuhammad": "Prophet Muhammad (ﷺ)",
+    "commandToAllProphets": "Commanded to All Prophets",
+    "miraj": "The Night Journey (Mi'raj)",
+    "fiftyToFive": "From Fifty to Five Prayers"
+  },
+
+  "types": {
+    "fardPrayers": "Obligatory Prayers",
+    "sunnahPrayers": "Sunnah Prayers",
+    "naflPrayers": "Voluntary Prayers",
+    "witrPrayer": "Witr Prayer",
+    "tahajjud": "Tahajjud (Night Prayer)",
+    "duha": "Duha (Forenoon Prayer)",
+    "jumah": "Jumu'ah (Friday Prayer)",
+    "eidPrayer": "Eid Prayer",
+    "janazah": "Janazah (Funeral Prayer)",
+    "taraweeh": "Taraweeh (Ramadan Night Prayer)"
+  },
+
+  "mistakes": {
+    "commonMistakes": "Common Mistakes",
+    "avoidRushing": "Don't Rush",
+    "maintainFocus": "Maintain Focus",
+    "properPronunciation": "Proper Pronunciation",
+    "correctPosture": "Correct Posture",
+    "sujudAsahw": "Prostration of Forgetfulness"
+  },
+
+  "features": {
+    "learnHowToPray": "Learn How to Pray",
+    "videoGuides": "Video Guides",
+    "audioGuides": "Audio Guides",
+    "printableGuide": "Printable Guide",
+    "prayerTracker": "Prayer Tracker",
+    "prayerReminder": "Prayer Reminder",
+    "qiblahDirection": "Qiblah Direction",
+    "mosqueLocator": "Nearby Mosques"
+  },
+
+  "messages": {
+    "prayerTimeNow": "It's prayer time!",
+    "timeForPrayer": "Time for {prayer} prayer",
+    "dontMissPrayer": "Don't miss your prayer",
+    "prayerCompleted": "Prayer completed",
+    "reminderSet": "Reminder set",
+    "qiblahFound": "Qiblah direction found"
+  },
+
+  "teachings": {
+    "salafTeachings": "Teachings of the Salaf",
+    "scholarlyOpinions": "Scholarly Opinions",
+    "authenticHadith": "Authentic Hadith",
+    "quranVerses": "Related Quran Verses",
+    "importanceQuotes": "Quotes on Importance",
+    "warningNeglect": "Warning Against Neglecting Prayer"
+  },
+
+  "actions": {
+    "learnNow": "Learn Now",
+    "watchVideo": "Watch Video",
+    "readGuide": "Read Guide",
+    "practiceNow": "Practice Now",
+    "setPrayerTime": "Set Prayer Time",
+    "findMosque": "Find Mosque",
+    "trackProgress": "Track Progress"
+  }
+}

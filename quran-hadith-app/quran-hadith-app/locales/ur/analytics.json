@@ -1,0 +1,205 @@
+{
+  "title": "آپ کی پیشرفت",
+  "subtitle": "اپنے اسلامی سیکھنے کے سفر کو ٹریک کریں",
+  "dashboard": "ڈیش بورڈ",
+  "analytics": "تجزیات",
+  "insights": "بصیرت",
+
+  "overview": {
+    "title": "جائزہ",
+    "weeklyActivity": "ہفتہ وار سرگرمی",
+    "monthlyActivity": "ماہانہ سرگرمی",
+    "allTime": "ہمیشہ کے لیے",
+    "today": "آج",
+    "thisWeek": "اس ہفتے",
+    "thisMonth": "اس ماہ",
+    "thisYear": "اس سال"
+  },
+
+  "quranProgress": {
+    "title": "قرآن کی پیشرفت",
+    "surahsRead": "سورتیں پڑھی گئیں",
+    "ayahsRead": "آیات پڑھی گئیں",
+    "completionRate": "تکمیل کی شرح",
+    "currentSurah": "موجودہ سورت",
+    "pagesRead": "صفحات پڑھے گئے",
+    "juzCompleted": "پارے مکمل کیے",
+    "totalReadingTime": "کل پڑھنے کا وقت",
+    "averageDaily": "روزانہ اوسط پڑھائی",
+    "streak": "پڑھنے کا سلسلہ",
+    "longestStreak": "طویل ترین سلسلہ",
+    "favoriteTranslation": "پسندیدہ ترجمہ",
+    "lastRead": "آخری بار پڑھا"
+  },
+
+  "hadithProgress": {
+    "title": "حدیث کا مطالعہ",
+    "hadithsRead": "احادیث پڑھی گئیں",
+    "collectionsStudied": "مجموعے پڑھے گئے",
+    "chaptersCompleted": "ابواب مکمل کیے",
+    "favoriteCollection": "پسندیدہ مجموعہ",
+    "mostStudiedTopic": "سب سے زیادہ پڑھا گیا موضوع",
+    "bookmarkedHadiths": "محفوظ شدہ احادیث",
+    "studyTime": "مطالعے کا وقت"
+  },
+
+  "salahTracking": {
+    "title": "نماز کی ٹریکنگ",
+    "prayersCompleted": "نمازیں مکمل کیں",
+    "onTimePercentage": "وقت پر فیصد",
+    "missedPrayers": "چھوٹی ہوئی نمازیں",
+    "currentStreak": "موجودہ سلسلہ",
+    "bestStreak": "بہترین سلسلہ",
+    "fajrRate": "فجر کی کامیابی کی شرح",
+    "congregationPrayers": "باجماعت نمازیں",
+    "sunnahPrayers": "سنت نمازیں"
+  },
+
+  "duaProgress": {
+    "title": "دعا کی مشق",
+    "duasMemorized": "دعائیں یاد کیں",
+    "duasRecited": "دعائیں پڑھیں",
+    "categoriesExplored": "زمرے دریافت کیے",
+    "favoriteDua": "پسندیدہ دعا",
+    "dailyPractice": "روزانہ کی مشق",
+    "consistencyRate": "مستقل مزاجی کی شرح"
+  },
+
+  "namesProgress": {
+    "title": "اللہ کے ۹۹ نام",
+    "namesMemorized": "نام یاد کیے",
+    "namesLearned": "نام سیکھے",
+    "completionPercentage": "تکمیل کا فیصد",
+    "quizScore": "کوئز کا سکور",
+    "practiceTime": "مشق کا وقت",
+    "masteryLevel": "مہارت کی سطح"
+  },
+
+  "storiesProgress": {
+    "title": "کہانیاں پڑھیں",
+    "storiesCompleted": "کہانیاں مکمل کیں",
+    "favoriteCategory": "پسندیدہ زمرہ",
+    "timeSpentReading": "پڑھنے میں گزارا وقت",
+    "lessonsLearned": "سبق سیکھے",
+    "sharedStories": "کہانیاں شیئر کیں"
+  },
+
+  "streaks": {
+    "title": "آپ کے سلسلے",
+    "currentStreak": "موجودہ سلسلہ",
+    "longestStreak": "طویل ترین سلسلہ",
+    "days": "دن",
+    "maintain": "ایسے ہی جاری رکھیں!",
+    "almostThere": "تقریباً پہنچ گئے!",
+    "streakBroken": "سلسلہ ٹوٹ گیا",
+    "startNew": "آج ایک نیا سلسلہ شروع کریں"
+  },
+
+  "goals": {
+    "title": "اہداف",
+    "setGoal": "ہدف مقرر کریں",
+    "editGoal": "ہدف میں ترمیم کریں",
+    "deleteGoal": "ہدف حذف کریں",
+    "completeGoal": "ہدف مکمل کریں",
+    "dailyGoals": "روزانہ کے اہداف",
+    "weeklyGoals": "ہفتہ وار اہداف",
+    "monthlyGoals": "ماہانہ اہداف",
+    "customGoals": "اپنی مرضی کے اہداف",
+    "goalProgress": "ہدف کی پیشرفت",
+    "achieved": "حاصل کیا",
+    "inProgress": "جاری ہے",
+    "notStarted": "شروع نہیں کیا"
+  },
+
+  "achievements": {
+    "title": "کامیابیاں",
+    "badges": "بیجز",
+    "milestones": "سنگ میل",
+    "unlocked": "کھولا گیا",
+    "locked": "بند",
+    "recentAchievements": "حالیہ کامیابیاں",
+    "viewAll": "تمام کامیابیاں دیکھیں",
+    "shareAchievement": "کامیابی شیئر کریں"
+  },
+
+  "timeTracking": {
+    "title": "وقت کی ٹریکنگ",
+    "totalTime": "کل وقت گزارا",
+    "readingTime": "پڑھنے کا وقت",
+    "studyTime": "مطالعے کا وقت",
+    "prayerTime": "نماز کا وقت",
+    "averageSession": "اوسط سیشن",
+    "mostActiveDay": "سب سے زیادہ فعال دن",
+    "mostActiveTime": "سب سے زیادہ فعال وقت"
+  },
+
+  "insights": {
+    "title": "بصیرت اور سفارشات",
+    "personalizedTips": "ذاتی تجاویز",
+    "improveConsistency": "مستقل مزاجی بہتر بنائیں",
+    "suggestedContent": "تجویز کردہ مواد",
+    "areasToFocus": "توجہ دینے کے شعبے",
+    "strengths": "آپ کی طاقتیں",
+    "improvements": "بہتری کے شعبے"
+  },
+
+  "comparison": {
+    "title": "پیشرفت کا موازنہ",
+    "vsLastWeek": "پچھلے ہفتے کے مقابلے میں",
+    "vsLastMonth": "پچھلے ماہ کے مقابلے میں",
+    "vsLastYear": "پچھلے سال کے مقابلے میں",
+    "improvement": "بہتری",
+    "decline": "کمی",
+    "noChange": "کوئی تبدیلی نہیں"
+  },
+
+  "export": {
+    "title": "ڈیٹا ایکسپورٹ کریں",
+    "exportPDF": "پی ڈی ایف کے طور پر ایکسپورٹ کریں",
+    "exportCSV": "سی ایس وی کے طور پر ایکسپورٹ کریں",
+    "shareProgress": "پیشرفت شیئر کریں",
+    "printReport": "رپورٹ پرنٹ کریں",
+    "downloadReport": "رپورٹ ڈاؤن لوڈ کریں"
+  },
+
+  "settings": {
+    "title": "تجزیات کی ترتیبات",
+    "trackingPreferences": "ٹریکنگ کی ترجیحات",
+    "privacySettings": "رازداری کی ترتیبات",
+    "enableTracking": "ٹریکنگ فعال کریں",
+    "dataRetention": "ڈیٹا کی برقراری",
+    "resetData": "تمام ڈیٹا ری سیٹ کریں",
+    "confirmReset": "کیا آپ واقعی تمام ڈیٹا ری سیٹ کرنا چاہتے ہیں؟"
+  },
+
+  "messages": {
+    "goalSet": "ہدف کامیابی سے مقرر ہو گیا",
+    "goalCompleted": "مبارک ہو! ہدف مکمل ہو گیا",
+    "achievementUnlocked": "نئی کامیابی حاصل ہوئی!",
+    "streakMaintained": "سلسلہ برقرار رہا!",
+    "dataExported": "ڈیٹا کامیابی سے ایکسپورٹ ہو گیا",
+    "dataReset": "ڈیٹا کامیابی سے ری سیٹ ہو گیا",
+    "loadingAnalytics": "تجزیات لوڈ ہو رہے ہیں...",
+    "errorLoading": "تجزیات لوڈ کرنے میں خرابی"
+  },
+
+  "charts": {
+    "barChart": "بار چارٹ",
+    "lineChart": "لائن چارٹ",
+    "pieChart": "پائی چارٹ",
+    "progressChart": "پیشرفت چارٹ",
+    "activityHeatmap": "سرگرمی ہیٹ میپ",
+    "weeklyDistribution": "ہفتہ وار تقسیم",
+    "monthlyTrends": "ماہانہ رجحانات"
+  },
+
+  "stats": {
+    "total": "کل",
+    "average": "اوسط",
+    "maximum": "زیادہ سے زیادہ",
+    "minimum": "کم سے کم",
+    "percentage": "فیصد",
+    "count": "تعداد",
+    "duration": "مدت"
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "title": "Islamic Stories",
+  "subtitle": "Stories from the Quran and Sunnah",
+  "description": "Learn valuable lessons from the lives of Prophets and righteous people",
+  "story": "Story",
+  "stories": "Stories",
+  "prophetsStories": "Stories of the Prophets",
+  "companionsStories": "Stories of the Companions",
+
+  "categories": {
+    "all": "All Stories",
+    "prophets": "Prophets",
+    "companions": "Companions",
+    "righteous": "Righteous People",
+    "quranStories": "From the Quran",
+    "hadithStories": "From Hadith",
+    "moral": "Moral Lessons",
+    "miracles": "Miracles",
+    "patience": "Patience & Perseverance",
+    "faith": "Faith & Trust",
+    "sacrifice": "Sacrifice",
+    "wisdom": "Wisdom",
+    "courage": "Courage",
+    "mercy": "Mercy & Compassion"
+  },
+
+  "prophets": {
+    "prophetAdam": "Prophet Adam (AS)",
+    "prophetNuh": "Prophet Nuh (AS)",
+    "prophetIbrahim": "Prophet Ibrahim (AS)",
+    "prophetIsmail": "Prophet Ismail (AS)",
+    "prophetYusuf": "Prophet Yusuf (AS)",
+    "prophetMusa": "Prophet Musa (AS)",
+    "prophetDawud": "Prophet Dawud (AS)",
+    "prophetSulaiman": "Prophet Sulaiman (AS)",
+    "prophetAyyub": "Prophet Ayyub (AS)",
+    "prophetYunus": "Prophet Yunus (AS)",
+    "prophetIsa": "Prophet Isa (AS)",
+    "prophetMuhammad": "Prophet Muhammad (ﷺ)"
+  },
+
+  "companions": {
+    "abuBakr": "Abu Bakr As-Siddiq (RA)",
+    "umar": "Umar ibn Al-Khattab (RA)",
+    "uthman": "Uthman ibn Affan (RA)",
+    "ali": "Ali ibn Abi Talib (RA)",
+    "bilal": "Bilal ibn Rabah (RA)",
+    "khadijah": "Khadijah bint Khuwaylid (RA)",
+    "aisha": "Aisha bint Abi Bakr (RA)",
+    "fatimah": "Fatimah bint Muhammad (RA)"
+  },
+
+  "content": {
+    "summary": "Summary",
+    "fullStory": "Full Story",
+    "keyLessons": "Key Lessons",
+    "moralOfStory": "Moral of the Story",
+    "reflections": "Reflections",
+    "relatedVerses": "Related Quran Verses",
+    "relatedHadith": "Related Hadith",
+    "historicalContext": "Historical Context",
+    "timelinePeriod": "Timeline & Period"
+  },
+
+  "lessons": {
+    "lessonsLearned": "Lessons Learned",
+    "faithInAllah": "Faith in Allah",
+    "patience": "Patience in Trials",
+    "gratitude": "Gratitude",
+    "obedience": "Obedience to Allah",
+    "trustInAllah": "Trust in Allah's Plan",
+    "kindness": "Kindness to Others",
+    "honesty": "Honesty & Integrity",
+    "perseverance": "Perseverance",
+    "humility": "Humility",
+    "forgiveness": "Forgiveness",
+    "justice": "Justice & Fairness",
+    "wisdom": "Wisdom & Knowledge"
+  },
+
+  "features": {
+    "readStory": "Read Story",
+    "listenStory": "Listen to Story",
+    "watchVideo": "Watch Video",
+    "viewImages": "View Images",
+    "shareStory": "Share Story",
+    "bookmarkStory": "Bookmark Story",
+    "printStory": "Print Story",
+    "downloadPDF": "Download PDF",
+    "relatedStories": "Related Stories",
+    "moreFromCategory": "More from This Category"
+  },
+
+  "reading": {
+    "readingTime": "Reading Time",
+    "minutes": "minutes",
+    "difficulty": "Difficulty",
+    "easy": "Easy",
+    "medium": "Medium",
+    "advanced": "Advanced",
+    "ageGroup": "Age Group",
+    "children": "Children",
+    "youth": "Youth",
+    "adults": "Adults",
+    "allAges": "All Ages"
+  },
+
+  "search": {
+    "searchStories": "Search Stories",
+    "searchPlaceholder": "Search by title, prophet, or lesson...",
+    "filterByCategory": "Filter by Category",
+    "filterByProphet": "Filter by Prophet",
+    "filterByLesson": "Filter by Lesson",
+    "sortBy": "Sort By",
+    "newest": "Newest First",
+    "oldest": "Oldest First",
+    "popular": "Most Popular",
+    "alphabetical": "Alphabetical"
+  },
+
+  "display": {
+    "fontSize": "Font Size",
+    "textSize": "Text Size",
+    "small": "Small",
+    "medium": "Medium",
+    "large": "Large",
+    "extraLarge": "Extra Large",
+    "nightMode": "Night Mode",
+    "showImages": "Show Images",
+    "hideImages": "Hide Images",
+    "showArabic": "Show Arabic Verses",
+    "hideArabic": "Hide Arabic Verses"
+  },
+
+  "navigation": {
+    "previousStory": "Previous Story",
+    "nextStory": "Next Story",
+    "backToList": "Back to Stories",
+    "relatedStories": "Related Stories",
+    "continueReading": "Continue Reading",
+    "startFromBeginning": "Start from Beginning"
+  },
+
+  "collections": {
+    "storyCollections": "Story Collections",
+    "storiesOfProphets": "Stories of the Prophets",
+    "storiesOfCompanions": "Stories of the Companions",
+    "miraclesInQuran": "Miracles in the Quran",
+    "lessonsFromHistory": "Lessons from Islamic History",
+    "bedtimeStories": "Bedtime Stories",
+    "inspirationalStories": "Inspirational Stories"
+  },
+
+  "popular": {
+    "popularStories": "Popular Stories",
+    "caverCompanions": "People of the Cave",
+    "yusufInEgypt": "Prophet Yusuf in Egypt",
+    "jonasAndWhale": "Prophet Yunus and the Whale",
+    "abrahamSacrifice": "Prophet Ibrahim's Sacrifice",
+    "mosesAndPharaoh": "Prophet Musa and Pharaoh",
+    "solomonWisdom": "Prophet Sulaiman's Wisdom",
+    "jobPatience": "Prophet Ayyub's Patience",
+    "noahsArk": "Prophet Nuh's Ark"
+  },
+
+  "actions": {
+    "viewStory": "View Story",
+    "readNow": "Read Now",
+    "listen": "Listen",
+    "watch": "Watch",
+    "share": "Share",
+    "bookmark": "Bookmark",
+    "print": "Print",
+    "download": "Download",
+    "explore": "Explore More",
+    "learnMore": "Learn More"
+  },
+
+  "messages": {
+    "storyBookmarked": "Story bookmarked successfully",
+    "bookmarkRemoved": "Bookmark removed",
+    "copiedToClipboard": "Copied to clipboard",
+    "storyShared": "Story shared successfully",
+    "loadingStory": "Loading story...",
+    "errorLoading": "Error loading story",
+    "noResults": "No stories found",
+    "audioPlaying": "Audio playing",
+    "videoPaused": "Video paused"
+  },
+
+  "stats": {
+    "totalStories": "Total Stories",
+    "storiesRead": "Stories Read",
+    "readingProgress": "Reading Progress",
+    "storiesBookmarked": "Bookmarked Stories",
+    "favoriteCategory": "Favorite Category",
+    "timeSpentReading": "Time Spent Reading"
+  },
+
+  "about": {
+    "aboutStories": "About Islamic Stories",
+    "importance": "Importance of Stories in Islam",
+    "methodology": "Our Methodology",
+    "authenticSources": "Authentic Sources",
+    "quranReference": "References from Quran",
+    "hadithReference": "References from Hadith",
+    "historicalAccuracy": "Historical Accuracy"
+  },
+
+  "recommendations": {
+    "recommended": "Recommended for You",
+    "basedOnReading": "Based on Your Reading",
+    "trending": "Trending Stories",
+    "mustRead": "Must Read Stories",
+    "newlyAdded": "Newly Added",
+    "editorsChoice": "Editor's Choice"
+  }
+}

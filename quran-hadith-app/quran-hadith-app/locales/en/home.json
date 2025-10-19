@@ -1,0 +1,131 @@
+{
+  "hero": {
+    "title": "Your Gateway to Islamic Knowledge",
+    "subtitle": "Explore the Quran, Hadith, and Islamic teachings in one beautiful platform",
+    "cta": "Start Your Journey",
+    "learnMore": "Learn More",
+    "watchVideo": "Watch Introduction"
+  },
+
+  "features": {
+    "sectionTitle": "Everything You Need to Grow Spiritually",
+    "sectionSubtitle": "Comprehensive Islamic resources at your fingertips",
+
+    "quran": {
+      "title": "Holy Quran",
+      "description": "Read, listen, and study the Quran with multiple translations and tafsir",
+      "cta": "Explore Quran"
+    },
+
+    "hadith": {
+      "title": "Hadith Collections",
+      "description": "Access authentic hadith from the six major collections",
+      "cta": "Browse Hadith"
+    },
+
+    "salah": {
+      "title": "Salah Guide",
+      "description": "Learn the complete method of Islamic prayer step-by-step",
+      "cta": "Learn Salah"
+    },
+
+    "duas": {
+      "title": "Islamic Duas",
+      "description": "Beautiful supplications for every occasion from Quran and Sunnah",
+      "cta": "View Duas"
+    },
+
+    "names": {
+      "title": "99 Names of Allah",
+      "description": "Understand and memorize the beautiful names of Allah",
+      "cta": "Learn Names"
+    },
+
+    "stories": {
+      "title": "Islamic Stories",
+      "description": "Inspiring stories from the lives of Prophets and companions",
+      "cta": "Read Stories"
+    }
+  },
+
+  "stats": {
+    "surahs": "114 Surahs",
+    "ayahs": "6,236+ Ayahs",
+    "hadiths": "Thousands of Authentic Hadith",
+    "names": "99 Beautiful Names",
+    "stories": "Inspiring Stories",
+    "duas": "Comprehensive Duas"
+  },
+
+  "quickAccess": {
+    "title": "Quick Access",
+    "subtitle": "Jump right into your learning",
+    "continueReading": "Continue Reading",
+    "bookmarks": "Your Bookmarks",
+    "recentlyViewed": "Recently Viewed",
+    "favorites": "Favorites",
+    "todaysDua": "Today's Dua",
+    "prayerTimes": "Prayer Times",
+    "dailyVerse": "Daily Verse"
+  },
+
+  "testimonials": {
+    "title": "What Our Users Say",
+    "subtitle": "Join thousands of Muslims enhancing their knowledge",
+    "viewAll": "View All Reviews"
+  },
+
+  "callToAction": {
+    "title": "Begin Your Spiritual Journey Today",
+    "subtitle": "Join our growing community of learners",
+    "primaryCTA": "Get Started",
+    "secondaryCTA": "Explore Features"
+  },
+
+  "about": {
+    "title": "About Islamic Nexus",
+    "mission": "Our Mission",
+    "missionText": "To make authentic Islamic knowledge accessible to everyone, anywhere, anytime",
+    "vision": "Our Vision",
+    "visionText": "A world where every Muslim has easy access to the Quran, Hadith, and Islamic teachings",
+    "values": "Our Values",
+    "authenticity": "Authenticity",
+    "accessibility": "Accessibility",
+    "excellence": "Excellence",
+    "community": "Community"
+  },
+
+  "resources": {
+    "title": "Additional Resources",
+    "blog": "Islamic Blog",
+    "newsletter": "Newsletter",
+    "podcast": "Podcast",
+    "courses": "Online Courses",
+    "downloads": "Free Downloads",
+    "apps": "Mobile Apps"
+  },
+
+  "community": {
+    "title": "Join Our Community",
+    "subtitle": "Connect with fellow Muslims around the world",
+    "members": "Active Members",
+    "discussions": "Discussions",
+    "studyGroups": "Study Groups",
+    "joinNow": "Join Now"
+  },
+
+  "updates": {
+    "title": "Latest Updates",
+    "subtitle": "Stay informed about new features and content",
+    "viewAll": "View All Updates",
+    "newContent": "New Content",
+    "improvements": "Improvements",
+    "announcements": "Announcements"
+  },
+
+  "navigation": {
+    "scrollToTop": "Scroll to Top",
+    "nextSection": "Next Section",
+    "previousSection": "Previous Section"
+  }
+}

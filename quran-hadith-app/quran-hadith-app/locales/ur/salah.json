@@ -1,0 +1,206 @@
+{
+  "title": "نماز",
+  "subtitle": "اسلام کا ستون",
+  "description": "اسلامی نماز کا مکمل طریقہ سیکھیں",
+
+  "pages": {
+    "overview": "نماز کا جائزہ",
+    "guide": "مکمل رہنما",
+    "wisdom": "حکمت اور معنی",
+    "times": "نماز کے اوقات",
+    "types": "نماز کی اقسام"
+  },
+
+  "basics": {
+    "whatIsSalah": "نماز کیا ہے؟",
+    "whySalah": "نماز کیوں؟",
+    "importance": "نماز کی اہمیت",
+    "pillarOfIslam": "اسلام کا دوسرا رکن",
+    "fiveDailyPrayers": "پانچ نمازیں",
+    "obligation": "دینی فریضہ"
+  },
+
+  "times": {
+    "prayerTimes": "نماز کے اوقات",
+    "fajr": "فجر",
+    "dhuhr": "ظہر",
+    "asr": "عصر",
+    "maghrib": "مغرب",
+    "isha": "عشاء",
+    "sunrise": "طلوع آفتاب",
+    "sunset": "غروب آفتاب",
+    "midnight": "آدھی رات",
+    "currentTime": "موجودہ وقت",
+    "nextPrayer": "اگلی نماز",
+    "timeRemaining": "باقی وقت"
+  },
+
+  "rakahs": {
+    "rakah": "رکعت",
+    "rakahs": "رکعات",
+    "sunnah": "سنت",
+    "fard": "فرض",
+    "nafl": "نفل",
+    "witr": "وتر",
+    "fajrRakahs": "٢ سنت + ٢ فرض",
+    "dhuhrRakahs": "٤ سنت + ٤ فرض + ٢ سنت",
+    "asrRakahs": "٤ فرض",
+    "maghribRakahs": "٣ فرض + ٢ سنت",
+    "ishaRakahs": "٤ فرض + ٢ سنت + ٣ وتر"
+  },
+
+  "conditions": {
+    "conditions": "نماز کی شرائط",
+    "nineConditions": "٩ شرائط",
+    "islam": "اسلام",
+    "sanity": "عقل",
+    "discernment": "تمیز",
+    "purification": "طہارت (وضو)",
+    "cleanliness": "پاکیزگی",
+    "coverAwrah": "ستر پوشی",
+    "facingQiblah": "قبلہ رخ ہونا",
+    "timeEntered": "وقت کا داخل ہونا",
+    "intention": "نیت"
+  },
+
+  "pillars": {
+    "pillars": "نماز کے ارکان",
+    "fourteenPillars": "١٤ ارکان",
+    "standing": "کھڑا ہونا (قیام)",
+    "takbir": "تکبیر تحریمہ",
+    "fatihah": "سورہ فاتحہ پڑھنا",
+    "ruku": "رکوع",
+    "risingFromRuku": "رکوع سے اٹھنا",
+    "standingUpright": "سیدھا کھڑا ہونا",
+    "sujud": "سجدہ",
+    "risingFromSujud": "سجدے سے اٹھنا",
+    "sittingBetween": "دو سجدوں کے درمیان بیٹھنا",
+    "tranquility": "تمام افعال میں اطمینان",
+    "finalTashahhud": "آخری تشہد",
+    "sittingForTashahhud": "تشہد کے لیے بیٹھنا",
+    "salawat": "نبی پر درود بھیجنا",
+    "tasleem": "سلام پھیرنا"
+  },
+
+  "steps": {
+    "stepByStep": "قدم بہ قدم رہنما",
+    "step": "قدم",
+    "preparation": "تیاری",
+    "wudu": "وضو کریں",
+    "cleanPlace": "صاف جگہ تلاش کریں",
+    "faceQiblah": "قبلہ رخ ہوں",
+    "makeIntention": "نیت کریں",
+    "beginPrayer": "نماز شروع کریں"
+  },
+
+  "actions": {
+    "raiseHands": "ہاتھ اٹھائیں",
+    "placeHands": "ہاتھ سینے پر رکھیں",
+    "recite": "پڑھیں",
+    "bow": "رکوع کریں",
+    "prostrate": "سجدہ کریں",
+    "sit": "بیٹھیں",
+    "stand": "کھڑے ہوں",
+    "turnRight": "دائیں مڑیں",
+    "turnLeft": "بائیں مڑیں"
+  },
+
+  "duas": {
+    "openingDua": "شروع کی دعا",
+    "taawudh": "تعوذ",
+    "bismillah": "بسم اللہ",
+    "rukuDua": "رکوع کی دعا",
+    "sujudDua": "سجدے کی دعا",
+    "sittingDua": "بیٹھتے وقت کی دعا",
+    "tashahhud": "تشہد",
+    "duaBeforeTasleem": "سلام سے پہلے کی دعا",
+    "afterPrayerDhikr": "نماز کے بعد کا ذکر"
+  },
+
+  "wisdom": {
+    "wisdomTitle": "ہر حرکت میں حکمت",
+    "whyRaiseHands": "ہاتھ کیوں اٹھائیں؟",
+    "whyPlaceOnChest": "سینے پر کیوں رکھیں؟",
+    "whyBow": "رکوع کیوں کریں؟",
+    "whyProstrate": "سجدہ کیوں کریں؟",
+    "whyMultipleTimes": "دن میں پانچ بار کیوں؟",
+    "divineConversation": "الہی گفتگو",
+    "spiritualBenefits": "روحانی فوائد",
+    "physicalBenefits": "جسمانی فوائد",
+    "mentalBenefits": "ذہنی فوائد",
+    "socialBenefits": "سماجی فوائد"
+  },
+
+  "prophets": {
+    "prayerOfProphets": "انبیاء کی نمازیں",
+    "prophetAdam": "حضرت آدم علیہ السلام",
+    "prophetIbrahim": "حضرت ابراہیم علیہ السلام",
+    "prophetMusa": "حضرت موسیٰ علیہ السلام",
+    "prophetIsa": "حضرت عیسیٰ علیہ السلام",
+    "prophetMuhammad": "حضرت محمد ﷺ",
+    "commandToAllProphets": "تمام انبیاء کو حکم",
+    "miraj": "معراج کی رات",
+    "fiftyToFive": "پچاس سے پانچ نمازیں"
+  },
+
+  "types": {
+    "fardPrayers": "فرض نمازیں",
+    "sunnahPrayers": "سنت نمازیں",
+    "naflPrayers": "نفل نمازیں",
+    "witrPrayer": "وتر کی نماز",
+    "tahajjud": "تہجد",
+    "duha": "چاشت",
+    "jumah": "جمعہ",
+    "eidPrayer": "عید کی نماز",
+    "janazah": "جنازہ کی نماز",
+    "taraweeh": "تراویح"
+  },
+
+  "mistakes": {
+    "commonMistakes": "عام غلطیاں",
+    "avoidRushing": "جلدی نہ کریں",
+    "maintainFocus": "توجہ برقرار رکھیں",
+    "properPronunciation": "صحیح تلفظ",
+    "correctPosture": "صحیح انداز",
+    "sujudAsahw": "سہو کا سجدہ"
+  },
+
+  "features": {
+    "learnHowToPray": "نماز سیکھیں",
+    "videoGuides": "ویڈیو گائیڈز",
+    "audioGuides": "آڈیو گائیڈز",
+    "printableGuide": "پرنٹ کے قابل گائیڈ",
+    "prayerTracker": "نماز ٹریکر",
+    "prayerReminder": "نماز کی یاد دہانی",
+    "qiblahDirection": "قبلہ کی سمت",
+    "mosqueLocator": "قریبی مساجد"
+  },
+
+  "messages": {
+    "prayerTimeNow": "نماز کا وقت ہو گیا!",
+    "timeForPrayer": "{prayer} کی نماز کا وقت",
+    "dontMissPrayer": "اپنی نماز نہ چھوڑیں",
+    "prayerCompleted": "نماز مکمل ہو گئی",
+    "reminderSet": "یاد دہانی سیٹ ہو گئی",
+    "qiblahFound": "قبلہ کی سمت مل گئی"
+  },
+
+  "teachings": {
+    "salafTeachings": "سلف کی تعلیمات",
+    "scholarlyOpinions": "علماء کی آراء",
+    "authenticHadith": "صحیح احادیث",
+    "quranVerses": "متعلقہ قرآنی آیات",
+    "importanceQuotes": "اہمیت پر اقوال",
+    "warningNeglect": "نماز چھوڑنے کی وعید"
+  },
+
+  "actions": {
+    "learnNow": "ابھی سیکھیں",
+    "watchVideo": "ویڈیو دیکھیں",
+    "readGuide": "رہنما پڑھیں",
+    "practiceNow": "ابھی مشق کریں",
+    "setPrayerTime": "نماز کا وقت سیٹ کریں",
+    "findMosque": "مسجد تلاش کریں",
+    "trackProgress": "پیشرفت ٹریک کریں"
+  }
+}

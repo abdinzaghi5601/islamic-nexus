@@ -1,0 +1,222 @@
+{
+  "title": "Islamic Books",
+  "subtitle": "Authentic Islamic Literature",
+  "description": "Explore a vast collection of Islamic books and scholarly works",
+  "book": "Book",
+  "books": "Books",
+  "library": "Library",
+  "collection": "Collection",
+
+  "categories": {
+    "all": "All Books",
+    "quranSciences": "Quran Sciences",
+    "hadithSciences": "Hadith Sciences",
+    "fiqh": "Fiqh (Islamic Jurisprudence)",
+    "aqeedah": "Aqeedah (Islamic Creed)",
+    "seerah": "Seerah (Prophet's Biography)",
+    "history": "Islamic History",
+    "spirituality": "Spirituality & Sufism",
+    "arabic": "Arabic Language",
+    "comparative": "Comparative Religion",
+    "contemporary": "Contemporary Issues",
+    "children": "Children's Books",
+    "women": "Books for Women",
+    "converts": "For New Muslims"
+  },
+
+  "scholars": {
+    "title": "Books by Scholar",
+    "ibnTaymiyyah": "Ibn Taymiyyah",
+    "ibnKathir": "Ibn Kathir",
+    "ibnQayyim": "Ibn al-Qayyim",
+    "imamNawawi": "Imam Nawawi",
+    "imamGhazali": "Imam al-Ghazali",
+    "ibnHajar": "Ibn Hajar al-Asqalani",
+    "asShatibi": "Imam ash-Shatibi",
+    "contemporary": "Contemporary Scholars"
+  },
+
+  "details": {
+    "author": "Author",
+    "publisher": "Publisher",
+    "publishDate": "Publication Date",
+    "pages": "Pages",
+    "language": "Language",
+    "translated": "Translated",
+    "originalLanguage": "Original Language",
+    "edition": "Edition",
+    "isbn": "ISBN",
+    "format": "Format"
+  },
+
+  "formats": {
+    "pdf": "PDF",
+    "epub": "EPUB",
+    "audiobook": "Audiobook",
+    "hardcover": "Hardcover",
+    "paperback": "Paperback",
+    "digital": "Digital",
+    "print": "Print"
+  },
+
+  "features": {
+    "readOnline": "Read Online",
+    "downloadPDF": "Download PDF",
+    "listenAudiobook": "Listen to Audiobook",
+    "bookmark": "Bookmark",
+    "highlight": "Highlight Text",
+    "takeNotes": "Take Notes",
+    "share": "Share Book",
+    "buyPhysical": "Buy Physical Copy",
+    "addToLibrary": "Add to My Library",
+    "removeFromLibrary": "Remove from Library"
+  },
+
+  "reading": {
+    "readNow": "Read Now",
+    "continueReading": "Continue Reading",
+    "startReading": "Start Reading",
+    "readingProgress": "Reading Progress",
+    "currentPage": "Current Page",
+    "lastRead": "Last Read",
+    "readingTime": "Reading Time",
+    "estimatedTime": "Estimated Time to Finish",
+    "chaptersCompleted": "Chapters Completed",
+    "totalChapters": "Total Chapters"
+  },
+
+  "library": {
+    "myLibrary": "My Library",
+    "currentlyReading": "Currently Reading",
+    "wantToRead": "Want to Read",
+    "completed": "Completed",
+    "favorites": "Favorites",
+    "recentlyAdded": "Recently Added",
+    "recommended": "Recommended for You"
+  },
+
+  "search": {
+    "searchBooks": "Search Books",
+    "searchPlaceholder": "Search by title, author, or topic...",
+    "filterByCategory": "Filter by Category",
+    "filterByAuthor": "Filter by Author",
+    "filterByLanguage": "Filter by Language",
+    "sortBy": "Sort By",
+    "newest": "Newest First",
+    "oldest": "Oldest First",
+    "popular": "Most Popular",
+    "alphabetical": "Alphabetical",
+    "rating": "Highest Rated"
+  },
+
+  "popular": {
+    "popularBooks": "Popular Books",
+    "riyad": "Riyad as-Salihin",
+    "hisnul": "Hisnul Muslim",
+    "sealed": "The Sealed Nectar",
+    "fortress": "Fortress of the Muslim",
+    "purification": "Purification of the Soul",
+    "diseases": "Diseases of the Hearts",
+    "patience": "Patience and Gratitude",
+    "divine": "Divine Will and Predestination"
+  },
+
+  "reviews": {
+    "reviews": "Reviews",
+    "rating": "Rating",
+    "addReview": "Add Review",
+    "readReviews": "Read Reviews",
+    "helpful": "Helpful",
+    "notHelpful": "Not Helpful",
+    "verified": "Verified Purchase",
+    "topReviews": "Top Reviews"
+  },
+
+  "recommendations": {
+    "recommended": "Recommended",
+    "basedOnReading": "Based on Your Reading",
+    "similar": "Similar Books",
+    "alsoRead": "Readers Also Read",
+    "trending": "Trending Now",
+    "mustRead": "Must Read",
+    "newReleases": "New Releases"
+  },
+
+  "actions": {
+    "viewBook": "View Book",
+    "readSample": "Read Sample",
+    "download": "Download",
+    "listen": "Listen",
+    "purchase": "Purchase",
+    "addToCart": "Add to Cart",
+    "viewDetails": "View Details",
+    "previewBook": "Preview Book"
+  },
+
+  "chapters": {
+    "chapters": "Chapters",
+    "tableOfContents": "Table of Contents",
+    "chapter": "Chapter",
+    "introduction": "Introduction",
+    "conclusion": "Conclusion",
+    "appendix": "Appendix",
+    "glossary": "Glossary",
+    "references": "References",
+    "index": "Index"
+  },
+
+  "notes": {
+    "notes": "Notes",
+    "myNotes": "My Notes",
+    "addNote": "Add Note",
+    "editNote": "Edit Note",
+    "deleteNote": "Delete Note",
+    "highlights": "Highlights",
+    "bookmarks": "Bookmarks",
+    "annotations": "Annotations"
+  },
+
+  "collections": {
+    "collections": "Collections",
+    "createCollection": "Create Collection",
+    "addToCollection": "Add to Collection",
+    "myCollections": "My Collections",
+    "publicCollections": "Public Collections",
+    "sharedWithMe": "Shared with Me"
+  },
+
+  "messages": {
+    "bookAdded": "Book added to library",
+    "bookRemoved": "Book removed from library",
+    "bookmarked": "Bookmarked successfully",
+    "noteAdded": "Note added",
+    "reviewSubmitted": "Review submitted successfully",
+    "downloadStarted": "Download started",
+    "downloadCompleted": "Download completed",
+    "loadingBook": "Loading book...",
+    "errorLoading": "Error loading book",
+    "noResults": "No books found"
+  },
+
+  "settings": {
+    "readingSettings": "Reading Settings",
+    "fontSize": "Font Size",
+    "fontFamily": "Font Family",
+    "lineSpacing": "Line Spacing",
+    "brightness": "Brightness",
+    "theme": "Theme",
+    "nightMode": "Night Mode",
+    "autoScroll": "Auto Scroll",
+    "pageTransition": "Page Transition"
+  },
+
+  "stats": {
+    "totalBooks": "Total Books",
+    "booksRead": "Books Read",
+    "currentlyReading": "Currently Reading",
+    "pagesRead": "Pages Read",
+    "readingTime": "Total Reading Time",
+    "favoriteGenre": "Favorite Genre",
+    "readingStreak": "Reading Streak"
+  }
+}
