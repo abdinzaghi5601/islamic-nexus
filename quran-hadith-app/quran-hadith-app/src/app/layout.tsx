@@ -6,7 +6,7 @@ import { Footer } from "@/components/shared/Footer";
 import SessionProvider from "@/components/SessionProvider";
 import ScrollToAnchor from "@/components/ScrollToAnchor";
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getLocale } from 'next-intl/server';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,13 +46,11 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ locale?: string }>;
 }>) {
-  const { locale = 'en' } = await params;
-  const messages = await getMessages();
+  const locale = await getLocale();
+  const messages = await getMessages({ locale });
 
   return (
     <html lang={locale}>
