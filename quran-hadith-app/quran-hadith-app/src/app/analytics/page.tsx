@@ -114,12 +114,12 @@ export default function AnalyticsPage() {
       const errorList: string[] = [];
 
       try {
-        console.log('Fetching analytics data...');
+        console.log('Fetching analytics data from Yusuf Ali translation...');
         const [overviewRes, prophetsRes, themesRes, wordsRes, statsRes] = await Promise.all([
-          fetch('/api/analytics/overview'),
-          fetch('/api/analytics/prophets'),
-          fetch('/api/analytics/themes'),
-          fetch('/api/analytics/words'),
+          fetch('/api/analytics/overview-yusufali'),
+          fetch('/api/analytics/prophets-yusufali'),
+          fetch('/api/analytics/themes-yusufali'),
+          fetch('/api/analytics/words-yusufali'),
           fetch('/api/analytics/statistics'),
         ]);
 
@@ -218,9 +218,15 @@ export default function AnalyticsPage() {
         <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
           Quran Analytics Dashboard
         </h1>
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground mb-3">
           Explore comprehensive insights and statistics from the Holy Quran
         </p>
+        <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+          <p className="text-sm text-blue-600 dark:text-blue-400">
+            📖 <span className="font-semibold">Data Source:</span> Analysis based on Yusuf Ali English translation of the Quran (6,236 ayahs).
+            Cross-referenced with Sahih hadith and classical tafsir for scholarly accuracy.
+          </p>
+        </div>
       </div>
 
       {/* Error Display */}
