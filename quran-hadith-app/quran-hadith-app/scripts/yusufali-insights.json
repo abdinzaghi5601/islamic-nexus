@@ -1,0 +1,1662 @@
+{
+  "prophets": {
+    "Adam": {
+      "mentions": 25,
+      "ayah_count": 25,
+      "surah_count": 9,
+      "ayahs": [
+        [
+          2,
+          31
+        ],
+        [
+          2,
+          33
+        ],
+        [
+          2,
+          34
+        ],
+        [
+          2,
+          35
+        ],
+        [
+          2,
+          37
+        ],
+        [
+          3,
+          33
+        ],
+        [
+          3,
+          59
+        ],
+        [
+          5,
+          27
+        ],
+        [
+          7,
+          11
+        ],
+        [
+          7,
+          19
+        ]
+      ]
+    },
+    "Noah": {
+      "mentions": 47,
+      "ayah_count": 47,
+      "surah_count": 29,
+      "ayahs": [
+        [
+          3,
+          33
+        ],
+        [
+          4,
+          163
+        ],
+        [
+          6,
+          84
+        ],
+        [
+          7,
+          59
+        ],
+        [
+          7,
+          69
+        ],
+        [
+          9,
+          70
+        ],
+        [
+          10,
+          71
+        ],
+        [
+          11,
+          25
+        ],
+        [
+          11,
+          32
+        ],
+        [
+          11,
+          36
+        ]
+      ]
+    },
+    "Abraham": {
+      "mentions": 75,
+      "ayah_count": 69,
+      "surah_count": 25,
+      "ayahs": [
+        [
+          2,
+          124
+        ],
+        [
+          2,
+          125
+        ],
+        [
+          2,
+          126
+        ],
+        [
+          2,
+          127
+        ],
+        [
+          2,
+          130
+        ],
+        [
+          2,
+          132
+        ],
+        [
+          2,
+          133
+        ],
+        [
+          2,
+          135
+        ],
+        [
+          2,
+          136
+        ],
+        [
+          2,
+          140
+        ]
+      ]
+    },
+    "Isaac": {
+      "mentions": 16,
+      "ayah_count": 16,
+      "surah_count": 12,
+      "ayahs": [
+        [
+          2,
+          133
+        ],
+        [
+          2,
+          136
+        ],
+        [
+          2,
+          140
+        ],
+        [
+          3,
+          84
+        ],
+        [
+          4,
+          163
+        ],
+        [
+          6,
+          84
+        ],
+        [
+          11,
+          71
+        ],
+        [
+          12,
+          6
+        ],
+        [
+          12,
+          38
+        ],
+        [
+          14,
+          39
+        ]
+      ]
+    },
+    "Jacob": {
+      "mentions": 19,
+      "ayah_count": 19,
+      "surah_count": 10,
+      "ayahs": [
+        [
+          2,
+          132
+        ],
+        [
+          2,
+          133
+        ],
+        [
+          2,
+          136
+        ],
+        [
+          2,
+          140
+        ],
+        [
+          3,
+          84
+        ],
+        [
+          4,
+          163
+        ],
+        [
+          6,
+          84
+        ],
+        [
+          11,
+          71
+        ],
+        [
+          12,
+          6
+        ],
+        [
+          12,
+          13
+        ]
+      ]
+    },
+    "Joseph": {
+      "mentions": 35,
+      "ayah_count": 34,
+      "surah_count": 3,
+      "ayahs": [
+        [
+          6,
+          84
+        ],
+        [
+          12,
+          4
+        ],
+        [
+          12,
+          7
+        ],
+        [
+          12,
+          8
+        ],
+        [
+          12,
+          9
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          12,
+          11
+        ],
+        [
+          12,
+          17
+        ],
+        [
+          12,
+          21
+        ],
+        [
+          12,
+          22
+        ]
+      ]
+    },
+    "Moses": {
+      "mentions": 176,
+      "ayah_count": 167,
+      "surah_count": 34,
+      "ayahs": [
+        [
+          2,
+          51
+        ],
+        [
+          2,
+          53
+        ],
+        [
+          2,
+          54
+        ],
+        [
+          2,
+          55
+        ],
+        [
+          2,
+          60
+        ],
+        [
+          2,
+          61
+        ],
+        [
+          2,
+          67
+        ],
+        [
+          2,
+          87
+        ],
+        [
+          2,
+          92
+        ],
+        [
+          2,
+          108
+        ]
+      ]
+    },
+    "Aaron": {
+      "mentions": 24,
+      "ayah_count": 24,
+      "surah_count": 13,
+      "ayahs": [
+        [
+          2,
+          248
+        ],
+        [
+          4,
+          163
+        ],
+        [
+          6,
+          84
+        ],
+        [
+          7,
+          122
+        ],
+        [
+          7,
+          142
+        ],
+        [
+          7,
+          150
+        ],
+        [
+          10,
+          75
+        ],
+        [
+          10,
+          89
+        ],
+        [
+          19,
+          28
+        ],
+        [
+          19,
+          53
+        ]
+      ]
+    },
+    "David": {
+      "mentions": 17,
+      "ayah_count": 16,
+      "surah_count": 9,
+      "ayahs": [
+        [
+          2,
+          251
+        ],
+        [
+          4,
+          163
+        ],
+        [
+          5,
+          78
+        ],
+        [
+          6,
+          84
+        ],
+        [
+          17,
+          55
+        ],
+        [
+          21,
+          78
+        ],
+        [
+          21,
+          79
+        ],
+        [
+          27,
+          15
+        ],
+        [
+          27,
+          16
+        ],
+        [
+          34,
+          10
+        ]
+      ]
+    },
+    "Solomon": {
+      "mentions": 20,
+      "ayah_count": 19,
+      "surah_count": 7,
+      "ayahs": [
+        [
+          2,
+          102
+        ],
+        [
+          4,
+          163
+        ],
+        [
+          6,
+          84
+        ],
+        [
+          21,
+          78
+        ],
+        [
+          21,
+          79
+        ],
+        [
+          21,
+          81
+        ],
+        [
+          27,
+          15
+        ],
+        [
+          27,
+          16
+        ],
+        [
+          27,
+          17
+        ],
+        [
+          27,
+          18
+        ]
+      ]
+    },
+    "Job": {
+      "mentions": 4,
+      "ayah_count": 4,
+      "surah_count": 4,
+      "ayahs": [
+        [
+          4,
+          163
+        ],
+        [
+          6,
+          84
+        ],
+        [
+          21,
+          83
+        ],
+        [
+          38,
+          41
+        ]
+      ]
+    },
+    "Jonah": {
+      "mentions": 3,
+      "ayah_count": 3,
+      "surah_count": 3,
+      "ayahs": [
+        [
+          4,
+          163
+        ],
+        [
+          10,
+          98
+        ],
+        [
+          37,
+          139
+        ]
+      ]
+    },
+    "Jesus": {
+      "mentions": 95,
+      "ayah_count": 82,
+      "surah_count": 30,
+      "ayahs": [
+        [
+          2,
+          62
+        ],
+        [
+          2,
+          87
+        ],
+        [
+          2,
+          111
+        ],
+        [
+          2,
+          113
+        ],
+        [
+          2,
+          120
+        ],
+        [
+          2,
+          133
+        ],
+        [
+          2,
+          135
+        ],
+        [
+          2,
+          136
+        ],
+        [
+          2,
+          140
+        ],
+        [
+          2,
+          253
+        ]
+      ]
+    },
+    "John": {
+      "mentions": 5,
+      "ayah_count": 5,
+      "surah_count": 4,
+      "ayahs": [
+        [
+          3,
+          39
+        ],
+        [
+          6,
+          85
+        ],
+        [
+          19,
+          7
+        ],
+        [
+          19,
+          12
+        ],
+        [
+          21,
+          90
+        ]
+      ]
+    },
+    "Zachariah": {
+      "mentions": 8,
+      "ayah_count": 8,
+      "surah_count": 4,
+      "ayahs": [
+        [
+          3,
+          37
+        ],
+        [
+          3,
+          38
+        ],
+        [
+          6,
+          85
+        ],
+        [
+          19,
+          2
+        ],
+        [
+          19,
+          7
+        ],
+        [
+          19,
+          10
+        ],
+        [
+          19,
+          11
+        ],
+        [
+          21,
+          89
+        ]
+      ]
+    },
+    "Elijah": {
+      "mentions": 3,
+      "ayah_count": 3,
+      "surah_count": 2,
+      "ayahs": [
+        [
+          6,
+          85
+        ],
+        [
+          37,
+          123
+        ],
+        [
+          37,
+          130
+        ]
+      ]
+    },
+    "Elisha": {
+      "mentions": 2,
+      "ayah_count": 2,
+      "surah_count": 2,
+      "ayahs": [
+        [
+          6,
+          86
+        ],
+        [
+          38,
+          48
+        ]
+      ]
+    },
+    "Muhammad": {
+      "mentions": 5,
+      "ayah_count": 5,
+      "surah_count": 5,
+      "ayahs": [
+        [
+          3,
+          144
+        ],
+        [
+          33,
+          40
+        ],
+        [
+          47,
+          2
+        ],
+        [
+          48,
+          29
+        ],
+        [
+          61,
+          6
+        ]
+      ]
+    }
+  },
+  "concepts": {
+    "Names of Allah": {
+      "count": 155,
+      "category": "Divine Attributes",
+      "ayahs_containing": 142
+    },
+    "Belief": {
+      "count": 1511,
+      "category": "Faith & Belief",
+      "ayahs_containing": 942
+    },
+    "Worship": {
+      "count": 569,
+      "category": "Worship",
+      "ayahs_containing": 362
+    },
+    "Charity": {
+      "count": 751,
+      "category": "Social Justice",
+      "ayahs_containing": 623
+    },
+    "Patience": {
+      "count": 134,
+      "category": "Virtues",
+      "ayahs_containing": 96
+    },
+    "Gratitude": {
+      "count": 213,
+      "category": "Virtues",
+      "ayahs_containing": 191
+    },
+    "Repentance": {
+      "count": 762,
+      "category": "Forgiveness",
+      "ayahs_containing": 547
+    },
+    "Paradise": {
+      "count": 451,
+      "category": "Hereafter",
+      "ayahs_containing": 409
+    },
+    "Hellfire": {
+      "count": 685,
+      "category": "Hereafter",
+      "ayahs_containing": 577
+    },
+    "Guidance": {
+      "count": 874,
+      "category": "Guidance",
+      "ayahs_containing": 665
+    }
+  },
+  "surah_analysis": {
+    "1": {
+      "ayah_count": 7,
+      "total_words": 66,
+      "avg_ayah_length": 9.428571428571429,
+      "mentions_allah": 2,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "2": {
+      "ayah_count": 286,
+      "total_words": 12409,
+      "avg_ayah_length": 43.38811188811189,
+      "mentions_allah": 294,
+      "mentions_believers": 63,
+      "mentions_disbelievers": 29
+    },
+    "3": {
+      "ayah_count": 200,
+      "total_words": 7263,
+      "avg_ayah_length": 36.315,
+      "mentions_allah": 226,
+      "mentions_believers": 46,
+      "mentions_disbelievers": 23
+    },
+    "4": {
+      "ayah_count": 176,
+      "total_words": 7366,
+      "avg_ayah_length": 41.85227272727273,
+      "mentions_allah": 229,
+      "mentions_believers": 61,
+      "mentions_disbelievers": 15
+    },
+    "5": {
+      "ayah_count": 120,
+      "total_words": 5796,
+      "avg_ayah_length": 48.3,
+      "mentions_allah": 158,
+      "mentions_believers": 42,
+      "mentions_disbelievers": 9
+    },
+    "6": {
+      "ayah_count": 165,
+      "total_words": 6417,
+      "avg_ayah_length": 38.89090909090909,
+      "mentions_allah": 110,
+      "mentions_believers": 22,
+      "mentions_disbelievers": 19
+    },
+    "7": {
+      "ayah_count": 206,
+      "total_words": 7111,
+      "avg_ayah_length": 34.519417475728154,
+      "mentions_allah": 79,
+      "mentions_believers": 30,
+      "mentions_disbelievers": 25
+    },
+    "8": {
+      "ayah_count": 75,
+      "total_words": 2614,
+      "avg_ayah_length": 34.85333333333333,
+      "mentions_allah": 91,
+      "mentions_believers": 35,
+      "mentions_disbelievers": 2
+    },
+    "9": {
+      "ayah_count": 129,
+      "total_words": 5212,
+      "avg_ayah_length": 40.4031007751938,
+      "mentions_allah": 170,
+      "mentions_believers": 48,
+      "mentions_disbelievers": 8
+    },
+    "10": {
+      "ayah_count": 109,
+      "total_words": 3727,
+      "avg_ayah_length": 34.19266055045872,
+      "mentions_allah": 66,
+      "mentions_believers": 29,
+      "mentions_disbelievers": 7
+    },
+    "11": {
+      "ayah_count": 123,
+      "total_words": 4158,
+      "avg_ayah_length": 33.80487804878049,
+      "mentions_allah": 40,
+      "mentions_believers": 18,
+      "mentions_disbelievers": 4
+    },
+    "12": {
+      "ayah_count": 111,
+      "total_words": 3988,
+      "avg_ayah_length": 35.927927927927925,
+      "mentions_allah": 47,
+      "mentions_believers": 5,
+      "mentions_disbelievers": 0
+    },
+    "13": {
+      "ayah_count": 43,
+      "total_words": 1816,
+      "avg_ayah_length": 42.23255813953488,
+      "mentions_allah": 34,
+      "mentions_believers": 13,
+      "mentions_disbelievers": 2
+    },
+    "14": {
+      "ayah_count": 52,
+      "total_words": 1846,
+      "avg_ayah_length": 35.5,
+      "mentions_allah": 40,
+      "mentions_believers": 6,
+      "mentions_disbelievers": 2
+    },
+    "15": {
+      "ayah_count": 99,
+      "total_words": 1525,
+      "avg_ayah_length": 15.404040404040405,
+      "mentions_allah": 9,
+      "mentions_believers": 4,
+      "mentions_disbelievers": 2
+    },
+    "16": {
+      "ayah_count": 128,
+      "total_words": 3895,
+      "avg_ayah_length": 30.4296875,
+      "mentions_allah": 98,
+      "mentions_believers": 11,
+      "mentions_disbelievers": 5
+    },
+    "17": {
+      "ayah_count": 111,
+      "total_words": 3478,
+      "avg_ayah_length": 31.333333333333332,
+      "mentions_allah": 13,
+      "mentions_believers": 7,
+      "mentions_disbelievers": 4
+    },
+    "18": {
+      "ayah_count": 110,
+      "total_words": 3501,
+      "avg_ayah_length": 31.827272727272728,
+      "mentions_allah": 21,
+      "mentions_believers": 12,
+      "mentions_disbelievers": 2
+    },
+    "19": {
+      "ayah_count": 98,
+      "total_words": 2163,
+      "avg_ayah_length": 22.071428571428573,
+      "mentions_allah": 27,
+      "mentions_believers": 7,
+      "mentions_disbelievers": 2
+    },
+    "20": {
+      "ayah_count": 135,
+      "total_words": 3045,
+      "avg_ayah_length": 22.555555555555557,
+      "mentions_allah": 19,
+      "mentions_believers": 7,
+      "mentions_disbelievers": 2
+    },
+    "21": {
+      "ayah_count": 112,
+      "total_words": 2613,
+      "avg_ayah_length": 23.330357142857142,
+      "mentions_allah": 12,
+      "mentions_believers": 8,
+      "mentions_disbelievers": 3
+    },
+    "22": {
+      "ayah_count": 78,
+      "total_words": 2726,
+      "avg_ayah_length": 34.94871794871795,
+      "mentions_allah": 75,
+      "mentions_believers": 12,
+      "mentions_disbelievers": 5
+    },
+    "23": {
+      "ayah_count": 118,
+      "total_words": 2287,
+      "avg_ayah_length": 19.38135593220339,
+      "mentions_allah": 15,
+      "mentions_believers": 10,
+      "mentions_disbelievers": 0
+    },
+    "24": {
+      "ayah_count": 64,
+      "total_words": 2734,
+      "avg_ayah_length": 42.71875,
+      "mentions_allah": 84,
+      "mentions_believers": 22,
+      "mentions_disbelievers": 2
+    },
+    "25": {
+      "ayah_count": 77,
+      "total_words": 1968,
+      "avg_ayah_length": 25.558441558441558,
+      "mentions_allah": 16,
+      "mentions_believers": 6,
+      "mentions_disbelievers": 5
+    },
+    "26": {
+      "ayah_count": 227,
+      "total_words": 2863,
+      "avg_ayah_length": 12.612334801762115,
+      "mentions_allah": 22,
+      "mentions_believers": 20,
+      "mentions_disbelievers": 9
+    },
+    "27": {
+      "ayah_count": 93,
+      "total_words": 2526,
+      "avg_ayah_length": 27.161290322580644,
+      "mentions_allah": 30,
+      "mentions_believers": 9,
+      "mentions_disbelievers": 3
+    },
+    "28": {
+      "ayah_count": 88,
+      "total_words": 3147,
+      "avg_ayah_length": 35.76136363636363,
+      "mentions_allah": 34,
+      "mentions_believers": 7,
+      "mentions_disbelievers": 4
+    },
+    "29": {
+      "ayah_count": 69,
+      "total_words": 2067,
+      "avg_ayah_length": 29.956521739130434,
+      "mentions_allah": 45,
+      "mentions_believers": 17,
+      "mentions_disbelievers": 10
+    },
+    "30": {
+      "ayah_count": 60,
+      "total_words": 1769,
+      "avg_ayah_length": 29.483333333333334,
+      "mentions_allah": 27,
+      "mentions_believers": 8,
+      "mentions_disbelievers": 7
+    },
+    "31": {
+      "ayah_count": 34,
+      "total_words": 1134,
+      "avg_ayah_length": 33.35294117647059,
+      "mentions_allah": 32,
+      "mentions_believers": 1,
+      "mentions_disbelievers": 3
+    },
+    "32": {
+      "ayah_count": 30,
+      "total_words": 811,
+      "avg_ayah_length": 27.033333333333335,
+      "mentions_allah": 1,
+      "mentions_believers": 6,
+      "mentions_disbelievers": 1
+    },
+    "33": {
+      "ayah_count": 73,
+      "total_words": 2671,
+      "avg_ayah_length": 36.58904109589041,
+      "mentions_allah": 94,
+      "mentions_believers": 25,
+      "mentions_disbelievers": 0
+    },
+    "34": {
+      "ayah_count": 54,
+      "total_words": 1859,
+      "avg_ayah_length": 34.425925925925924,
+      "mentions_allah": 12,
+      "mentions_believers": 15,
+      "mentions_disbelievers": 6
+    },
+    "35": {
+      "ayah_count": 45,
+      "total_words": 1615,
+      "avg_ayah_length": 35.888888888888886,
+      "mentions_allah": 40,
+      "mentions_believers": 2,
+      "mentions_disbelievers": 12
+    },
+    "36": {
+      "ayah_count": 83,
+      "total_words": 1713,
+      "avg_ayah_length": 20.63855421686747,
+      "mentions_allah": 8,
+      "mentions_believers": 4,
+      "mentions_disbelievers": 3
+    },
+    "37": {
+      "ayah_count": 182,
+      "total_words": 2132,
+      "avg_ayah_length": 11.714285714285714,
+      "mentions_allah": 22,
+      "mentions_believers": 1,
+      "mentions_disbelievers": 2
+    },
+    "38": {
+      "ayah_count": 88,
+      "total_words": 1706,
+      "avg_ayah_length": 19.386363636363637,
+      "mentions_allah": 11,
+      "mentions_believers": 6,
+      "mentions_disbelievers": 4
+    },
+    "39": {
+      "ayah_count": 75,
+      "total_words": 2545,
+      "avg_ayah_length": 33.93333333333333,
+      "mentions_allah": 67,
+      "mentions_believers": 5,
+      "mentions_disbelievers": 6
+    },
+    "40": {
+      "ayah_count": 85,
+      "total_words": 2681,
+      "avg_ayah_length": 31.541176470588237,
+      "mentions_allah": 58,
+      "mentions_believers": 20,
+      "mentions_disbelievers": 6
+    },
+    "41": {
+      "ayah_count": 54,
+      "total_words": 1758,
+      "avg_ayah_length": 32.55555555555556,
+      "mentions_allah": 16,
+      "mentions_believers": 9,
+      "mentions_disbelievers": 5
+    },
+    "42": {
+      "ayah_count": 53,
+      "total_words": 1818,
+      "avg_ayah_length": 34.301886792452834,
+      "mentions_allah": 37,
+      "mentions_believers": 9,
+      "mentions_disbelievers": 0
+    },
+    "43": {
+      "ayah_count": 89,
+      "total_words": 1928,
+      "avg_ayah_length": 21.662921348314608,
+      "mentions_allah": 17,
+      "mentions_believers": 2,
+      "mentions_disbelievers": 2
+    },
+    "44": {
+      "ayah_count": 59,
+      "total_words": 766,
+      "avg_ayah_length": 12.983050847457626,
+      "mentions_allah": 3,
+      "mentions_believers": 2,
+      "mentions_disbelievers": 0
+    },
+    "45": {
+      "ayah_count": 37,
+      "total_words": 1061,
+      "avg_ayah_length": 28.675675675675677,
+      "mentions_allah": 19,
+      "mentions_believers": 5,
+      "mentions_disbelievers": 3
+    },
+    "46": {
+      "ayah_count": 35,
+      "total_words": 1372,
+      "avg_ayah_length": 39.2,
+      "mentions_allah": 20,
+      "mentions_believers": 8,
+      "mentions_disbelievers": 4
+    },
+    "47": {
+      "ayah_count": 38,
+      "total_words": 1221,
+      "avg_ayah_length": 32.13157894736842,
+      "mentions_allah": 39,
+      "mentions_believers": 11,
+      "mentions_disbelievers": 9
+    },
+    "48": {
+      "ayah_count": 29,
+      "total_words": 1200,
+      "avg_ayah_length": 41.37931034482759,
+      "mentions_allah": 43,
+      "mentions_believers": 14,
+      "mentions_disbelievers": 1
+    },
+    "49": {
+      "ayah_count": 18,
+      "total_words": 709,
+      "avg_ayah_length": 39.388888888888886,
+      "mentions_allah": 27,
+      "mentions_believers": 11,
+      "mentions_disbelievers": 0
+    },
+    "50": {
+      "ayah_count": 45,
+      "total_words": 848,
+      "avg_ayah_length": 18.844444444444445,
+      "mentions_allah": 7,
+      "mentions_believers": 1,
+      "mentions_disbelievers": 2
+    },
+    "51": {
+      "ayah_count": 60,
+      "total_words": 842,
+      "avg_ayah_length": 14.033333333333333,
+      "mentions_allah": 3,
+      "mentions_believers": 3,
+      "mentions_disbelievers": 0
+    },
+    "52": {
+      "ayah_count": 49,
+      "total_words": 743,
+      "avg_ayah_length": 15.16326530612245,
+      "mentions_allah": 4,
+      "mentions_believers": 1,
+      "mentions_disbelievers": 0
+    },
+    "53": {
+      "ayah_count": 62,
+      "total_words": 757,
+      "avg_ayah_length": 12.209677419354838,
+      "mentions_allah": 7,
+      "mentions_believers": 1,
+      "mentions_disbelievers": 0
+    },
+    "54": {
+      "ayah_count": 55,
+      "total_words": 867,
+      "avg_ayah_length": 15.763636363636364,
+      "mentions_allah": 1,
+      "mentions_believers": 2,
+      "mentions_disbelievers": 8
+    },
+    "55": {
+      "ayah_count": 78,
+      "total_words": 904,
+      "avg_ayah_length": 11.58974358974359,
+      "mentions_allah": 1,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "56": {
+      "ayah_count": 96,
+      "total_words": 981,
+      "avg_ayah_length": 10.21875,
+      "mentions_allah": 2,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "57": {
+      "ayah_count": 29,
+      "total_words": 1307,
+      "avg_ayah_length": 45.06896551724138,
+      "mentions_allah": 37,
+      "mentions_believers": 11,
+      "mentions_disbelievers": 2
+    },
+    "58": {
+      "ayah_count": 22,
+      "total_words": 993,
+      "avg_ayah_length": 45.13636363636363,
+      "mentions_allah": 40,
+      "mentions_believers": 8,
+      "mentions_disbelievers": 1
+    },
+    "59": {
+      "ayah_count": 24,
+      "total_words": 968,
+      "avg_ayah_length": 40.333333333333336,
+      "mentions_allah": 31,
+      "mentions_believers": 4,
+      "mentions_disbelievers": 0
+    },
+    "60": {
+      "ayah_count": 13,
+      "total_words": 791,
+      "avg_ayah_length": 60.84615384615385,
+      "mentions_allah": 21,
+      "mentions_believers": 15,
+      "mentions_disbelievers": 3
+    },
+    "61": {
+      "ayah_count": 14,
+      "total_words": 444,
+      "avg_ayah_length": 31.714285714285715,
+      "mentions_allah": 17,
+      "mentions_believers": 9,
+      "mentions_disbelievers": 0
+    },
+    "62": {
+      "ayah_count": 11,
+      "total_words": 381,
+      "avg_ayah_length": 34.63636363636363,
+      "mentions_allah": 12,
+      "mentions_believers": 1,
+      "mentions_disbelievers": 0
+    },
+    "63": {
+      "ayah_count": 11,
+      "total_words": 395,
+      "avg_ayah_length": 35.90909090909091,
+      "mentions_allah": 14,
+      "mentions_believers": 3,
+      "mentions_disbelievers": 1
+    },
+    "64": {
+      "ayah_count": 18,
+      "total_words": 558,
+      "avg_ayah_length": 31.0,
+      "mentions_allah": 21,
+      "mentions_believers": 8,
+      "mentions_disbelievers": 3
+    },
+    "65": {
+      "ayah_count": 12,
+      "total_words": 607,
+      "avg_ayah_length": 50.583333333333336,
+      "mentions_allah": 26,
+      "mentions_believers": 4,
+      "mentions_disbelievers": 0
+    },
+    "66": {
+      "ayah_count": 12,
+      "total_words": 528,
+      "avg_ayah_length": 44.0,
+      "mentions_allah": 14,
+      "mentions_believers": 9,
+      "mentions_disbelievers": 0
+    },
+    "67": {
+      "ayah_count": 30,
+      "total_words": 744,
+      "avg_ayah_length": 24.8,
+      "mentions_allah": 8,
+      "mentions_believers": 4,
+      "mentions_disbelievers": 4
+    },
+    "68": {
+      "ayah_count": 52,
+      "total_words": 734,
+      "avg_ayah_length": 14.115384615384615,
+      "mentions_allah": 3,
+      "mentions_believers": 1,
+      "mentions_disbelievers": 1
+    },
+    "69": {
+      "ayah_count": 52,
+      "total_words": 642,
+      "avg_ayah_length": 12.346153846153847,
+      "mentions_allah": 2,
+      "mentions_believers": 3,
+      "mentions_disbelievers": 1
+    },
+    "70": {
+      "ayah_count": 44,
+      "total_words": 501,
+      "avg_ayah_length": 11.386363636363637,
+      "mentions_allah": 1,
+      "mentions_believers": 2,
+      "mentions_disbelievers": 0
+    },
+    "71": {
+      "ayah_count": 28,
+      "total_words": 480,
+      "avg_ayah_length": 17.142857142857142,
+      "mentions_allah": 7,
+      "mentions_believers": 1,
+      "mentions_disbelievers": 0
+    },
+    "72": {
+      "ayah_count": 28,
+      "total_words": 619,
+      "avg_ayah_length": 22.107142857142858,
+      "mentions_allah": 12,
+      "mentions_believers": 2,
+      "mentions_disbelievers": 0
+    },
+    "73": {
+      "ayah_count": 20,
+      "total_words": 458,
+      "avg_ayah_length": 22.9,
+      "mentions_allah": 8,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "74": {
+      "ayah_count": 56,
+      "total_words": 570,
+      "avg_ayah_length": 10.178571428571429,
+      "mentions_allah": 3,
+      "mentions_believers": 4,
+      "mentions_disbelievers": 0
+    },
+    "75": {
+      "ayah_count": 40,
+      "total_words": 408,
+      "avg_ayah_length": 10.2,
+      "mentions_allah": 1,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 1
+    },
+    "76": {
+      "ayah_count": 31,
+      "total_words": 541,
+      "avg_ayah_length": 17.451612903225808,
+      "mentions_allah": 6,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 1
+    },
+    "77": {
+      "ayah_count": 50,
+      "total_words": 502,
+      "avg_ayah_length": 10.04,
+      "mentions_allah": 0,
+      "mentions_believers": 1,
+      "mentions_disbelievers": 11
+    },
+    "78": {
+      "ayah_count": 40,
+      "total_words": 412,
+      "avg_ayah_length": 10.3,
+      "mentions_allah": 2,
+      "mentions_believers": 1,
+      "mentions_disbelievers": 0
+    },
+    "79": {
+      "ayah_count": 46,
+      "total_words": 487,
+      "avg_ayah_length": 10.58695652173913,
+      "mentions_allah": 4,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 1
+    },
+    "80": {
+      "ayah_count": 42,
+      "total_words": 356,
+      "avg_ayah_length": 8.476190476190476,
+      "mentions_allah": 3,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 2
+    },
+    "81": {
+      "ayah_count": 29,
+      "total_words": 256,
+      "avg_ayah_length": 8.827586206896552,
+      "mentions_allah": 1,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "82": {
+      "ayah_count": 19,
+      "total_words": 200,
+      "avg_ayah_length": 10.526315789473685,
+      "mentions_allah": 1,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 1
+    },
+    "83": {
+      "ayah_count": 36,
+      "total_words": 387,
+      "avg_ayah_length": 10.75,
+      "mentions_allah": 2,
+      "mentions_believers": 4,
+      "mentions_disbelievers": 1
+    },
+    "84": {
+      "ayah_count": 25,
+      "total_words": 260,
+      "avg_ayah_length": 10.4,
+      "mentions_allah": 1,
+      "mentions_believers": 3,
+      "mentions_disbelievers": 1
+    },
+    "85": {
+      "ayah_count": 22,
+      "total_words": 239,
+      "avg_ayah_length": 10.863636363636363,
+      "mentions_allah": 3,
+      "mentions_believers": 5,
+      "mentions_disbelievers": 1
+    },
+    "86": {
+      "ayah_count": 17,
+      "total_words": 157,
+      "avg_ayah_length": 9.235294117647058,
+      "mentions_allah": 1,
+      "mentions_believers": 1,
+      "mentions_disbelievers": 0
+    },
+    "87": {
+      "ayah_count": 19,
+      "total_words": 181,
+      "avg_ayah_length": 9.526315789473685,
+      "mentions_allah": 2,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "88": {
+      "ayah_count": 26,
+      "total_words": 200,
+      "avg_ayah_length": 7.6923076923076925,
+      "mentions_allah": 2,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 1
+    },
+    "89": {
+      "ayah_count": 30,
+      "total_words": 319,
+      "avg_ayah_length": 10.633333333333333,
+      "mentions_allah": 0,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "90": {
+      "ayah_count": 20,
+      "total_words": 186,
+      "avg_ayah_length": 9.3,
+      "mentions_allah": 0,
+      "mentions_believers": 1,
+      "mentions_disbelievers": 1
+    },
+    "91": {
+      "ayah_count": 15,
+      "total_words": 162,
+      "avg_ayah_length": 10.8,
+      "mentions_allah": 2,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 2
+    },
+    "92": {
+      "ayah_count": 21,
+      "total_words": 209,
+      "avg_ayah_length": 9.952380952380953,
+      "mentions_allah": 2,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "93": {
+      "ayah_count": 11,
+      "total_words": 103,
+      "avg_ayah_length": 9.363636363636363,
+      "mentions_allah": 0,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "94": {
+      "ayah_count": 8,
+      "total_words": 64,
+      "avg_ayah_length": 8.0,
+      "mentions_allah": 0,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "95": {
+      "ayah_count": 8,
+      "total_words": 73,
+      "avg_ayah_length": 9.125,
+      "mentions_allah": 1,
+      "mentions_believers": 1,
+      "mentions_disbelievers": 0
+    },
+    "96": {
+      "ayah_count": 19,
+      "total_words": 167,
+      "avg_ayah_length": 8.789473684210526,
+      "mentions_allah": 2,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "97": {
+      "ayah_count": 5,
+      "total_words": 54,
+      "avg_ayah_length": 10.8,
+      "mentions_allah": 1,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "98": {
+      "ayah_count": 8,
+      "total_words": 182,
+      "avg_ayah_length": 22.75,
+      "mentions_allah": 4,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 2
+    },
+    "99": {
+      "ayah_count": 8,
+      "total_words": 90,
+      "avg_ayah_length": 11.25,
+      "mentions_allah": 0,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "100": {
+      "ayah_count": 11,
+      "total_words": 104,
+      "avg_ayah_length": 9.454545454545455,
+      "mentions_allah": 0,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "101": {
+      "ayah_count": 11,
+      "total_words": 103,
+      "avg_ayah_length": 9.363636363636363,
+      "mentions_allah": 0,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "102": {
+      "ayah_count": 8,
+      "total_words": 76,
+      "avg_ayah_length": 9.5,
+      "mentions_allah": 0,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "103": {
+      "ayah_count": 3,
+      "total_words": 36,
+      "avg_ayah_length": 12.0,
+      "mentions_allah": 0,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "104": {
+      "ayah_count": 9,
+      "total_words": 85,
+      "avg_ayah_length": 9.444444444444445,
+      "mentions_allah": 1,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "105": {
+      "ayah_count": 5,
+      "total_words": 58,
+      "avg_ayah_length": 11.6,
+      "mentions_allah": 0,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "106": {
+      "ayah_count": 4,
+      "total_words": 41,
+      "avg_ayah_length": 10.25,
+      "mentions_allah": 0,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "107": {
+      "ayah_count": 7,
+      "total_words": 55,
+      "avg_ayah_length": 7.857142857142857,
+      "mentions_allah": 0,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "108": {
+      "ayah_count": 3,
+      "total_words": 31,
+      "avg_ayah_length": 10.333333333333334,
+      "mentions_allah": 0,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "109": {
+      "ayah_count": 6,
+      "total_words": 51,
+      "avg_ayah_length": 8.5,
+      "mentions_allah": 0,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 1
+    },
+    "110": {
+      "ayah_count": 3,
+      "total_words": 38,
+      "avg_ayah_length": 12.666666666666666,
+      "mentions_allah": 2,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "111": {
+      "ayah_count": 5,
+      "total_words": 53,
+      "avg_ayah_length": 10.6,
+      "mentions_allah": 0,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "112": {
+      "ayah_count": 4,
+      "total_words": 26,
+      "avg_ayah_length": 6.5,
+      "mentions_allah": 2,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "113": {
+      "ayah_count": 5,
+      "total_words": 45,
+      "avg_ayah_length": 9.0,
+      "mentions_allah": 0,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    },
+    "114": {
+      "ayah_count": 6,
+      "total_words": 50,
+      "avg_ayah_length": 8.333333333333334,
+      "mentions_allah": 0,
+      "mentions_believers": 0,
+      "mentions_disbelievers": 0
+    }
+  },
+  "summary": {
+    "total_ayahs": 6236,
+    "total_surahs": 114,
+    "most_mentioned_prophet": "Moses",
+    "most_common_concept": "Belief"
+  }
+}

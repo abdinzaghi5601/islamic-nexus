@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import { Tabs } from '@/components/ui/tabs';
+import TranslationInsights from '@/components/analytics/TranslationInsights';
 
 interface OverviewData {
   totals: {
@@ -245,6 +246,7 @@ export default function AnalyticsPage() {
           { id: 'prophets', label: 'Prophets', icon: '👥' },
           { id: 'themes', label: 'Themes', icon: '📚' },
           { id: 'words', label: 'Word Analysis', icon: '🔤' },
+          { id: 'translation', label: 'Translation Insights', icon: '🔍' },
         ].map(tab => (
           <button
             key={tab.id}
@@ -568,6 +570,9 @@ export default function AnalyticsPage() {
           </div>
         </div>
       )}
+
+      {/* Translation Insights Tab */}
+      {activeTab === 'translation' && <TranslationInsights />}
     </div>
   );
 }
