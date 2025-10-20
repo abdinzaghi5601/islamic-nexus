@@ -2,6 +2,9 @@ import Link from 'next/link';
 import { Library } from 'lucide-react';
 import prisma from '@/lib/db/prisma';
 
+// Force dynamic rendering - don't pre-render at build time
+export const dynamic = 'force-dynamic';
+
 async function getHadithBooks() {
   const books = await prisma.hadithBook.findMany({
     select: {

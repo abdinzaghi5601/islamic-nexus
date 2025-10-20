@@ -3,6 +3,9 @@ import { ChevronLeft } from 'lucide-react';
 import prisma from '@/lib/db/prisma';
 import HadithBookmarkButton from '@/components/HadithBookmarkButton';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 async function getChapterHadiths(bookId: string, chapterId: string) {
   const bookIdInt = parseInt(bookId);
   const chapterIdInt = parseInt(chapterId);

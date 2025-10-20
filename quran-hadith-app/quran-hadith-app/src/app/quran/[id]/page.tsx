@@ -4,6 +4,9 @@ import prisma from '@/lib/db/prisma';
 import SurahDisplay from '@/components/surah-display';
 import SurahHeader from '@/components/SurahHeader';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 async function getSurah(id: string) {
   const surahNumber = parseInt(id);
 

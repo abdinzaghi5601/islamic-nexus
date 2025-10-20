@@ -2,6 +2,9 @@ import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
 import prisma from '@/lib/db/prisma';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 async function getHadithBook(id: string) {
   const bookId = parseInt(id);
 

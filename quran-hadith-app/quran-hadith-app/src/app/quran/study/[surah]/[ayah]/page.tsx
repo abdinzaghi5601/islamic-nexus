@@ -2,6 +2,9 @@ import AyahStudyClient from '@/components/ayah-study-client';
 import prisma from '@/lib/db/prisma';
 import { getCleanedAyahText } from '@/lib/utils/bismillah';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 interface AyahPageProps {
   params: Promise<{
     surah: string;
