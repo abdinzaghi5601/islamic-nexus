@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import prisma from '@/lib/db/prisma';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 async function getSurahs() {
   const surahs = await prisma.surah.findMany({
     orderBy: { number: 'asc' },
