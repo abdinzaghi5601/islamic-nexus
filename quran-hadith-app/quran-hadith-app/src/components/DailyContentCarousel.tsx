@@ -358,25 +358,25 @@ export default function DailyContentCarousel() {
 
       {/* Full Text Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-background border-2">
           {selectedSlide !== null && slides[selectedSlide] && (
             <>
-              <DialogHeader>
-                <DialogTitle className="text-2xl gradient-text">
+              <DialogHeader className="pb-4 border-b">
+                <DialogTitle className="text-2xl md:text-3xl gradient-text">
                   {slides[selectedSlide].title}
                 </DialogTitle>
-                <DialogDescription>
-                  <Badge variant="outline" className="mt-2">
+                <DialogDescription className="pt-2">
+                  <Badge variant="outline" className="bg-primary/10">
                     {slides[selectedSlide].type}
                   </Badge>
                 </DialogDescription>
               </DialogHeader>
 
-              <div className="space-y-6 py-4">
+              <div className="space-y-8 py-6">
                 {/* Full Arabic Text */}
-                <div className="text-center">
+                <div className="glass-card p-6 rounded-xl">
                   <p
-                    className="text-4xl md:text-5xl leading-loose font-arabic text-foreground"
+                    className="text-3xl md:text-4xl lg:text-5xl leading-loose font-arabic text-foreground text-center"
                     dir="rtl"
                     lang="ar"
                   >
@@ -386,41 +386,41 @@ export default function DailyContentCarousel() {
 
                 {/* Transliteration (for Dua) */}
                 {slides[selectedSlide].transliteration && (
-                  <div className="text-center border-t border-b py-4">
-                    <p className="text-xl md:text-2xl text-muted-foreground italic leading-relaxed">
+                  <div className="content-card p-5 rounded-xl">
+                    <p className="text-lg md:text-xl text-muted-foreground italic leading-relaxed text-center">
                       {slides[selectedSlide].transliteration}
                     </p>
                   </div>
                 )}
 
                 {/* Full Translation */}
-                <div className="text-center">
-                  <p className="text-xl md:text-2xl leading-relaxed text-foreground">
+                <div className="content-card p-6 rounded-xl">
+                  <p className="text-lg md:text-xl leading-relaxed text-foreground text-center">
                     {slides[selectedSlide].translation}
                   </p>
                 </div>
 
                 {/* Reference & Metadata */}
-                <div className="text-center space-y-2 border-t pt-4">
-                  <p className="text-sm font-semibold text-primary">
+                <div className="text-center space-y-2 pt-4 border-t">
+                  <p className="text-sm font-semibold text-primary bg-primary/10 px-4 py-2 rounded-full inline-block">
                     {slides[selectedSlide].reference}
                   </p>
                   {slides[selectedSlide].metadata && (
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-sm text-muted-foreground">
                       {slides[selectedSlide].metadata}
                     </p>
                   )}
                 </div>
               </div>
 
-              <DialogFooter className="flex gap-2 sm:gap-2">
+              <DialogFooter className="flex gap-2 sm:gap-2 pt-4 border-t">
                 <Link href={slides[selectedSlide].link} className="flex-1">
-                  <Button className="w-full" variant="default">
+                  <Button className="w-full" variant="default" size="lg">
                     View Full Details
                     <ExternalLink className="h-4 w-4 ml-2" />
                   </Button>
                 </Link>
-                <Button variant="outline" onClick={closeDialog}>
+                <Button variant="outline" size="lg" onClick={closeDialog}>
                   Close
                 </Button>
               </DialogFooter>
