@@ -1,15 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+import { auth } from '@/lib/auth';
 
 /**
  * Admin Authentication Middleware
  * Protects admin routes from unauthorized access
  */
-export async function requireAdmin(request: NextRequest) {
+export async function requireAdmin() {
   try {
-    // Get the session
-    const session = await getServerSession(authOptions);
+    // Get the session using NextAuth v5 auth() function
+    const session = await auth();
 
     // Check if user is logged in
     if (!session || !session.user) {
@@ -54,7 +53,7 @@ export async function requireAdmin(request: NextRequest) {
 export function withAdminAuth(handler: (req: NextRequest) => Promise<NextResponse>) {
   return async (req: NextRequest) => {
     // Check authentication
-    const authError = await requireAdmin(req);
+    const authError = await requireAdmin();
     if (authError) {
       return authError;
     }
