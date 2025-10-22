@@ -4,6 +4,7 @@ import { existsSync } from 'fs';
 import path from 'path';
 import prisma from '@/lib/db/prisma';
 import { successResponse, errorResponse } from '@/lib/api/helpers';
+import { withAdminAuth } from '@/middleware/admin-auth';
 
 // Configure larger body size limit for file uploads (50MB)
 export const config = {
@@ -20,8 +21,9 @@ export const maxDuration = 300; // 5 minutes for large PDF processing
 /**
  * POST /api/admin/books/upload
  * Upload a PDF book and extract its text for search
+ * PROTECTED: Requires admin authentication
  */
-export async function POST(request: NextRequest) {
+export const POST = withAdminAuth(async (request: NextRequest) => {
   try {
     const formData = await request.formData();
 
@@ -158,4 +160,4 @@ export async function POST(request: NextRequest) {
     console.error('Upload error:', error);
     return errorResponse('Failed to upload book', 500);
   }
-}
+});

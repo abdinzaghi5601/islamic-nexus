@@ -1,12 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Search, Download, BookOpen, Loader2, ExternalLink, CheckCircle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 interface ArchiveBook {
   identifier: string;
@@ -20,11 +22,24 @@ interface ArchiveBook {
 }
 
 export default function ArchiveOrgPage() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
   const [query, setQuery] = useState('');
   const [searching, setSearching] = useState(false);
   const [results, setResults] = useState<ArchiveBook[]>([]);
   const [importing, setImporting] = useState<string | null>(null);
   const [imported, setImported] = useState<Set<string>>(new Set());
+
+  // Check authentication
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/auth/signin');
+    }
+    // @ts-ignore
+    if (status === 'authenticated' && session?.user?.role !== 'admin') {
+      router.push('/dashboard');
+    }
+  }, [status, session, router]);
 
   const searchArchive = async () => {
     if (!query.trim()) return;
@@ -80,6 +95,21 @@ export default function ArchiveOrgPage() {
       setImporting(null);
     }
   };
+
+  // Show loading while checking auth
+  if (status === 'loading') {
+    return (
+      <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
+        <Loader2 className="h-8 w-8 animate-spin" />
+      </div>
+    );
+  }
+
+  // Don't render if not admin
+  // @ts-ignore
+  if (!session || session?.user?.role !== 'admin') {
+    return null;
+  }
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">

@@ -6,6 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 interface DuaCategory {
   id: number;
@@ -14,6 +16,8 @@ interface DuaCategory {
 }
 
 export default function CreateDuaPage() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
@@ -31,6 +35,17 @@ export default function CreateDuaPage() {
     benefits: '',
     occasion: '',
   });
+
+  // Check authentication
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/auth/signin');
+    }
+    // @ts-ignore
+    if (status === 'authenticated' && session?.user?.role !== 'admin') {
+      router.push('/dashboard');
+    }
+  }, [status, session, router]);
 
   // Fetch categories on mount
   useEffect(() => {
@@ -94,6 +109,21 @@ export default function CreateDuaPage() {
       setSubmitting(false);
     }
   };
+
+  // Show loading while checking auth
+  if (status === 'loading') {
+    return (
+      <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
+        <Loader2 className="h-8 w-8 animate-spin" />
+      </div>
+    );
+  }
+
+  // Don't render if not admin
+  // @ts-ignore
+  if (!session || session?.user?.role !== 'admin') {
+    return null;
+  }
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">

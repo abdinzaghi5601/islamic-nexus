@@ -1,12 +1,14 @@
 import { NextRequest } from 'next/server';
 import prisma from '@/lib/db/prisma';
 import { successResponse, errorResponse } from '@/lib/api/helpers';
+import { withAdminAuth } from '@/middleware/admin-auth';
 
 /**
  * POST /api/admin/add-hadith-to-ayah
  * Add a hadith reference to a specific ayah
+ * PROTECTED: Requires admin authentication
  */
-export async function POST(request: NextRequest) {
+export const POST = withAdminAuth(async (request: NextRequest) => {
   try {
     const body = await request.json();
     const { ayahId, bookName, hadithNumber, textArabic, textEnglish, relevance } = body;
@@ -82,4 +84,4 @@ export async function POST(request: NextRequest) {
     console.error('Error adding hadith to ayah:', error);
     return errorResponse('Failed to add hadith', 500);
   }
-}
+});

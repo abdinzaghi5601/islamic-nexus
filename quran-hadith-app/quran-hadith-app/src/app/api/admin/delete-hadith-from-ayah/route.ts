@@ -1,11 +1,13 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/db/prisma';
+import { withAdminAuth } from '@/middleware/admin-auth';
 
 /**
  * DELETE /api/admin/delete-hadith-from-ayah
  * Deletes a hadith reference from a specific ayah
+ * PROTECTED: Requires admin authentication
  */
-export async function DELETE(request: Request) {
+export const DELETE = withAdminAuth(async (request: Request) => {
   try {
     const { hadithId, ayahId } = await request.json();
 
@@ -35,4 +37,4 @@ export async function DELETE(request: Request) {
       { status: 500 }
     );
   }
-}
+});

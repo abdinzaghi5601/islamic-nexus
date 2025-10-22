@@ -1,13 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Upload, BookOpen, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 export default function UploadBookPage() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
   const [uploading, setUploading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
@@ -25,6 +29,17 @@ export default function UploadBookPage() {
     tags: '',
   });
   const [pdfFile, setPdfFile] = useState<File | null>(null);
+
+  // Check authentication
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/auth/signin');
+    }
+    // @ts-ignore
+    if (status === 'authenticated' && session?.user?.role !== 'admin') {
+      router.push('/dashboard');
+    }
+  }, [status, session, router]);
 
   const categories = [
     'Tafsir',
@@ -102,6 +117,21 @@ export default function UploadBookPage() {
       setUploading(false);
     }
   };
+
+  // Show loading while checking auth
+  if (status === 'loading') {
+    return (
+      <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
+        <Loader2 className="h-8 w-8 animate-spin" />
+      </div>
+    );
+  }
+
+  // Don't render if not admin
+  // @ts-ignore
+  if (!session || session?.user?.role !== 'admin') {
+    return null;
+  }
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">

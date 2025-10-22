@@ -1,12 +1,14 @@
 import { NextRequest } from 'next/server';
 import prisma from '@/lib/db/prisma';
 import { successResponse, errorResponse } from '@/lib/api/helpers';
+import { withAdminAuth } from '@/middleware/admin-auth';
 
 /**
  * POST /api/admin/books/import-archive
  * Import a book from Archive.org
+ * PROTECTED: Requires admin authentication
  */
-export async function POST(request: NextRequest) {
+export const POST = withAdminAuth(async (request: NextRequest) => {
   try {
     const body = await request.json();
     const { identifier, title, author, description, publishYear } = body;
@@ -93,4 +95,4 @@ export async function POST(request: NextRequest) {
     console.error('Archive import error:', error);
     return errorResponse('Failed to import book from Archive.org', 500);
   }
-}
+});
