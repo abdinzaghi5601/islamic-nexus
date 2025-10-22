@@ -132,9 +132,9 @@ export default function Home() {
 
       {/* Features Grid */}
       <div className="mb-12">
-        <h2 className="text-3xl font-bold mb-2 text-center gradient-text">Explore Our Platform</h2>
+        <h2 className="text-3xl font-bold mb-2 text-center text-gray-900 dark:text-gray-100">Explore Our Platform</h2>
         <div className="islamic-divider mb-8">
-          <span className="text-2xl">✦</span>
+          <span className="text-2xl text-gray-900 dark:text-gray-100">✦</span>
         </div>
         <div className="grid md:grid-cols-2 gap-8">
           {features.map((feature) => {
@@ -167,9 +167,9 @@ export default function Home() {
 
       {/* Random Dua of the Day */}
       <div className="mb-12">
-        <h2 className="text-3xl font-bold mb-2 text-center gradient-text">Dua of the Moment</h2>
+        <h2 className="text-3xl font-bold mb-2 text-center text-gray-900 dark:text-gray-100">Dua of the Moment</h2>
         <div className="islamic-divider mb-8">
-          <span className="text-2xl">✦</span>
+          <span className="text-2xl text-gray-900 dark:text-gray-100">✦</span>
         </div>
         <div className="max-w-3xl mx-auto">
           <RandomDua initialDua={initialDua} />
@@ -178,9 +178,9 @@ export default function Home() {
 
       {/* Quick Stats */}
       <div className="glass-card-premium p-10 rounded-2xl">
-        <h2 className="text-3xl font-bold text-center mb-2 gradient-text">Platform Statistics</h2>
+        <h2 className="text-3xl font-bold text-center mb-2 text-gray-900 dark:text-gray-100">Platform Statistics</h2>
         <div className="islamic-divider mb-10">
-          <span className="text-2xl">✦</span>
+          <span className="text-2xl text-gray-900 dark:text-gray-100">✦</span>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
           <div className="text-center">
