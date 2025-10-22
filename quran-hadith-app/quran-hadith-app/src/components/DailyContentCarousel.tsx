@@ -2,9 +2,17 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight, BookOpen, Library, Heart, RefreshCw, ExternalLink, Loader2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, BookOpen, Library, Heart, RefreshCw, ExternalLink, Loader2, Maximize2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from '@/components/ui/dialog';
 
 interface DailyContent {
   ayah: {
@@ -66,6 +74,8 @@ export default function DailyContentCarousel() {
   const [error, setError] = useState<string | null>(null);
   const [isPaused, setIsPaused] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedSlide, setSelectedSlide] = useState<number | null>(null);
 
   const slides = dailyContent
     ? [
@@ -158,6 +168,18 @@ export default function DailyContentCarousel() {
     setTimeout(() => setIsPaused(false), 1000);
   };
 
+  const openDialog = (index: number) => {
+    setSelectedSlide(index);
+    setDialogOpen(true);
+    setIsPaused(true);
+  };
+
+  const closeDialog = () => {
+    setDialogOpen(false);
+    setSelectedSlide(null);
+    setIsPaused(false);
+  };
+
   if (loading) {
     return (
       <div className="relative w-full overflow-hidden rounded-2xl glass-card">
@@ -236,9 +258,11 @@ export default function DailyContentCarousel() {
                   {/* Arabic Text */}
                   <div className="text-center">
                     <p
-                      className="text-3xl md:text-4xl lg:text-5xl leading-loose font-arabic text-foreground/90"
+                      className="text-3xl md:text-4xl lg:text-5xl leading-loose font-arabic text-foreground/90 line-clamp-3 cursor-pointer hover:opacity-80 transition-opacity"
                       dir="rtl"
                       lang="ar"
+                      onClick={() => openDialog(index)}
+                      title="Click to read full text"
                     >
                       {slide.content}
                     </p>
@@ -247,7 +271,7 @@ export default function DailyContentCarousel() {
                   {/* Transliteration (for Dua) */}
                   {slide.transliteration && (
                     <div className="text-center">
-                      <p className="text-lg md:text-xl text-muted-foreground italic leading-relaxed">
+                      <p className="text-lg md:text-xl text-muted-foreground italic leading-relaxed line-clamp-2">
                         {slide.transliteration}
                       </p>
                     </div>
@@ -255,7 +279,7 @@ export default function DailyContentCarousel() {
 
                   {/* Translation */}
                   <div className="text-center">
-                    <p className="text-lg md:text-xl leading-relaxed text-foreground/80 max-w-4xl mx-auto">
+                    <p className="text-lg md:text-xl leading-relaxed text-foreground/80 max-w-4xl mx-auto line-clamp-3">
                       {slide.translation}
                     </p>
                   </div>
@@ -270,16 +294,27 @@ export default function DailyContentCarousel() {
                         {slide.metadata}
                       </p>
                     )}
-                    <Link href={slide.link}>
+                    <div className="flex gap-2">
                       <Button
                         variant="outline"
                         size="sm"
+                        onClick={() => openDialog(index)}
                         className="bg-background/80 backdrop-blur-sm hover:bg-background/90"
                       >
-                        Read Full Context
-                        <ExternalLink className="h-3 w-3 ml-2" />
+                        <Maximize2 className="h-3 w-3 mr-2" />
+                        Read Full Text
                       </Button>
-                    </Link>
+                      <Link href={slide.link}>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="bg-background/80 backdrop-blur-sm hover:bg-background/90"
+                        >
+                          View Details
+                          <ExternalLink className="h-3 w-3 ml-2" />
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -320,6 +355,79 @@ export default function DailyContentCarousel() {
           />
         ))}
       </div>
+
+      {/* Full Text Dialog */}
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          {selectedSlide !== null && slides[selectedSlide] && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-2xl gradient-text">
+                  {slides[selectedSlide].title}
+                </DialogTitle>
+                <DialogDescription>
+                  <Badge variant="outline" className="mt-2">
+                    {slides[selectedSlide].type}
+                  </Badge>
+                </DialogDescription>
+              </DialogHeader>
+
+              <div className="space-y-6 py-4">
+                {/* Full Arabic Text */}
+                <div className="text-center">
+                  <p
+                    className="text-4xl md:text-5xl leading-loose font-arabic text-foreground"
+                    dir="rtl"
+                    lang="ar"
+                  >
+                    {slides[selectedSlide].content}
+                  </p>
+                </div>
+
+                {/* Transliteration (for Dua) */}
+                {slides[selectedSlide].transliteration && (
+                  <div className="text-center border-t border-b py-4">
+                    <p className="text-xl md:text-2xl text-muted-foreground italic leading-relaxed">
+                      {slides[selectedSlide].transliteration}
+                    </p>
+                  </div>
+                )}
+
+                {/* Full Translation */}
+                <div className="text-center">
+                  <p className="text-xl md:text-2xl leading-relaxed text-foreground">
+                    {slides[selectedSlide].translation}
+                  </p>
+                </div>
+
+                {/* Reference & Metadata */}
+                <div className="text-center space-y-2 border-t pt-4">
+                  <p className="text-sm font-semibold text-primary">
+                    {slides[selectedSlide].reference}
+                  </p>
+                  {slides[selectedSlide].metadata && (
+                    <p className="text-xs text-muted-foreground">
+                      {slides[selectedSlide].metadata}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <DialogFooter className="flex gap-2 sm:gap-2">
+                <Link href={slides[selectedSlide].link} className="flex-1">
+                  <Button className="w-full" variant="default">
+                    View Full Details
+                    <ExternalLink className="h-4 w-4 ml-2" />
+                  </Button>
+                </Link>
+                <Button variant="outline" onClick={closeDialog}>
+                  Close
+                </Button>
+              </DialogFooter>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
