@@ -177,35 +177,35 @@ export default function Home() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
           <div className="text-center">
             <div className="text-4xl font-bold gradient-text mb-3">114</div>
-            <div className="text-xs text-foreground font-semibold">Surahs</div>
+            <div className="text-xs text-gray-900 dark:text-gray-100 font-semibold">Surahs</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold gradient-text mb-3">6,236</div>
-            <div className="text-xs text-foreground font-semibold">Ayahs</div>
+            <div className="text-xs text-gray-900 dark:text-gray-100 font-semibold">Ayahs</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold gradient-text mb-3">6</div>
-            <div className="text-xs text-foreground font-semibold">Hadith Books</div>
+            <div className="text-xs text-gray-900 dark:text-gray-100 font-semibold">Hadith Books</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold gradient-text mb-3">72</div>
-            <div className="text-xs text-foreground font-semibold">Duas</div>
+            <div className="text-xs text-gray-900 dark:text-gray-100 font-semibold">Duas</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold gradient-text mb-3">99</div>
-            <div className="text-xs text-foreground font-semibold">Divine Names</div>
+            <div className="text-xs text-gray-900 dark:text-gray-100 font-semibold">Divine Names</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold gradient-text mb-3">15</div>
-            <div className="text-xs text-foreground font-semibold">Stories</div>
+            <div className="text-xs text-gray-900 dark:text-gray-100 font-semibold">Stories</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold gradient-text mb-3">PDF</div>
-            <div className="text-xs text-foreground font-semibold">Books Library</div>
+            <div className="text-xs text-gray-900 dark:text-gray-100 font-semibold">Books Library</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold gradient-text mb-3">4</div>
-            <div className="text-xs text-foreground font-semibold">Translations</div>
+            <div className="text-xs text-gray-900 dark:text-gray-100 font-semibold">Translations</div>
           </div>
         </div>
       </div>
