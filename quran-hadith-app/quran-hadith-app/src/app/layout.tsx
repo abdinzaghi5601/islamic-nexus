@@ -5,6 +5,7 @@ import { Navigation } from "@/components/shared/Navigation";
 import { Footer } from "@/components/shared/Footer";
 import SessionProvider from "@/components/SessionProvider";
 import ScrollToAnchor from "@/components/ScrollToAnchor";
+import { OfflineIndicator } from "@/components/OfflineIndicator";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,8 +32,38 @@ const scheherazade = Scheherazade_New({
 });
 
 export const metadata: Metadata = {
-  title: "Islamic Library - Quran & Hadith",
+  title: "Islamic Nexus - Quran & Hadith",
   description: "Your comprehensive Islamic knowledge base with complete Quran translations, tafsir, and authentic Hadith collections from the six major books",
+  applicationName: "Islamic Nexus",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Islamic Nexus",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Islamic Nexus",
+    title: "Islamic Nexus - Quran & Hadith",
+    description: "Your comprehensive Islamic knowledge base with complete Quran translations, tafsir, and authentic Hadith collections",
+  },
+  twitter: {
+    card: "summary",
+    title: "Islamic Nexus - Quran & Hadith",
+    description: "Your comprehensive Islamic knowledge base with complete Quran translations, tafsir, and authentic Hadith collections",
+  },
+  manifest: "/manifest.json",
+  icons: {
+    icon: [
+      { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -54,6 +85,7 @@ export default function RootLayout({
             </main>
             <Footer />
           </div>
+          <OfflineIndicator />
         </SessionProvider>
       </body>
     </html>

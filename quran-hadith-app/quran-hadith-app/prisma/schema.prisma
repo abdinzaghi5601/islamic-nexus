@@ -266,6 +266,7 @@ model User {
   password      String // Hashed
   emailVerified DateTime?
   image         String?
+  role          String    @default("user") // user, admin
 
   accounts             Account[]
   sessions             Session[]

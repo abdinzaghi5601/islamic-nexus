@@ -1,12 +1,14 @@
 import { NextRequest } from 'next/server';
 import prisma from '@/lib/db/prisma';
 import { successResponse, errorResponse } from '@/lib/api/helpers';
+import { withAdminAuth } from '@/middleware/admin-auth';
 
 /**
  * POST /api/admin/duas/create
  * Create a new dua
+ * PROTECTED: Requires admin authentication
  */
-export async function POST(request: NextRequest) {
+export const POST = withAdminAuth(async (request: NextRequest) => {
   try {
     const body = await request.json();
 
@@ -68,4 +70,4 @@ export async function POST(request: NextRequest) {
     console.error('Error creating dua:', error);
     return errorResponse('Failed to create dua', 500);
   }
-}
+});

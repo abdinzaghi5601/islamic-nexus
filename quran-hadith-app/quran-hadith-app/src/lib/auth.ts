@@ -44,6 +44,7 @@ export const authOptions: NextAuthOptions = {
           email: user.email,
           name: user.name,
           image: user.image,
+          role: user.role || 'user',
         };
       },
     }),
@@ -75,6 +76,8 @@ export const authOptions: NextAuthOptions = {
         token.email = user.email;
         token.name = user.name;
         token.picture = user.image;
+        // @ts-ignore - role exists in our user model
+        token.role = user.role || 'user';
       }
 
       if (account) {
@@ -90,6 +93,8 @@ export const authOptions: NextAuthOptions = {
         session.user.email = token.email as string;
         session.user.name = token.name as string;
         session.user.image = token.picture as string;
+        // @ts-ignore - role exists in our extended session
+        session.user.role = token.role as string;
       }
 
       return session;
