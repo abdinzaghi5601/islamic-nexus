@@ -29,7 +29,7 @@ export default function Home() {
       description: 'Authentic supplications from Quran and Sunnah with transliteration and benefits',
       icon: Heart,
       href: '/duas',
-      stats: '69 Duas',
+      stats: '72 Duas',
       color: 'from-rose-500 to-pink-600',
     },
     {
@@ -188,7 +188,7 @@ export default function Home() {
             <div className="text-xs text-muted-foreground font-semibold">Hadith Books</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold gradient-text mb-3">69</div>
+            <div className="text-4xl font-bold gradient-text mb-3">72</div>
             <div className="text-xs text-muted-foreground font-semibold">Duas</div>
           </div>
           <div className="text-center">
