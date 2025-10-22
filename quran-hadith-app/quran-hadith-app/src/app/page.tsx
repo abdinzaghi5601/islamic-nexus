@@ -25,6 +25,14 @@ export default function Home() {
       color: 'from-blue-500 to-indigo-600',
     },
     {
+      title: 'Salah Guide',
+      description: 'Complete step-by-step prayer guide with authentic duas and profound spiritual wisdom',
+      icon: Heart,
+      href: '/salah',
+      stats: 'Learn Prayer',
+      color: 'from-amber-500 to-orange-600',
+    },
+    {
       title: 'Islamic Duas',
       description: 'Authentic supplications from Quran and Sunnah with transliteration and benefits',
       icon: Heart,
