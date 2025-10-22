@@ -52,6 +52,7 @@ export function Navigation() {
     { href: '/', label: 'Home', icon: BookOpen },
     { href: '/quran', label: 'Quran', icon: BookOpen },
     { href: '/hadith', label: 'Hadith', icon: Library },
+    { href: '/salah', label: 'Salah', icon: Heart },
     { href: '/duas', label: 'Duas', icon: Heart },
     { href: '/names', label: 'Names', icon: Sparkles },
     { href: '/stories', label: 'Stories', icon: BookText },
