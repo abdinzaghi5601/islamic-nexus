@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '@/lib/auth';
 
 // Security configuration
 const SECURITY_CONFIG = {
@@ -300,44 +299,9 @@ export async function middleware(request: NextRequest) {
     );
   }
   
-  // 4. Check authentication for protected paths
-  const isProtectedPath = SECURITY_CONFIG.PROTECTED_PATHS.some(path => pathname.startsWith(path));
-  
-  if (isProtectedPath) {
-    try {
-      const session = await auth();
-      if (!session || !session.user) {
-        logSecurityEvent('UNAUTHENTICATED_ACCESS', ip, pathname);
-        return NextResponse.redirect(new URL('/auth/signin', request.url));
-      }
-    } catch (error) {
-      logSecurityEvent('AUTH_ERROR', ip, pathname, { error: error.message });
-      return NextResponse.redirect(new URL('/auth/signin', request.url));
-    }
-  }
-  
-  // 5. Admin path protection
-  if (isAdminPath) {
-    try {
-      const session = await auth();
-      if (!session || !session.user) {
-        logSecurityEvent('UNAUTHENTICATED_ADMIN_ACCESS', ip, pathname);
-        return new NextResponse('Unauthorized', { status: 401 });
-      }
-      
-      // @ts-ignore - role exists in our extended session
-      if (session.user.role !== 'admin') {
-        logSecurityEvent('NON_ADMIN_ADMIN_ACCESS', ip, pathname, {
-          userEmail: session.user.email,
-          userRole: session.user.role
-        });
-        return new NextResponse('Forbidden', { status: 403 });
-      }
-    } catch (error) {
-      logSecurityEvent('ADMIN_AUTH_ERROR', ip, pathname, { error: error.message });
-      return new NextResponse('Authentication Error', { status: 500 });
-    }
-  }
+  // 4. Authentication is now handled by Next.js API routes and server components
+  // This keeps the middleware lightweight and under the 1MB Edge limit
+  // Protected routes will check auth in their own route handlers
   
   // 6. Add security headers to all responses
   const response = NextResponse.next();
