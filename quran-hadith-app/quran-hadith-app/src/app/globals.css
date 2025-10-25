@@ -612,25 +612,40 @@ button[data-variant="secondary"] {
   border: 1px solid hsl(var(--border)) !important;
 }
 
-/* Fix navigation dropdowns specifically */
+/* Fix ALL dropdowns to have solid white background with black text */
 .navigation-dropdown,
 .admin-dropdown,
-.user-dropdown {
-  background-color: hsl(var(--popover)) !important;
-  color: hsl(var(--popover-foreground)) !important;
-  border: 1px solid hsl(var(--border)) !important;
+.user-dropdown,
+[data-radix-select-content],
+[data-radix-popover-content],
+[data-radix-dropdown-content],
+[data-radix-dialog-content],
+[data-radix-sheet-content],
+.dropdown-menu,
+.select-dropdown,
+.menu-dropdown,
+.selector-dropdown {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #e5e7eb !important;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
-/* Ensure all navigation dropdown items have solid backgrounds */
+/* Ensure all dropdown items have solid white backgrounds with black text */
 .navigation-dropdown a,
 .navigation-dropdown button,
 .admin-dropdown a,
 .admin-dropdown button,
 .user-dropdown a,
-.user-dropdown button {
-  background-color: transparent !important;
-  color: hsl(var(--popover-foreground)) !important;
+.user-dropdown button,
+[data-radix-select-item],
+[data-radix-dropdown-item],
+[data-radix-popover-item],
+.dropdown-item,
+.select-option,
+.menu-item {
+  background-color: #ffffff !important;
+  color: #000000 !important;
 }
 
 .navigation-dropdown a:hover,
@@ -638,7 +653,60 @@ button[data-variant="secondary"] {
 .admin-dropdown a:hover,
 .admin-dropdown button:hover,
 .user-dropdown a:hover,
-.user-dropdown button:hover {
-  background-color: hsl(var(--muted)) !important;
-  color: hsl(var(--foreground)) !important;
+.user-dropdown button:hover,
+[data-radix-select-item]:hover,
+[data-radix-dropdown-item]:hover,
+[data-radix-popover-item]:hover,
+.dropdown-item:hover,
+.select-option:hover,
+.menu-item:hover {
+  background-color: #f3f4f6 !important;
+  color: #000000 !important;
+}
+
+/* Fix all select elements to have solid white background with black text */
+select,
+option,
+optgroup,
+select option,
+select optgroup {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+/* Fix all input elements */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+textarea {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+/* Fix all button elements */
+button {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+button:hover {
+  background-color: #f3f4f6 !important;
+  color: #000000 !important;
+}
+
+/* Fix all card and container backgrounds */
+.glass-card,
+.card,
+.container,
+.panel {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #e5e7eb !important;
 }
