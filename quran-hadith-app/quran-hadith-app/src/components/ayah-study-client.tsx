@@ -245,7 +245,7 @@ export default function AyahStudyClient({ ayahData, navigation, metadata }: Ayah
                   <input
                     type="text"
                     placeholder="e.g., Sahih al-Bukhari"
-                    className="w-full mt-1 px-3 py-2 border rounded-md"
+                    className="w-full mt-1 px-3 py-2 border rounded-md bg-background text-foreground border-border"
                     value={hadithForm.bookName}
                     onChange={(e) => setHadithForm({ ...hadithForm, bookName: e.target.value })}
                   />
@@ -255,7 +255,7 @@ export default function AyahStudyClient({ ayahData, navigation, metadata }: Ayah
                   <input
                     type="text"
                     placeholder="e.g., 2311"
-                    className="w-full mt-1 px-3 py-2 border rounded-md"
+                    className="w-full mt-1 px-3 py-2 border rounded-md bg-background text-foreground border-border"
                     value={hadithForm.hadithNumber}
                     onChange={(e) => setHadithForm({ ...hadithForm, hadithNumber: e.target.value })}
                   />
@@ -264,7 +264,7 @@ export default function AyahStudyClient({ ayahData, navigation, metadata }: Ayah
                   <label className="text-sm font-medium">Arabic Text</label>
                   <textarea
                     placeholder="Arabic hadith text..."
-                    className="w-full mt-1 px-3 py-2 border rounded-md h-24"
+                    className="w-full mt-1 px-3 py-2 border rounded-md h-24 bg-background text-foreground border-border"
                     value={hadithForm.textArabic}
                     onChange={(e) => setHadithForm({ ...hadithForm, textArabic: e.target.value })}
                   />
@@ -273,7 +273,7 @@ export default function AyahStudyClient({ ayahData, navigation, metadata }: Ayah
                   <label className="text-sm font-medium">English Translation</label>
                   <textarea
                     placeholder="English hadith text..."
-                    className="w-full mt-1 px-3 py-2 border rounded-md h-32"
+                    className="w-full mt-1 px-3 py-2 border rounded-md h-32 bg-background text-foreground border-border"
                     value={hadithForm.textEnglish}
                     onChange={(e) => setHadithForm({ ...hadithForm, textEnglish: e.target.value })}
                   />
@@ -283,7 +283,7 @@ export default function AyahStudyClient({ ayahData, navigation, metadata }: Ayah
                   <input
                     type="text"
                     placeholder="How it relates to this ayah..."
-                    className="w-full mt-1 px-3 py-2 border rounded-md"
+                    className="w-full mt-1 px-3 py-2 border rounded-md bg-background text-foreground border-border"
                     value={hadithForm.relevance}
                     onChange={(e) => setHadithForm({ ...hadithForm, relevance: e.target.value })}
                   />
@@ -302,7 +302,7 @@ export default function AyahStudyClient({ ayahData, navigation, metadata }: Ayah
                   <input
                     type="text"
                     placeholder="e.g., Allah's Complete Knowledge"
-                    className="w-full mt-1 px-3 py-2 border rounded-md"
+                    className="w-full mt-1 px-3 py-2 border rounded-md bg-background text-foreground border-border"
                     value={lessonForm.title}
                     onChange={(e) => setLessonForm({ ...lessonForm, title: e.target.value })}
                   />
@@ -311,7 +311,7 @@ export default function AyahStudyClient({ ayahData, navigation, metadata }: Ayah
                   <label className="text-sm font-medium">Lesson Text</label>
                   <textarea
                     placeholder="Detailed teaching or lesson from this ayah..."
-                    className="w-full mt-1 px-3 py-2 border rounded-md h-32"
+                    className="w-full mt-1 px-3 py-2 border rounded-md h-32 bg-background text-foreground border-border"
                     value={lessonForm.lessonText}
                     onChange={(e) => setLessonForm({ ...lessonForm, lessonText: e.target.value })}
                   />
@@ -319,7 +319,7 @@ export default function AyahStudyClient({ ayahData, navigation, metadata }: Ayah
                 <div>
                   <label className="text-sm font-medium">Category</label>
                   <select
-                    className="w-full mt-1 px-3 py-2 border rounded-md"
+                    className="w-full mt-1 px-3 py-2 border rounded-md bg-background text-foreground border-border"
                     value={lessonForm.category}
                     onChange={(e) => setLessonForm({ ...lessonForm, category: e.target.value })}
                   >
@@ -335,7 +335,7 @@ export default function AyahStudyClient({ ayahData, navigation, metadata }: Ayah
                   <input
                     type="text"
                     placeholder="e.g., Tafsir Ibn Kathir"
-                    className="w-full mt-1 px-3 py-2 border rounded-md"
+                    className="w-full mt-1 px-3 py-2 border rounded-md bg-background text-foreground border-border"
                     value={lessonForm.source}
                     onChange={(e) => setLessonForm({ ...lessonForm, source: e.target.value })}
                   />
@@ -472,7 +472,7 @@ export default function AyahStudyClient({ ayahData, navigation, metadata }: Ayah
                   handleTranslationChange('external', undefined, availableExternalTranslations[index]);
                 }
               }}
-              className="px-3 py-2 border rounded-lg bg-background text-sm min-w-[200px]"
+              className="px-3 py-2 border rounded-lg bg-background text-sm min-w-[200px] text-foreground border-border"
             >
               <optgroup label="Local Translations">
                 {ayahData.translations.map((translation: any, index: number) => (
@@ -555,7 +555,7 @@ export default function AyahStudyClient({ ayahData, navigation, metadata }: Ayah
                     handleTafsirChange('external', undefined, availableExternalTafsirs[index]);
                   }
                 }}
-                className="px-3 py-2 border rounded-lg bg-background text-sm min-w-[200px]"
+                className="px-3 py-2 border rounded-lg bg-background text-sm min-w-[200px] text-foreground border-border"
               >
                 <optgroup label="Local Tafsirs">
                   {ayahData.tafsirs.map((tafsir: any, index: number) => (

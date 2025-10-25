@@ -40,6 +40,11 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  
+  /* Fix transparency issues - ensure all selection components have solid backgrounds */
+  --color-select-bg: hsl(var(--background));
+  --color-select-foreground: hsl(var(--foreground));
+  --color-select-border: hsl(var(--border));
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -455,4 +460,154 @@
   .ayah-reveal {
     animation: ayahFadeIn 0.8s ease-out;
   }
+}
+
+/* Fix transparency issues - ensure all selection components have solid backgrounds */
+select, 
+option,
+optgroup,
+select option,
+select optgroup,
+[role="combobox"],
+[role="listbox"],
+[data-radix-select-trigger],
+[data-radix-select-content],
+[data-radix-select-item] {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+
+/* Fix select elements specifically */
+select {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: calc(var(--radius) - 2px);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+select:focus {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Fix option elements */
+option {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  padding: 0.5rem;
+}
+
+/* Fix optgroup elements */
+optgroup {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  font-weight: 600;
+}
+
+/* Fix dropdown menus and popovers */
+[data-radix-select-content],
+[data-radix-popover-content],
+[data-radix-dropdown-content] {
+  background-color: hsl(var(--popover)) !important;
+  color: hsl(var(--popover-foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Fix dialog and sheet backgrounds */
+[data-radix-dialog-content],
+[data-radix-sheet-content] {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+/* Fix card backgrounds */
+.glass-card {
+  background-color: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+/* Fix input backgrounds */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+textarea {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+/* Fix button backgrounds */
+button {
+  background-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+button[data-variant="outline"] {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+button[data-variant="secondary"] {
+  background-color: hsl(var(--secondary)) !important;
+  color: hsl(var(--secondary-foreground)) !important;
+}
+
+/* Fix badge backgrounds */
+[data-badge] {
+  background-color: hsl(var(--secondary)) !important;
+  color: hsl(var(--secondary-foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+
+/* Ensure all interactive elements have solid backgrounds */
+[role="button"],
+[role="menuitem"],
+[role="option"],
+[data-radix-select-item],
+[data-radix-dropdown-item] {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+[role="button"]:hover,
+[role="menuitem"]:hover,
+[role="option"]:hover,
+[data-radix-select-item]:hover,
+[data-radix-dropdown-item]:hover {
+  background-color: hsl(var(--muted)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+/* Fix any remaining transparency issues */
+* {
+  background-color: inherit !important;
+}
+
+/* Override any transparent backgrounds */
+[style*="background-color: transparent"],
+[style*="background: transparent"],
+.bg-transparent {
+  background-color: hsl(var(--background)) !important;
+}
+
+/* Fix specific component transparency */
+.select-translation,
+.select-tafsir,
+.selector-dropdown,
+.selection-menu {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
 }
