@@ -15,6 +15,7 @@ export async function GET(request: NextRequest) {
         authorName: true,
         language: true,
         description: true,
+        salafiVerified: true,
       },
       orderBy: { name: 'asc' },
     });

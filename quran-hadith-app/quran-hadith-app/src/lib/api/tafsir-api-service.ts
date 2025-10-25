@@ -1,15 +1,18 @@
 /**
  * Tafsir API Service
  *
- * Service for accessing the free Tafsir API with 29 different tafsir editions
+ * Service for accessing the free Tafsir API with 25 different tafsir editions
  * Base URL: https://cdn.jsdelivr.net/gh/spa5k/tafsir_api@1/tafsir
  *
  * Features:
- * - 29 Tafsir editions (Arabic, English, Bengali, Urdu, Kurdish, Russian)
+ * - 25 Tafsir editions (Arabic, English, Bengali, Urdu, Kurdish, Russian)
  * - Asbab Al-Nuzul (Reasons for Revelation) - UNIQUE!
- * - Classical, Mystical, and Companion perspectives
+ * - Classical and Companion perspectives
+ * - Salafi-verified tafsirs marked
  * - No rate limits, completely free
  * - Fast CDN delivery
+ *
+ * Note: Sufi/Mystical tafsirs have been removed to align with Salafi methodology
  */
 
 const TAFSIR_API_BASE_URL = 'https://cdn.jsdelivr.net/gh/spa5k/tafsir_api@1/tafsir';
@@ -42,6 +45,7 @@ export type TafsirCategory = 'classical' | 'mystical' | 'companion' | 'concise' 
 export interface TafsirEditionWithCategory extends TafsirEdition {
   category: TafsirCategory;
   description?: string;
+  salafiVerified?: boolean; // Verified by Salafi scholars
 }
 
 // ============================================================================
@@ -134,6 +138,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     source: 'altafsir.com',
     category: 'historical',
     description: '⭐ Why verses were revealed - Historical context of each revelation',
+    salafiVerified: true,
   },
 
   // CLASSICAL ENGLISH
@@ -145,6 +150,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     source: 'quran.com',
     category: 'classical',
     description: 'Most popular classical tafsir - comprehensive and authentic',
+    salafiVerified: true,
   },
   {
     identifier: 'en-tafsir-maarif-ul-quran',
@@ -153,7 +159,8 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'Mufti Muhammad Shafi',
     source: 'quran.com',
     category: 'classical',
-    description: 'Detailed scholarly interpretation',
+    description: 'Detailed scholarly interpretation (Deobandi school)',
+    salafiVerified: false,
   },
   {
     identifier: 'en-al-jalalayn',
@@ -162,7 +169,8 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'Jalal ad-Din al-Mahalli & Jalal ad-Din as-Suyuti',
     source: 'altafsir.com',
     category: 'concise',
-    description: 'Concise, widely-studied classical tafsir',
+    description: 'Concise, widely-studied classical tafsir (Ash\'ari background)',
+    salafiVerified: false,
   },
 
   // COMPANION PERSPECTIVE
@@ -174,44 +182,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     source: 'altafsir.com',
     category: 'companion',
     description: 'Interpretation by the Prophet\'s cousin and companion',
-  },
-
-  // MYSTICAL/SUFI
-  {
-    identifier: 'en-tafsir-al-tustari',
-    language: 'english',
-    name: 'Tafsir al-Tustari',
-    author: 'Sahl al-Tustari',
-    source: 'altafsir.com',
-    category: 'mystical',
-    description: 'Spiritual and mystical interpretation',
-  },
-  {
-    identifier: 'en-al-qushairi-tafsir',
-    language: 'english',
-    name: 'Al-Qushairi Tafsir',
-    author: 'Al-Qushairi',
-    source: 'altafsir.com',
-    category: 'mystical',
-    description: 'Sufi perspective on Quranic meanings',
-  },
-  {
-    identifier: 'en-kashani-tafsir',
-    language: 'english',
-    name: 'Kashani Tafsir',
-    author: 'Abd al-Razzaq al-Kashani',
-    source: 'altafsir.com',
-    category: 'mystical',
-    description: 'Mystical interpretation of Quranic verses',
-  },
-  {
-    identifier: 'en-kashf-al-asrar-tafsir',
-    language: 'english',
-    name: 'Kashf Al-Asrar Tafsir',
-    author: 'Rashid al-Din Maybudi',
-    source: 'altafsir.com',
-    category: 'mystical',
-    description: 'Persian-origin mystical commentary',
+    salafiVerified: true,
   },
 
   // ARABIC TAFSIRS
@@ -222,6 +193,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'Hafiz Ibn Kathir',
     source: 'quran.com',
     category: 'classical',
+    salafiVerified: true,
   },
   {
     identifier: 'ar-tafsir-al-tabari',
@@ -230,6 +202,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'Al-Tabari',
     source: 'quran.com',
     category: 'classical',
+    salafiVerified: true,
   },
   {
     identifier: 'ar-tafseer-al-qurtubi',
@@ -238,6 +211,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'Al-Qurtubi',
     source: 'quran.com',
     category: 'classical',
+    salafiVerified: true,
   },
   {
     identifier: 'ar-tafsir-al-baghawi',
@@ -246,6 +220,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'Al-Baghawi',
     source: 'quran.com',
     category: 'classical',
+    salafiVerified: true,
   },
   {
     identifier: 'ar-tafseer-al-saddi',
@@ -255,6 +230,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     source: 'quran.com',
     category: 'classical',
     description: 'من أشهر التفاسير المعاصرة - واضح وموجز',
+    salafiVerified: true,
   },
   {
     identifier: 'ar-tafseer-tanwir-al-miqbas',
@@ -263,6 +239,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'Tanweer',
     source: 'quran.com',
     category: 'classical',
+    salafiVerified: true,
   },
   {
     identifier: 'ar-tafsir-al-wasit',
@@ -271,6 +248,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'Waseet',
     source: 'quran.com',
     category: 'general',
+    salafiVerified: false,
   },
   {
     identifier: 'ar-tafsir-muyassar',
@@ -279,6 +257,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'المیسر',
     source: 'quran.com',
     category: 'concise',
+    salafiVerified: true,
   },
 
   // BENGALI TAFSIRS
@@ -289,6 +268,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'AbdulRahman Bin Hasan Al-Alshaikh',
     source: 'quran.com',
     category: 'general',
+    salafiVerified: true,
   },
   {
     identifier: 'bn-tafseer-ibn-e-kaseer',
@@ -297,6 +277,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'Tawheed Publication',
     source: 'quran.com',
     category: 'classical',
+    salafiVerified: true,
   },
   {
     identifier: 'bn-tafsir-ahsanul-bayaan',
@@ -305,6 +286,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'Bayaan Foundation',
     source: 'quran.com',
     category: 'general',
+    salafiVerified: true,
   },
   {
     identifier: 'bn-tafsir-abu-bakr-zakaria',
@@ -313,6 +295,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'King Fahd Quran Printing Complex',
     source: 'quran.com',
     category: 'general',
+    salafiVerified: true,
   },
 
   // URDU TAFSIRS
@@ -323,6 +306,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'Hafiz Ibn Kathir',
     source: 'quran.com',
     category: 'classical',
+    salafiVerified: true,
   },
   {
     identifier: 'ur-tafsir-bayan-ul-quran',
@@ -331,6 +315,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'Dr. Israr Ahmad',
     source: 'quran.com',
     category: 'general',
+    salafiVerified: false,
   },
   {
     identifier: 'ur-tazkirul-quran',
@@ -339,6 +324,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'Maulana Wahiduddin Khan',
     source: 'quran.com',
     category: 'general',
+    salafiVerified: false,
   },
 
   // OTHER LANGUAGES
@@ -350,6 +336,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     source: 'quran.com',
     category: 'classical',
     description: 'Популярный современный тафсир',
+    salafiVerified: true,
   },
   {
     identifier: 'kurd-tafsir-rebar',
@@ -358,6 +345,7 @@ export const TAFSIR_EDITIONS_ENHANCED: TafsirEditionWithCategory[] = [
     author: 'Rebar',
     source: 'quran.com',
     category: 'general',
+    salafiVerified: false,
   },
 ];
 
@@ -463,16 +451,23 @@ export function getEditionsByCategory(category: TafsirCategory): TafsirEditionWi
 }
 
 /**
- * Get featured editions (most useful/unique)
+ * Get featured editions (most useful/unique - Salafi verified only)
  */
 export function getFeaturedEditions(): TafsirEditionWithCategory[] {
   return [
     TAFSIR_EDITIONS_ENHANCED.find(e => e.identifier === 'en-asbab-al-nuzul-by-al-wahidi')!,
     TAFSIR_EDITIONS_ENHANCED.find(e => e.identifier === 'en-tafisr-ibn-kathir')!,
-    TAFSIR_EDITIONS_ENHANCED.find(e => e.identifier === 'en-al-jalalayn')!,
     TAFSIR_EDITIONS_ENHANCED.find(e => e.identifier === 'en-tafsir-ibn-abbas')!,
-    TAFSIR_EDITIONS_ENHANCED.find(e => e.identifier === 'en-tafsir-al-tustari')!,
-  ];
+    TAFSIR_EDITIONS_ENHANCED.find(e => e.identifier === 'ar-tafseer-al-saddi')!,
+    TAFSIR_EDITIONS_ENHANCED.find(e => e.identifier === 'ar-tafsir-al-tabari')!,
+  ].filter(Boolean);
+}
+
+/**
+ * Get Salafi-verified editions only
+ */
+export function getSalafiVerifiedEditions(): TafsirEditionWithCategory[] {
+  return TAFSIR_EDITIONS_ENHANCED.filter(e => e.salafiVerified === true);
 }
 
 /**

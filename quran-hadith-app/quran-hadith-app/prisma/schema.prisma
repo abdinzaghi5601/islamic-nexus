@@ -125,17 +125,19 @@ model Translator {
 // ============================================================================
 
 model TafsirBook {
-  id          Int     @id @default(autoincrement())
-  name        String  @db.VarChar(200)
-  authorName  String  @db.VarChar(200)
-  language    String  @db.VarChar(50)
-  description String? @db.Text
+  id             Int     @id @default(autoincrement())
+  name           String  @db.VarChar(200)
+  authorName     String  @db.VarChar(200)
+  language       String  @db.VarChar(50)
+  description    String? @db.Text
+  salafiVerified Boolean @default(false) // Verified by Salafi scholars
 
   verses TafsirVerse[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  @@index([salafiVerified])
   @@map("tafsir_books")
 }
 

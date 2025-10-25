@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Plus, Search, Loader2, BookOpen, Sparkles } from 'lucide-react';
+import { Plus, Search, Loader2, BookOpen, Sparkles, CheckCircle2 } from 'lucide-react';
 import { TAFSIR_EDITIONS_ENHANCED, TAFSIR_CATEGORIES, type TafsirCategory } from '@/lib/api/tafsir-api-service';
 
 interface ExternalTafsirSelectorProps {
@@ -96,10 +96,10 @@ export default function ExternalTafsirSelector({
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <BookOpen className="h-5 w-5" />
-            Browse Tafsir Collection (29 Editions)
+            Browse Tafsir Collection (25 Editions)
           </DialogTitle>
           <DialogDescription>
-            Choose from classical, mystical, companion perspectives, and historical context
+            Choose from classical, companion perspectives, and historical context - Salafi-verified tafsirs marked
           </DialogDescription>
         </DialogHeader>
 
@@ -182,6 +182,12 @@ export default function ExternalTafsirSelector({
                               <Badge variant="outline" className="text-xs capitalize flex-shrink-0">
                                 {edition.language}
                               </Badge>
+                              {edition.salafiVerified && (
+                                <Badge variant="default" className="text-xs gap-1 bg-green-600 flex-shrink-0">
+                                  <CheckCircle2 className="h-3 w-3" />
+                                  Salafi Verified
+                                </Badge>
+                              )}
                               {edition.identifier === 'en-asbab-al-nuzul-by-al-wahidi' && (
                                 <Badge variant="default" className="text-xs gap-1 bg-amber-500 flex-shrink-0">
                                   <Sparkles className="h-3 w-3" />
@@ -235,6 +241,12 @@ export default function ExternalTafsirSelector({
                             <Badge variant="outline" className="text-xs capitalize flex-shrink-0">
                               {edition.language}
                             </Badge>
+                            {edition.salafiVerified && (
+                              <Badge variant="default" className="text-xs gap-1 bg-green-600 flex-shrink-0">
+                                <CheckCircle2 className="h-3 w-3" />
+                                Salafi Verified
+                              </Badge>
+                            )}
                             {edition.identifier === 'en-asbab-al-nuzul-by-al-wahidi' && (
                               <Badge variant="default" className="text-xs gap-1 bg-amber-500 flex-shrink-0">
                                 <Sparkles className="h-3 w-3" />
