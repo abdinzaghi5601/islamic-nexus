@@ -406,23 +406,23 @@ export default function AyahStudyClient({ ayahData, navigation, metadata }: Ayah
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          <div className="p-4 bg-muted/30 rounded-lg text-center">
+          <div className="p-4 bg-card border rounded-lg text-center">
             <p className="text-sm text-muted-foreground mb-1">Juz</p>
             <p className="text-2xl font-bold">{ayahData.juz}</p>
           </div>
-          <div className="p-4 bg-muted/30 rounded-lg text-center">
+          <div className="p-4 bg-card border rounded-lg text-center">
             <p className="text-sm text-muted-foreground mb-1">Page</p>
             <p className="text-2xl font-bold">{ayahData.page}</p>
           </div>
-          <div className="p-4 bg-muted/30 rounded-lg text-center">
+          <div className="p-4 bg-card border rounded-lg text-center">
             <p className="text-sm text-muted-foreground mb-1">Hizb</p>
             <p className="text-2xl font-bold">{ayahData.hizb || 'N/A'}</p>
           </div>
-          <div className="p-4 bg-muted/30 rounded-lg text-center">
+          <div className="p-4 bg-card border rounded-lg text-center">
             <p className="text-sm text-muted-foreground mb-1">Ruku</p>
             <p className="text-2xl font-bold">{ayahData.ruku || 'N/A'}</p>
           </div>
-          <div className="p-4 bg-muted/30 rounded-lg text-center">
+          <div className="p-4 bg-card border rounded-lg text-center">
             <p className="text-sm text-muted-foreground mb-1">Manzil</p>
             <p className="text-2xl font-bold">{ayahData.manzil || 'N/A'}</p>
           </div>
@@ -503,14 +503,14 @@ export default function AyahStudyClient({ ayahData, navigation, metadata }: Ayah
 
         {/* Display Single Selected Translation */}
         {selectedTranslationType === 'local' ? (
-          <div className="p-6 bg-muted/30 rounded-lg">
+          <div className="p-6 bg-card border rounded-lg">
             <p className="text-lg leading-relaxed">{ayahData.translations[selectedLocalTranslationIndex]?.text}</p>
             <p className="text-sm text-muted-foreground mt-4">
               — {ayahData.translations[selectedLocalTranslationIndex]?.translator.name}
             </p>
           </div>
         ) : selectedExternalTranslation ? (
-          <div className="p-6 bg-muted/30 rounded-lg border border-primary/20">
+          <div className="p-6 bg-card border rounded-lg">
             <div className="flex items-center gap-2 mb-3">
               <Badge variant="outline" className="gap-1">
                 <Globe className="h-3 w-3" />
@@ -586,7 +586,7 @@ export default function AyahStudyClient({ ayahData, navigation, metadata }: Ayah
 
           {/* Display Single Selected Tafsir */}
           {selectedTafsirType === 'local' ? (
-            <div className="p-6 bg-muted/30 rounded-lg">
+            <div className="p-6 bg-card border rounded-lg">
               <div className="flex items-start justify-between mb-3">
                 <h3 className="font-semibold text-lg">{ayahData.tafsirs[selectedLocalTafsirIndex]?.tafsirBook.name}</h3>
                 <Badge variant="outline" className="text-xs">Local</Badge>
@@ -601,7 +601,7 @@ export default function AyahStudyClient({ ayahData, navigation, metadata }: Ayah
               </p>
             </div>
           ) : selectedExternalTafsir ? (
-            <div className="p-6 bg-muted/30 rounded-lg border border-primary/20">
+            <div className="p-6 bg-card border rounded-lg">
               <div className="flex items-start gap-2 mb-3 flex-wrap">
                 <h3 className="font-semibold text-lg">{selectedExternalTafsir.name}</h3>
                 <Badge variant="outline" className="text-xs">External</Badge>
@@ -694,7 +694,7 @@ export default function AyahStudyClient({ ayahData, navigation, metadata }: Ayah
 
           <div className="space-y-4">
             {ayahData.lessons.map((lesson: any) => (
-              <div key={lesson.id} className="p-4 bg-muted/30 rounded-lg relative group">
+              <div key={lesson.id} className="p-4 bg-card border rounded-lg relative group">
                 {/* Delete Button */}
                 <Button
                   variant="ghost"
