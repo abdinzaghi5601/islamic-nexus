@@ -172,16 +172,25 @@ function checkRateLimit(
 }
 
 /**
- * Cleanup old rate limit entries (run periodically)
+ * Cleanup old rate limit entries (called on each request)
+ * Note: setInterval doesn't work in Edge runtime
  */
-setInterval(() => {
+function cleanupRateLimitCache(): void {
   const now = Date.now();
+  let cleanedCount = 0;
+
   for (const [key, value] of rateLimitMap.entries()) {
     if (now > value.resetTime + SECURITY_CONFIG.RATE_LIMIT.WINDOW_MS) {
       rateLimitMap.delete(key);
+      cleanedCount++;
     }
   }
-}, 5 * 60 * 1000); // Cleanup every 5 minutes
+
+  // Only cleanup when cache gets large (every ~1000 entries)
+  if (cleanedCount > 0 && rateLimitMap.size % 100 === 0) {
+    console.log(`[CACHE] Cleaned ${cleanedCount} expired rate limit entries`);
+  }
+}
 
 /**
  * Get client IP address
@@ -199,71 +208,15 @@ function getClientIP(request: NextRequest): string {
 }
 
 /**
- * Add comprehensive security headers - Maximum protection for Islamic content
+ * Add essential security headers - Optimized for Edge runtime
  */
-function addSecurityHeaders(response: NextResponse, request: NextRequest): NextResponse {
-  // Content Security Policy - Strict policy to prevent any tampering
-  const csp = [
-    "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://fonts.googleapis.com https://fonts.gstatic.com",
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-    "font-src 'self' https://fonts.gstatic.com data:",
-    "img-src 'self' data: blob: https://*.vercel.app https://cdn.jsdelivr.net https://*.quran.com",
-    "media-src 'self' data: blob:",
-    "connect-src 'self' https://vercel.live https://cdn.jsdelivr.net https://*.quran.com https://*.sunnah.com https://*.aladhan.com",
-    "frame-src 'none'",
-    "frame-ancestors 'none'",
-    "base-uri 'self'",
-    "form-action 'self'",
-    "object-src 'none'",
-    "upgrade-insecure-requests",
-  ].join('; ');
-
-  response.headers.set('Content-Security-Policy', csp);
-
-  // Prevent clickjacking - NO ONE can frame this Islamic content
-  response.headers.set('X-Frame-Options', 'DENY');
-
-  // Prevent MIME type sniffing
-  response.headers.set('X-Content-Type-Options', 'nosniff');
-
-  // Enable XSS protection
-  response.headers.set('X-XSS-Protection', '1; mode=block');
-
-  // Strict referrer policy
-  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-
-  // Permissions policy - Disable all unnecessary features
-  response.headers.set(
-    'Permissions-Policy',
-    'camera=(), microphone=(), geolocation=(), payment=(), usb=(), ' +
-    'magnetometer=(), gyroscope=(), accelerometer=(), ' +
-    'autoplay=(), encrypted-media=(), picture-in-picture=()'
-  );
-
-  // HSTS - Force HTTPS (in production)
-  if (process.env.NODE_ENV === 'production') {
-    response.headers.set(
-      'Strict-Transport-Security',
-      'max-age=63072000; includeSubDomains; preload'
-    );
-  }
+function addSecurityHeaders(response: NextResponse): NextResponse {
+  // Most headers are already set in next.config.ts
+  // Only add runtime-specific headers here
 
   // Custom headers to indicate Islamic content protection
   response.headers.set('X-Islamic-Content-Protected', 'true');
   response.headers.set('X-Content-Integrity', 'verified');
-  response.headers.set('X-Modification-Protection', 'active');
-
-  // CORS - Only allow same origin
-  response.headers.set('Access-Control-Allow-Origin', request.nextUrl.origin);
-  response.headers.set('Access-Control-Allow-Credentials', 'true');
-  response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-
-  // Cache control for sensitive content
-  response.headers.set('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-  response.headers.set('Pragma', 'no-cache');
-  response.headers.set('Expires', '0');
 
   return response;
 }
@@ -315,6 +268,11 @@ export async function middleware(request: NextRequest) {
     return new NextResponse('Suspicious Request Detected', { status: 400 });
   }
   
+  // Cleanup rate limit cache periodically (every 100 requests)
+  if (Math.random() < 0.01) {
+    cleanupRateLimitCache();
+  }
+
   // 3. Enhanced Rate limiting - Different limits for different operations
   const isAdminPath = SECURITY_CONFIG.ADMIN_PATHS.some(path => pathname.startsWith(path));
   const isAPIPath = pathname.startsWith('/api');
@@ -383,7 +341,7 @@ export async function middleware(request: NextRequest) {
   
   // 6. Add security headers to all responses
   const response = NextResponse.next();
-  return addSecurityHeaders(response, request);
+  return addSecurityHeaders(response);
 }
 
 // Configure which paths the middleware should run on
