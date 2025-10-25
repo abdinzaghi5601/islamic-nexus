@@ -45,3 +45,12 @@ next-env.d.ts
 
 # Data export files
 data-export/
+
+# Database credentials and migration scripts with hardcoded URLs
+make_admin.sql
+verify_role_field.sql
+export-database.sh
+export-db-simple.sh
+scripts/migrate-mysql-to-postgresql.ts
+*.sql.backup
+*_backup_*.sql

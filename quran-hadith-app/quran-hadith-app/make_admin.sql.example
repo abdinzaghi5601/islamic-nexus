@@ -1,0 +1,7 @@
+-- Make User Admin Script Template
+-- Copy this to make_admin.sql and replace YOUR_EMAIL with actual email
+-- DO NOT commit make_admin.sql to git
+
+UPDATE users
+SET role = 'admin'
+WHERE email = 'YOUR_EMAIL_HERE@example.com';
